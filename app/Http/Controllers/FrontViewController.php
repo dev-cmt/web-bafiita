@@ -31,6 +31,10 @@ class FrontViewController extends Controller
     {
         return view('frontend.pages.about-us');
     }
+    public function aboutMessage()
+    {
+        return view('frontend.pages.about-message');
+    }
     /**________________________________________________________________________________________
      * Committee Menu Pages
      * ________________________________________________________________________________________
@@ -114,12 +118,16 @@ class FrontViewController extends Controller
         return view('frontend.pages.events_details',compact('events','data'));
     }
     /**________________________________________________________________________________________
-     * Corporate Partners Menu Pages
+     * Blog Menu Pages
      * ________________________________________________________________________________________
      */
-    public function corporatePartners()
+    public function blog()
     {
-        return view('frontend.pages.corporate-partners');
+        return view('frontend.pages.blog');
+    }
+    public function blogDetails()
+    {
+        return view('frontend.pages.blog-details');
     }
     /**________________________________________________________________________________________
      * Contact Menu Pages

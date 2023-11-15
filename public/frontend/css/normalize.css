@@ -484,7 +484,7 @@ Preloader Area CSS
 	font-size: 32px;
 	font-weight: 600;
 	text-transform: capitalize;
-	margin-bottom: 24px;
+	/* margin-bottom: 24px; */
 	position: relative;
 	color: #2C2D3F;
 }

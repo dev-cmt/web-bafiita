@@ -77,6 +77,8 @@
     
     @if (Route::currentRouteName() == '/')
         @include('frontend.layouts.partial.slider')
+    @else
+        @include('frontend.layouts.partial.banner')
     @endif
 
     @yield('content')
