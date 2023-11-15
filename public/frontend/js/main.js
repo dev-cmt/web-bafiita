@@ -1,239 +1,331 @@
-/**
-* Template Name: Groovin
-* Updated: Mar 10 2023 with Bootstrap v5.2.3
-* Template URL: https://bootstrapmade.com/groovin-free-bootstrap-theme/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-(function() {
-  "use strict";
+/* =====================================
+Template Name: 	Mediplus.
+Author Name: Naimur Rahman
+Website: http://wpthemesgrid.com/
+Description: Mediplus - Doctor HTML Template.
+Version:	1.1
+========================================*/   
+/*=======================================
+[Start Activation Code]
+=========================================
+* Sticky Header JS
+* Search JS
+* Mobile Menu JS
+* Hero Slider JS
+* Testimonial Slider JS
+* Portfolio Slider JS
+* Clients Slider JS
+* Single Portfolio Slider JS
+* Accordion JS
+* Nice Select JS
+* Date Picker JS
+* Counter Up JS
+* Checkbox JS
+* Right Bar JS
+* Video Popup JS
+* Wow JS
+* Scroll Up JS
+* Animate Scroll JS
+* Stellar JS
+* Google Maps JS
+* Preloader JS
+=========================================
+[End Activation Code]
+=========================================*/ 
+(function($) {
+    "use strict";
+     $(document).on('ready', function() {
+	
+        jQuery(window).on('scroll', function() {
+			if ($(this).scrollTop() > 200) {
+				$('#header .header-inner').addClass("sticky");
+			} else {
+				$('#header .header-inner').removeClass("sticky");
+			}
+		});
+		
+		/*====================================
+			Sticky Header JS
+		======================================*/ 
+		jQuery(window).on('scroll', function() {
+			if ($(this).scrollTop() > 100) {
+				$('.header').addClass("sticky");
+			} else {
+				$('.header').removeClass("sticky");
+			}
+		});
+		
+		$('.pro-features .get-pro').on( "click", function(){
+			$('.pro-features').toggleClass('active');
+		});
+		
+		/*====================================
+			Search JS
+		======================================*/ 
+		$('.search a').on( "click", function(){
+			$('.search-top').toggleClass('active');
+		});
+		
+		/*====================================
+			Mobile Menu
+		======================================*/ 	
+		$('.menu').slicknav({
+			prependTo:".mobile-nav",
+			duration: 300,
+			closeOnClick:true,
+		});
+		
+		/*===============================
+			Hero Slider JS
+		=================================*/ 
+		$(".hero-slider").owlCarousel({
+			loop:true,
+			autoplay:true,
+			smartSpeed: 500,
+			autoplayTimeout:3500,
+			singleItem: true,
+			autoplayHoverPause:true,
+			items:1,
+			nav:true,
+			navText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i>'],
+			dots:false,
+		});
 
-  /**
-   * Easy selector helper function
-   */
-  const select = (el, all = false) => {
-    el = el.trim()
-    if (all) {
-      return [...document.querySelectorAll(el)]
-    } else {
-      return document.querySelector(el)
-    }
-  }
+		/*===============================
+			Testimonial Slider JS
+		=================================*/ 
+		$('.testimonial-slider').owlCarousel({
+			items:3,
+			autoplay:true,
+			autoplayTimeout:4500,
+			smartSpeed:300,
+			autoplayHoverPause:true,
+			loop:true,
+			merge:true,
+			nav:false,
+			dots:true,
+			responsive:{
+				1: {
+					items:1,
+				},
+				300: {
+					items:1,
+				},
+				480: {
+					items:1,
+				},
+				768: {
+					items:2,
+				},
+				1170: {
+					items:3,
+				},
+			}
+		});
+		
+		/*===============================
+			Portfolio Slider JS
+		=================================*/ 
+		$('.portfolio-slider').owlCarousel({
+			autoplay:true,
+			autoplayTimeout:4000,
+			margin:15,
+			smartSpeed:300,
+			autoplayHoverPause:true,
+			loop:true,
+			nav:true,
+			dots:false,
+			responsive:{
+				300: {
+					items:1,
+				},
+				480: {
+					items:2,
+				},
+				768: {
+					items:2,
+				},
+				1170: {
+					items:4,
+				},
+			}
+		});
+		
+		/*=====================================
+			Counter Up JS
+		======================================*/
+		$('.counter').counterUp({
+			delay:20,
+			time:2000
+		});
+		
+		/*===============================
+			Clients Slider JS
+		=================================*/ 
+		$('.clients-slider').owlCarousel({
+			items:5,
+			autoplay:true,
+			autoplayTimeout:3500,
+			margin:15,
+			smartSpeed: 400,
+			autoplayHoverPause:true,
+			loop:true,
+			nav:false,
+			dots:false,
+			responsive:{
+				300: {
+					items:1,
+				},
+				480: {
+					items:2,
+				},
+				768: {
+					items:3,
+				},
+				1170: {
+					items:5,
+				},
+			}
+		});
+		
+		/*====================================
+			Single Portfolio Slider JS
+		======================================*/ 
+		$('.pf-details-slider').owlCarousel({
+			items:1,
+			autoplay:false,
+			autoplayTimeout:5000,
+			smartSpeed: 400,
+			autoplayHoverPause:true,
+			loop:true,
+			merge:true,
+			nav:true,
+			dots:false,
+			navText: ['<i class="icofont-rounded-left"></i>', '<i class="icofont-rounded-right"></i>'],
+		});
+		
+		/*===================
+			Accordion JS
+		=====================*/ 
+		$('.accordion > li:eq(0) a').addClass('active').next().slideDown();
+		$('.accordion a').on('click', function(j) {
+			var dropDown = $(this).closest('li').find('p');
+			$(this).closest('.accordion').find('p').not(dropDown).slideUp(300);
+			if ($(this).hasClass('active')) {
+				$(this).removeClass('active');
+			} else {
+				$(this).closest('.accordion').find('a.active').removeClass('active');
+				$(this).addClass('active');
+			}
+			dropDown.stop(false, true).slideToggle(300);
+			j.preventDefault();
+		});
+		
+		/*====================================
+			Nice Select JS
+		======================================*/ 	
+		$('select').niceSelect();
+		
+		/*=====================================
+			Date Picker JS
+		======================================*/ 
+		$( function() {
+			$( "#datepicker" ).datepicker();
+		} );
+		
+		
+		
+		/*===============================
+			Checkbox JS
+		=================================*/  
+		$('input[type="checkbox"]').change(function(){
+			if($(this).is(':checked')){
+				$(this).parent("label").addClass("checked");
+			} else {
+				$(this).parent("label").removeClass("checked");
+			}
+		});
+		
+		/*===============================
+			Right Bar JS
+		=================================*/ 
+		$('.right-bar .bar').on( "click", function(){
+			$('.sidebar-menu').addClass('active');
+		});
+		$('.sidebar-menu .cross').on( "click", function(){
+			$('.sidebar-menu').removeClass('active');
+		});
+		
+		/*=====================
+			Video Popup JS
+		=======================*/ 
+		$('.video-popup').magnificPopup({
+			type: 'video',	
+		});
+		
+		/*================
+			Wow JS
+		==================*/		
+		var window_width = $(window).width();   
+			if(window_width > 767){
+            new WOW().init();
+		}
+	
+		/*===================
+			Scroll Up JS
+		=====================*/
+		$.scrollUp({
+			scrollText: '<span><i class="fa fa-angle-up"></i></span>',
+			easingType: 'easeInOutExpo',
+			scrollSpeed: 900,
+			animation: 'fade'
+		}); 
 
-  /**
-   * Easy event listener function
-   */
-  const on = (type, el, listener, all = false) => {
-    let selectEl = select(el, all)
-    if (selectEl) {
-      if (all) {
-        selectEl.forEach(e => e.addEventListener(type, listener))
-      } else {
-        selectEl.addEventListener(type, listener)
-      }
-    }
-  }
+		/*=======================
+			Animate Scroll JS
+		=========================*/
+		$('.scroll').on("click", function (e) {
+			var anchor = $(this);
+				$('html, body').stop().animate({
+					scrollTop: $(anchor.attr('href')).offset().top - 100
+				}, 1000);
+			e.preventDefault();
+		});
+		
+		/*=======================
+			Stellar JS
+		=========================*/
+		$.stellar({
+		  horizontalOffset: 0,
+		  verticalOffset: 0
+		});
 
-  /**
-   * Easy on scroll event listener 
-   */
-  const onscroll = (el, listener) => {
-    el.addEventListener('scroll', listener)
-  }
-
-  /**
-   * Navbar links active state on scroll
-   */
-  let navbarlinks = select('#navbar .scrollto', true)
-  const navbarlinksActive = () => {
-    let position = window.scrollY + 200
-    navbarlinks.forEach(navbarlink => {
-      if (!navbarlink.hash) return
-      let section = select(navbarlink.hash)
-      if (!section) return
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        navbarlink.classList.add('active')
-      } else {
-        navbarlink.classList.remove('active')
-      }
-    })
-  }
-  window.addEventListener('load', navbarlinksActive)
-  onscroll(document, navbarlinksActive)
-
-  /**
-   * Scrolls to an element with header offset
-   */
-  const scrollto = (el) => {
-    let header = select('#header')
-    let offset = header.offsetHeight
-
-    let elementPos = select(el).offsetTop
-    window.scrollTo({
-      top: elementPos - offset,
-      behavior: 'smooth'
-    })
-  }
-
-  /**
-   * Back to top button
-   */
-  let backtotop = select('.back-to-top')
-  if (backtotop) {
-    const toggleBacktotop = () => {
-      if (window.scrollY > 100) {
-        backtotop.classList.add('active')
-      } else {
-        backtotop.classList.remove('active')
-      }
-    }
-    window.addEventListener('load', toggleBacktotop)
-    onscroll(document, toggleBacktotop)
-  }
-
-  /**
-   * Mobile nav toggle
-   */
-  on('click', '.mobile-nav-toggle', function(e) {
-    select('#navbar').classList.toggle('navbar-mobile')
-    this.classList.toggle('bi-list')
-    this.classList.toggle('bi-x')
-  })
-
-  /**
-   * Mobile nav dropdowns activate
-   */
-  on('click', '.navbar .dropdown > a', function(e) {
-    if (select('#navbar').classList.contains('navbar-mobile')) {
-      e.preventDefault()
-      this.nextElementSibling.classList.toggle('dropdown-active')
-    }
-  }, true)
-
-  /**
-   * Scrool with ofset on links with a class name .scrollto
-   */
-  on('click', '.scrollto', function(e) {
-    if (select(this.hash)) {
-      e.preventDefault()
-
-      let navbar = select('#navbar')
-      if (navbar.classList.contains('navbar-mobile')) {
-        navbar.classList.remove('navbar-mobile')
-        let navbarToggle = select('.mobile-nav-toggle')
-        navbarToggle.classList.toggle('bi-list')
-        navbarToggle.classList.toggle('bi-x')
-      }
-      scrollto(this.hash)
-    }
-  }, true)
-
-  /**
-   * Scroll with ofset on page load with hash links in the url
-   */
-  window.addEventListener('load', () => {
-    if (window.location.hash) {
-      if (select(window.location.hash)) {
-        scrollto(window.location.hash)
-      }
-    }
-  });
-
-  /**
-   * Hero carousel indicators
-   */
-  let heroCarouselIndicators = select("#hero-carousel-indicators")
-  let heroCarouselItems = select('#heroCarousel .carousel-item', true)
-
-  heroCarouselItems.forEach((item, index) => {
-    (index === 0) ?
-    heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "' class='active'></li>":
-      heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "'></li>"
-  });
-
-  /**
-   * Porfolio isotope and filter
-   */
-  window.addEventListener('load', () => {
-    let portfolioContainer = select('.portfolio-container');
-    if (portfolioContainer) {
-      let portfolioIsotope = new Isotope(portfolioContainer, {
-        itemSelector: '.portfolio-item',
-        layoutMode: 'fitRows'
-      });
-
-      let portfolioFilters = select('#portfolio-flters li', true);
-
-      on('click', '#portfolio-flters li', function(e) {
-        e.preventDefault();
-        portfolioFilters.forEach(function(el) {
-          el.classList.remove('filter-active');
-        });
-        this.classList.add('filter-active');
-
-        portfolioIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-
-      }, true);
-    }
-
-  });
-
-  /**
-   * Initiate portfolio lightbox 
-   */
-  const portfolioLightbox = GLightbox({
-    selector: '.portfolio-lightbox'
-  });
-
-  /**
-   * Portfolio details slider
-   */
-  new Swiper('.portfolio-details-slider', {
-    speed: 400,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    }
-  });
-
-  /**
-   * Initiate Pure Counter 
-   */
-  new PureCounter();
-
-})()
-
-
-/**_________________________________________________________
- * Custome Javascript
- * _________________________________________________________
- */
-
-
-// Nav Menu------------------------------
-const header = document.getElementById('header');
-const colorNavbarLinks = document.querySelectorAll('.navbar a'); 
-
-function toggleHeaderBackground() {
-    if (window.scrollY > 0) {
-        header.classList.add('scrolled');
-        colorNavbarLinks.forEach(link => {
-            //link.style.color = 'red';
-        });
-    } else {
-        header.classList.remove('scrolled');
-        colorNavbarLinks.forEach(link => {
-            link.style.color = ''; // Restore the default link color
-        });
-    }
-}
-
-window.addEventListener('scroll', toggleHeaderBackground);
+		/*====================
+			Google Maps JS
+		======================*/
+		var map = new GMaps({
+				el: '#map',
+				lat: 23.011245,
+				lng: 90.884780,
+				scrollwheel: false,
+			});
+			map.addMarker({
+				lat: 23.011245,
+				lng: 90.884780,
+				title: 'Marker with InfoWindow',
+				infoWindow: {
+				content: '<p>welcome to Medipro</p>'
+			}
+		
+		});
+	});
+	
+	/*====================
+		Preloader JS
+	======================*/
+	$(window).on('load', function() {
+		$('.preloader').addClass('preloader-deactivate');
+	});
+	
+	
+})(jQuery);

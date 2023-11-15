@@ -13,26 +13,66 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
-    <link href="{{asset('public/frontend')}}/vendor/animate.css/animate.min.css" rel="stylesheet">
-    <link href="{{asset('public/frontend')}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{asset('public/frontend')}}/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="{{asset('public/frontend')}}/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-        
-    <!-- Owl Carousel -->
-    <link href="{{asset('public/frontend')}}/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
-    <link href="{{asset('public/frontend')}}/vendor/owl-carousel/owl.theme.css" rel="stylesheet">
 
-    <!-- Template Main CSS File -->
-    <link href="{{asset('public/frontend')}}/css/style.css" rel="stylesheet">
-    <link href="{{asset('public/frontend')}}/css/intro-effect.css" rel="stylesheet">
-    <link href="{{asset('public/frontend')}}/css/custom.css" rel="stylesheet">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.24/sweetalert2.all.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{asset('public/frontend')}}/css/bootstrap.min.css">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="{{asset('public/frontend')}}/css/nice-select.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="{{asset('public/frontend')}}/css/font-awesome.min.css">
+    <!-- icofont CSS -->
+    <link rel="stylesheet" href="{{asset('public/frontend')}}/css/icofont.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" href="{{asset('public/frontend')}}/css/slicknav.min.css">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="{{asset('public/frontend')}}/css/owl-carousel.css">
+    <!-- Datepicker CSS -->
+    <link rel="stylesheet" href="{{asset('public/frontend')}}/css/datepicker.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="{{asset('public/frontend')}}/css/animate.min.css">
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="{{asset('public/frontend')}}/css/magnific-popup.css">
+    
+    <!-- Medipro CSS -->
+    <link rel="stylesheet" href="{{asset('public/frontend')}}/css/normalize.css">
+    <link rel="stylesheet" href="{{asset('public/frontend')}}/css/responsive.css">
+    <link rel="stylesheet" href="{{asset('public/frontend')}}/css/style.css">
+    
     @yield('style')
 </head>
 <body>
-    <!-- Spinner End -->
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader-outter"></div>
+            <div class="loader-inner"></div>
+
+            <div class="indicator"> 
+                <svg width="16px" height="12px">
+                    <polyline id="back" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+                    <polyline id="front" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <!-- End Preloader -->
+
+    <!-- Get Pro Button -->
+    <ul class="pro-features">
+        <a class="get-pro" href="#">Membership</a>
+        <li class="big-title">Pro Version Available on Themeforest</li>
+        <li class="title">Pro Version Features</li>
+        <li>2+ premade home pages</li>
+        <li>20+ html pages</li>
+        <li>Color Plate With 12+ Colors</li>
+        <li>Sticky Header / Sticky Filters</li>
+        <li>Working Contact Form With Google Map</li>
+        <div class="button">
+            <a href="#" target="_blank" class="btn">New Membership</a>
+            <a href="#" target="_blank" class="btn">Renew Membership</a>
+        </div>
+    </ul>
+
     @include('frontend.layouts.partial.header')
     
     @if (Route::currentRouteName() == '/')
@@ -42,90 +82,47 @@
     @yield('content')
     @include('frontend.layouts.partial.footer')
 
-    
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-    
-    <script src="{{asset('public/frontend')}}/js/jquery-3.7.1.min.js"></script> 
-    <!-- Vendor JS Files -->
-    <script src="{{asset('public/frontend')}}/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="{{asset('public/frontend')}}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="{{asset('public/frontend')}}/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="{{asset('public/frontend')}}/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="{{asset('public/frontend')}}/vendor/owl-carousel/owl.carousel.js"></script>
 
-    <!-- Template Main JS File -->
-    <script src="{{asset('public/frontend')}}/js/particles.js"></script>
-    <script src="{{asset('public/frontend')}}/js/particles-config.js"></script>
-    <script src="{{asset('public/frontend')}}/js/gsap.min.js"></script>
-    <script src="{{asset('public/frontend')}}/js/ScrollTrigger.min.js"></script>
+    <!-- jquery Min JS -->
+    <script src="{{asset('public/frontend')}}/js/jquery.min.js"></script>
+    <!-- jquery Migrate JS -->
+    <script src="{{asset('public/frontend')}}/js/jquery-migrate-3.0.0.js"></script>
+    <!-- jquery Ui JS -->
+    <script src="{{asset('public/frontend')}}/js/jquery-ui.min.js"></script>
+    <!-- Easing JS -->
+    <script src="{{asset('public/frontend')}}/js/easing.js"></script>
+    <!-- Color JS -->
+    <script src="{{asset('public/frontend')}}/js/colors.js"></script>
+    <!-- Popper JS -->
+    <script src="{{asset('public/frontend')}}/js/popper.min.js"></script>
+    <!-- Bootstrap Datepicker JS -->
+    <script src="{{asset('public/frontend')}}/js/bootstrap-datepicker.js"></script>
+    <!-- Jquery Nav JS -->
+    <script src="{{asset('public/frontend')}}/js/jquery.nav.js"></script>
+    <!-- Slicknav JS -->
+    <script src="{{asset('public/frontend')}}/js/slicknav.min.js"></script>
+    <!-- ScrollUp JS -->
+    <script src="{{asset('public/frontend')}}/js/jquery.scrollUp.min.js"></script>
+    <!-- Niceselect JS -->
+    <script src="{{asset('public/frontend')}}/js/niceselect.js"></script>
+    <!-- Tilt Jquery JS -->
+    <script src="{{asset('public/frontend')}}/js/tilt.jquery.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="{{asset('public/frontend')}}/js/owl-carousel.js"></script>
+    <!-- counterup JS -->
+    <script src="{{asset('public/frontend')}}/js/jquery.counterup.min.js"></script>
+    <!-- Steller JS -->
+    <script src="{{asset('public/frontend')}}/js/steller.js"></script>
+    <!-- Wow JS -->
+    <script src="{{asset('public/frontend')}}/js/wow.min.js"></script>
+    <!-- Magnific Popup JS -->
+    <script src="{{asset('public/frontend')}}/js/jquery.magnific-popup.min.js"></script>
+    <!-- Counter Up CDN JS -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="{{asset('public/frontend')}}/js/bootstrap.min.js"></script>
+    <!-- Main JS -->
     <script src="{{asset('public/frontend')}}/js/main.js"></script>
-
-    <script>
-        // Initialize GSAP - ScrollTrigger
-        const reveal = gsap.utils.toArray('.reveal');
-        reveal.forEach((text, i) => {
-            ScrollTrigger.create({
-                trigger:text,
-                toggleClass:'active',
-                // start: "top 90%",
-                // end: "top 10%",
-            })
-        })
-        // Initialize owl - Slider
-        $(document).ready(function() {
-            $("#owl-upcoming-events").owlCarousel({
-                navigation: false,
-                slideSpeed: 300,
-                paginationSpeed: 400,
-                singleItem: true,
-                autoPlay : 3000,
-            });
-
-        });
-        $(document).ready(function () {
-            $("#owl-team-member").owlCarousel({
-                items: 4
-            });
-            $('.link').on('click', function (event) {
-                var $this = $(this);
-                if ($this.hasClass('clicked')) {
-                    $this.removeAttr('style').removeClass('clicked');
-                } else {
-                    $this.css('background', '#7fc242').addClass('clicked');
-                }
-            });
-        });
-        $(document).ready(function() {
-            $("#owl-clients").owlCarousel({
-                items: 5,
-                navigation: false,
-            });
-
-            $('.link').on('click', function (event) {
-                var $this = $(this);
-                if ($this.hasClass('clicked')) {
-                    $this.removeAttr('style').removeClass('clicked');
-                } else {
-                    $this.css('background', '#7fc242').addClass('clicked');
-                }
-            });
-
-        });
-    </script>
-    
-    <script>
-        // Function to add the class with the left show animation after a delay
-        function showLeftAnimation() {
-            const introCover = document.querySelector('.intro-cover');
-            const introTitle = document.querySelector('.intro-title');
-            const introText = document.querySelector('.intro-text');
-            introCover.classList.add('active');
-            introTitle.classList.add('active');
-            introText.classList.add('active');
-        }
-        // Wait for 5 seconds (5000 milliseconds) before triggering the animation
-        setTimeout(showLeftAnimation, 1000);
-    </script>
 
     @yield('script')
 </body>

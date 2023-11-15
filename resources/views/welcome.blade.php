@@ -1,351 +1,689 @@
 @extends('frontend.layouts.app')
 @section('content')
-    <!-- ======= Content Section ======= -->
-    <main id="main">
-        <!-- ======= Feature Section ======= -->
-        <section id="feature" class="feature">
-            <div class="container">
-                <div class="d-flex justify-content-center">
-                    <!--<div class="col-3">-->
-                    <!--    <div class="icon-box animate__animated animate__slideInLeft">-->
-                    <!--        <i class="bi bi-people-fill"></i>-->
-                    <!--        <h4>The Association</h4>-->
-                    <!--    </div>-->
-                    <!--</div>-->
-                    <a href="https://idab.com.bd/pages/why-be-member" class="col-md-3 mx-2 text-center">
-                        <div class="icon-box animate__animated animate__slideInLeft">
-                            <!--<i class="bi bi-person-badge"></i>-->
-                            <h4>Why be a Member</h4>
+
+    <!-- Start Schedule Area -->
+    <section class="schedule">
+        <div class="container">
+            <div class="schedule-inner">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-12 ">
+                        <!-- single-schedule -->
+                        <div class="single-schedule first">
+                            <div class="inner">
+                                <div class="icon">
+                                    <i class="fa fa-ambulance"></i>
+                                </div>
+                                <div class="single-content">
+                                    <span>Lorem Amet</span>
+                                    <h4>Emergency Cases</h4>
+                                    <p>Lorem ipsum sit amet consectetur adipiscing elit. Vivamus et erat in lacus convallis sodales.</p>
+                                    <a href="#">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
+                                </div>
+                            </div>
                         </div>
-                    </a>
-                    <a href="https://idab.com.bd/pages/requirements" class="col-md-3 mx-2 text-center">
-                        <div class="icon-box animate__animated animate__slideInRight">
-                            <!--<i class="bi bi-award-fill"></i>-->
-                            <h4>Types of Membership</h4>
-                        </div>
-                    </a>
-                    <!--<div class="col-3">-->
-                    <!--    <div class="icon-box animate__animated animate__slideInRight">-->
-                    <!--        <i class="bi bi-wechat"></i>-->
-                    <!--        <h4>Social</h4>-->
-                    <!--    </div>-->
-                    <!--</div>-->
-                </div><!-- /.row -->
-
-            </div><!-- /.container -->
-        </section>
-        <!-- End Feature -->
-
-        <!-- ======= About Section ======= -->
-         <!--<section id="about" class="about">
-            <div class="container">
-                <div class="row no-gutters">
-                    <div class="image animate__animated animate__fadeInDown col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start" style="background: url({{asset('public/images')}}/pages/about.jpg) center center no-repeat;">
-
                     </div>
-                    <div class="col-xl-7 ps-0 ps-lg-5 pe-lg-1 d-flex align-items-stretch">
-                        <div class="content d-flex flex-column justify-content-center">
-                            <h3>Interior Designer’s Association Of Bangladesh (IDAB)</h3>
-                            <p>IDAB (Interior designer’s Association Of Bangladesh) founded in 2019 with some young and energetic Bangladeshi Interior Designers to represent the Interior designers & interior design industry as a whole of Bangladesh.</p>
-                            <div class="row">
-                                <div class="col-md-6 icon-box">
-                                    <i class="bx bx-receipt"></i>
-                                    <h4 class="">Corporis voluptates sit</h4>
-                                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut
-                                        aliquip</p>
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <!-- single-schedule -->
+                        <div class="single-schedule middle">
+                            <div class="inner">
+                                <div class="icon">
+                                    <i class="icofont-prescription"></i>
                                 </div>
-                                <div class="col-md-6 icon-box">
-                                    <i class="bx bx-cube-alt"></i>
-                                    <h4>Ullamco laboris nisi</h4>
-                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                        deserunt</p>
+                                <div class="single-content">
+                                    <span>Fusce Porttitor</span>
+                                    <h4>Doctors Timetable</h4>
+                                    <p>Lorem ipsum sit amet consectetur adipiscing elit. Vivamus et erat in lacus convallis sodales.</p>
+                                    <a href="#">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
                                 </div>
-                                <div class="col-md-6 icon-box">
-                                    <i class="bx bx-images"></i>
-                                    <h4>Labore consequatur</h4>
-                                    <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere
-                                    </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-12">
+                        <!-- single-schedule -->
+                        <div class="single-schedule last">
+                            <div class="inner">
+                                <div class="icon">
+                                    <i class="icofont-ui-clock"></i>
                                 </div>
-                                <div class="col-md-6 icon-box">
-                                    <i class="bx bx-shield"></i>
-                                    <h4>Beatae veritatis</h4>
-                                    <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
+                                <div class="single-content">
+                                    <span>Donec luctus</span>
+                                    <h4>Opening Hours</h4>
+                                    <ul class="time-sidual">
+                                        <li class="day">Monday - Fridayp <span>8.00-20.00</span></li>
+                                        <li class="day">Saturday <span>9.00-18.30</span></li>
+                                        <li class="day">Monday - Thusday <span>9.00-15.00</span></li>
+                                    </ul>
+                                    <a href="#">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-        </section>--><!-- 75End .content--><!-- End About Section -->
-        
-        @if (count($event) > 0)
-        <!-- ======= Upcoming Events Section======= -->
-        <section id="events" class="events animate__fadeInUp">
-            <div class="container">
+        </div>
+    </section>
+    <!--/End Start schedule Area -->
 
-                <div class="section-title">
-                    <h2 class="reveal">UPCOMING EVENTS</h2>
-                </div>
-
-                <div class="row">
-                    <div id="owl-upcoming-events" class="owl-carousel owl-theme">
-                        @foreach ($event as $item)
-                            <div><img src="{{asset('public/images')}}/events/{{ $item->image }}"></div>
-                        @endforeach
+    <!-- Start Feautes -->
+    <section class="Feautes section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>We Are Always Ready to Help You & Your Family</h2>
+                        <img src="{{asset('public/frontend')}}/img/section-img.png" alt="#">
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>
                     </div>
                 </div>
-
             </div>
-        </section><!-- End Upcoming Events Section -->
-        @endif
-
-        <!-- ======= Services Section ======= -->
-        {{-- <section id="services" class="services animate__fadeInUp">
-            <div class="container">
-
-                <div class="section-title">
-                    <h2 class="reveal">How IDAB Benefit You</h2>
-                    <!--<p class="reveal">Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>-->
+            <div class="row">
+                <div class="col-lg-4 col-12">
+                    <!-- Start Single features -->
+                    <div class="single-features">
+                        <div class="signle-icon">
+                            <i class="icofont icofont-ambulance-cross"></i>
+                        </div>
+                        <h3>Emergency Help</h3>
+                        <p>Lorem ipsum sit, consectetur adipiscing elit. Maecenas mi quam vulputate.</p>
+                    </div>
+                    <!-- End Single features -->
                 </div>
-
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 icon-box">
-                        <div class="icon"><i class="bi bi-briefcase"></i></div>
-                        <h4 class="title"><a href="">Professional Guidance</a></h4>
-                        <p class="description">We offer legal helplines, specialist guides, and peer-to-peer mentoring for our members.</p>
+                <div class="col-lg-4 col-12">
+                    <!-- Start Single features -->
+                    <div class="single-features">
+                        <div class="signle-icon">
+                            <i class="icofont icofont-medical-sign-alt"></i>
+                        </div>
+                        <h3>Enriched Pharmecy</h3>
+                        <p>Lorem ipsum sit, consectetur adipiscing elit. Maecenas mi quam vulputate.</p>
                     </div>
-                    <div class="col-lg-4 col-md-6 icon-box">
-                        <div class="icon"><i class="bi bi-card-checklist"></i></div>
-                        <h4 class="title"><a href="">Institute Status</a></h4>
-                        <p class="description">The use of our member logo is a symbol of credibility, authority, and professionalism</p>
-                    </div>
-                    <div class="col-lg-4 col-md-6 icon-box">
-                        <div class="icon"><i class="bi bi-bar-chart"></i></div>
-                        <h4 class="title"><a href="">Continuous Development Support</a></h4>
-                        <p class="description">Our members have access to a program of ongoing education and development related to interior design.</p>
-                    </div>
-                    <div class="col-lg-4 col-md-6 icon-box">
-                        <div class="icon"><i class="bi bi-binoculars"></i></div>
-                        <h4 class="title"><a href="">Speaking Opportunities</a></h4>
-                        <p class="description">We frequently place our members as speakers at high-profile industry events and as experts in interior design articles.</p>
-                    </div>
-                    <div class="col-lg-4 col-md-6 icon-box">
-                        <div class="icon"><i class="bi bi-calendar4-week"></i></div>
-                        <h4 class="title"><a href="">Networking Events</a></h4>
-                        <p class="description">Our busy events calendar provides members with regular opportunities to network with fellow industry professionals</p>
-                    </div>
-                    <!--<div class="col-lg-4 col-md-6 icon-box">-->
-                    <!--    <div class="icon"><i class="bi bi-brightness-high"></i></div>-->
-                    <!--    <h4 class="title"><a href="">Eiusmod Tempor</a></h4>-->
-                    <!--    <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero-->
-                    <!--        tempore, cumsoluta nobis est eligendi</p>-->
-                    <!--</div>-->
+                    <!-- End Single features -->
                 </div>
-
+                <div class="col-lg-4 col-12">
+                    <!-- Start Single features -->
+                    <div class="single-features last">
+                        <div class="signle-icon">
+                            <i class="icofont icofont-stethoscope"></i>
+                        </div>
+                        <h3>Medical Treatment</h3>
+                        <p>Lorem ipsum sit, consectetur adipiscing elit. Maecenas mi quam vulputate.</p>
+                    </div>
+                    <!-- End Single features -->
+                </div>
             </div>
-        </section><!-- End Services Section --> --}}
-
-        <!-- ======= Why Us Section ======= -->
-       <!-- End Why Us Section -->
-        
-        <!-- ======= Counts Section ======= -->
-        <section id="counts" class="counts section-bg">
-            <div class="container">
-
-                <div class="row no-gutters">
-                    <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch animate__slideInUp">
-                        <div class="count-box">
-                            <i class="bi bi-emoji-smile"></i>
-                            <span data-purecounter-start="0" data-purecounter-end="{{count($user)}}" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p><strong>Our Member</strong></p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch animate__slideInUp">
-                        <div class="count-box">
-                            <i class="bi bi-journal-richtext"></i>
-                            <span data-purecounter-start="0" data-purecounter-end="{{count($event)}}" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p><strong>Events</strong></p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch animate__slideInUp">
-                        <div class="count-box">
-                            <i class="bi bi-headset"></i>
-                            <span data-purecounter-start="0" data-purecounter-end="{{count($contact)}}" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p><strong>Community Support</strong></p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch animate__slideInUp">
-                        <div class="count-box">
-                            <i class="bi bi-people"></i>
-                            <span data-purecounter-start="0" data-purecounter-end="{{count($executive)}}" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p><strong>Executive Members</strong></p>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section><!-- End Counts Section -->
-
-        <!-- ======= Team Section ======= 
-        @if (count($add_hoc) > 0)
-        <section id="team" class="team">
-            <div class="container">
-
-                <div class="section-title">
-                    <h2 class="reveal">Ad Hoc Committee</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-                </div>
-
-                <div id="owl-team-member" class="owl-carousel">
-                    @foreach ($add_hoc as $item)
-                    <div class="member" style="height:260px">
-                        <img src="{{asset('public/images')}}/profile/{{$item->profile_photo_path}}" class="img-fluid" alt="" style="height: 100%">
-                        <div class="member-info">
-                            <div class="member-info-content">
-                                <h4>{{$item->name}}</h4>
-                                <span>Chief Executive Officer</span>
-                                <div class="social">
-                                    <a href=""><i class="bi bi-twitter"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-
-            </div>
-        </section>
-        @endif--><!-- End Team Section -->
-
-         <!--======= Clients Section ======= -->
-        <section id="clients" class="clients mt-5 animate__fadeInUp">
-            <div class="container">
-                 <div class="section-title">
-                    <h2 class="reveal">Corporate Partners</h2>
-                </div>
-
-                <div id="owl-clients" class="owl-carousel">
-                    <div class="d-flex align-items-center justify-content-center">
-                        <img src="{{asset('public/images')}}/clients/client-1.png" class="img-fluid" alt="">
-                    </div>
-
-                    <div class="d-flex align-items-center justify-content-center">
-                        <img src="{{asset('public/images')}}/clients/client-2.png" class="img-fluid" alt="">
-                    </div>
-
-                    <div class="d-flex align-items-center justify-content-center">
-                        <img src="{{asset('public/images')}}/clients/client-3.png" class="img-fluid" alt="">
-                    </div>
-
-                    <div class="d-flex align-items-center justify-content-center">
-                        <img src="{{asset('public/images')}}/clients/client-4.png" class="img-fluid" alt="">
-                    </div>
-
-                    <div class="d-flex align-items-center justify-content-center">
-                        <img src="{{asset('public/images')}}/clients/client-5.png" class="img-fluid" alt="">
-                    </div>
-
-                    <div class="d-flex align-items-center justify-content-center">
-                        <img src="{{asset('public/images')}}/clients/client-6.png" class="img-fluid" alt="">
-                    </div>
-                  </div>
-
-            </div>
-        </section><!-- End Clients Section 
-
-        <!-- ======= Contact Section ======= -->
-        <section id="contact" class="contact animate__fadeInUp">
-            <div class="container">
-                <div class="section-title">
-                    <h2 class="reveal">Contact</h2>
-                </div>
-                <div class="row contact-info">
-                    <div class="col-md-4">
-                        <div class="contact-address">
-                            <i class="bi bi-geo-alt"></i>
-                            <h3>Address</h3>
-                            <address> Rain Razzak Plaza,2 Shahid Tazuddin Soroni, Moghbazar, Dhaka-1217, Bangladesh</address>
-                        </div>
-                    </div>
+        </div>
+    </section>
+    <!--/ End Feautes -->
     
-                    <div class="col-md-4">
-                        <div class="contact-phone">
-                            <i class="bi bi-phone"></i>
-                            <h3>Phone Number</h3>
-                            <p><a href="tel:01725151515">01725151515</a></p>
+    <!-- Start Fun-facts -->
+    <div id="fun-facts" class="fun-facts section overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Start Single Fun -->
+                    <div class="single-fun">
+                        <i class="icofont icofont-home"></i>
+                        <div class="content">
+                            <span class="counter">3468</span>
+                            <p>Hospital Rooms</p>
                         </div>
                     </div>
-    
-                    <div class="col-md-4">
-                        <div class="contact-email">
-                            <i class="bi bi-envelope"></i>
-                            <h3>Email</h3>
-                            <p><a href="mailto:contact.idab@gmail.com">contact.idab@gmail.com</a></p>
+                    <!-- End Single Fun -->
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Start Single Fun -->
+                    <div class="single-fun">
+                        <i class="icofont icofont-user-alt-3"></i>
+                        <div class="content">
+                            <span class="counter">557</span>
+                            <p>Specialist Doctors</p>
                         </div>
+                    </div>
+                    <!-- End Single Fun -->
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Start Single Fun -->
+                    <div class="single-fun">
+                        <i class="icofont-simple-smile"></i>
+                        <div class="content">
+                            <span class="counter">4379</span>
+                            <p>Happy Patients</p>
+                        </div>
+                    </div>
+                    <!-- End Single Fun -->
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Start Single Fun -->
+                    <div class="single-fun">
+                        <i class="icofont icofont-table"></i>
+                        <div class="content">
+                            <span class="counter">32</span>
+                            <p>Years of Experience</p>
+                        </div>
+                    </div>
+                    <!-- End Single Fun -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ End Fun-facts -->
+    
+    <!-- Start Why choose -->
+    <section class="why-choose section" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>We Offer Different Services To Improve Your Health</h2>
+                        <img src="{{asset('public/frontend')}}/img/section-img.png" alt="#">
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>
                     </div>
                 </div>
-
-                <div class="form">
-                    <form action="{{route('contact-us.store')}}" method="post" enctype="multipart/form-data" class="php-email-form"> 
-                        @csrf                        
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-12">
+                    <!-- Start Choose Left -->
+                    <div class="choose-left">
+                        <h3>Who We Are</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra antege vel est lobortis, a commodo magna rhoncus. In quis nisi non emet quam pharetra commodo. </p>
+                        <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. </p>
                         <div class="row">
-                            <div class="col-md-6 form-group">
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" @guest value="{{ old('name')}}" @endguest @auth value="{{Auth::user()->name}}" @endauth  placeholder="Your Name" style="height: 55px;">
-                                @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                            <div class="col-lg-6">
+                                <ul class="list">
+                                    <li><i class="fa fa-caret-right"></i>Maecenas vitae luctus nibh. </li>
+                                    <li><i class="fa fa-caret-right"></i>Duis massa massa.</li>
+                                    <li><i class="fa fa-caret-right"></i>Aliquam feugiat interdum.</li>
+                                </ul>
                             </div>
-                            <div class="col-md-6 form-group mt-3 mt-md-0">
-                                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" @guest value="{{old('email')}}" @endguest @auth value="{{Auth::user()->email}}" @endauth placeholder="Your Email" style="height: 55px;">
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                            <div class="col-lg-6">
+                                <ul class="list">
+                                    <li><i class="fa fa-caret-right"></i>Maecenas vitae luctus nibh. </li>
+                                    <li><i class="fa fa-caret-right"></i>Duis massa massa.</li>
+                                    <li><i class="fa fa-caret-right"></i>Aliquam feugiat interdum.</li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="form-group mt-3">
-                            <input type="text" class="form-control @error('subject') is-invalid @enderror" name="subject" value="{{old('subject')}}" placeholder="Subject" style="height: 55px;">
-                            @error('subject')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                    </div>
+                    <!-- End Choose Left -->
+                </div>
+                <div class="col-lg-6 col-12">
+                    <!-- Start Choose Rights -->
+                    <div class="choose-right">
+                        <div class="video-image">
+                            <!-- Video Animation -->
+                            <div class="promo-video">
+                                <div class="waves-block">
+                                    <div class="waves wave-1"></div>
+                                    <div class="waves wave-2"></div>
+                                    <div class="waves wave-3"></div>
+                                </div>
+                            </div>
+                            <!--/ End Video Animation -->
+                            <a href="https://www.youtube.com/watch?v=RFVXy6CRVR4" class="video video-popup mfp-iframe"><i class="fa fa-play"></i></a>
                         </div>
-                        <div class="form-group mt-3">
-                            <textarea class="form-control py-3 @error('description') is-invalid @enderror" name="description" value="{{old('description')}}" rows="4" placeholder="Message"></textarea>
-                            @error('description')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                    </div>
+                    <!-- End Choose Rights -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ End Why choose -->
+    
+    <!-- Start portfolio -->
+    <section class="portfolio section" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>We Maintain Cleanliness Rules Inside Our Hospital</h2>
+                        <img src="{{asset('public/frontend')}}/img/section-img.png" alt="#">
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-12">
+                    <div class="owl-carousel portfolio-slider">
+                        <div class="single-pf">
+                            <img src="{{asset('public/frontend')}}/img/pf1.jpg" alt="#">
+                            <a href="portfolio-details.html" class="btn">View Details</a>
                         </div>
-                        <div class="my-3">
-                            <div class="error-message"></div>
-                            <div class="sent-message">Your message has been sent. Thank you!</div>
+                        <div class="single-pf">
+                            <img src="{{asset('public/frontend')}}/img/pf2.jpg" alt="#">
+                            <a href="portfolio-details.html" class="btn">View Details</a>
                         </div>
-                        <div class="text-center"><button type="submit">Send Message</button></div>
+                        <div class="single-pf">
+                            <img src="{{asset('public/frontend')}}/img/pf3.jpg" alt="#">
+                            <a href="portfolio-details.html" class="btn">View Details</a>
+                        </div>
+                        <div class="single-pf">
+                            <img src="{{asset('public/frontend')}}/img/pf4.jpg" alt="#">
+                            <a href="portfolio-details.html" class="btn">View Details</a>
+                        </div>
+                        <div class="single-pf">
+                            <img src="{{asset('public/frontend')}}/img/pf1.jpg" alt="#">
+                            <a href="portfolio-details.html" class="btn">View Details</a>
+                        </div>
+                        <div class="single-pf">
+                            <img src="{{asset('public/frontend')}}/img/pf2.jpg" alt="#">
+                            <a href="portfolio-details.html" class="btn">View Details</a>
+                        </div>
+                        <div class="single-pf">
+                            <img src="{{asset('public/frontend')}}/img/pf3.jpg" alt="#">
+                            <a href="portfolio-details.html" class="btn">View Details</a>
+                        </div>
+                        <div class="single-pf">
+                            <img src="{{asset('public/frontend')}}/img/pf4.jpg" alt="#">
+                            <a href="portfolio-details.html" class="btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ End portfolio -->
+    
+    <!-- Start service -->
+    <section class="services section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>We Offer Different Services To Improve Your Health</h2>
+                        <img src="{{asset('public/frontend')}}/img/section-img.png" alt="#">
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- Start Single Service -->
+                    <div class="single-service">
+                        <i class="icofont icofont-prescription"></i>
+                        <h4><a href="service-details.html">General Treatment</a></h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus dictum eros ut imperdiet. </p>	
+                    </div>
+                    <!-- End Single Service -->
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- Start Single Service -->
+                    <div class="single-service">
+                        <i class="icofont icofont-tooth"></i>
+                        <h4><a href="service-details.html">Teeth Whitening</a></h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus dictum eros ut imperdiet. </p>	
+                    </div>
+                    <!-- End Single Service -->
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- Start Single Service -->
+                    <div class="single-service">
+                        <i class="icofont icofont-heart-alt"></i>
+                        <h4><a href="service-details.html">Heart Surgery</a></h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus dictum eros ut imperdiet. </p>	
+                    </div>
+                    <!-- End Single Service -->
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- Start Single Service -->
+                    <div class="single-service">
+                        <i class="icofont icofont-listening"></i>
+                        <h4><a href="service-details.html">Ear Treatment</a></h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus dictum eros ut imperdiet. </p>	
+                    </div>
+                    <!-- End Single Service -->
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- Start Single Service -->
+                    <div class="single-service">
+                        <i class="icofont icofont-eye-alt"></i>
+                        <h4><a href="service-details.html">Vision Problems</a></h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus dictum eros ut imperdiet. </p>	
+                    </div>
+                    <!-- End Single Service -->
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- Start Single Service -->
+                    <div class="single-service">
+                        <i class="icofont icofont-blood"></i>
+                        <h4><a href="service-details.html">Blood Transfusion</a></h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus dictum eros ut imperdiet. </p>	
+                    </div>
+                    <!-- End Single Service -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ End service -->
+    
+    <!-- Pricing Table -->
+    <section class="pricing-table section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>We Provide You The Best Treatment In Resonable Price</h2>
+                        <img src="{{asset('public/frontend')}}/img/section-img.png" alt="#">
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Single Table -->
+                <div class="col-lg-4 col-md-12 col-12">
+                    <div class="single-table">
+                        <!-- Table Head -->
+                        <div class="table-head">
+                            <div class="icon">
+                                <i class="icofont icofont-ui-cut"></i>
+                            </div>
+                            <h4 class="title">Plastic Suggery</h4>
+                            <div class="price">
+                                <p class="amount">$199<span>/ Per Visit</span></p>
+                            </div>	
+                        </div>
+                        <!-- Table List -->
+                        <ul class="table-list">
+                            <li><i class="icofont icofont-ui-check"></i>Lorem ipsum dolor sit</li>
+                            <li><i class="icofont icofont-ui-check"></i>Cubitur sollicitudin fentum</li>
+                            <li class="cross"><i class="icofont icofont-ui-close"></i>Nullam interdum enim</li>
+                            <li class="cross"><i class="icofont icofont-ui-close"></i>Donec ultricies metus</li>
+                            <li class="cross"><i class="icofont icofont-ui-close"></i>Pellentesque eget nibh</li>
+                        </ul>
+                        <div class="table-bottom">
+                            <a class="btn" href="#">Book Now</a>
+                        </div>
+                        <!-- Table Bottom -->
+                    </div>
+                </div>
+                <!-- End Single Table-->
+                <!-- Single Table -->
+                <div class="col-lg-4 col-md-12 col-12">
+                    <div class="single-table">
+                        <!-- Table Head -->
+                        <div class="table-head">
+                            <div class="icon">
+                                <i class="icofont icofont-tooth"></i>
+                            </div>
+                            <h4 class="title">Teeth Whitening</h4>
+                            <div class="price">
+                                <p class="amount">$299<span>/ Per Visit</span></p>
+                            </div>	
+                        </div>
+                        <!-- Table List -->
+                        <ul class="table-list">
+                            <li><i class="icofont icofont-ui-check"></i>Lorem ipsum dolor sit</li>
+                            <li><i class="icofont icofont-ui-check"></i>Cubitur sollicitudin fentum</li>
+                            <li><i class="icofont icofont-ui-check"></i>Nullam interdum enim</li>
+                            <li class="cross"><i class="icofont icofont-ui-close"></i>Donec ultricies metus</li>
+                            <li class="cross"><i class="icofont icofont-ui-close"></i>Pellentesque eget nibh</li>
+                        </ul>
+                        <div class="table-bottom">
+                            <a class="btn" href="#">Book Now</a>
+                        </div>
+                        <!-- Table Bottom -->
+                    </div>
+                </div>
+                <!-- End Single Table-->
+                <!-- Single Table -->
+                <div class="col-lg-4 col-md-12 col-12">
+                    <div class="single-table">
+                        <!-- Table Head -->
+                        <div class="table-head">
+                            <div class="icon">
+                                <i class="icofont-heart-beat"></i>
+                            </div>
+                            <h4 class="title">Heart Suggery</h4>
+                            <div class="price">
+                                <p class="amount">$399<span>/ Per Visit</span></p>
+                            </div>	
+                        </div>
+                        <!-- Table List -->
+                        <ul class="table-list">
+                            <li><i class="icofont icofont-ui-check"></i>Lorem ipsum dolor sit</li>
+                            <li><i class="icofont icofont-ui-check"></i>Cubitur sollicitudin fentum</li>
+                            <li><i class="icofont icofont-ui-check"></i>Nullam interdum enim</li>
+                            <li><i class="icofont icofont-ui-check"></i>Donec ultricies metus</li>
+                            <li><i class="icofont icofont-ui-check"></i>Pellentesque eget nibh</li>
+                        </ul>
+                        <div class="table-bottom">
+                            <a class="btn" href="#">Book Now</a>
+                        </div>
+                        <!-- Table Bottom -->
+                    </div>
+                </div>
+                <!-- End Single Table-->
+            </div>	
+        </div>	
+    </section>	
+    <!--/ End Pricing Table -->
+    
+    <!-- Start Blog Area -->
+    <section class="blog section" id="blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Keep up with Our Most Recent Medical News.</h2>
+                        <img src="{{asset('public/frontend')}}/img/section-img.png" alt="#">
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- Single Blog -->
+                    <div class="single-news">
+                        <div class="news-head">
+                            <img src="{{asset('public/frontend')}}/img/blog1.jpg" alt="#">
+                        </div>
+                        <div class="news-body">
+                            <div class="news-content">
+                                <div class="date">22 Aug, 2020</div>
+                                <h2><a href="blog-single.html">We have annnocuced our new product.</a></h2>
+                                <p class="text">Lorem ipsum dolor a sit ameti, consectetur adipisicing elit, sed do eiusmod tempor incididunt sed do incididunt sed.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Blog -->
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- Single Blog -->
+                    <div class="single-news">
+                        <div class="news-head">
+                            <img src="{{asset('public/frontend')}}/img/blog2.jpg" alt="#">
+                        </div>
+                        <div class="news-body">
+                            <div class="news-content">
+                                <div class="date">15 Jul, 2020</div>
+                                <h2><a href="blog-single.html">Top five way for solving teeth problems.</a></h2>
+                                <p class="text">Lorem ipsum dolor a sit ameti, consectetur adipisicing elit, sed do eiusmod tempor incididunt sed do incididunt sed.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Blog -->
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- Single Blog -->
+                    <div class="single-news">
+                        <div class="news-head">
+                            <img src="{{asset('public/frontend')}}/img/blog3.jpg" alt="#">
+                        </div>
+                        <div class="news-body">
+                            <div class="news-content">
+                                <div class="date">05 Jan, 2020</div>
+                                <h2><a href="blog-single.html">We provide highly business soliutions.</a></h2>
+                                <p class="text">Lorem ipsum dolor a sit ameti, consectetur adipisicing elit, sed do eiusmod tempor incididunt sed do incididunt sed.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Blog -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Blog Area -->
+    
+    <!-- Start clients -->
+    <div class="clients overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-12">
+                    <div class="owl-carousel clients-slider">
+                        <div class="single-clients">
+                            <img src="{{asset('public/frontend')}}/img/client1.png" alt="#">
+                        </div>
+                        <div class="single-clients">
+                            <img src="{{asset('public/frontend')}}/img/client2.png" alt="#">
+                        </div>
+                        <div class="single-clients">
+                            <img src="{{asset('public/frontend')}}/img/client3.png" alt="#">
+                        </div>
+                        <div class="single-clients">
+                            <img src="{{asset('public/frontend')}}/img/client4.png" alt="#">
+                        </div>
+                        <div class="single-clients">
+                            <img src="{{asset('public/frontend')}}/img/client5.png" alt="#">
+                        </div>
+                        <div class="single-clients">
+                            <img src="{{asset('public/frontend')}}/img/client1.png" alt="#">
+                        </div>
+                        <div class="single-clients">
+                            <img src="{{asset('public/frontend')}}/img/client2.png" alt="#">
+                        </div>
+                        <div class="single-clients">
+                            <img src="{{asset('public/frontend')}}/img/client3.png" alt="#">
+                        </div>
+                        <div class="single-clients">
+                            <img src="{{asset('public/frontend')}}/img/client4.png" alt="#">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/Ens clients -->
+    
+    <!-- Start Appointment -->
+    <section class="appointment">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>We Are Always Ready to Help You. Book An Appointment</h2>
+                        <img src="{{asset('public/frontend')}}/img/section-img.png" alt="#">
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-12 col-12">
+                    <form class="form" action="#">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-group">
+                                    <input name="name" type="text" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-group">
+                                    <input name="email" type="email" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-group">
+                                    <input name="phone" type="text" placeholder="Phone">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-group">
+                                    <div class="nice-select form-control wide" tabindex="0"><span class="current">Department</span>
+                                        <ul class="list">
+                                            <li data-value="1" class="option selected ">Department</li>
+                                            <li data-value="2" class="option">Cardiac Clinic</li>
+                                            <li data-value="3" class="option">Neurology</li>
+                                            <li data-value="4" class="option">Dentistry</li>
+                                            <li data-value="5" class="option">Gastroenterology</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-group">
+                                    <div class="nice-select form-control wide" tabindex="0"><span class="current">Doctor</span>
+                                        <ul class="list">
+                                            <li data-value="1" class="option selected ">Doctor</li>
+                                            <li data-value="2" class="option">Dr. Akther Hossain</li>
+                                            <li data-value="3" class="option">Dr. Dery Alex</li>
+                                            <li data-value="4" class="option">Dr. Jovis Karon</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Date" id="datepicker">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-12">
+                                <div class="form-group">
+                                    <textarea name="message" placeholder="Write Your Message Here....."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-5 col-md-4 col-12">
+                                <div class="form-group">
+                                    <div class="button">
+                                        <button type="submit" class="btn">Book An Appointment</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-7 col-md-8 col-12">
+                                <p>( We will be confirm by an Text Message )</p>
+                            </div>
+                        </div>
                     </form>
                 </div>
-
+                <div class="col-lg-6 col-md-12 ">
+                    <div class="appointment-image">
+                        <img src="{{asset('public/frontend')}}/img/contact-img.png" alt="#">
+                    </div>
+                </div>
             </div>
-        </section><!-- End Contact Section -->
-
-    </main><!-- End #main -->
+        </div>
+    </section>
+    <!-- End Appointment -->
+    
+    <!-- Start Newsletter Area -->
+    <section class="newsletter section">
+        <div class="container">
+            <div class="row ">
+                <div class="col-lg-6  col-12">
+                    <!-- Start Newsletter Form -->
+                    <div class="subscribe-text ">
+                        <h6>Sign up for newsletter</h6>
+                        <p class="">Cu qui soleat partiendo urbanitas. Eum aperiri indoctum eu,<br> homero alterum.</p>
+                    </div>
+                    <!-- End Newsletter Form -->
+                </div>
+                <div class="col-lg-6  col-12">
+                    <!-- Start Newsletter Form -->
+                    <div class="subscribe-form ">
+                        <form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
+                            <input name="EMAIL" placeholder="Your email address" class="common-input" onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Your email address'" required="" type="email">
+                            <button class="btn">Subscribe</button>
+                        </form>
+                    </div>
+                    <!-- End Newsletter Form -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /End Newsletter Area -->
+    
 
     @if (session()->has('success'))
         <script>
