@@ -24,7 +24,7 @@ class ImportSeeder extends Seeder
          * ___________________________________________________
          */
         MemberType::create([
-            'name'=>'Professional Member',
+            'name'=>'Donor Member',
             'prefix'=>'',
             'registration_fee'=> 3000.00,
             'monthly_fee'=> 0.00,
@@ -34,7 +34,7 @@ class ImportSeeder extends Seeder
             'user_id'=>'1',
         ]);
         MemberType::create([
-            'name'=>'Associate Member',
+            'name'=>'General Member',
             'prefix'=>'A-',
             'registration_fee'=> 2000.00,
             'monthly_fee'=> 0.00,
@@ -43,48 +43,18 @@ class ImportSeeder extends Seeder
             'status'=>'1',
             'user_id'=>'1',
         ]);
-        MemberType::create([
-            'name'=>'Candidate Member',
-            'prefix'=>'C-',
-            'registration_fee'=> 2000.00,
-            'monthly_fee'=> 0.00,
-            'annual_fee'=> 4000.00,
-            'description'=>'DR - 3',
-            'status'=>'1',
-            'user_id'=>'1',
-        ]);
-        MemberType::create([
-            'name'=>'Trade Member',
-            'prefix'=>'T-',
-            'registration_fee'=> 2000.00,
-            'monthly_fee'=> 0.00,
-            'annual_fee'=> 4000.00,
-            'description'=>'DR - 5',
-            'status'=>'1',
-            'user_id'=>'1',
-        ]);
-        MemberType::create([
-            'name'=>'Student Member',
-            'prefix'=>'S-',
-            'registration_fee'=> 1000.00,
-            'monthly_fee'=> 0.00,
-            'annual_fee'=> 1000.00,
-            'description'=>'DR - 4',
-            'status'=>'1',
-            'user_id'=>'1',
-        ]);
         /**___________________________________________________
          * Committee Type
          * ___________________________________________________
          */
         CommitteeType::create([
-            'name'=>'Ad Hoc Committee',
+            'name'=>'Present Committee ',
             'description'=>'TEST DR - 1',
             'status'=>'1',
             'user_id'=>'1',
         ]);
         CommitteeType::create([
-            'name'=>'Founder Members',
+            'name'=>'Past Committee',
             'description'=>'TEST DR - 2',
             'status'=>'1',
             'user_id'=>'1',

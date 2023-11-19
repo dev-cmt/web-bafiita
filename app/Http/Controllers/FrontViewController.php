@@ -42,9 +42,10 @@ class FrontViewController extends Controller
     public function committee($id)
     {
         $data = User::where('committee_type_id', $id)->where('status', 1)->get();
-        $committeesType = CommitteeType::where('id', $id)->first();
+        // $committeesType = CommitteeType::where('id', $id)->first();
+        $committeesType = $id;
 
-        return view('frontend.pages.committee-member',compact('data', 'committeesType'));
+        return view('frontend.pages.committee',compact('data', 'committeesType'));
     }
     /**________________________________________________________________________________________
      * Members Menu Pages
@@ -53,9 +54,18 @@ class FrontViewController extends Controller
     public function member($id)
     {
         $data = User::orderBy('index', 'asc')->where('member_type_id', $id)->where('status', 1)->get();
-        $membersType = MemberType::where('id', $id)->first()->name;
+        // $membersType = MemberType::where('id', $id)->first()->name;
+        $membersType = $id;
 
         return view('frontend.pages.member',compact('data', 'membersType'));
+    }
+    public function memberDetails($id)
+    {
+        $data = User::orderBy('index', 'asc')->where('member_type_id', $id)->where('status', 1)->get();
+        // $membersType = MemberType::where('id', $id)->first()->name;
+        $membersType = $id;
+
+        return view('frontend.pages.member-details',compact('data', 'membersType'));
     }
     /**________________________________________________________________________________________
      * Why-be-member Menu Pages

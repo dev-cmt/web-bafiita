@@ -44,6 +44,11 @@ Route::get('comming/soon', [FrontViewController::class, 'welcome'])->name('commi
 //______________ ABOUT US
 Route::get('pages/about-us', [FrontViewController::class, 'about'])->name('page.about-us');
 Route::get('pages/about-message', [FrontViewController::class, 'aboutMessage'])->name('page.about-message');
+//______________ COMMITTEE
+Route::get('pages/{id}/committee', [FrontViewController::class, 'committee'])->name('page.committee');
+//______________ Member
+Route::get('pages/{id}/member', [FrontViewController::class, 'member'])->name('page.member');
+Route::get('pages/{id}/member-details', [FrontViewController::class, 'memberDetails'])->name('page.member-details');
 //______________ GALLERY
 Route::get('pages/gallery-image',[FrontViewController::class,'galleryImage'])->name('page.gallery-cover');
 Route::get('pages/gallery-image/{id}/show',[FrontViewController::class,'galleryShow'])->name('page.gallery-show');

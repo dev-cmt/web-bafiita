@@ -52,32 +52,26 @@
                                     <li><a href="#">About <i class="icofont-rounded-down"></i></a>
                                         <ul class="dropdown">
                                             <li><a href="{{route('page.about-us')}}">About BAFIITA</a></li>
-                                            <li><a href="{{route('page.about-message')}}">President & Secretary Message</a></li>
+                                            <li><a href="{{route('page.about-message')}}">President Message</a></li>
+                                            <li><a href="{{route('page.about-message')}}">Secretary Message</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">Committee <i class="icofont-rounded-down"></i></a>
+                                    <li><a href="#">Committee<i class="icofont-rounded-down"></i></a>
                                         <ul class="dropdown">
-                                            <li><a href="eceommittee.html">Present Committee</a></li>
-                                            <li><a href="adhoc.html">ADHOC Committee</a></li>
-                                            <li><a href="#">Pass 2021-2023</a></li>
-                                            <li><a href="#">Pass 2019-2021</a></li>
-                                            <li><a href="#">Pass 2017-2019</a></li>
-                                            <li><a href="#">Pass 2014-2017</a></li>
+                                            <li><a href="{{route('page.committee', 1)}}">Present Committee</a></li>
+                                            <li><a href="{{route('page.committee', 2)}}">Past Committee</a></li>
+                                            <li><a href="{{route('page.committee', 3)}}">President & Secretary Profile</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">Member List <i class="icofont-rounded-down"></i></a>
+                                    <li><a href="#">Members<i class="icofont-rounded-down"></i></a>
                                         <ul class="dropdown">
-                                            <li><a href="generalmembers.html">General Members</a></li>
-                                            <li><a href="donermembers.html">Doner Members</a></li>
+                                            <li><a href="{{route('page.member', 0)}}">All Members Bodies List</a></li>
+                                            <li><a href="{{route('page.member', 1)}}">Donor Member Group</a></li>
+                                            <li><a href="{{route('page.member', 2)}}">General Member Group</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">Gallery <i class="icofont-rounded-down"></i></a>
-                                        <ul class="dropdown">
-                                            <li><a href="photo.html">Photo Gallery</a></li>
-                                            <li><a href="video.html">Video Gallery</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="{{route('page.blog')}}">Notice</a></li>
+                                    <li><a href="{{route('page.gallery-cover')}}">Gallery</a></li>
+                                    <li><a href="{{route('page.blog')}}">Notice & News</a></li>
                                     <li><a href="{{route('page.contact-us')}}">Contact Us</a></li>
                                 </ul>
 
@@ -87,7 +81,7 @@
                     </div>
                     <div class="col-lg-2 col-md-3 col-12">
                         <div class="get-quote">
-                            <a href="appointment.html" class="btn">Apply Membership </a>
+                            <a href="{{route('member_register.create')}}" class="btn">Apply Membership </a>
                         </div>
                     </div>
                 </div>

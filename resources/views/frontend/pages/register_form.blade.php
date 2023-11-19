@@ -8,16 +8,16 @@
             <div id='stars3'></div>
             <div id='stars4'></div>
         </div>-->
-        <div style="height: 100vh">
-            <div class="from-wrapper">
-                <!--<div class="card-heading">
+        <div class="from-wrapper container">
+            <div class="d-flex justify-content-center mb-4">
+                <a href="{{route('/')}}"><img src="{{asset('public/images')}}/logo.png" alt="" width="150"></a>
+            </div>
+            <div class="card" style="opacity: 0.9">
+                {{-- <div class="card-heading">
                     <h2 class="title">Apply For Membership</h2>
-                </div>-->
+                </div> --}}
                 <form class="card-body" data-action="{{ route('member_register.store') }}" method="POST" enctype="multipart/form-data" id="add-user-form">
                     @csrf
-                    <div class="d-flex justify-content-center mb-4">
-                        <a href="{{route('/')}}"><img src="{{asset('public/images')}}/logo.png" alt="" width="150"></a>
-                    </div>
                     <!--__________________  Account __________________-->
                     <div class="bar_account"></div><br>
                     <div class="row">
@@ -83,79 +83,36 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="col-md-5">
-                            <div id="tab-pane-1">
-                                <h3 class="mb-4">Professional Member</h3>
-                                <p><i class="bi bi-check-lg me-3"></i>1.One Year Diloma/4 Year Experience</p></p></p>
-                                <p><i class="bi bi-check-lg me-3"></i>2. B. Arch/1 Year Experience</p></p>
-                                <p><i class="bi bi-check-lg me-3"></i>3.Int. Architecture/2 Years Experience</p>
-                                <p><i class="bi bi-check-lg me-3"></i>4.Passport Size Picture</p>
-                                <p><i class="bi bi-check-lg me-3"></i>5.Educational Certificate (SSC/HSC)</p>
-                                <p><i class="bi bi-check-lg me-3"></i>6.Educational Certificate (ID, ARCH, IAR)</p>
-                                <p><i class="bi bi-check-lg me-3"></i>7.Job Experience Certificate </p>
-                                <p><i class="bi bi-check-lg me-3"></i>8.Valid Trade License</p>
-                                <p><i class="bi bi-check-lg me-3"></i>9.Valid Tin Certificate</p>
-                                <p><i class="bi bi-check-lg me-3"></i>10.NID</p>
-                                <p class="mb-4">(Registration Fee 2000/-) (Annual Fee 4000/-)</p>
-                                <a href="{{route('page.requirements')}}" class="btn btn-info btn-sm">Read More</a>
-                            </div>
-                            <div id="tab-pane-2">
-                                <h3 class="mb-4">Associate Member</h3>
-                                <p><i class="bi bi-check-lg me-3"></i>1.Graduation in Any Subject</p>
-                                <p><i class="bi bi-check-lg me-3"></i>2.Passport Size Picture</p>
-                                <p><i class="bi bi-check-lg me-3"></i>3.Educational Certificate (SSC/HSC)</p>
-                                <p><i class="bi bi-check-lg me-3"></i>4.Job Experience Certificate</p>
-                                <p><i class="bi bi-check-lg me-3"></i>5.Valid Tin Certificate</p>
-                                <p><i class="bi bi-check-lg me-3"></i>6.NID (They don't have voting rights.)</p>
-                                <p class="mb-4">(Registration Fee 2000/-) (Annual Fee 4000/-)</p>
-                                <a href="{{route('page.requirements')}}" class="btn btn-info btn-sm">Read More</a>
-                            </div>
-                            <div id="tab-pane-3">
-                                <h3 class="mb-4">Candidate Member</h3>
-                                <p><i class="bi bi-check-lg me-3"></i>1.B.Arch</p>
-                                <p><i class="bi bi-check-lg me-3"></i>2.OneYear Diploma in Related Subject</p>
-                                <p><i class="bi bi-check-lg me-3"></i>1.Passport Size Picture</p>
-                                <p><i class="bi bi-check-lg me-3"></i>2.Educational Certificate (SSC/HSC)</p>
-                                <p><i class="bi bi-check-lg me-3"></i>3.Educational Certificate (ID, ARCH, IAR)</p>
-                                <p><i class="bi bi-check-lg me-3"></i>4.Valid Trade License</p>
-                                <p><i class="bi bi-check-lg me-3"></i>5.Valid TIN Certificate</p>
-                                <p><i class="bi bi-check-lg me-3"></i>6. NID</p>
-                                <p class="mb-4">(Registration Fee 2000/-) (Annual Fee 4000/-)</p>
-                                <a href="{{route('page.requirements')}}" class="btn btn-info btn-sm">Read More</a>
-                            </div>
-                            <div id="tab-pane-4">
-                                <h3 class="mb-4">Trade Member</h3>
-                                <p><i class="bi bi-check-lg me-3"></i>1.Assiciated in Interior Business</p>
-                                <p><i class="bi bi-check-lg me-3"></i>2.Passport Size Picture</p>
-                                <p><i class="bi bi-check-lg me-3"></i>3.Valid Trade License</p>
-                                <p><i class="bi bi-check-lg me-3"></i>4.Valid Tin Certificate</p>
-                                <p><i class="bi bi-check-lg me-3"></i>5.NID (They don't have voting rights.)</p>
-                                <p class="mb-4">(Registration Fee 2000/-) (Annual Fee 10000/-)</p>
-                                <a href="{{route('page.requirements')}}" class="btn btn-info btn-sm">Read More</a>
-                            </div>
-                            <div id="tab-pane-5">
-                                <h4 class="mb-4"><i class="bi bi-amd text-danger"></i>First 100 Member 50% Discount</h4>
-                                <h5 class="mb-4">Student Member</h5>
-                                <p><i class="bi bi-check-lg me-3"></i>1.Studentship in Relative Subject</p>
-                                <p><i class="bi bi-check-lg me-3"></i>2. Educational Certificate (SSC/HSC)</p>
-                                <p><i class="bi bi-check-lg me-3"></i>3. Copy of Student ID</p>
-                                <p class="mb-4">(Registration Fee 1000/-)</p>
-                                <a href="{{route('page.requirements')}}" class="btn btn-info btn-sm">Read More</a>
+                            <div class="avatar-upload">
+                                <div class="avatar-edit">
+                                    <input type='file' name="profile_photo_path" class="@error('profile_photo_path') is-invalid @enderror form-control" id="imageUpload" accept=".png,.jpg,.jpeg,.gif,.svg" value="{{old('profile_photo_path')}}"/>                                    <label for="imageUpload"><i class="fa fa-camera"></i></label>
+                                    @error('profile_photo_path')
+                                        <span class="invalid-feedback" role="alert" style="position: absolute;top: 195px;left: -180px;width: 300px;">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <label for="imageUpload">
+                                    <div class="avatar-preview">
+                                        <div id="imagePreview" style="background-image: url('{{asset('public/images')}}/pages/user.png');"></div>
+                                    </div>
+                                </label>
                             </div>
 
                         </div>
-                        
                     </div>
                     <!--NEXT-->
-                    <div class="row mt-4">
+                    {{-- <div class="row mt-4">
                         <div class="col-md-12">
                             <div class="d-flex justify-content-end">                            
                                 <button type="button" class="btn btn-register" id="next-step">Next</button>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!--__________________  Personal __________________-->
-                    <div id="personal" class="row" style="display: none">
+                    <div id="personal" class="row">
                         <div class="bar_personal"></div>
                         <div class="col-md-6 mb-2">
                             <div class="row">
@@ -312,7 +269,7 @@
                     </div>
                     
                     <!--__________________  Academic __________________-->
-                    <div id="academic" class="row" style="display: none">
+                    <div id="academic" class="row">
                         <div class="bar_academic"></div>
                         <div class="col-md-6 mb-2">
                             <div class="row">
@@ -391,9 +348,8 @@
                     </div>
 
                     <!--__________________  Business __________________-->
-                    <div id="business_job" class="row" style="display: none;">
-                        <div class="bar_business" id="bar_business" style="display: none;"></div>                            
-                        <div class="bar_job" id="bar_job" style="display: none;"></div>                            
+                    <div id="business_job" class="row">
+                        <div class="bar_business" id="bar_business"></div>                        
                         <div class="col-md-6 mb-2">
                             <div class="row">
                                 <label for="company_name" class="form-label col-md-5">Company Name
@@ -479,7 +435,7 @@
                     </div>
 
                     <!--__________________ Student  __________________-->
-                    <div id="student" class="row" style="display: none;">
+                    <div id="student" class="row">
                         <div class="bar_student"></div>
                         <div class="col-md-6 mb-2">
                             <div class="row">
@@ -847,13 +803,12 @@
         </script>
         <script>
             $(document).ready(function() {
-                $("#document").hide();
                 $("#tab-pane-1").hide();
                 $("#tab-pane-2").hide();
                 $("#tab-pane-3").hide();
                 $("#tab-pane-4").hide();
                 $("#tab-pane-5").hide();
-                $("#btn-submit").hide();
+                // $("#btn-submit").hide();
             });
         </script>
         <!--Image Profile-->

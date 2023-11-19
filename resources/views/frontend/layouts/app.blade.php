@@ -32,11 +32,12 @@
     <link rel="stylesheet" href="{{asset('public/frontend')}}/css/animate.min.css">
     <!-- Magnific Popup CSS -->
     <link rel="stylesheet" href="{{asset('public/frontend')}}/css/magnific-popup.css">
-    
+
     <!-- Medipro CSS -->
     <link rel="stylesheet" href="{{asset('public/frontend')}}/css/normalize.css">
     <link rel="stylesheet" href="{{asset('public/frontend')}}/css/responsive.css">
     <link rel="stylesheet" href="{{asset('public/frontend')}}/css/style.css">
+    <link rel="stylesheet" href="{{asset('public/frontend')}}/css/custom.css">
     
     @yield('style')
 </head>

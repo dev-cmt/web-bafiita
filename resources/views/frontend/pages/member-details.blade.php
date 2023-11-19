@@ -1,7 +1,6 @@
 @extends('frontend.layouts.app')
-@section('title', 'About-BAFIITA')
+@section('title', 'Member-Details')
 @section('content')
-
     <!-- Single News -->
     <section class="news-single section">
         <div class="container">

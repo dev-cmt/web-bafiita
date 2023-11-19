@@ -1,5 +1,3 @@
-@extends('frontend.layouts.app')
-
 @section('style')
 <style>
     .new-arrival-product .new-arrivals-img-contnent {
@@ -20,13 +18,15 @@
     }
 </style>
 @endsection
+@extends('frontend.layouts.app')
+@section('title', 'Photo-Album')
 @section('content')
 <!-- Service Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
-            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">IDAB</h5>
-                <h1 class="mb-0">Gallery</h1>
+            <div class="section-title">
+                <h2>Gallery</h2>
+                <img src="{{asset('public/images')}}/section-img.png" alt="#">
             </div>
             <div class="row g-5">
                 @foreach ($posts as $key=> $row )
@@ -38,16 +38,16 @@
                                     <a href="{{route('page.gallery-show', $row ->id)}}"><img class="img-fluid" src="{{asset('public/images')}}/gallery/{{ $row->cover }}" alt=""></a>
                                 </div>
                                 <div class="new-arrival-content mt-2">
-                                    <h4>Picture</h4>
+                                    <h4>{{$row->title}}</h4>
                                     <p class="text-uppercase description_2 mb-2"></p>
                                     <div class="d-flex justify-content-between">
-                                        <label class="text-primary">Event Date:</label><span>{{date("j F, Y", strtotime($row->date))}}</span>
+                                        <label class="text-success">Event Date:</label><span>{{date("j F, Y", strtotime($row->date))}}</span>
                                     </div>
                                     <div class="d-flex justify-content-between">
-                                        <label class="text-primary">Published Date:</label><span>{{date("j F, Y", strtotime($row->created_at))}}</span>
+                                        <label class="text-success">Published Date:</label><span>{{date("j F, Y", strtotime($row->created_at))}}</span>
                                     </div>
                                     <div class="d-flex justify-content-between">
-                                        <label class="text-primary">Publisher Name:</label><span>{{$row->user->name}}</span>
+                                        <label class="text-success">Publisher Name:</label><span>{{$row->user->name}}</span>
                                     </div>
                                     @if ($row->description)
                                         <hr>
