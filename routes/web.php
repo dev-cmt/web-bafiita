@@ -43,7 +43,8 @@ Route::get('/', [FrontViewController::class, 'welcome'])->name('/');
 Route::get('comming/soon', [FrontViewController::class, 'welcome'])->name('comming_soon');
 //______________ ABOUT US
 Route::get('pages/about-us', [FrontViewController::class, 'about'])->name('page.about-us');
-Route::get('pages/about-message', [FrontViewController::class, 'aboutMessage'])->name('page.about-message');
+Route::get('pages/profile-pres-secr', [FrontViewController::class, 'profilePresidentSecretary'])->name('page.profile-pres-secr');
+Route::get('pages/{menu}/about-message', [FrontViewController::class, 'aboutMessage'])->name('page.about-message');
 //______________ COMMITTEE
 Route::get('pages/{id}/committee', [FrontViewController::class, 'committee'])->name('page.committee');
 //______________ Member

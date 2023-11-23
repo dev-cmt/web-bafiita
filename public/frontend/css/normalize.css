@@ -473,7 +473,11 @@ Preloader Area CSS
 	transform: scaleX(1);
 }
 .section{
-	padding:100px 0;
+	padding:60px 0;
+}
+.section-bg{
+	padding:60px 0;
+	background: #e4e4e4 !important;
 }
 .section-title{
 	text-align: center;

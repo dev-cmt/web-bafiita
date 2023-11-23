@@ -31,9 +31,13 @@ class FrontViewController extends Controller
     {
         return view('frontend.pages.about-us');
     }
-    public function aboutMessage()
+    public function profilePresidentSecretary()
     {
-        return view('frontend.pages.about-message');
+        return view('frontend.pages.profile-president-secretary');
+    }
+    public function aboutMessage($menu)
+    {
+        return view('frontend.pages.about-message', compact('menu'));
     }
     /**________________________________________________________________________________________
      * Committee Menu Pages

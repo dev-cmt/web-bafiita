@@ -42,8 +42,45 @@
     <!--/Ens clients -->
 
 
-    <!-- Start Why choose -->
+    <!-- Traders Association -->
     <section class="why-choose section" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>An Agro Based Ingredients Importers And Traders Association</h2>
+                        <img src="{{asset('public/images')}}/section-img.png" alt="#">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-12">
+                    <div class="card">
+                        <!-- News Head -->
+                        <div class="news-head" style="height: auto">
+                            <img src="{{asset('public/images')}}/blog/notice-3.jpeg" alt="#">
+                        </div>
+                        <h5 class="text-center mt-4"><strong> A.M Amirul Islam Bhuiyan</strong></h5>
+                        <h5 class="text-center my-2 text-success">President</h5>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12">
+                    <div class="car">
+                        <!-- News Head -->
+                        <div class="news-head" style="height: auto">
+                            <img src="{{asset('public/images')}}/blog/notice-3.jpeg" alt="#">
+                        </div>
+                        <h5 class="text-center mt-4"><strong> A.M Amirul Islam Bhuiyan</strong></h5>
+                        <h5 class="text-center my-2 text-success">President</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End Traders Association-->
+
+    <!-- Start Why choose -->
+    <section class="why-choose section-bg" >
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -57,9 +94,21 @@
                 <div class="col-lg-6 col-12">
                     <!-- Start Choose Left -->
                     <div class="choose-left">
-                        <h2>About BAFIITA</h2>
-                        <p>Bangladesh Agro Feed Ingredients Importers and Traders Association (BAFIITA), as the apex Importers and Traders body registered with the Ministry of Commerce of People's Republic of Bangladesh Registration No: TO-944/2017, since 2017 to conduct in the country continues its pivotal role in consultative and advisory capacity in the formulation of Poultry, Fisheries And Dairy Feed ingredients, Feed additives & Suppliments of the Government. BAFIITA actively represents and contributes in all forums related to Socio- Economic Development and Government for mutual sharing of views on all vital issues concerning and affecting the national economy.</p>                      
-                        <div class="row">
+                        <h3>Bangladesh Agro Feed Ingredients Importers and Traders Association (BAFIITA)</h3>
+                        <p class="my-2">Dear Patrons,</p>
+                        <p class="m-0">Welcome to website introduction of Bangladesh Agro Feed
+                            Ingredients Importers and Traders Association (BAFIITA), BAFIITA
+                            as the apex Importers and Traders body registered with the Ministry of
+                            Commerce of People&#39;s Republic of Bangladesh Registration No: TO-
+                            944/2017, since 2017 to conduct in the country continues its pivotal role
+                            in consultative and advisory capacity in the formulation of Poultry,
+                            Fisheries And Dairy Feed ingredients, Feed additives &amp;
+                            Supplements of the Government. BAFIITA actively represents and
+                            contributes in all forums related to Socio- Economic Development
+                            and Government for mutual sharing of views on all vital issues
+                            concerning and affecting the national economy.</p>
+
+                        {{-- <div class="row">
                             <div class="col-lg-6">
                                 <ul class="list">
                                     <li><i class="fa fa-caret-right"></i>Maecenas vitae luctus nibh. </li>
@@ -74,13 +123,35 @@
                                     <li><i class="fa fa-caret-right"></i>Aliquam feugiat interdum.</li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> --}}
+
                     </div>
                     <!-- End Choose Left -->
                 </div>
                 <div class="col-lg-6 col-12">
                     <!-- Start Choose Rights -->
-                    <div class="choose-right" style="background: url({{ asset('public/images') }}/pages/about.jpg); background-position: center; background-size: cover;border:1px solid #109033"></div>
+                    <div class="row mt-4">
+                        <div class="col-lg-6 col-6">
+                            <!-- News Head -->
+                            <div class="news-head" style="height: auto">
+                                <img src="{{asset('public/images')}}/member-pic/Sarker.jpeg" alt="#">
+                            </div>
+                            
+                            <h6 class="text-center mt-4"><strong> A.M Amirul Islam Bhuiyan</strong></h6>
+                            <h6 class="text-center my-2 text-success">President</h6>
+                        </div>
+                        <div class="col-lg-6 col-6">
+                            <!-- News Head -->
+                            <div class="news-head" style="height: auto">
+                                <img src="{{asset('public/images')}}/member-pic/Sarker.jpeg" alt="#">
+                            </div>
+                            
+                            <h6 class="text-center mt-4"><strong>Joyanta Kumar Deb</strong></h6>
+                            <h6 class="text-center my-2 text-success">Secretary General</h6>
+                        </div>
+                        
+                    </div>
+                    {{-- <div class="choose-right" style="background: url({{ asset('public/images') }}/pages/about.jpg); background-position: center; background-size: cover;border:1px solid #109033"></div> --}}
                     <!-- End Choose Rights -->
                 </div>
                 

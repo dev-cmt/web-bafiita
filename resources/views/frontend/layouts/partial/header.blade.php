@@ -9,10 +9,9 @@
                     <!-- Contact -->
                     <ul class="top-link">
                         <li><a href="#">About BAFIITA</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Join Us</a></li>
-                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Requirement</a></li>
+                        <li><a href="#">Renew Membership</a></li>
+                        <li><a href="#">New Membership</a></li>
                     </ul>
                     <!-- End Contact -->
                 </div>
@@ -36,7 +35,7 @@
                     <div class="col-lg-2 col-md-3 col-12">
                         <!-- Start Logo -->
                         <div class="logo">
-                            <a href="index.html"><img src="{{asset('public/images')}}/logo.png" alt="#"></a>
+                            <a href="{{route('/')}}"><img src="{{asset('public/images')}}/logo.png" alt="#"></a>
                         </div>
                         <!-- End Logo -->
                         <!-- Mobile Nav -->
@@ -48,19 +47,19 @@
                         <div class="main-menu">
                             <nav class="navigation">
                                 <ul class="nav menu">
-                                    <li class="active"><a href="#">Home </a></li>
+                                    <li class="active"><a href="{{route('/')}}">Home </a></li>
                                     <li><a href="#">About <i class="icofont-rounded-down"></i></a>
                                         <ul class="dropdown">
                                             <li><a href="{{route('page.about-us')}}">About BAFIITA</a></li>
-                                            <li><a href="{{route('page.about-message')}}">President Message</a></li>
-                                            <li><a href="{{route('page.about-message')}}">Secretary Message</a></li>
+                                            <li><a href="{{route('page.profile-pres-secr')}}">Profile President & Secretary</a></li>
+                                            <li><a href="{{route('page.about-message', 1)}}">President & Secretary Message</a></li>
+                                            <li><a href="{{route('page.about-message', 2)}}">Past President & Secretary Message</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="#">Committee<i class="icofont-rounded-down"></i></a>
                                         <ul class="dropdown">
                                             <li><a href="{{route('page.committee', 1)}}">Present Committee</a></li>
                                             <li><a href="{{route('page.committee', 2)}}">Past Committee</a></li>
-                                            <li><a href="{{route('page.committee', 3)}}">President & Secretary Profile</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="#">Members<i class="icofont-rounded-down"></i></a>
@@ -81,7 +80,7 @@
                     </div>
                     <div class="col-lg-2 col-md-3 col-12">
                         <div class="get-quote">
-                            <a href="{{route('member_register.create')}}" class="btn">Apply Membership </a>
+                            <a href="#" id="applyMembershipBtn" class="btn">Apply Membership </a>
                         </div>
                     </div>
                 </div>

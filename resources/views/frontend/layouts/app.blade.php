@@ -69,7 +69,7 @@
         <li>Sticky Header / Sticky Filters</li>
         <li>Working Contact Form With Google Map</li>
         <div class="button">
-            <a href="#" target="_blank" class="btn">New Membership</a>
+            <a href="{{route('member_register.create')}}" target="_blank" class="btn">New Membership</a>
             <a href="#" target="_blank" class="btn">Renew Membership</a>
         </div>
     </ul>
@@ -127,6 +127,13 @@
     <!-- Main JS -->
     <script src="{{asset('public/frontend')}}/js/main.js"></script>
 
+    <script>
+        $(document).ready(function () {
+            $("#applyMembershipBtn").on("click", function () {
+                $(".pro-features").toggleClass("active");
+            });
+        });
+    </script>
     @yield('script')
 </body>
 </html>

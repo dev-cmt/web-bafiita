@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 01, 2023 at 08:26 AM
+-- Generation Time: Nov 20, 2023 at 10:23 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `web_idab`
+-- Database: `web_bafiita`
 --
 
 -- --------------------------------------------------------
@@ -79,8 +79,8 @@ CREATE TABLE `committee_types` (
 --
 
 INSERT INTO `committee_types` (`id`, `name`, `description`, `user_id`, `status`, `is_delete`, `created_at`, `updated_at`) VALUES
-(1, 'Ad Hoc Committee', 'TEST DR - 1', 1, 1, 0, '2023-10-31 04:00:58', '2023-10-31 04:00:58'),
-(2, 'Founder Members', 'TEST DR - 2', 1, 1, 0, '2023-10-31 04:00:58', '2023-10-31 04:00:58');
+(1, 'Present Committee ', 'TEST DR - 1', 1, 1, 0, '2023-11-18 22:48:16', '2023-11-18 22:48:16'),
+(2, 'Past Committee', 'TEST DR - 2', 1, 1, 0, '2023-11-18 22:48:16', '2023-11-18 22:48:16');
 
 -- --------------------------------------------------------
 
@@ -200,6 +200,14 @@ CREATE TABLE `galleries` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `galleries`
+--
+
+INSERT INTO `galleries` (`id`, `title`, `description`, `date`, `cover`, `drive_url`, `public`, `user_id`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Happy new year 2022', NULL, '2023-11-07', 'Motiur Rahman_1700378579.jpg', NULL, 1, 1, 1, '2023-11-19 01:23:02', '2023-11-19 01:23:02'),
+(2, 'Happy new year 2022', NULL, '2023-11-07', 'Motiur Rahman_1700378614.jpg', NULL, 1, 1, 1, '2023-11-19 01:23:37', '2023-11-19 01:23:37');
+
 -- --------------------------------------------------------
 
 --
@@ -213,6 +221,17 @@ CREATE TABLE `gallery_images` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `gallery_images`
+--
+
+INSERT INTO `gallery_images` (`id`, `image`, `gallery_id`, `created_at`, `updated_at`) VALUES
+(1, 'pngegg (11)_1700378617.png', 2, '2023-11-19 01:23:37', '2023-11-19 01:23:37'),
+(2, 'pngegg (10)_1700378617.png', 2, '2023-11-19 01:23:37', '2023-11-19 01:23:37'),
+(3, 'Untitled-2-01_1700378617.png', 2, '2023-11-19 01:23:41', '2023-11-19 01:23:41'),
+(4, 'pngegg (9)_1700378621.png', 2, '2023-11-19 01:23:41', '2023-11-19 01:23:41'),
+(5, 'pngegg (7)_1700378621.png', 2, '2023-11-19 01:23:42', '2023-11-19 01:23:42');
 
 -- --------------------------------------------------------
 
@@ -232,28 +251,6 @@ CREATE TABLE `info_academics` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `info_academics`
---
-
-INSERT INTO `info_academics` (`id`, `institute`, `mast_qualification_id`, `subject`, `passing_year`, `other_qualification`, `status`, `member_id`, `created_at`, `updated_at`) VALUES
-(1, 'Thakurgaon Polytechnic Institute', 3, 'Architecture & Interior Design', 2020, NULL, 1, 3, '2023-10-31 04:37:41', '2023-10-31 04:37:41'),
-(2, 'state university', 5, 'Architecture', 2016, NULL, 1, 4, '2023-10-31 04:54:15', '2023-10-31 04:54:15'),
-(3, 'Exterior interior design training institute', 3, 'Interior Design', 2018, 'Master\'s', 1, 5, '2023-10-31 05:07:40', '2023-10-31 05:07:40'),
-(4, 'United Asia Pacific University', 3, 'Architecture', 2011, NULL, 1, 6, '2023-10-31 05:18:13', '2023-10-31 05:18:13'),
-(5, 'Shanto-Mariam University of Creative Technology', 3, 'Bachelor Of Interior Architecture', 2012, NULL, 1, 7, '2023-10-31 05:18:57', '2023-10-31 05:18:57'),
-(6, 'EX IN', 3, NULL, NULL, NULL, 1, 8, '2023-10-31 05:45:18', '2023-10-31 05:45:18'),
-(7, 'National University', 3, 'Management', 2009, 'Diploma In Interior Design', 1, 9, '2023-10-31 05:51:42', '2023-10-31 05:51:42'),
-(8, 'CORDALE INTERIOR DESIGN SCHOOL', 3, 'Interior Design', 2016, NULL, 1, 10, '2023-10-31 21:54:34', '2023-10-31 21:54:34'),
-(9, 'Architecture', 1, 'Architecture', NULL, NULL, 1, 11, '2023-10-31 23:36:18', '2023-10-31 23:36:18'),
-(10, 'Vogue Institute of Fashion & Technology', 5, 'Interior Design', 2007, 'Master of Arts', 1, 12, '2023-10-31 23:40:25', '2023-10-31 23:40:25'),
-(11, 'The University of Asia Pacific', 1, 'Architecture', 2008, 'Diploma in Interior design', 1, 13, '2023-10-31 23:58:15', '2023-10-31 23:58:15'),
-(12, 'DIPTI', 5, 'Interior', 2024, NULL, 1, 14, '2023-11-01 00:24:54', '2023-11-01 00:24:54'),
-(13, 'University of Asia Pacific', 8, 'B.Architecture', 2021, NULL, 1, 15, '2023-11-01 00:59:20', '2023-11-01 00:59:20'),
-(14, 'Envision Institute of Design & Technologies', 8, 'Diploma in Interior Design', 2008, NULL, 1, 16, '2023-11-01 01:00:02', '2023-11-01 01:00:02'),
-(15, 'EX IN', 9, NULL, 2013, NULL, 1, 17, '2023-11-01 01:07:49', '2023-11-01 01:07:49'),
-(16, 'NUll', 1, NULL, NULL, NULL, 1, 18, '2023-11-01 01:11:14', '2023-11-01 01:11:14');
 
 -- --------------------------------------------------------
 
@@ -294,27 +291,6 @@ CREATE TABLE `info_companies` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `info_companies`
---
-
-INSERT INTO `info_companies` (`id`, `company_name`, `company_email`, `company_phone`, `designation`, `address`, `web_url`, `is_job`, `is_business`, `status`, `member_id`, `created_at`, `updated_at`) VALUES
-(1, 'DWL architects & interior', 'dwlbd.arch@gmail.com', '+8809678800547', 'senior architect', 'house 39, road 37, gulshan 2, dhaka', 'www.dwlbd.com', 1, 0, 1, 4, '2023-10-31 04:54:15', '2023-10-31 04:54:15'),
-(2, 'Karigar Interior', 'karigarinteriorbd@gmail.com', '01710762333', 'CEO & Interior Designer', '63/1 sukrabad, Dhaka', NULL, 1, 0, 1, 5, '2023-10-31 05:07:40', '2023-10-31 05:07:40'),
-(3, 'Dwl architect\'s & interior', NULL, NULL, 'Senior Architect', NULL, NULL, 1, 0, 1, 6, '2023-10-31 05:18:13', '2023-10-31 05:18:13'),
-(4, 'Design Source Architecture & Interior', 'designsourcebd.info@gmail.com', '01749856140', 'Chief Designer', 'House-15(3rd floor),Main Road,Block-C,Banasree,Dhaka-1219', 'www.designsourcebd.net', 1, 0, 1, 7, '2023-10-31 05:18:57', '2023-10-31 05:18:57'),
-(5, 'Rcadia interior', 'rcadia.interior@gmail.com', '01711101980', 'CEO', 'Appartment: Eastern', NULL, 1, 0, 1, 8, '2023-10-31 05:45:18', '2023-10-31 05:45:18'),
-(6, 'Interior-Concepts & Design Limited', 'interior.concepts.bd@gmail.com', '01618 900 555', 'Managing  Director', '323, 1st Floor, BDDL Aftab Tower, DIT Road, East Rampura, Dhaka, Bangladesh', 'www.interiorconceptsbd.com', 1, 0, 1, 9, '2023-10-31 05:51:42', '2023-10-31 05:51:42'),
-(7, 'Design Lab OPC', 'mahi@designlab247.com', '01722544665', 'CEO', 'House 02, Dr. Safi Sarani, Madani Avenue, Vatara, Gulshan', 'https://designlab247.com', 1, 0, 1, 10, '2023-10-31 21:54:34', '2023-10-31 21:54:34'),
-(8, 'Architecture', 'rashedmazhar69@gmail.com', NULL, 'CEO', 'FLAT : 2B, 58, LAKE CIRCUS, KALABAGAN, DHAKA- 1205', NULL, 1, 0, 1, 11, '2023-10-31 23:36:18', '2023-10-31 23:36:18'),
-(9, 'ORANZDOT', 'oranzdot@gmail.com', NULL, 'CEO', 'House 142, Road 03, Block A, Niketan, Gulshan 1, dhaka', NULL, 1, 0, 1, 12, '2023-10-31 23:40:25', '2023-10-31 23:40:25'),
-(10, 'DWL architects & interior', 'dwlbd.arch@gmail.com', '+8809678800547', 'Senior Architect', 'house 39, road 37, gulshan 2, dhaka', 'www.dwlbd.com', 1, 0, 1, 13, '2023-10-31 23:58:15', '2023-10-31 23:58:15'),
-(11, 'Azmal Architect & Consultancy ltd.', 'azmalgroup@gmail.com', '01876278593/01994667667', 'Managing Director', 'Saj Bhobon, 1st Floor, purana palton, Dhaka', NULL, 1, 0, 1, 14, '2023-11-01 00:24:54', '2023-11-01 00:24:54'),
-(12, 'NULL', NULL, NULL, 'NULL', NULL, NULL, 1, 0, 1, 15, '2023-11-01 00:59:20', '2023-11-01 00:59:20'),
-(13, 'Preview Architects Engineers', 'previewbd@gmail.com', '01713724625', 'Interior Designer & CEO', 'Rashid Court, House 4 Road 7 Sector 03 Uttara Dhaka', 'www.previewinterior.com', 1, 0, 1, 16, '2023-11-01 01:00:02', '2023-11-01 01:00:02'),
-(14, 'Concept Interior', 'conceptinteriorinfo@gmil.com', '01615228092', 'MD', '50/2 R.K mission Road Gopibag Dhaka 1203', NULL, 1, 0, 1, 17, '2023-11-01 01:07:49', '2023-11-01 01:07:49'),
-(15, 'Creative Circle Ltd.', 'creativecircleltd@gmail.com', '01712254936', 'FOUNDER', '1,Rain razzak plaza,mogbazar,Dhaka', 'creativecirclebd.com', 1, 0, 1, 18, '2023-11-01 01:11:14', '2023-11-01 01:11:14');
-
 -- --------------------------------------------------------
 
 --
@@ -336,28 +312,6 @@ CREATE TABLE `info_documents` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `info_documents`
---
-
-INSERT INTO `info_documents` (`id`, `trade_licence`, `tin_certificate`, `nid_photo_copy`, `passport_photo`, `edu_certificate`, `experience_certificate`, `stu_id_copy`, `recoment_letter`, `status`, `member_id`, `created_at`, `updated_at`) VALUES
-(1, NULL, NULL, NULL, NULL, 'document/member/3/edu/EDU_CERTIFICATE_1698748662.jpeg', NULL, 'document/member/3/stu/STU_ID_COPY_1698748662.jpeg', NULL, 1, 3, '2023-10-31 04:37:42', '2023-10-31 04:37:42'),
-(2, 'document/member/4/trade/TRADE_LICENCE_1698749655.jpg', 'document/member/4/tin/TIN_CERTIFICATE_1698749655.jpg', 'document/member/4/nid/NID_PHOTO_COPY_1698749655.jpg', NULL, 'document/member/4/edu/EDU_CERTIFICATE_1698749655.jpg', NULL, NULL, NULL, 1, 4, '2023-10-31 04:54:15', '2023-10-31 04:54:15'),
-(3, 'document/member/5/trade/TRADE_LICENCE_1698750460.jpg', 'document/member/5/tin/TIN_CERTIFICATE_1698750460.jpg', 'document/member/5/nid/NID_PHOTO_COPY_1698750460.jpg', NULL, 'document/member/5/edu/EDU_CERTIFICATE_1698750460.jpg', 'document/member/5/experience/EXPERIENCE_CERTIFICATE_1698750460.jpg', NULL, NULL, 1, 5, '2023-10-31 05:07:40', '2023-10-31 05:07:40'),
-(4, 'document/member/6/trade/TRADE_LICENCE_1698751093.jpeg', 'document/member/6/tin/TIN_CERTIFICATE_1698751093.jpeg', 'document/member/6/nid/NID_PHOTO_COPY_1698751093.jpeg', NULL, 'document/member/6/edu/EDU_CERTIFICATE_1698751093.jpeg', 'document/member/6/experience/EXPERIENCE_CERTIFICATE_1698751093.jpeg', NULL, NULL, 1, 6, '2023-10-31 05:18:13', '2023-10-31 05:18:13'),
-(5, 'document/member/7/trade/TRADE_LICENCE_1698751137.jpeg', 'document/member/7/tin/TIN_CERTIFICATE_1698751137.jpg', 'document/member/7/nid/NID_PHOTO_COPY_1698751137.jpg', NULL, 'document/member/7/edu/EDU_CERTIFICATE_1698751137.jpg', NULL, NULL, NULL, 1, 7, '2023-10-31 05:18:57', '2023-10-31 05:18:57'),
-(6, 'document/member/8/trade/TRADE_LICENCE_1698752718.pdf', 'document/member/8/tin/TIN_CERTIFICATE_1698752718.pdf', 'document/member/8/nid/NID_PHOTO_COPY_1698752718.pdf', NULL, 'document/member/8/edu/EDU_CERTIFICATE_1698752718.pdf', NULL, NULL, NULL, 1, 8, '2023-10-31 05:45:18', '2023-10-31 05:45:18'),
-(7, 'document/member/9/trade/TRADE_LICENCE_1698753102.pdf', 'document/member/9/tin/TIN_CERTIFICATE_1698753102.jpg', 'document/member/9/nid/NID_PHOTO_COPY_1698753102.jpg', NULL, 'document/member/9/edu/EDU_CERTIFICATE_1698753102.pdf', NULL, NULL, NULL, 1, 9, '2023-10-31 05:51:42', '2023-10-31 05:51:42'),
-(8, 'document/member/10/trade/TRADE_LICENCE_1698810874.pdf', 'document/member/10/tin/TIN_CERTIFICATE_1698810874.pdf', 'document/member/10/nid/NID_PHOTO_COPY_1698810874.png', NULL, 'document/member/10/edu/EDU_CERTIFICATE_1698810874.jpeg', NULL, NULL, NULL, 1, 10, '2023-10-31 21:54:34', '2023-10-31 21:54:34'),
-(9, 'document/member/11/trade/TRADE_LICENCE_1698816978.jpg', 'document/member/11/tin/TIN_CERTIFICATE_1698816978.jpg', 'document/member/11/nid/NID_PHOTO_COPY_1698816978.jpg', NULL, 'document/member/11/edu/EDU_CERTIFICATE_1698816978.jpg', NULL, NULL, NULL, 1, 11, '2023-10-31 23:36:18', '2023-10-31 23:36:18'),
-(10, 'document/member/12/trade/TRADE_LICENCE_1698817225.pdf', 'document/member/12/tin/TIN_CERTIFICATE_1698817225.pdf', 'document/member/12/nid/NID_PHOTO_COPY_1698817225.pdf', NULL, 'document/member/12/edu/EDU_CERTIFICATE_1698817225.jpg', NULL, NULL, NULL, 1, 12, '2023-10-31 23:40:25', '2023-10-31 23:40:25'),
-(11, 'document/member/13/trade/TRADE_LICENCE_1698818295.jpg', 'document/member/13/tin/TIN_CERTIFICATE_1698818295.jpg', 'document/member/13/nid/NID_PHOTO_COPY_1698818295.jpg', NULL, 'document/member/13/edu/EDU_CERTIFICATE_1698818295.jpg', 'document/member/13/experience/EXPERIENCE_CERTIFICATE_1698818295.jpg', NULL, NULL, 1, 13, '2023-10-31 23:58:15', '2023-10-31 23:58:15'),
-(12, 'document/member/14/trade/TRADE_LICENCE_1698819894.jpf', 'document/member/14/tin/TIN_CERTIFICATE_1698819894.jpg', 'document/member/14/nid/NID_PHOTO_COPY_1698819894.jpg', NULL, 'document/member/14/edu/EDU_CERTIFICATE_1698819894.jpg', NULL, NULL, NULL, 1, 14, '2023-11-01 00:24:54', '2023-11-01 00:24:54'),
-(13, 'document/member/15/trade/TRADE_LICENCE_1698821960.jpg', 'document/member/15/tin/TIN_CERTIFICATE_1698821960.jpg', 'document/member/15/nid/NID_PHOTO_COPY_1698821960.jpg', NULL, 'document/member/15/edu/EDU_CERTIFICATE_1698821960.jpg', NULL, NULL, NULL, 1, 15, '2023-11-01 00:59:20', '2023-11-01 00:59:20'),
-(14, 'document/member/16/trade/TRADE_LICENCE_1698822002.pdf', 'document/member/16/tin/TIN_CERTIFICATE_1698822002.pdf', 'document/member/16/nid/NID_PHOTO_COPY_1698822002.pdf', NULL, 'document/member/16/edu/EDU_CERTIFICATE_1698822002.pdf', 'document/member/16/experience/EXPERIENCE_CERTIFICATE_1698822002.jpg', NULL, NULL, 1, 16, '2023-11-01 01:00:02', '2023-11-01 01:00:02'),
-(15, 'document/member/17/trade/TRADE_LICENCE_1698822469.jpg', 'document/member/17/tin/TIN_CERTIFICATE_1698822469.jpg', 'document/member/17/nid/NID_PHOTO_COPY_1698822469.jpg', NULL, 'document/member/17/edu/EDU_CERTIFICATE_1698822469.jpg', NULL, NULL, NULL, 1, 17, '2023-11-01 01:07:49', '2023-11-01 01:07:49'),
-(16, 'document/member/18/trade/TRADE_LICENCE_1698822674.jpg', 'document/member/18/tin/TIN_CERTIFICATE_1698822674.jpg', 'document/member/18/nid/NID_PHOTO_COPY_1698822674.jpg', NULL, 'document/member/18/edu/EDU_CERTIFICATE_1698822674.jpg', 'document/member/18/experience/EXPERIENCE_CERTIFICATE_1698822674.jpg', NULL, NULL, 1, 18, '2023-11-01 01:11:14', '2023-11-01 01:11:14');
 
 -- --------------------------------------------------------
 
@@ -389,28 +343,6 @@ CREATE TABLE `info_others` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `info_others`
---
-
-INSERT INTO `info_others` (`id`, `about_me`, `nick_name`, `phone_number`, `cover_photo`, `favorite`, `facebook_url`, `youtube_url`, `instagram_url`, `twitter_url`, `linkedin_url`, `whatsapp_url`, `telegram_url`, `snapchat_url`, `tiktok_url`, `wechat_url`, `discord_url`, `status`, `member_id`, `created_at`, `updated_at`) VALUES
-(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 3, '2023-10-31 04:37:42', '2023-10-31 04:37:42'),
-(2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 4, '2023-10-31 04:54:15', '2023-10-31 04:54:15'),
-(3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 5, '2023-10-31 05:07:40', '2023-10-31 05:07:40'),
-(4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 6, '2023-10-31 05:18:13', '2023-10-31 05:18:13'),
-(5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 7, '2023-10-31 05:18:57', '2023-10-31 05:18:57'),
-(6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 8, '2023-10-31 05:45:18', '2023-10-31 05:45:18'),
-(7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 9, '2023-10-31 05:51:42', '2023-10-31 05:51:42'),
-(8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 10, '2023-10-31 21:54:34', '2023-10-31 21:54:34'),
-(9, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 11, '2023-10-31 23:36:18', '2023-10-31 23:36:18'),
-(10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 12, '2023-10-31 23:40:25', '2023-10-31 23:40:25'),
-(11, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 13, '2023-10-31 23:58:15', '2023-10-31 23:58:15'),
-(12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 14, '2023-11-01 00:24:54', '2023-11-01 00:24:54'),
-(13, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 15, '2023-11-01 00:59:20', '2023-11-01 00:59:20'),
-(14, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 16, '2023-11-01 01:00:02', '2023-11-01 01:00:02'),
-(15, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 17, '2023-11-01 01:07:49', '2023-11-01 01:07:49'),
-(16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 18, '2023-11-01 01:11:14', '2023-11-01 01:11:14');
-
 -- --------------------------------------------------------
 
 --
@@ -441,28 +373,6 @@ CREATE TABLE `info_personals` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `info_personals`
---
-
-INSERT INTO `info_personals` (`id`, `contact_number`, `nid_no`, `dob`, `father_name`, `mother_name`, `present_address`, `parmanent_address`, `gender`, `blood_group`, `marrital_status`, `spouse`, `spouse_dob`, `number_child`, `em_name`, `em_phone`, `em_rleation`, `status`, `member_id`, `created_at`, `updated_at`) VALUES
-(1, '01796951254', NULL, '2001-06-20', 'Mozibir Rahman', 'Abc', 'Link Road, Gulshan', 'Link Road, Gulshan', 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 3, '2023-10-31 04:37:41', '2023-10-31 04:37:41'),
-(2, '01735229364', NULL, '1993-08-12', 'Mashihur rahman talukdar', 'Konika yesmen', NULL, 'Shorisha bari, tarakandi, jamalpur', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 4, '2023-10-31 04:54:15', '2023-10-31 04:54:15'),
-(3, '01710762333', NULL, '1991-12-29', 'Dulal Kumar', 'Dipali Rani', 'House-181, Road-9/4, South banashree, Dhaka.', 'Vill: Naogoan, Thana: Tarash, Dis: Sirajgonj', 0, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 5, '2023-10-31 05:07:40', '2023-10-31 05:07:40'),
-(4, '01733553830', NULL, '2000-09-06', 'Md. Saydur Rahman', 'Mst Rahana Parvin', 'Mohakhali, Dhaka', 'Chapainawabganj, Rajshahi', 0, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 6, '2023-10-31 05:18:13', '2023-10-31 05:18:13'),
-(5, '01749856140', NULL, '1989-12-01', 'Md. Shafiqul Islam', 'Sayeda Asma Begum', NULL, NULL, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 7, '2023-10-31 05:18:57', '2023-10-31 05:18:57'),
-(6, '01711101980', NULL, '1979-05-04', 'MOHAMMAD ABUL HASEM SIKDER', 'FATEMA KHATUN', 'APPARTMENT: EASTERN PIONEER, FLAT NO: 601,\r\n36, PIONEER ROAD, SEGUNBAGICHA', 'VILL: MADHAPPUR, THANA: BRAHMAN PARA, DIST: CULILLA', 0, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 8, '2023-10-31 05:45:18', '2023-10-31 05:45:18'),
-(7, '01618 900 555', NULL, NULL, 'Md Mahmudul Haque', 'Morium Haq', '283/1 Dhupchaya , East Rampura High School Road,', 'NAZU MAHAJAN BARI\r\nMIDDLE LAXMIPUR, LASKAR HAT, FENI - 3903', 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 9, '2023-10-31 05:51:42', '2023-10-31 05:51:42'),
-(8, '01722544665', NULL, '1987-06-13', 'Md A Razzak', 'Mamataz begum', 'House 478, Road 07, block H, Bashundhara R/A, Dhaka 1229', 'Tentul Baria, Morrelgonj, Bagerhat', 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 10, '2023-10-31 21:54:34', '2023-10-31 21:54:34'),
-(9, '01711112169', NULL, '1978-01-14', 'MD. MIZANUL ISLAM', 'AMBIA ISLAM', 'FLAT : 2B, 58, LAKE CIRCUS, KALABAGAN, DHAKA- 1205', 'VILL: BAROGHARIA, POST: BIRPASHA, 3432, BIJOYNAGAR, B-BARIA', 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 11, '2023-10-31 23:36:18', '2023-10-31 23:36:18'),
-(10, '01737686010', NULL, '1978-07-09', 'Muhammad Hossen Sikder', 'Momtaz Begum', 'House-145, Road-03, Block-A,\r\nNiketan, Gulshan-1, Dhaka', 'House-10, Road- 05, Nasirabad H/S, Chattogram', 1, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 12, '2023-10-31 23:40:25', '2023-10-31 23:40:25'),
-(11, '01733400054', NULL, '1982-12-05', 'Md. Shajahan', 'Selina akter', 'House 39, Road 37, Gulshan -2 . Dhaka', 'Jalkuri, siddirgang, Narajanganj.', 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 13, '2023-10-31 23:58:15', '2023-10-31 23:58:15'),
-(12, '01876278593', NULL, '1991-12-31', 'Nozir Ahammod', 'Arober nessa', 'Saj Bhobon, 1st Floor, purana palton, Dhaka', 'Olipur,Dhorbani bari, post: Jokshin bazar, p/s sodor, distric: Laxmipur', 0, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 14, '2023-11-01 00:24:54', '2023-11-01 00:24:54'),
-(13, '+8801824231966', NULL, '1997-01-28', 'Md Hafizur Rahaman', 'Mst Shahnaj Begum', 'Goalpara Thakurgaon Sadar 5100', 'Goalpara Thakurgaon Sadar 5100', 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 15, '2023-11-01 00:59:20', '2023-11-01 00:59:20'),
-(14, '01819252989', NULL, '1977-12-13', 'Abdur Razzak', 'Rokeya Begum', 'Rashid Court, House 4 Road 7 Sector 03 Uttara Dhaka', 'Rajapur, Varuakhali, Jamalpur Sadar, Jamalapur', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 16, '2023-11-01 01:00:02', '2023-11-01 01:00:02'),
-(15, '01815228092', NULL, '1990-01-01', 'Abdur Rashid Sharker', 'Sakina Begum', 'RK Misson Road Gopibag Dhaka', 'Baushia Gazaria Munshiganj', 0, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 17, '2023-11-01 01:07:49', '2023-11-01 01:07:49'),
-(16, '01712254936', NULL, '1979-09-22', 'Md. khalilur Rahaman prodania', 'Shaheda Bagum', '1,Rain razzak plaza,mogbazar,dhaka', '3,mona tower,new eskaton ,bangla motor,dhaka', 0, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 18, '2023-11-01 01:11:14', '2023-11-01 01:11:14');
-
 -- --------------------------------------------------------
 
 --
@@ -480,13 +390,6 @@ CREATE TABLE `info_students` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `info_students`
---
-
-INSERT INTO `info_students` (`id`, `student_institute`, `semester`, `head_faculty_name`, `head_faculty_number`, `status`, `member_id`, `created_at`, `updated_at`) VALUES
-(1, 'Fareast International University', '2-3', 'Mr. Arafat', '01885808576', 1, 3, '2023-10-31 04:37:41', '2023-10-31 04:37:41');
 
 -- --------------------------------------------------------
 
@@ -510,15 +413,15 @@ CREATE TABLE `mast_qualifications` (
 --
 
 INSERT INTO `mast_qualifications` (`id`, `name`, `description`, `user_id`, `created_at`, `updated_at`, `status`, `is_delete`) VALUES
-(1, 'BSc in Architecture', 'Admin Input', 1, '2023-10-31 04:00:58', '2023-10-31 04:00:58', 1, 0),
-(2, 'Masters in any Discipline', 'Admin Input', 1, '2023-10-31 04:00:58', '2023-10-31 04:00:58', 1, 0),
-(3, 'BSc in Civil Engineering', 'Admin Input', 1, '2023-10-31 04:00:58', '2023-10-31 04:00:58', 1, 0),
-(4, 'BSc in Interior Architecture', 'Admin Input', 1, '2023-10-31 04:00:58', '2023-10-31 04:00:58', 1, 0),
-(5, 'Graduation in Any Discipline', 'Admin Input', 1, '2023-10-31 04:00:58', '2023-10-31 04:00:58', 1, 0),
-(6, 'Diploma in Civil Engineering', 'Admin Input', 1, '2023-10-31 04:00:58', '2023-10-31 04:00:58', 1, 0),
-(7, 'Diploma in Architecture', 'Admin Input', 1, '2023-10-31 04:00:58', '2023-10-31 04:00:58', 1, 0),
-(8, 'Diploma in Interior Design', 'Admin Input', 1, '2023-10-31 04:00:58', '2023-10-31 04:00:58', 1, 0),
-(9, 'Bachelor in fine arts', 'Admin Input', 1, '2023-10-31 04:00:58', '2023-10-31 04:00:58', 1, 0);
+(1, 'BSc in Architecture', 'Admin Input', 1, '2023-11-18 22:48:16', '2023-11-18 22:48:16', 1, 0),
+(2, 'Masters in any Discipline', 'Admin Input', 1, '2023-11-18 22:48:16', '2023-11-18 22:48:16', 1, 0),
+(3, 'BSc in Civil Engineering', 'Admin Input', 1, '2023-11-18 22:48:16', '2023-11-18 22:48:16', 1, 0),
+(4, 'BSc in Interior Architecture', 'Admin Input', 1, '2023-11-18 22:48:16', '2023-11-18 22:48:16', 1, 0),
+(5, 'Graduation in Any Discipline', 'Admin Input', 1, '2023-11-18 22:48:16', '2023-11-18 22:48:16', 1, 0),
+(6, 'Diploma in Civil Engineering', 'Admin Input', 1, '2023-11-18 22:48:16', '2023-11-18 22:48:16', 1, 0),
+(7, 'Diploma in Architecture', 'Admin Input', 1, '2023-11-18 22:48:16', '2023-11-18 22:48:16', 1, 0),
+(8, 'Diploma in Interior Design', 'Admin Input', 1, '2023-11-18 22:48:16', '2023-11-18 22:48:16', 1, 0),
+(9, 'Bachelor in fine arts', 'Admin Input', 1, '2023-11-18 22:48:16', '2023-11-18 22:48:16', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -546,11 +449,8 @@ CREATE TABLE `member_types` (
 --
 
 INSERT INTO `member_types` (`id`, `name`, `prefix`, `registration_fee`, `monthly_fee`, `annual_fee`, `description`, `user_id`, `status`, `is_delete`, `created_at`, `updated_at`) VALUES
-(1, 'Professional Member', '', 3000.00, 0.00, 4000.00, 'DR - 1', 1, 1, 0, '2023-10-31 04:00:58', '2023-10-31 04:00:58'),
-(2, 'Associate Member', 'A-', 2000.00, 0.00, 4000.00, 'DR - 2', 1, 1, 0, '2023-10-31 04:00:58', '2023-10-31 04:00:58'),
-(3, 'Candidate Member', 'C-', 2000.00, 0.00, 4000.00, 'DR - 3', 1, 1, 0, '2023-10-31 04:00:58', '2023-10-31 04:00:58'),
-(4, 'Trade Member', 'T-', 2000.00, 0.00, 4000.00, 'DR - 5', 1, 1, 0, '2023-10-31 04:00:58', '2023-10-31 04:00:58'),
-(5, 'Student Member', 'S-', 1000.00, 0.00, 1000.00, 'DR - 4', 1, 1, 0, '2023-10-31 04:00:58', '2023-10-31 04:00:58');
+(1, 'Donor Member', '', 3000.00, 0.00, 4000.00, 'DR - 1', 1, 1, 0, '2023-11-18 22:48:16', '2023-11-18 22:48:16'),
+(2, 'General Member', 'A-', 2000.00, 0.00, 4000.00, 'DR - 2', 1, 1, 0, '2023-11-18 22:48:16', '2023-11-18 22:48:16');
 
 -- --------------------------------------------------------
 
@@ -670,18 +570,6 @@ CREATE TABLE `payment_details` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `payment_details`
---
-
-INSERT INTO `payment_details` (`id`, `payment_date`, `paid_amount`, `payment_number`, `transaction_number`, `payment_reason_id`, `ref_reason_id`, `transfer_number`, `message`, `slip`, `transaction_id`, `payment_method_id`, `member_id`, `user_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, '2023-11-01', 3000.00, '1223936906001', NULL, 1, NULL, NULL, NULL, 'document/member/8/bank-info/SLIP_1698810354.jpg', 1, 2, 8, NULL, 0, '2023-10-31 21:45:55', '2023-10-31 21:45:55'),
-(2, '2023-11-01', 4000.00, '1223936906001', NULL, 1, NULL, NULL, NULL, 'document/member/11/bank-info/SLIP_1698817088.jpg', 2, 2, 11, NULL, 0, '2023-10-31 23:38:08', '2023-10-31 23:38:08'),
-(3, '2023-11-01', 4000.00, '1223936906001', NULL, 1, NULL, NULL, NULL, 'document/member/13/bank-info/SLIP_1698819580.jpeg', 3, 2, 13, NULL, 0, '2023-11-01 00:19:40', '2023-11-01 00:19:40'),
-(4, '2023-11-01', 5000.00, '1223936906001', NULL, 1, NULL, NULL, NULL, 'document/member/18/bank-info/SLIP_1698822798.jpg', 4, 2, 18, NULL, 0, '2023-11-01 01:13:18', '2023-11-01 01:13:18'),
-(5, '2023-11-01', 3000.00, '+8801710762333', 'T-01819252989', 1, NULL, '01819252989', NULL, NULL, 5, 1, 16, NULL, 0, '2023-11-01 01:21:04', '2023-11-01 01:21:04'),
-(6, '2023-11-01', 4000.00, '+8801710762333', 'CB32931', 1, NULL, 'Null', 'Actually, I deposited 4000/-', NULL, 6, 1, 9, NULL, 0, '2023-11-01 01:25:41', '2023-11-01 01:25:41');
-
 -- --------------------------------------------------------
 
 --
@@ -702,8 +590,8 @@ CREATE TABLE `payment_methods` (
 --
 
 INSERT INTO `payment_methods` (`id`, `name`, `image_path`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'bKash', 'bKash.png', 1, '2023-10-31 04:00:58', '2023-10-31 04:00:58'),
-(2, 'City-Bank', 'city-bank.png', 1, '2023-10-31 04:00:58', '2023-10-31 04:00:58');
+(1, 'bKash', 'bKash.png', 1, '2023-11-18 22:48:16', '2023-11-18 22:48:16'),
+(2, 'City-Bank', 'city-bank.png', 1, '2023-11-18 22:48:16', '2023-11-18 22:48:16');
 
 -- --------------------------------------------------------
 
@@ -723,14 +611,6 @@ CREATE TABLE `payment_numbers` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `payment_numbers`
---
-
-INSERT INTO `payment_numbers` (`id`, `number`, `payment_reason_id`, `ref_reason_id`, `payment_method_id`, `member_id`, `user_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, '+8801710762333', 1, NULL, 1, 2, 1, 1, '2023-09-04 23:11:47', '2023-09-04 23:11:47'),
-(2, '1223936906001', 1, NULL, 2, 1, 1, 1, '2023-09-18 05:38:19', '2023-09-18 05:38:19');
 
 -- --------------------------------------------------------
 
@@ -753,9 +633,9 @@ CREATE TABLE `payment_reasons` (
 --
 
 INSERT INTO `payment_reasons` (`id`, `name`, `description`, `user_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Membership', NULL, 1, 0, '2023-10-31 04:00:58', '2023-10-31 04:00:58'),
-(2, 'Event', NULL, 1, 0, '2023-10-31 04:00:58', '2023-10-31 04:00:58'),
-(3, 'Annual', NULL, 1, 0, '2023-10-31 04:00:58', '2023-10-31 04:00:58');
+(1, 'Membership', NULL, 1, 0, '2023-11-18 22:48:16', '2023-11-18 22:48:16'),
+(2, 'Event', NULL, 1, 0, '2023-11-18 22:48:16', '2023-11-18 22:48:16'),
+(3, 'Annual', NULL, 1, 0, '2023-11-18 22:48:16', '2023-11-18 22:48:16');
 
 -- --------------------------------------------------------
 
@@ -776,78 +656,78 @@ CREATE TABLE `permissions` (
 --
 
 INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
-(1, 'Member menu access', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(2, 'Payment menu access', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(3, 'Post menu access', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(4, 'Setting menu access', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(5, 'Member access', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(6, 'Member edit', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(7, 'Member view', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(8, 'Member delete', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(9, 'Member approve access', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(10, 'Member approved', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(11, 'Member approve record', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(12, 'CommitteeType access', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(13, 'CommitteeType create', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(14, 'CommitteeType edit', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(15, 'CommitteeType view', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(16, 'CommitteeType delete', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(17, 'MemberType access', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(18, 'MemberType create', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(19, 'MemberType edit', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(20, 'MemberType view', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(21, 'MemberType delete', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(22, 'Qualification access', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(23, 'Qualification create', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(24, 'Qualification edit', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(25, 'Qualification view', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(26, 'Qualification delete', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(27, 'Annual fees access', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(28, 'Annual fees approved', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(29, 'Annual fees record', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(30, 'Event fees access', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(31, 'Event fees approved', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(32, 'Event fees record', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(33, 'Membership fees access', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(34, 'Membership fees approved', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(35, 'Membership fees record', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(36, 'Pyment number access', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(37, 'Pyment number create', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(38, 'Pyment number edit', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(39, 'Pyment number view', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(40, 'Pyment number delete', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(41, 'Pyment fees access', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(42, 'Pyment annual fees', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(43, 'Pyment membership fees', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(44, 'Gallery access', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(45, 'Gallery create', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(46, 'Gallery edit', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(47, 'Gallery delete', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(48, 'Event access', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(49, 'Event create', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(50, 'Event edit', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(51, 'Event delete', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(52, 'Contact access', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(53, 'Contact reply', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(54, 'Contact delete', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(55, 'Role access', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(56, 'Role create', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(57, 'Role edit', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(58, 'Role delete', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(59, 'User access', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(60, 'User create', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(61, 'User edit', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(62, 'User delete', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(63, 'Super-Admin', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(64, 'Admin', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(65, 'Member', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(66, 'Data Setting', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(67, 'Student Member', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(68, 'Candidate Member', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(69, 'Professional Member', 'web', '2023-10-31 04:00:57', '2023-10-31 04:00:57'),
-(70, 'Associate Member', 'web', '2023-10-31 04:00:58', '2023-10-31 04:00:58'),
-(71, 'Trade Member', 'web', '2023-10-31 04:00:58', '2023-10-31 04:00:58'),
-(72, 'Corporate Member', 'web', '2023-10-31 04:00:58', '2023-10-31 04:00:58');
+(1, 'Member menu access', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(2, 'Payment menu access', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(3, 'Post menu access', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(4, 'Setting menu access', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(5, 'Member access', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(6, 'Member edit', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(7, 'Member view', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(8, 'Member delete', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(9, 'Member approve access', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(10, 'Member approved', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(11, 'Member approve record', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(12, 'CommitteeType access', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(13, 'CommitteeType create', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(14, 'CommitteeType edit', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(15, 'CommitteeType view', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(16, 'CommitteeType delete', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(17, 'MemberType access', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(18, 'MemberType create', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(19, 'MemberType edit', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(20, 'MemberType view', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(21, 'MemberType delete', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(22, 'Qualification access', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(23, 'Qualification create', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(24, 'Qualification edit', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(25, 'Qualification view', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(26, 'Qualification delete', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(27, 'Annual fees access', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(28, 'Annual fees approved', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(29, 'Annual fees record', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(30, 'Event fees access', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(31, 'Event fees approved', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(32, 'Event fees record', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(33, 'Membership fees access', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(34, 'Membership fees approved', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(35, 'Membership fees record', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(36, 'Pyment number access', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(37, 'Pyment number create', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(38, 'Pyment number edit', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(39, 'Pyment number view', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(40, 'Pyment number delete', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(41, 'Pyment fees access', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(42, 'Pyment annual fees', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(43, 'Pyment membership fees', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(44, 'Gallery access', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(45, 'Gallery create', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(46, 'Gallery edit', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(47, 'Gallery delete', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(48, 'Event access', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(49, 'Event create', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(50, 'Event edit', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(51, 'Event delete', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(52, 'Contact access', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(53, 'Contact reply', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(54, 'Contact delete', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(55, 'Role access', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(56, 'Role create', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(57, 'Role edit', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(58, 'Role delete', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(59, 'User access', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(60, 'User create', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(61, 'User edit', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(62, 'User delete', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(63, 'Super-Admin', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(64, 'Admin', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(65, 'Member', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(66, 'Data Setting', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(67, 'Student Member', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(68, 'Candidate Member', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(69, 'Professional Member', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(70, 'Associate Member', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(71, 'Trade Member', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15'),
+(72, 'Corporate Member', 'web', '2023-11-18 22:48:15', '2023-11-18 22:48:15');
 
 -- --------------------------------------------------------
 
@@ -887,9 +767,9 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
-(1, 'Super-Admin', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(2, 'Admin', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(3, 'Member', 'web', '2023-10-31 04:00:56', '2023-10-31 04:00:56');
+(1, 'Super-Admin', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(2, 'Admin', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14'),
+(3, 'Member', 'web', '2023-11-18 22:48:14', '2023-11-18 22:48:14');
 
 -- --------------------------------------------------------
 
@@ -1002,8 +882,10 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('PLYCAx5NWAFtCNHBFAnA5XAB4O2zhHUcQ59LYQQx', 1, '192.168.10.15', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiVTNlSWRvd2p1dXhHZXFRb1lrVWJPZGRzcHNzUnVDb1ZNNEJaV1k2VSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly8xOTIuMTY4LjEwLjE3L3dlYi1pZGFiL3VzZXJzIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCRFQ0xacFk1SHVreXdEdTRhdW5YNmRlQnpOc1dQODFqdS9TUDdDRWJJLlQyRFAvVXlxVkNHTyI7fQ==', 1698823583),
-('TYO8bkNqZEXkP523OfaJRjKytneVutFWKCwTmAn4', 9, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoid3U1Z3Z5WDdFMHJ0UXJoS0lNQk9HVnA0UGZDNUk1ME9wNzFHWlNUWCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDg6Imh0dHA6Ly9sb2NhbGhvc3Qvd2ViLWlkYWIvbWVtYmVyLWFwcHJvdmUvcGFkZGluZyI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjk7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkRjNDVGVRL2ljU3dUamJiMVFydHVFLmMxTG5sU3RNaFE5ZVBHa0puMTVaaUE3aC5lc2U4ZzIiO30=', 1698823542);
+('NErDAbJnxlOMPs70KWu7OtiKlWdcf7sAX96JKncj', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiT3ZkN2dVWTVBZThreERCR1RGZ1l5S3NlMGRvUUo0OFNyWlEzM0V3dCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly9sb2NhbGhvc3QvQkFGSUlUQS9wYWdlcy9jb250YWN0LXVzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1700471677),
+('pWu5nHIFYBGvLxv8Q15cC5HazFRy1NIQDIBmNkqK', NULL, '192.168.10.16', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiOVFaVHFrY0UzbU00ZFNCUXgwamRuWUxEaHZ6TzNITlhVdmplcUpoTSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHA6Ly8xOTIuMTY4LjEwLjE4L2JhZmlpdGEiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1700459358),
+('URppeG9tVIyjv3BKwtaiKIMn6Ur3jRHnccsyFiAD', NULL, '192.168.10.16', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiTG9tR2szRHpWS2RkNWVERTZveHB2eWRKTW55ZEN0WnNUSnJqMDJGNCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHA6Ly8xOTIuMTY4LjEwLjE4L2JhZmlpdGEiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1700466774),
+('WbnRVqWmXgo2B0yKyvxeKGZ6uGMM3QQfXoNtrHPl', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiaExSMUdrVVFwa2hIZ3VDTnVmQVBCc1o3Yk9jd2JlcmJTZ1dGYUMyMiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHA6Ly9sb2NhbGhvc3QvQkFGSUlUQS9wYWdlcy8xL2Fib3V0LW1lc3NhZ2UiO319', 1700466750);
 
 -- --------------------------------------------------------
 
@@ -1022,18 +904,6 @@ CREATE TABLE `transactions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `transactions`
---
-
-INSERT INTO `transactions` (`id`, `amount`, `transaction_type`, `transaction_id`, `status`, `payment_method_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 3000.00, 1, NULL, 0, 2, 8, '2023-10-31 21:45:54', '2023-10-31 21:45:54'),
-(2, 4000.00, 1, NULL, 0, 2, 11, '2023-10-31 23:38:08', '2023-10-31 23:38:08'),
-(3, 4000.00, 1, NULL, 0, 2, 13, '2023-11-01 00:19:40', '2023-11-01 00:19:40'),
-(4, 5000.00, 1, NULL, 0, 2, 18, '2023-11-01 01:13:18', '2023-11-01 01:13:18'),
-(5, 3000.00, 1, NULL, 0, 1, 16, '2023-11-01 01:21:04', '2023-11-01 01:21:04'),
-(6, 4000.00, 1, NULL, 0, 1, 9, '2023-11-01 01:25:41', '2023-11-01 01:25:41');
 
 -- --------------------------------------------------------
 
@@ -1059,6 +929,7 @@ CREATE TABLE `users` (
   `status` tinyint(4) NOT NULL DEFAULT 0,
   `is_admin` tinyint(4) NOT NULL DEFAULT 0,
   `approve_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `index` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1067,25 +938,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `member_code`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `current_team_id`, `profile_photo_path`, `member_type_id`, `committee_type_id`, `status`, `is_admin`, `approve_by`, `created_at`, `updated_at`) VALUES
-(1, 'IDAB', 'Admin', 'IDAB-ADMIN', '2021-12-31 18:00:00', '$2y$10$ECLZpY5HukywDu4aunX6deBzNsWP81ju/SP7CEbI.T2DP/UyqVCGO', NULL, NULL, NULL, NULL, NULL, 'fix/admin.jpg', NULL, NULL, 1, 1, NULL, '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(2, 'Member', 'member@gmail.com', 'IDAB-00000', '1999-12-31 18:00:00', '$2y$10$eCtfIVYFxmPeOX3UX9KZw.mf2qZcPsoENUZ8YqimU48LLGo/m8Wlq', NULL, NULL, NULL, NULL, NULL, 'fix/member.jpg', NULL, NULL, 1, 1, NULL, '2023-10-31 04:00:56', '2023-10-31 04:00:56'),
-(3, 'Akram Hossen', 'akram0171254@gmail.com', 'S-2023-10-001', '2023-10-31 10:38:10', '$2y$10$lE71cwMV7nrNVmGsImDwleTf3ekPKNsabOP0jkCtRxDbXUf2/N0XK', NULL, NULL, NULL, NULL, NULL, 'akram_1698748661.jpg', 5, NULL, 0, 0, NULL, '2023-10-31 04:37:41', '2023-10-31 04:37:41'),
-(4, 'Fahmida Yesmen', 'archfahmida.anannya@gmail.com', '2023-10-001', '2023-10-31 10:54:30', '$2y$10$MeByPjJdiI98DX0.sLheBOg754aHbNwJMkS.lAG2C2Cl9xb3Kdoci', NULL, NULL, NULL, NULL, NULL, 'Fahmida_1698749655.png', 1, NULL, 0, 0, NULL, '2023-10-31 04:54:15', '2023-10-31 04:54:15'),
-(5, 'Sumon Kumar', 'karigarinteriorbd@gmail.com', '2023-10-002', '2023-10-31 11:07:58', '$2y$10$H61oqWCjxwfGXcoU896TauVtXmu0dlmmMBLcS6ScdgpsWUooNPLSS', NULL, NULL, NULL, NULL, NULL, 'INDIA_1694261033_1698750460.JPG', 1, NULL, 0, 0, NULL, '2023-10-31 05:07:40', '2023-10-31 05:07:40'),
-(6, 'Md. Arafat rahman', 'robiarafat59@gmail.com', '2023-10-003', '2023-10-31 11:18:25', '$2y$10$dCB1u5.qcZeKzm1iSyIGqezkaiWgVzxXz03xAlHL13SUbCvdkHYgy', NULL, NULL, NULL, NULL, NULL, 'for cv_1694408126_1698751092.jpg', 1, NULL, 0, 0, NULL, '2023-10-31 05:18:13', '2023-10-31 05:18:13'),
-(7, 'Mohammad Shariful Islam', 'i.ar.sharif@gmail.com', '2023-10-004', '2023-10-31 11:20:34', '$2y$10$xOa56wsKIyuo9qZcZBabcO22dbCQE6.b8EmvDM4uhVhQlsGPPc14O', NULL, NULL, NULL, NULL, NULL, 'Sharif Pic (1)_1694519368_1698751137.jpg', 1, NULL, 0, 0, NULL, '2023-10-31 05:18:57', '2023-10-31 05:18:57'),
-(8, 'MOHAMMAD AMINUL ISLAM SIKDER', 'rcadia.interior@gmail.com', '2023-10-005', '2023-10-31 11:45:34', '$2y$10$oRaSDsHC2HhSqoN8dIVGAebSwiJ0Jq8Wky/t8xR.HjqSoRVfTfKxm', NULL, NULL, NULL, NULL, NULL, 'IMG_20201210_013724_1694948329_1698752717.jpg', 1, NULL, 0, 1, NULL, '2023-10-31 05:45:18', '2023-10-31 21:45:54'),
-(9, 'Md Anamul Haque', 'interior.concepts.bd@gmail.com', 'C-2023-10-001', '2023-10-31 11:52:04', '$2y$10$F3CTeQ/icSwTjbb1QrtuE.c1LnlStMhQ9ePGkJn15ZiA7h.ese8g2', NULL, NULL, NULL, NULL, NULL, 'Untitled-1_1695044341_1698753102.jpg', 3, NULL, 0, 1, NULL, '2023-10-31 05:51:42', '2023-11-01 01:25:41'),
-(10, 'Mahiuddin Suman', 'mahi@designlab247.com', '2023-11-001', '2023-11-30 05:36:47', '$2y$10$hrekeCd3RWtn.PXblb2w4.dgEdGgfV/tSzeoF/gRfzfrvqfpUkt5u', NULL, NULL, NULL, NULL, NULL, 'Mahiuddin Suman_1698810874.jpeg', 1, NULL, 0, 0, NULL, '2023-10-31 21:54:34', '2023-10-31 21:54:34'),
-(11, 'MD. MAZHARUL ISLAM', 'rashedmazhar69@gmail.com', '2023-11-002', '2023-11-30 05:36:38', '$2y$10$Do0usLz1zlJ9GO7OM29z/O87DyZ6I3R/fQui3.QnAhHRr3.6Kjur2', NULL, NULL, NULL, NULL, NULL, 'IMG-20230918-WA0025_1695110269_1698816977.jpg', 1, NULL, 0, 1, NULL, '2023-10-31 23:36:18', '2023-10-31 23:38:08'),
-(12, 'ROKSANA HOSSEN', 'roksanahossen@gmail.com', '2023-11-003', '2023-11-01 06:17:09', '$2y$10$nzsGrSd8iw5F5Afe9AtaPeZ3W6HMYpcfz4F9Xlzbv0WYZcKpWFNTy', NULL, NULL, NULL, NULL, NULL, '2x2_1695118699_1698817225.jpg', 1, NULL, 0, 0, NULL, '2023-10-31 23:40:25', '2023-10-31 23:40:25'),
-(13, 'Md. Shajib jahan', 'shajibjahan@yahoo.com', '2023-11-004', '2023-11-01 06:17:02', '$2y$10$RqWYt.Oa0kv5ZCGXiMop1OCjgE4.uW.6QxILcmrpiOam0uY3G/Ply', NULL, NULL, NULL, NULL, NULL, 'BB5BD33D-572E-4F57-B6BF-9F3BF76DB1FF_1695128291_1698818294.jpeg', 1, NULL, 0, 1, NULL, '2023-10-31 23:58:15', '2023-11-01 00:19:40'),
-(14, 'MD ABDUR RAHIM', 'azmalgroup@gmail.com', 'C-2023-11-001', '2023-11-01 06:25:10', '$2y$10$wHgs8XgvSM2K/jPsJogzJO7Xy1W2Y/eC.LzuYRnFDW4DWKmLQ9L7i', NULL, NULL, NULL, NULL, NULL, 'MD ABDUR RAHIM_1698819894.jpg', 3, NULL, 0, 0, NULL, '2023-11-01 00:24:54', '2023-11-01 00:24:54'),
-(15, 'Md Shammur Rahaman Shantu', '123shantu@gmail.com', 'A-2023-11-001', '2023-11-01 07:12:40', '$2y$10$Zls3goH11hTWuIC2VGHVz.LFrzGBNL4drtDa5rixl/lznj/Io9J.i', NULL, NULL, NULL, NULL, NULL, 'Md Shammur Rahaman Shantu_1698821959.jpg', 2, NULL, 0, 0, NULL, '2023-11-01 00:59:20', '2023-11-01 00:59:20'),
-(16, 'Mohammad Ruhul Amin', 'previewbd@gmail.com', '2023-11-005', '2023-11-01 07:12:37', '$2y$10$v88kRI4PnBX6La0SGSRlPuVyOBUIXtXtYQhu5O8e7leDE5e2zDaSe', NULL, NULL, NULL, NULL, NULL, 'picture_1695209779_1698822002.jpg', 1, NULL, 0, 1, NULL, '2023-11-01 01:00:02', '2023-11-01 01:21:04'),
-(17, 'Md Pia Sarker', 'piasarkerinfo@gmail.com', '2023-11-006', '2023-11-01 07:12:33', '$2y$10$R7x6T0jI8YNzp0sD0qDL1O.c2l5jCc6xth5ijlCgy7yC2rPQftEOG', NULL, NULL, NULL, NULL, NULL, 'Pia S_1695917502_1698822469.jpg', 1, NULL, 0, 0, NULL, '2023-11-01 01:07:49', '2023-11-01 01:07:49'),
-(18, 'Md.Saiful Islam Saron', 'creativecircleltd@gmail.com', '2023-11-007', '2023-11-01 07:12:28', '$2y$10$c3usj4kRDgrVpR1hQ9PKv.uA2Zd38NTmpBSq2sFfOyMY.GAMS/Up2', NULL, NULL, NULL, NULL, NULL, 'saron_1697117514_1698822674.jpeg', 1, NULL, 0, 1, NULL, '2023-11-01 01:11:14', '2023-11-01 01:13:18');
+INSERT INTO `users` (`id`, `name`, `email`, `member_code`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `current_team_id`, `profile_photo_path`, `member_type_id`, `committee_type_id`, `status`, `is_admin`, `approve_by`, `index`, `created_at`, `updated_at`) VALUES
+(1, 'IDAB', 'Admin', 'IDAB-ADMIN', '2021-12-31 18:00:00', '$2y$10$1e/IcxG7C0d6DrIALq5vu.7GJXWNmYsbkEnnMlK4EZkp/SDKM.rU.', NULL, NULL, NULL, NULL, NULL, 'fix/admin.jpg', NULL, NULL, 1, 1, NULL, NULL, '2023-11-18 22:48:13', '2023-11-18 22:48:13'),
+(2, 'Member', 'member@gmail.com', 'IDAB-00000', '1999-12-31 18:00:00', '$2y$10$z8Kn3CJ7pjTPxEmXEl5t1uXBFCrbBRIWjf175MDo2PZ9BNyMdmlpC', NULL, NULL, NULL, NULL, NULL, 'fix/member.jpg', NULL, NULL, 1, 1, NULL, NULL, '2023-11-18 22:48:13', '2023-11-18 22:48:13');
 
 --
 -- Indexes for dumped tables
@@ -1391,19 +1246,19 @@ ALTER TABLE `fee_plans`
 -- AUTO_INCREMENT for table `galleries`
 --
 ALTER TABLE `galleries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `gallery_images`
 --
 ALTER TABLE `gallery_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `info_academics`
 --
 ALTER TABLE `info_academics`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `info_child_details`
@@ -1415,31 +1270,31 @@ ALTER TABLE `info_child_details`
 -- AUTO_INCREMENT for table `info_companies`
 --
 ALTER TABLE `info_companies`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `info_documents`
 --
 ALTER TABLE `info_documents`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `info_others`
 --
 ALTER TABLE `info_others`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `info_personals`
 --
 ALTER TABLE `info_personals`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `info_students`
 --
 ALTER TABLE `info_students`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `mast_qualifications`
@@ -1451,7 +1306,7 @@ ALTER TABLE `mast_qualifications`
 -- AUTO_INCREMENT for table `member_types`
 --
 ALTER TABLE `member_types`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1463,7 +1318,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `payment_details`
 --
 ALTER TABLE `payment_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `payment_methods`
@@ -1475,7 +1330,7 @@ ALTER TABLE `payment_methods`
 -- AUTO_INCREMENT for table `payment_numbers`
 --
 ALTER TABLE `payment_numbers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `payment_reasons`
@@ -1505,13 +1360,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
