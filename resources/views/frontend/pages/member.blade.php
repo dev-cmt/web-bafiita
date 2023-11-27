@@ -84,7 +84,75 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam nostrum odio id beatae quod. Numquam, hic, eum officia accusamus amet unde repudiandae labore cum dicta est quidem sequi reprehenderit debitis!</p>
+                            <div class="row">
+                                <div class="col-lg-7 col-sm-12">
+                                    <div class="row" style="border-bottom: 1px solid #959595;">
+                                        <div class="col-md-5"><strong>Member Type</strong></div>
+                                        <div class="col-md-1"><strong>:</strong></div>
+                                        <div class="col-md-6">Donor Member</div>
+                                    </div>
+                                    
+                                    <div class="row" style="border-bottom: 1px solid #959595;">
+                                        <div class="col-md-5"><strong>Membership No.</strong></div>
+                                        <div class="col-md-1"><strong>:</strong></div>
+                                        <div class="col-md-6">DMB#001</div>
+                                    </div>
+                                    
+                                    <div class="row" style="border-bottom: 1px solid #959595;">
+                                        <div class="col-md-5"><strong>Name</strong></div>
+                                        <div class="col-md-1"><strong>:</strong></div>
+                                        <div class="col-md-6">Sudhir Chowdhury</div>
+                                    </div>
+                                    
+                                    <div class="row" style="border-bottom: 1px solid #959595;">
+                                        <div class="col-md-5"><strong>Company Name</strong></div>
+                                        <div class="col-md-1"><strong>:</strong></div>
+                                        <div class="col-md-6">M/S. Chowdhury Enterprise</div>
+                                    </div>
+                                    
+                                    <div class="row" style="border-bottom: 1px solid #959595;">
+                                        <div class="col-md-5"><strong>Designation</strong></div>
+                                        <div class="col-md-1"><strong>:</strong></div>
+                                        <div class="col-md-6">Proprietor</div>
+                                    </div>
+                                    
+                                    <div class="row" style="border-bottom: 1px solid #959595;">
+                                        <div class="col-md-5"><strong>Company Address</strong></div>
+                                        <div class="col-md-1"><strong>:</strong></div>
+                                        <div class="col-md-6">Rupayon Z.R Plaza, (8th floor), 46, Satmosjid
+                                            Road, Dhanmondi-19, Dhaka-1209.</div>
+                                    </div>
+                                    
+                                    <div class="row" style="border-bottom: 1px solid #959595;">
+                                        <div class="col-md-5"><strong>Contact No.</strong></div>
+                                        <div class="col-md-1"><strong>:</strong></div>
+                                        <div class="col-md-6">01711-53-30-35</div>
+                                    </div>
+                                    
+                                    <div class="row" style="border-bottom: 1px solid #959595;">
+                                        <div class="col-md-5"><strong>Contact Email</strong></div>
+                                        <div class="col-md-1"><strong>:</strong></div>
+                                        <div class="col-md-6">choenterprise@yahoo.com</div>
+                                    </div>
+                                    
+                                    <div class="row" style="border-bottom: 1px solid #959595;">
+                                        <div class="col-md-5"><strong>Membership Start</strong></div>
+                                        <div class="col-md-1"><strong>:</strong></div>
+                                        <div class="col-md-6">02-01-2023</div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-5"><strong>Products/Service</strong></div>
+                                        <div class="col-md-1"><strong>:</strong></div>
+                                        <div class="col-md-6">Agro Feed Ingredients</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 col-sm-12 d-flex align-items-center">
+                                    <div class="news-head" style="height: auto; width: 100%;">
+                                        <img src="{{asset('public/images')}}/blog/notice-3.jpeg" alt="#" style="width: 100%; height: auto;">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
