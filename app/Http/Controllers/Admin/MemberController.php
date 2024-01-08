@@ -69,11 +69,7 @@ class MemberController extends Controller
                 'name' => 'required',
                 'email' => 'required|unique:users,email|max:255',
                 'password' => 'required|confirmed|min:8',
-                'member_type_id' => 'required',
-                'contact_number' => 'required',
                 'profile_photo_path' => 'required|mimes:jpg,png,jpeg,gif,svg|image',
-                'institute' => 'required',
-                'mast_qualification_id' => 'required',
 
                 'trade_licence' => 'max:10240',
                 'tin_certificate' => 'max:10240',
@@ -83,10 +79,6 @@ class MemberController extends Controller
                 'experience_certificate' => 'max:10240',
                 'stu_id_copy' => 'max:10240',
                 'recoment_letter' => 'max:10240',
-
-                'company_name' => 'required_if:member_type_id,1,2,3,4',
-                'designation' => 'required_if:member_type_id,1,2,3,4',
-                'student_institute' => 'required_if:member_type_id,5',
             ], [
                 'profile_photo_path.required' => 'The Profile photo field is required.',
                 'profile_photo_path.mimes' => 'The :attribute must be a valid image file.',
@@ -111,7 +103,6 @@ class MemberController extends Controller
                 return response()->json(['errors' => $validator->errors()], 422);
             }
             
-
 
             /*__________________/ USER CREATE \_________________*/
             if($request->hasFile('profile_photo_path')) {
@@ -140,21 +131,6 @@ class MemberController extends Controller
 
 
                 /*_____________________ MEMBER ID GENERATE ___________________*/
-                $currentYear = date('Y');
-                $currentMonth = date('m');
-
-                $prefix = MemberType::where('id', $request->member_type_id)->first()->prefix;
-                $highestNumber = User::where('member_code', 'like', "$prefix$currentYear-$currentMonth%")->max('member_code');
-                $lastNumber = intval(substr($highestNumber, -3));
-                $newNumber = $lastNumber + 1;
-                $formattedNewNumber = sprintf('%03d', $newNumber);
-
-                if ($prefix == '-') {
-                    $memberCode = "NEW";
-                }else {
-                    $memberCode = "$prefix$currentYear-$currentMonth-$formattedNewNumber";
-                }
-                
                 $user = User::create([
                     'name' => $request->name,
                     'email' => $request->email,
@@ -170,66 +146,82 @@ class MemberController extends Controller
 
             /*__________________/ InfoPersonal \_________________*/
             $infoPersonal =new InfoPersonal([
-                'contact_number'=> $request->contact_number,
-                'nid_no'=> $request->nid_no,
-                'dob'=> $request->dob,
-                'father_name'=> $request->father_name,
-                'mother_name'=> $request->mother_name,
-                'present_address'=> $request->present_address,
-                'parmanent_address'=> $request->parmanent_address,
-                'gender'=> $request->gender,
-                'blood_group'=> $request->blood_group,
-                'marrital_status'=> $request->marrital_status,
-                'spouse'=> $request->spouse,
-                'spouse_dob'=> $request->spouse_dob,
-                'number_child'=> $request->number_child,
-                'em_name'=> $request->em_name,
-                'em_phone'=> $request->em_phone,
-                'em_rleation'=> $request->em_rleation,
+                'memebrName'=> $request->contact_number,
+                'memebrDesignation'=> $request->contact_number,
+                'memebrNID'=> $request->contact_number,
+                'memebrDOB'=> $request->contact_number,
+                'memebrMotherName'=> $request->contact_number,
+                'memebrLifePartner'=> $request->contact_number,
+                'memebrGender'=> $request->contact_number,
+                'memebrBloodGroup'=> $request->contact_number,
+                'memberPhoneNo'=> $request->contact_number,
+                'memberEmail'=> $request->contact_number,
+
+                'qualificationCertificate'=> $request->contact_number,
+
+                'fileNomineePhoto'=> $request->contact_number,
+                'fileNomineeSignature'=> $request->contact_number,
+                'fileApplicantSignature'=> $request->contact_number,
+                
+                'nomineeName'=> $request->contact_number,
+                'nomineeNID'=> $request->contact_number,
+                'nomineeFather'=> $request->contact_number,
+                'nomineeMother'=> $request->contact_number,
+                'nomineeRelation'=> $request->contact_number,
+                'nomineeDesignation'=> $request->contact_number,
+                
+                'bankBranceName'=> $request->contact_number,
+                'modePayment'=> $request->contact_number,
+                'totalAmount'=> $request->contact_number,
+                'paymentDate'=> $request->contact_number,
+                'moneyReceiptNo'=> $request->contact_number,
+                
+                'kOneCompanyName'=> $request->contact_number,
+                'kOneMemberName'=> $request->contact_number,
+                'kOneMembershipNo'=> $request->contact_number,
+
+                'kTwoCompanyName'=> $request->contact_number,
+                'kTwoMemberName'=> $request->contact_number,
+                'kTwoMembershipNo'=> $request->contact_number,
+                
+                'description'=> $request->contact_number,
                 'status'=> 1,
                 'member_id'=> $user->id,
             ]);
             $infoPersonal->save();
             
-            /*______________________/ InfoAcademic \___________________*/
-            $infoAcademic =new InfoAcademic([
-                'institute' => $request->institute,
-                'mast_qualification_id' => $request->mast_qualification_id,
-                'subject' => $request->subject,
-                'passing_year' => $request->passing_year,
-                'other_qualification' => $request->other_qualification,
-                'status' => 1,
-                'member_id' => $user->id,
-            ]);
-            $infoAcademic->save();
             
             /*______________________/ InfoCompany \___________________*/
             if($request->company_name || $request->designation || $request->company_email || $request->company_phone){
                 $infoCompany =new InfoCompany([
-                    'company_name' => $request->company_name,
-                    'company_email' => $request->company_email,
-                    'company_phone' => $request->company_phone,
-                    'designation' => $request->designation,
-                    'address' => $request->address,
-                    'web_url' => $request->web_url,
-                    'is_job' => 1,
-                    'is_business' => 0,
+                    'companyName'=> $request->contact_number,
+                    'addressOrganization'=> $request->contact_number,
+                    'typeOwnership'=> $request->contact_number,
+                    'typeBusiness'=> $request->contact_number,
+        
+                    'tradeLicenseNo'=> $request->contact_number,
+                    'tradeLicenseDate'=> $request->contact_number,
+                    'eTinNo'=> $request->contact_number,
+                    'eTinDate'=> $request->contact_number,
+                    'vatRegistrationNo'=> $request->contact_number,
+                    'vatRegistrationDate'=> $request->contact_number,
+                    'ircCertificateNo'=> $request->contact_number,
+                    'ircCertificateDate'=> $request->contact_number,
+                    'rjscIncorporationNo'=> $request->contact_number,
+                    'rjscIncorporationDate'=> $request->contact_number,
+                    
+                    'poultryDairyFisheries'=> $request->contact_number,
+                    'tradingBrandOthers'=> $request->contact_number,
+        
+                    'contactCompanyName'=> $request->contact_number,
+                    'contactCompanyAddress'=> $request->contact_number,
+                    'contactCompanyNumber'=> $request->contact_number,
+                    'contactCompanyEmail'=> $request->contact_number,
+
                     'status' => 1,
                     'member_id' => $user->id,
                 ]);
                 $infoCompany->save();
-            }
-            /*______________________/ InfoStudent \___________________*/
-            if ($request->student_institute || $request->semester || $request->head_faculty_name || $request->head_faculty_number) {
-                $infoStudent =new InfoStudent([
-                    'student_institute' => $request->student_institute,
-                    'semester' => $request->semester,
-                    'head_faculty_name' => $request->head_faculty_name,
-                    'head_faculty_number' => $request->head_faculty_number,
-                    'status' => 1,
-                    'member_id' => $user->id,
-                ]);
-                $infoStudent->save(); 
             }
             /*______________________/ InfoOther \___________________*/
             $infoOther = new InfoOther([
@@ -249,32 +241,35 @@ class MemberController extends Controller
                     if (!File::exists($folderPath)) {
                         File::makeDirectory($folderPath, 0777, true);
                     }
-
                     $uploadedFile->move($folderPath, $filenameToStore);
 
                     return "document/member/{$userId}/{$subfolder}/{$filenameToStore}";
                 }
-                
                 return null;
             }
             $infoDocument = new InfoDocument([
-                'trade_licence' => uploadFile($request, 'trade_licence', 'trade', $userId),
-                'tin_certificate' => uploadFile($request, 'tin_certificate', 'tin', $userId),
-                'nid_photo_copy' => uploadFile($request, 'nid_photo_copy', 'nid', $userId),
-                'passport_photo' => uploadFile($request, 'passport_photo', 'passport', $userId),
-                'edu_certificate' => uploadFile($request, 'edu_certificate', 'edu', $userId),
-                'experience_certificate' => uploadFile($request, 'experience_certificate', 'experience', $userId),
-                'stu_id_copy' => uploadFile($request, 'stu_id_copy', 'stu', $userId),
-                'recoment_letter' => uploadFile($request, 'recoment_letter', 'recoment', $userId),
+                'fileTrade'=> uploadFile($request, 'trade_licence', 'trade', $userId),
+                'fileTaxCertificate'=> uploadFile($request, 'trade_licence', 'trade', $userId),
+                'fileImportCertificate'=> uploadFile($request, 'trade_licence', 'trade', $userId),
+                'fileVatRegistration'=> uploadFile($request, 'trade_licence', 'trade', $userId),
+                'fileMemberNID'=> uploadFile($request, 'trade_licence', 'trade', $userId),
+                'fileApplicantPhoto'=> uploadFile($request, 'trade_licence', 'trade', $userId),
+                'fileNomineeNID'=> uploadFile($request, 'trade_licence', 'trade', $userId),
+                'fileNomineePhoto'=> uploadFile($request, 'trade_licence', 'trade', $userId),
+                'fileVisitingCard'=> uploadFile($request, 'trade_licence', 'trade', $userId),
+                'fileIncorporationCertificate'=> uploadFile($request, 'trade_licence', 'trade', $userId),
+                'filePartnershipDeed'=> uploadFile($request, 'trade_licence', 'trade', $userId),
+                'fileIndentingLicense'=> uploadFile($request, 'trade_licence', 'trade', $userId),
+
                 'status' => 1,
                 'member_id' => $userId,
             ]);
             $infoDocument->save();
 
             // Log in the created user
-            Auth::login($user);
+            // Auth::login($user);
             // Send email verification
-            $user->sendEmailVerificationNotification();
+            // $user->sendEmailVerificationNotification();
             
             // Commit the transaction if everything is successful
             DB::commit();
@@ -313,6 +308,10 @@ class MemberController extends Controller
     public function update(Request $request, $id)
     {
 
+    }
+    public function renew()
+    {
+        return view('frontend.pages.renew_form');
     }
     /*__________________________________________________________________________________ */
     /*__________________________________________________________________________________ */

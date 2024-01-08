@@ -1,8 +1,8 @@
 @extends('frontend.layouts.app')
 @if ($committeesType == 1)
-@section('title', 'Present Executive Committee')
+@section('title', 'Executive Committee')
 @elseif ($committeesType == 2)
-@section('title', 'Past Executive Committee')
+@section('title', 'Executive Committee')
 @else
 @section('title', 'President & Secretary Profile')
 @endif
@@ -22,271 +22,372 @@
             </div>
 
             
-            <div class="row">
+                        <div class="row">
                 @if ($committeesType == 1)
                     <div class="col-lg-4 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
-                                <img src="{{asset('public/images')}}/member-pic/Shafiul.jpeg" class="img-fluid" alt=""
+                                <img src="{{asset('public/images')}}/ec/A.M Amirul Islam Bhuiyam.jpg" class="img-fluid" alt=""
                                     style="height: 100%">
                             </div>
-                            <h5 class="mt-4">IDr. Shafiul Islam </h5>
-                            <h6 class="text-danger">Convener</h6>
+                            <h5 class="mt-4">A.M Amirul Islam Bhuiyam</h5>
+                            <h6 class="text-danger">President</h6>
+							<h6 class="text-danger">Rep : Islam Enterprise</h6>
+                        </div>
+                    </div>
+					
+					   <div class="col-lg-4 mb-3">
+                        <div class="bg-white border text-center p-4">
+                            <div>
+                                <img src="{{asset('public/images')}}/ec/Joyanta Kumer Deb.jpg" class="img-fluid" alt=""
+                                    style="height: 100%">
+                            </div>
+                            <h5 class="mt-4">Joyanta Kumer Deb</h5>
+                            <h6 class="text-danger">Secretary General</h6>
+							<h6 class="text-danger">Rep : Nature Care Manufacturing Industries Limited.</h6>
+                        </div>
+                    </div>
+				
+                    <div class="col-lg-4 mb-3">
+                        <div class="bg-white border text-center p-4">
+                            <div>
+                                <img src="{{asset('public/images')}}/ec/Md. Farook.jpg" class="img-fluid" alt=""
+                                    style="height: 100%">
+                            </div>
+                            <h5 class="mt-4">Md. Farook</h5>
+                            <h6 class="text-danger">Snr. Vice- President</h6>
+							<h6 class="text-danger">Rep:Faisal Trading Company</h6>
+                        </div>
+                    </div>
+                 
+                    <div class="col-lg-4 mb-3">
+                        <div class="bg-white border text-center p-4">
+                            <div>
+                                <img src="{{asset('public/images')}}/ec/Md. Gias Uddin Khan.jpg" class="img-fluid" alt=""
+                                    style="height: 100%">
+                            </div>
+                           <h5 class="mt-4">Md. Gias Uddin Khan</h5>
+                            <h6 class="text-danger">Vice- President</h6>
+							<h6 class="text-danger">Rep : H & K Feed Products.</h6>
                         </div>
                     </div>
                     <div class="col-lg-4 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
-                                <img src="{{asset('public/images')}}/member-pic/Syed.jpeg" class="img-fluid" alt=""
-                                    style="height: 100%">
+                                <img src="{{asset('public/images')}}/ec/Md. Anwarul Haque.jpg" class="img-fluid" alt="" style="height: 100%">
                             </div>
-                            <h5 class="mt-4">IDr. Syed Quamrul Ahsan</h4>
-                                <h6 class="text-danger">Members Secretary</h6>
+                            <h5 class="mt-4">Md. Anwarul Haque</h5>
+                            <h6 class="text-danger">Vice- President</h6>
+							<h6 class="text-danger">Rep : M/S. Anwarul Haque</h6>
                         </div>
                     </div>
                     <div class="col-lg-4 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
-                                <img src="{{asset('public/images')}}/member-pic/Shajib.jpeg" class="img-fluid" alt=""
+                                <img src="{{asset('public/images')}}/ec/Md. Mahbubul Alam.jpg" class="img-fluid" alt=""
                                     style="height: 100%">
                             </div>
-                            <h5 class="mt-4">Ar. Shajib Jahan</h4>
-                                <h6 class="text-danger">Co-Convener</h6>
+                            <h5 class="mt-4">Md. Mahbubul Alam</h5>
+                            <h6 class="text-danger">Joint Sectary General</h6>
+							<h6 class="text-danger">Rep: M/S. Rahman Traders</h6>
                         </div>
                     </div>
                     <div class="col-lg-4 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
-                                <img src="{{asset('public/images')}}/member-pic/Saron.jpeg" class="img-fluid" alt=""
+                                <img src="{{asset('public/images')}}/ec/Altaf Hossain Biswas.jpg" class="img-fluid" alt=""
                                     style="height: 100%">
                             </div>
-                            <h5 class="mt-4">IDr. Md Saiful Islam Saron</h4>
-                                <h6 class="text-danger">Finance Director</h6>
+                            <h5 class="mt-4">Altaf Hossain Biswas</h5>
+                            <h6 class="text-danger">Organizing Secretary</h6>
+							<h6 class="text-danger">Rep : BTC Group</h6>
                         </div>
                     </div>
                     <div class="col-lg-4 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
-                                <img src="{{asset('public/images')}}/member-pic/Mohammad Aminul Islam Sikder.jpeg"
-                                    class="img-fluid" alt="" style="height: 100%">
+                                <img src="{{asset('public/images')}}/ec/Md. Khurshed Alam.jpg" class="img-fluid" alt=""
+                                    style="height: 100%">
                             </div>
-                            <h5 class="mt-4">IDr. Wasim Sikder</h4>
-                                <h6 class="text-danger">Professional Member</h6>
+                            <h5 class="mt-4">Md. Khurshed Alam</h5>
+                            <h6 class="text-danger">Treasurer</h6>
+							<h6 class="text-danger">Rep :Taj Ready Feed</h6>
                         </div>
                     </div>
                     <div class="col-lg-4 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
-                                <img src="{{asset('public/images')}}/member-pic/Sarker.jpeg" class="img-fluid" alt=""
+                                <img src="{{asset('public/images')}}/ec/Mohammad Shah Akram.jpg" class="img-fluid" alt=""
                                     style="height: 100%">
                             </div>
-                            <h5 class="mt-4">IDr. MD Pial Sarker (pia)</h4>
-                                <h6 class="text-danger">Professional Member</h6>
+                            <h5 class="mt-4">Mohammad Shah Akram</h5>
+                            <h6 class="text-danger">Social Welfare secretary</h6>
+							<h6 class="text-danger">Rep. M/S. Akram & Brothers</h6>
                         </div>
                     </div>
-                    <div class="col-lg-4 mb-3">
+					  <div class="col-lg-4 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
-                                <img src="{{asset('public/images')}}/member-pic/Parvez.jpeg" class="img-fluid" alt=""
+                                <img src="{{asset('public/images')}}/ec/Abdur Rahman.jpg" class="img-fluid" alt=""
                                     style="height: 100%">
                             </div>
-                            <h5 class="mt-4">Ar. Ismaiel Parvez</h4>
-                                <h6 class="text-danger">Professional Member</h6>
+                            <h5 class="mt-4">Abdur Rahman</h5>
+                            <h6 class="text-danger">Press secretary</h6>
+							<h6 class="text-danger">Rep : M/S. Ruba Enterprise</h6>
                         </div>
                     </div>
-                    <div class="col-lg-4 mb-3">
+					  <div class="col-lg-4 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
-                                <img src="{{asset('public/images')}}/member-pic/Shahiddullah.jpeg" class="img-fluid" alt=""
+                                <img src="{{asset('public/images')}}/ec/Mohammad Mansur Meah.jpg" class="img-fluid" alt=""
                                     style="height: 100%">
                             </div>
-                            <h5 class="mt-4">A. A. K. M. Shahidullah Chy</h4>
-                                <h6 class="text-danger">Member</h6>
+                            <h5 class="mt-4">Mohammad Mansur Meah</h5>
+                            <h6 class="text-danger">Executive Member</h6>
+							<h6 class="text-danger">Rep : Bogdad Pellet Feed</h6>
                         </div>
                     </div>
-                    <div class="col-lg-4 mb-3">
+					  <div class="col-lg-4 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
-                                <img src="{{asset('public/images')}}/member-pic/Roksana.jpeg" class="img-fluid" alt=""
+                                <img src="{{asset('public/images')}}/ec/ATM. Shahin Pervez.jpg" class="img-fluid" alt=""
                                     style="height: 100%">
                             </div>
-                            <h5 class="mt-4">IDr. Roksana Hossen Mishu</h4>
-                                <h6 class="text-danger">Professional Member</h6>
+                            <h5 class="mt-4">ATM. Shahin Pervez</h5>
+                            <h6 class="text-danger">Executive Member</h6>
+							<h6 class="text-danger">Rep : M/S. Saraf Enterprise</h6>
+                        </div>
+                    </div>
+					  <div class="col-lg-4 mb-3">
+                        <div class="bg-white border text-center p-4">
+                            <div>
+                                <img src="{{asset('public/images')}}/ec/Dr. Rashedul Jakir.jpg" class="img-fluid" alt=""
+                                    style="height: 100%">
+                            </div>
+                            <h5 class="mt-4">Dr. Rashedul Jakir</h5>
+                            <h6 class="text-danger">Executive Member</h6>
+							<h6 class="text-danger">Rep. R.R Agro Traders</h6>
+                        </div>
+                    </div>
+					  <div class="col-lg-4 mb-3">
+                        <div class="bg-white border text-center p-4">
+                            <div>
+                                <img src="{{asset('public/images')}}/ec/Md. Selim Reza Hiron.jpg" class="img-fluid" alt=""
+                                    style="height: 100%">
+                            </div>
+                            <h5 class="mt-4">Md. Selim Reza Hiron</h5>
+                            <h6 class="text-danger">Executive Member</h6>
+							<h6 class="text-danger">Rep. Progress Agrovet</h6>
+                        </div>
+                    </div>
+					  <div class="col-lg-4 mb-3">
+                        <div class="bg-white border text-center p-4">
+                            <div>
+                                <img src="{{asset('public/images')}}/ec/Md. Anamul Haque Molah.jpg" class="img-fluid" alt=""
+                                    style="height: 100%">
+                            </div>
+                            <h5 class="mt-4">Md. Anamul Haque Molah</h5>
+                            <h6 class="text-danger">Executive Member</h6>
+							<h6 class="text-danger">Rep : M/S. Enam Traders</h6>
+                        </div>
+                    </div>
+					  <div class="col-lg-4 mb-3">
+                        <div class="bg-white border text-center p-4">
+                            <div>
+                                <img src="{{asset('public/images')}}/ec/Sudhir Chowdhury.jpg" class="img-fluid" alt=""
+                                    style="height: 100%">
+                            </div>
+                            <h5 class="mt-4">Sudhir Chowdhury</h5>
+                            <h6 class="text-danger">Ex-Officio</h6>
+							<h6 class="text-danger">Rep: M/S. Chowdhury Enterprise</h6>
+                        </div>
+                    </div>
+					  <div class="col-lg-4 mb-3">
+                        <div class="bg-white border text-center p-4">
+                            <div>
+                                <img src="{{asset('public/images')}}/ec/Md. Helal Uddin.jpg" class="img-fluid" alt=""
+                                    style="height: 100%">
+                            </div>
+                            <h5 class="mt-4">Md. Helal Uddin</h5>
+                            <h6 class="text-danger">Ex-Officio</h6>
+							<h6 class="text-danger">Rep : M/S. Helal Enterprise</h6>
                         </div>
                     </div>
                 @elseif($committeesType == 2)
                     <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
-                                <img src="{{asset('public/images')}}/member-pic/Shafiul.jpeg" class="img-fluid" alt=""
+                                <img src="{{asset('public/images')}}/past/Sudhir Chowdhury.jpg" class="img-fluid" alt=""
                                     style="height: 100%">
                             </div>
-                            <h5 class="mt-4">IDr Shafiul Islam</h4>
+                            <h5 class="mt-4">Sudhir Chowdhury</h5>
+                            <h6 class="text-danger">President</h6>
+							<h6 class="text-danger">Rep: M/S. Chowdhury Enterprise</h6>
+                        </div>
+                    </div>
+					
+					     <div class="col-lg-3 mb-3">
+                        <div class="bg-white border text-center p-4">
+                            <div>
+                                <img src="{{asset('public/images')}}/past/Md. Helal Uddin.jpg" class="img-fluid" alt=""
+                                    style="height: 100%">
+                            </div>
+                          <h5 class="mt-4">Md. Helal Uddin</h5>
+                            <h6 class="text-danger">Secretary General</h6>
+							<h6 class="text-danger">Rep: M/S. Helal Enterprise </h6>
+                        </div>
+                    </div>
+				
+                    <div class="col-lg-3 mb-3">
+                        <div class="bg-white border text-center p-4">
+                            <div>
+                                <img src="{{asset('public/images')}}/past/Md. Sabir Hossain.jpg" class="img-fluid" alt=""
+                                    style="height: 100%">
+                            </div>
+                            <h5 class="mt-4">Md. Sabir Hossain </h5>
+                            <h6 class="text-danger">Snr. Vice- President</h6>
+							<h6 class="text-danger">Rep : M.S Trading</h6>
+							
+                        </div>
+                    </div>
+               
+                    <div class="col-lg-3 mb-3">
+                        <div class="bg-white border text-center p-4">
+                            <div>
+                                <img src="{{asset('public/images')}}/past/Md. Sayedul Haque Khan.jpg" class="img-fluid" alt=""
+                                    style="height: 100%">
+                            </div>
+                            <h5 class="mt-4">Md. Sayedul Haque Khan </h4>
+							 <h6 class="text-danger">Vice- President</h6>
+							<h6 class="text-danger">Rep : Khan Agro Feed Products</h6>
                         </div>
                     </div>
                     <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
-                                <img src="{{asset('public/images')}}/member-pic/Syed.jpeg" class="img-fluid" alt=""
+                                <img src="{{asset('public/images')}}/past/Md. Abul Kalam Azad.jpg" class="img-fluid" alt=""
                                     style="height: 100%">
                             </div>
-                            <h5 class="mt-4">IDr Syed Quamrul Ahsan</h4>
+                            <h5 class="mt-4">Md. Abul Kalam Azad</h4>
+							 <h6 class="text-danger">Vice- President</h6>
+							<h6 class="text-danger">Rep: M/S. Al-Amin Poultry Feed</h6>
                         </div>
                     </div>
                     <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
-                                <img src="{{asset('public/images')}}/member-pic/Shajib.jpeg" class="img-fluid" alt=""
-                                    style="height: 100%">
-                            </div>
-                            <h5 class="mt-4">Ar Shajib Jahan</h4>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 mb-3">
-                        <div class="bg-white border text-center p-4">
-                            <div>
-                                <img src="{{asset('public/images')}}/member-pic/Saron.jpeg" class="img-fluid" alt=""
-                                    style="height: 100%">
-                            </div>
-                            <h5 class="mt-4">IDr Md Saiful Islam Saran</h4>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 mb-3">
-                        <div class="bg-white border text-center p-4">
-                            <div>
-                                <img src="{{asset('public/images')}}/member-pic/Parvez.jpeg" class="img-fluid" alt=""
-                                    style="height: 100%">
-                            </div>
-                            <h5 class="mt-4">Ar Ismaiel Parvez</h4>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 mb-3">
-                        <div class="bg-white border text-center p-4">
-                            <div>
-                                <img src="{{asset('public/images')}}/member-pic/Mohammad Aminul Islam Sikder.jpeg"
+                                <img src="{{asset('public/images')}}/past/Md.  Mahbubul  Alam.jpg"
                                     class="img-fluid" alt="" style="height: 100%">
                             </div>
-                            <h5 class="mt-4">IDr Wasim Sikder</h4>
+                            <h5 class="mt-4">Md.  Mahbubul  Alam</h4>
+							 <h6 class="text-danger">Joint Sectary General</h6>
+							<h6 class="text-danger">Rep: M/S. Rahman Traders</h6>
                         </div>
                     </div>
                     <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
-                                <img src="{{asset('public/images')}}/member-pic/IDr Rashed Mazhar.jpg" class="img-fluid" alt=""
+                                <img src="{{asset('public/images')}}/past/Md. Gias Uddin Khan.jpg" class="img-fluid" alt=""
                                     style="height: 100%">
                             </div>
-                            <h5 class="mt-4">IDr Rashed Mazhar</h4>
+                            <h5 class="mt-4">Md. Gias Uddin Khan</h4>
+							 <h6 class="text-danger">Organizing Secretary</h6>
+							<h6 class="text-danger">Rep : H & K Feed Products</h6>
                         </div>
                     </div>
+
                     <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
-                                <img src="{{asset('public/images')}}/member-pic/Roksana.jpeg" class="img-fluid" alt=""
+                                <img src="{{asset('public/images')}}/past/Md. Farook.jpg" class="img-fluid" alt=""
                                     style="height: 100%">
                             </div>
-                            <h5 class="mt-4">IDr Roksana Hossen Mishu</h4>
+                            <h5 class="mt-4">Md. Farook</h4>
+							 <h6 class="text-danger">Treasurer</h6>
+							<h6 class="text-danger">Rep : Faisal Trading Company</h6>
                         </div>
                     </div>
                     <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
-                                <img src="{{asset('public/images')}}/member-pic/IDr Erfan Babu.jpg" class="img-fluid" alt=""
+                                <img src="{{asset('public/images')}}/past/Mrs. Momotaj Hossain Eaty.jpg" class="img-fluid" alt=""
                                     style="height: 100%">
                             </div>
-                            <h5 class="mt-4">IDr Erfan Babu</h4>
-                        </div>
+                            <h5 class="mt-4">Mrs. Momotaj Hossain Eaty</h4>
+							 <h6 class="text-danger">Social Welfare secretary </h6>
+							<h6 class="text-danger">Rep : M/s. Eaty Enterprise</h6>
+                        </div> 
+
+
                     </div>
                     <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
-                                <img src="{{asset('public/images')}}/member-pic/IDr Md Anamul Haque.jpg" class="img-fluid"
+                                <img src="{{asset('public/images')}}/past/Mrs. Sadia Afrine Munni.jpg" class="img-fluid"
                                     alt="" style="height: 100%">
                             </div>
-                            <h5 class="mt-4">IDr Md Anamul Haque</h4>
+                               <h5 class="mt-4">Mrs. Sadia Afrine  Munni</h4>
+							 <h6 class="text-danger">Press secretary </h6>
+							<h6 class="text-danger">Rep : M/s. Synthia Enterprise</h6>
                         </div>
                     </div>
                     <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
-                                <img src="{{asset('public/images')}}/member-pic/IAr Shariful Islam.jpg" class="img-fluid" alt=""
+                                <img src="{{asset('public/images')}}/past/Mr. Syed Kamalur Rahman.jpg" class="img-fluid" alt=""
                                     style="height: 100%">
                             </div>
-                            <h5 class="mt-4">IAr. Mohammad Shariful Islam</h4>
+                            <h5 class="mt-4">Mr. Syed Kamalur Rahman</h4>
+							 <h6 class="text-danger">Executive Member </h6>
+							<h6 class="text-danger">Rep : C.R Poultry and Fish Feed Ltd</h6>
                         </div>
-                    </div>
+                    </div> 
                     <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
-                                <img src="{{asset('public/images')}}/member-pic/Sarker.jpeg" class="img-fluid" alt=""
+                                <img src="{{asset('public/images')}}/past/Md. Habibur Rahman.jpg" class="img-fluid" alt=""
                                     style="height: 100%">
                             </div>
-                            <h5 class="mt-4">IDr MD Pial Sarker (pia)</h4>
+                           <h5 class="mt-4">Md. Habibur Rahman</h4>
+							 <h6 class="text-danger">Executive Member</h6>
+							<h6 class="text-danger">Rep : Al-Habib Enterprise</h6>
                         </div>
                     </div>
                     <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
-                                <img src="{{asset('public/images')}}/member-pic/IDr Md Rokibul hasan.jpg" class="img-fluid"
+                                <img src="{{asset('public/images')}}/past/Md. Alal Ahamed.jpg" class="img-fluid"
                                     alt="" style="height: 100%">
                             </div>
-                            <h5 class="mt-4">IDr Md Rokibul Hasan</h4>
+                            <h5 class="mt-4">Md. Alal Ahamed</h4>
+							 <h6 class="text-danger">Executive Member</h6>
+							<h6 class="text-danger">M/S.  Alal Enterprise</h6>
                         </div>
                     </div>
                     <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
-                                <img src="{{asset('public/images')}}/member-pic/IDr Sumon Kumar.jpg" class="img-fluid" alt=""
+                                <img src="{{asset('public/images')}}/past/Md. Khurshed Alam.jpg" class="img-fluid" alt=""
                                     style="height: 100%">
                             </div>
-                            <h5 class="mt-4">IDr Sumon Kumar</h4>
+                            <h5 class="mt-4">Md. Khurshed Alam</h4>
+							 <h6 class="text-danger">Executive Member</h6>
+							<h6 class="text-danger">Rep : Taj  Ready  Feed</h6>
                         </div>
                     </div>
                     <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
-                                <img src="{{asset('public/images')}}/member-pic/IDr Mohammad Ruhul Amin.jpg" class="img-fluid"
+                                <img src="{{asset('public/images')}}/past/Mohammad Shah Akram.jpg" class="img-fluid"
                                     alt="" style="height: 100%">
                             </div>
-                            <h5 class="mt-4">IDr Mohammad Ruhul Amin</h4>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 mb-3">
-                        <div class="bg-white border text-center p-4">
-                            <div>
-                                <img src="{{asset('public/images')}}/member-pic/Shahiddullah.jpeg" class="img-fluid" alt=""
-                                    style="height: 100%">
-                            </div>
-                            <h5 class="mt-4">A. A. K. M. Shahidullah Chy</h4>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 mb-3">
-                        <div class="bg-white border text-center p-4">
-                            <div>
-                                <img src="{{asset('public/images')}}/member-pic/" class="img-fluid" alt="" style="height: 100%">
-                            </div>
-                            <h5 class="mt-4">IDr Mohiuddin Sumon</h4>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 mb-3">
-                        <div class="bg-white border text-center p-4">
-                            <div>
-                                <img src="{{asset('public/images')}}/member-pic/" class="img-fluid" alt="" style="height: 100%">
-                            </div>
-                            <h5 class="mt-4">IDr Md Masud Rana</h4>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 mb-3">
-                        <div class="bg-white border text-center p-4">
-                            <div>
-                                <img src="{{asset('public/images')}}/member-pic/IDr Abdur Rahim.jpg" class="img-fluid" alt=""
-                                    style="height: 100%">
-                            </div>
-                            <h5 class="mt-4">IDr Abdur Rahim</h4>
+                             <h5 class="mt-4">Mohammad Shah Akram</h4>
+							 <h6 class="text-danger">Executive Member</h6>
+							<h6 class="text-danger">Rep : M/S. Akram & Brothers</h6>
                         </div>
                     </div>
                 @endif
             </div>
-
         </div>
     </section><!-- End Contact Section -->
 

@@ -22,17 +22,16 @@
                 @endif
                 <img src="{{asset('public/images')}}/section-img.png" alt="#">
             </div>
-            <div class="row">
+                        <div class="row">
                 @if ($membersType == 1)
                     <div class="col-lg-3 mb-3">
                         <div class="hover_card_pages wow slideInUp" data-wow-delay="0.3s">
                             <div class="imgBx">
-                                <img src="{{asset('public/images')}}/member-pic/Roksana.jpeg" alt="images">
+                                <img src="{{asset('public/images')}}/member-pic/Sudhir Chowdhury.jpg" alt="images">
                             </div>
                             <div class="hover_card_details">
-                                <h2>IDr. Shafiul Islam</h2>
-                                <h2><span>Convener</span></h2>
-                                <h4><span>IDr. Shafiul Islam</span></h4>
+                                <h2>Sudhir Chowdhury (Proprietor)</h2>
+                                <h2><span>M/S. Chowdhury Enterprise</span></h2>
                             </div>
                             <!-- Button trigger modal -->
                             <button type="button" class="member_dettails_btn btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Details</button>
@@ -42,12 +41,11 @@
                     <div class="col-lg-3 mb-3">
                         <div class="hover_card_pages wow slideInUp" data-wow-delay="0.3s">
                             <div class="imgBx">
-                                <img src="{{asset('public/images')}}/member-pic/Shahiddullah.jpeg" alt="images">
+                                <img src="{{asset('public/images')}}/member-pic/Md. Sabir Hossain.jpg" alt="images">
                             </div>
                             <div class="hover_card_details">
-                                <h2>IDr. Shafiul Islam</h2>
-                                <h2><span>Convener</span></h2>
-                                <h4><span>IDr. Shafiul Islam</span></h4>
+                                <h2>Md. Sabir Hossain (Proprietor)</h2>
+                                <h2><span>M.S Trading</span></h2>
                             </div>
                             <!-- Button trigger modal -->
                             <button type="button" class="member_dettails_btn btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Details</button>
@@ -57,12 +55,11 @@
                     <div class="col-lg-3 mb-3">
                         <div class="hover_card_pages wow slideInUp" data-wow-delay="0.3s">
                             <div class="imgBx">
-                                <img src="{{asset('public/images')}}/member-pic/Shahiddullah.jpeg" alt="images">
+                                <img src="{{asset('public/images')}}/member-pic/Md. Sabir Hossain.jpg" alt="images">
                             </div>
                             <div class="hover_card_details">
-                                <h2>IDr. Shafiul Islam</h2>
-                                <h2><span>Convener</span></h2>
-                                <h4><span>IDr. Shafiul Islam</span></h4>
+                               <h2>Md. Sabir Hossain (Proprietor)</h2>
+                                <h2><span>M.S Trading</span></h2>
                             </div>
                             <!-- Button trigger modal -->
                             <button type="button" class="member_dettails_btn btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Details</button>

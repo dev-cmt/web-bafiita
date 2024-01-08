@@ -16,8 +16,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('public/frontend')}}/css/bootstrap.min.css">
-    <!-- Nice Select CSS -->
-    <link rel="stylesheet" href="{{asset('public/frontend')}}/css/nice-select.css">
+    <!-- Nice Select CSS 
+    <link rel="stylesheet" href="{{asset('public/frontend')}}/css/nice-select.css">-->
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="{{asset('public/frontend')}}/css/font-awesome.min.css">
     <!-- icofont CSS -->
@@ -70,7 +70,7 @@
         <li>Working Contact Form With Google Map</li>
         <div class="button">
             <a href="{{route('member_register.create')}}" target="_blank" class="btn">New Membership</a>
-            <a href="#" target="_blank" class="btn">Renew Membership</a>
+            <a href="{{route('member_renew.create')}}" target="_blank" class="btn">Renew Membership</a>
         </div>
     </ul>
 
@@ -106,8 +106,8 @@
     <script src="{{asset('public/frontend')}}/js/slicknav.min.js"></script>
     <!-- ScrollUp JS -->
     <script src="{{asset('public/frontend')}}/js/jquery.scrollUp.min.js"></script>
-    <!-- Niceselect JS -->
-    <script src="{{asset('public/frontend')}}/js/niceselect.js"></script>
+    <!-- Niceselect JS 
+    <script src="{{asset('public/frontend')}}/js/niceselect.js"></script>-->
     <!-- Tilt Jquery JS -->
     <script src="{{asset('public/frontend')}}/js/tilt.jquery.min.js"></script>
     <!-- Owl Carousel JS -->

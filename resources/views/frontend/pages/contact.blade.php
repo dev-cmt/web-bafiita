@@ -10,7 +10,7 @@
                     <div class="col-lg-6">
                         <div class="contact-us-left">
                             <div class="position-relative rounded overflow-hidden h-100">
-                                <iframe class="position-relative rounded w-100 h-100" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14607.834029397985!2d90.403193!3d23.748859!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b88fd8f1da15%3A0x7373d2a193bb69f5!2sRazzak%20Plaza!5e0!3m2!1sen!2sus!4v1692525384856!5m2!1sen!2sus" width="600" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.59684716309!2d90.36803097385341!3d23.761751788343275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755bf55e5d9fde3%3A0xe1142a84f5475215!2s3rd%20floor)%20Block-A%2C%204%2F2%20Iqbal%20Road%2C%20Dhaka%201205!5e0!3m2!1sen!2sbd!4v1701408724822!5m2!1sen!2sbd" width="600" height="550" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                              </div>
                         </div>
                     </div>

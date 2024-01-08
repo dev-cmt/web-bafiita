@@ -10,8 +10,8 @@
                     <ul class="top-link">
                         <li><a href="#">About BAFIITA</a></li>
                         <li><a href="#">Requirement</a></li>
-                        <li><a href="#">Renew Membership</a></li>
-                        <li><a href="#">New Membership</a></li>
+                        <li><a href="{{route('member_renew.create')}}">Renew Membership</a></li>
+                        <li><a href="{{route('member_register.create')}}">New Membership</a></li>
                     </ul>
                     <!-- End Contact -->
                 </div>
@@ -51,22 +51,22 @@
                                     <li><a href="#">About <i class="icofont-rounded-down"></i></a>
                                         <ul class="dropdown">
                                             <li><a href="{{route('page.about-us')}}">About BAFIITA</a></li>
-                                            <li><a href="{{route('page.profile-pres-secr')}}">Profile President & Secretary</a></li>
-                                            <li><a href="{{route('page.about-message', 1)}}">President & Secretary Message</a></li>
-                                            <li><a href="{{route('page.about-message', 2)}}">Past President & Secretary Message</a></li>
+                                            <li><a href="{{route('page.about-message', 1)}}">Message President & Secretary </a></li>
+											<li><a href="{{route('page.profile-pres-secr')}}">Profile President & Secretary</a></li>
+                                            <li><a href="{{route('page.about-message', 2)}}">Message Founder President & Secretary </a></li>
                                         </ul>
                                     </li>
                                     <li><a href="#">Committee<i class="icofont-rounded-down"></i></a>
                                         <ul class="dropdown">
-                                            <li><a href="{{route('page.committee', 1)}}">Present Committee</a></li>
-                                            <li><a href="{{route('page.committee', 2)}}">Past Committee</a></li>
+                                            <li><a href="{{route('page.committee', 1)}}">Present Executive Committee</a></li>
+                                            <li><a href="{{route('page.committee', 2)}}">Past Executive Committee(2021-2023)</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="#">Members<i class="icofont-rounded-down"></i></a>
                                         <ul class="dropdown">
-                                            <li><a href="{{route('page.member', 0)}}">All Members Bodies List</a></li>
-                                            <li><a href="{{route('page.member', 1)}}">Donor Member Group</a></li>
-                                            <li><a href="{{route('page.member', 2)}}">General Member Group</a></li>
+                                            <li><a href="{{route('page.member', 0)}}">BAFIITA Member List</a></li>
+                                            {{--<li><a href="{{route('page.member', 1)}}">Donor Member Group</a></li>
+                                            <li><a href="{{route('page.member', 2)}}">General Member Group</a></li>--}}
                                         </ul>
                                     </li>
                                     <li><a href="{{route('page.gallery-cover')}}">Gallery</a></li>

@@ -43,7 +43,7 @@
 
 
     <!-- Traders Association -->
-    <section class="why-choose section" >
+    {{--<section class="why-choose section" >
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -53,30 +53,30 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-6 col-12">
+           <div class="row">
+                <div class="col-lg-3 col-12">
                     <div class="card">
                         <!-- News Head -->
                         <div class="news-head" style="height: auto">
-                            <img src="{{asset('public/images')}}/blog/notice-3.jpeg" alt="#">
+                            <img src="{{asset('public/images')}}/home/Sudhir Chowdhury.jpg" alt="#">
                         </div>
-                        <h5 class="text-center mt-4"><strong> A.M Amirul Islam Bhuiyan</strong></h5>
-                        <h5 class="text-center my-2 text-success">President</h5>
+                        <h5 class="text-center mt-4"><strong> Sudhir Chowdhury</strong></h5>
+                        <h5 class="text-center my-2 text-success">Founder President</h5>
                     </div>
                 </div>
-                <div class="col-lg-6 col-12">
-                    <div class="car">
+                <div class="col-lg-3 col-12">
+                    <div class="card">
                         <!-- News Head -->
                         <div class="news-head" style="height: auto">
-                            <img src="{{asset('public/images')}}/blog/notice-3.jpeg" alt="#">
+                            <img src="{{asset('public/images')}}/home/Md. Helal Uddin.jpg" alt="#">
                         </div>
-                        <h5 class="text-center mt-4"><strong> A.M Amirul Islam Bhuiyan</strong></h5>
-                        <h5 class="text-center my-2 text-success">President</h5>
+                        <h5 class="text-center mt-4"><strong> Md. Helal Uddin</strong></h5>
+                        <h5 class="text-center my-2 text-success">Secretary General</h5>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section>--}}
     <!--End Traders Association-->
 
     <!-- Start Why choose -->
@@ -130,11 +130,11 @@
                 </div>
                 <div class="col-lg-6 col-12">
                     <!-- Start Choose Rights -->
-                    <div class="row mt-4">
+                   {{--<div class="row mt-4">
                         <div class="col-lg-6 col-6">
                             <!-- News Head -->
                             <div class="news-head" style="height: auto">
-                                <img src="{{asset('public/images')}}/member-pic/Sarker.jpeg" alt="#">
+                                <img src="{{asset('public/images')}}/home/A.M Amirul Islam Bhuiyam.jpg" alt="#">
                             </div>
                             
                             <h6 class="text-center mt-4"><strong> A.M Amirul Islam Bhuiyan</strong></h6>
@@ -143,15 +143,15 @@
                         <div class="col-lg-6 col-6">
                             <!-- News Head -->
                             <div class="news-head" style="height: auto">
-                                <img src="{{asset('public/images')}}/member-pic/Sarker.jpeg" alt="#">
+                                <img src="{{asset('public/images')}}/home/Joyanta Kumer Deb.jpg" alt="#">
                             </div>
                             
                             <h6 class="text-center mt-4"><strong>Joyanta Kumar Deb</strong></h6>
                             <h6 class="text-center my-2 text-success">Secretary General</h6>
                         </div>
                         
-                    </div>
-                    {{-- <div class="choose-right" style="background: url({{ asset('public/images') }}/pages/about.jpg); background-position: center; background-size: cover;border:1px solid #109033"></div> --}}
+                    </div>--}}
+                     <div class="choose-right" style="background: url({{asset('public/images')}}/home/about_logo.png); background-position: center; background-size: cover;border:1px solid #109033"></div> 
                     <!-- End Choose Rights -->
                 </div>
                 

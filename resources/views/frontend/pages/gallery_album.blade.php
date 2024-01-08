@@ -47,7 +47,7 @@
                                         <label class="text-success">Published Date:</label><span>{{date("j F, Y", strtotime($row->created_at))}}</span>
                                     </div>
                                     <div class="d-flex justify-content-between">
-                                        <label class="text-success">Publisher Name:</label><span>{{$row->user->name}}</span>
+                                        <label class="text-success">Publisher Name:</label>BAFIITA
                                     </div>
                                     @if ($row->description)
                                         <hr>
@@ -63,5 +63,5 @@
             </div>
         </div>
     </div>
-    <!-- Service End -->
+    <!-- Service End <span>{{$row->user->name}}</span>-->
 @endsection
