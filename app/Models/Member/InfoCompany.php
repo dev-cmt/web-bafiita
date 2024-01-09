@@ -9,14 +9,30 @@ class InfoCompany extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'company_name',
-        'company_email',
-        'company_phone',
-        'designation',
-        'address',
-        'web_url',
-        'is_job',
-        'is_business',
+        'companyName',
+        'addressOrganization',
+        'typeOwnership',
+        'typeBusiness',
+        
+        'tradeLicenseNo',
+        'tradeLicenseDate',
+        'eTinNo',
+        'eTinDate',
+        'vatRegistrationNo',
+        'vatRegistrationDate',
+        'ircCertificateNo',
+        'ircCertificateDate',
+        'rjscIncorporationNo',
+        'rjscIncorporationDate',
+                    
+        'poultryDairyFisheries',
+        'tradingBrandOthers',
+        
+        'contactCompanyName',
+        'contactCompanyAddress',
+        'contactCompanyNumber',
+        'contactCompanyEmail',
+
         'status',
         'member_id',
     ];

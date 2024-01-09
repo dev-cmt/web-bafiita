@@ -64,173 +64,146 @@ class MemberController extends Controller
     {
         DB::beginTransaction();
         try {
-            //----Validation Check 
-            $validator = Validator::make($request->all(), [
-                'name' => 'required',
-                'email' => 'required|unique:users,email|max:255',
-                'password' => 'required|confirmed|min:8',
-                'profile_photo_path' => 'required|mimes:jpg,png,jpeg,gif,svg|image',
+            // //----Validation Check 
+            // $validator = Validator::make($request->all(), [
+            //     'name' => 'required',
+            //     'email' => 'required|unique:users,email|max:255',
+            //     'password' => 'required|confirmed|min:8',
+            //     'profile_photo_path' => 'required|mimes:jpg,png,jpeg,gif,svg|image',
 
-                'trade_licence' => 'max:10240',
-                'tin_certificate' => 'max:10240',
-                'nid_photo_copy' => 'max:10240',
-                'passport_photo' => 'max:10240',
-                'edu_certificate' => 'required|max:10240',
-                'experience_certificate' => 'max:10240',
-                'stu_id_copy' => 'max:10240',
-                'recoment_letter' => 'max:10240',
-            ], [
-                'profile_photo_path.required' => 'The Profile photo field is required.',
-                'profile_photo_path.mimes' => 'The :attribute must be a valid image file.',
-                'contact_number.required' => 'The Contact Number field is required.',
-                'mast_qualification_id.required' => 'The Qualification field is required.',
-                'trade_licence.max' => 'Trade licence must not be greater than 10MB.',
-                'tin_certificate.max' => 'Tin certificate must not be greater than 10MB.',
-                'nid_photo_copy.max' => 'NID photo must not be greater than 10MB.',
-                'passport_photo.max' => 'Passport photo must not be greater than 10MB.',
-                'edu_certificate.required' => 'The EDU. Certificate field is required.',
-                'edu_certificate.max' => 'EDU. certificate must not be greater than 10MB.',
-                'experience_certificate.max' => 'Experience certificate must not be greater than 10MB.',
-                'stu_id_copy.max' => 'STU. id must not be greater than 10MB.',
-                'recoment_letter.max' => 'Recoment letter must not be greater than 10MB.',
+            //     'edu_certificate' => 'required|max:10240',
+            // ], [
+            //     'profile_photo_path.required' => 'The Profile photo field is required.',
+            //     'profile_photo_path.mimes' => 'The :attribute must be a valid image file.',
                 
-                'company_name.required_if' => 'The company name field is required',
-                'designation.required_if' => 'The designation field is required',
-                'student_institute.required_if' => 'The student institute field is required',
-            ]);
+            //     'trade_licence.max' => 'Trade licence must not be greater than 10MB.',
+            //     'edu_certificate.required' => 'The EDU. Certificate field is required.',
+
+            // ]);
             
-            if ($validator->fails()) {
-                return response()->json(['errors' => $validator->errors()], 422);
-            }
-            
+            // if ($validator->fails()) {
+            //     return response()->json(['errors' => $validator->errors()], 422);
+            // }
 
-            /*__________________/ USER CREATE \_________________*/
-            if($request->hasFile('profile_photo_path')) {
-                //get filename with extension
-                $filenamewithextension = $request->file('profile_photo_path')->getClientOriginalName();
-                //get filename without extension
-                $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
-        
-                //get file extension
-                $extension = $request->file('profile_photo_path')->getClientOriginalExtension();
-                //filename to store
-                $filenametostore = $filename.'_'.time().'.'.$extension;
-        
-                //Upload File
-                $request->file('profile_photo_path')->move('public/images/profile/', $filenametostore); //--Upload Location
-                // $request->file('profile_image')->storeAs('public/profile_images', $filenametostore);
-        
-                //Resize image here
-                $thumbnailpath = public_path('images/profile/'.$filenametostore); //--Get File Location
-                // $thumbnailpath = public_path('storage/images/profile/'.$filenametostore);
-                
-                $data = Image::make($thumbnailpath)->resize(1200, 850, function($constraint) {
-                    $constraint->aspectRatio();
-                }); 
-                $data->save($thumbnailpath);
+            // /*__________________/ USER CREATE \_________________*/
+            // $user = null; 
+            // if ($request->hasFile('profile_photo_path')) {
+            //     // get filename with extension
+            //     $filenamewithextension = $request->file('profile_photo_path')->getClientOriginalName();
+            //     // get filename without extension
+            //     $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
 
+            //     // get file extension
+            //     $extension = $request->file('profile_photo_path')->getClientOriginalExtension();
+            //     // filename to store
+            //     $filenametostore = $filename . '_' . time() . '.' . $extension;
 
-                /*_____________________ MEMBER ID GENERATE ___________________*/
-                $user = User::create([
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'password' => bcrypt($request->password),
-                    'member_code' => $memberCode,
-                    'profile_photo_path' => $filenametostore,
-                    'member_type_id' => $request->member_type_id,
-                    'status' => 0,
-                    'is_admin' => 0,
-                ]);
-            }
+            //     // Upload File
+            //     $request->file('profile_photo_path')->move('public/images/profile/', $filenametostore); //--Upload Location
 
+            //     // Resize image here
+            //     $thumbnailpath = public_path('images/profile/' . $filenametostore); //--Get File Location
+            //     $data = Image::make($thumbnailpath)->resize(1200, 850, function ($constraint) {
+            //         $constraint->aspectRatio();
+            //     });
+            //     $data->save($thumbnailpath);
 
+            //     /*_____________________ MEMBER ID GENERATE ___________________*/
+            //     $memberCode = "generate_member_code_here";
+            //     $user = User::create([
+            //         'name' => $request->memebrName,
+            //         'email' => $request->email,
+            //         'password' => bcrypt($request->password),
+            //         'member_code' => $memberCode,
+            //         'profile_photo_path' => $filenametostore,
+            //         'member_type_id' => 1,
+            //         'status' => 0,
+            //         'is_admin' => 0,
+            //     ]);
+            // }
+
+            $userId = 1;
             /*__________________/ InfoPersonal \_________________*/
             $infoPersonal =new InfoPersonal([
-                'memebrName'=> $request->contact_number,
-                'memebrDesignation'=> $request->contact_number,
-                'memebrNID'=> $request->contact_number,
-                'memebrDOB'=> $request->contact_number,
-                'memebrMotherName'=> $request->contact_number,
-                'memebrLifePartner'=> $request->contact_number,
-                'memebrGender'=> $request->contact_number,
-                'memebrBloodGroup'=> $request->contact_number,
-                'memberPhoneNo'=> $request->contact_number,
-                'memberEmail'=> $request->contact_number,
+                'memebrName'=> $request->memebrName,
+                'memebrDesignation'=> $request->memebrDesignation,
+                'memebrNID'=> $request->memebrNID,
+                'memebrDOB'=> $request->memebrDOB,
+                'memebrMotherName'=> $request->memebrMotherName,
+                'memebrLifePartner'=> $request->memebrLifePartner,
+                'memebrGender'=> $request->memebrGender,
+                'memebrBloodGroup'=> $request->memebrBloodGroup,
+                'memberPhoneNo'=> $request->memberPhoneNo,
+                'memberEmail'=> $request->memberEmail,
 
-                'qualificationCertificate'=> $request->contact_number,
+                'qualificationName'=> $request->qualificationName,
+                
+                'nomineeName'=> $request->nomineeName,
+                'nomineeNID'=> $request->nomineeNID,
+                'nomineeFather'=> $request->nomineeFather,
+                'nomineeMother'=> $request->nomineeMother,
+                'nomineeRelation'=> $request->nomineeRelation,
+                'nomineeDesignation'=> $request->nomineeDesignation,
+                
+                'bankBranceName'=> $request->bankBranceName,
+                'modePayment'=> $request->modePayment,
+                'totalAmount'=> $request->totalAmount,
+                'paymentDate'=> $request->paymentDate,
+                'moneyReceiptNo'=> $request->moneyReceiptNo,
+                
+                'kOneCompanyName'=> $request->kOneCompanyName,
+                'kOneMemberName'=> $request->kOneMemberName,
+                'kOneMembershipNo'=> $request->kOneMembershipNo,
 
-                'fileNomineePhoto'=> $request->contact_number,
-                'fileNomineeSignature'=> $request->contact_number,
-                'fileApplicantSignature'=> $request->contact_number,
+                'kTwoCompanyName'=> $request->kTwoCompanyName,
+                'kTwoMemberName'=> $request->kTwoMemberName,
+                'kTwoMembershipNo'=> $request->kTwoMembershipNo,
                 
-                'nomineeName'=> $request->contact_number,
-                'nomineeNID'=> $request->contact_number,
-                'nomineeFather'=> $request->contact_number,
-                'nomineeMother'=> $request->contact_number,
-                'nomineeRelation'=> $request->contact_number,
-                'nomineeDesignation'=> $request->contact_number,
-                
-                'bankBranceName'=> $request->contact_number,
-                'modePayment'=> $request->contact_number,
-                'totalAmount'=> $request->contact_number,
-                'paymentDate'=> $request->contact_number,
-                'moneyReceiptNo'=> $request->contact_number,
-                
-                'kOneCompanyName'=> $request->contact_number,
-                'kOneMemberName'=> $request->contact_number,
-                'kOneMembershipNo'=> $request->contact_number,
-
-                'kTwoCompanyName'=> $request->contact_number,
-                'kTwoMemberName'=> $request->contact_number,
-                'kTwoMembershipNo'=> $request->contact_number,
-                
-                'description'=> $request->contact_number,
+                'description'=> $request->description,
                 'status'=> 1,
-                'member_id'=> $user->id,
+                'member_id'=> $userId,
             ]);
             $infoPersonal->save();
             
-            
             /*______________________/ InfoCompany \___________________*/
-            if($request->company_name || $request->designation || $request->company_email || $request->company_phone){
-                $infoCompany =new InfoCompany([
-                    'companyName'=> $request->contact_number,
-                    'addressOrganization'=> $request->contact_number,
-                    'typeOwnership'=> $request->contact_number,
-                    'typeBusiness'=> $request->contact_number,
-        
-                    'tradeLicenseNo'=> $request->contact_number,
-                    'tradeLicenseDate'=> $request->contact_number,
-                    'eTinNo'=> $request->contact_number,
-                    'eTinDate'=> $request->contact_number,
-                    'vatRegistrationNo'=> $request->contact_number,
-                    'vatRegistrationDate'=> $request->contact_number,
-                    'ircCertificateNo'=> $request->contact_number,
-                    'ircCertificateDate'=> $request->contact_number,
-                    'rjscIncorporationNo'=> $request->contact_number,
-                    'rjscIncorporationDate'=> $request->contact_number,
-                    
-                    'poultryDairyFisheries'=> $request->contact_number,
-                    'tradingBrandOthers'=> $request->contact_number,
-        
-                    'contactCompanyName'=> $request->contact_number,
-                    'contactCompanyAddress'=> $request->contact_number,
-                    'contactCompanyNumber'=> $request->contact_number,
-                    'contactCompanyEmail'=> $request->contact_number,
+            $infoCompany =new InfoCompany([
+                'companyName'=> $request->companyName,
+                'addressOrganization'=> $request->addressOrganization,
+                'typeOwnership'=> $request->typeOwnership,
+                'typeBusiness'=> $request->typeBusiness,
+    
+                'tradeLicenseNo'=> $request->tradeLicenseNo,
+                'tradeLicenseDate'=> $request->tradeLicenseDate,
+                'eTinNo'=> $request->eTinNo,
+                'eTinDate'=> $request->eTinDate,
+                'vatRegistrationNo'=> $request->vatRegistrationNo,
+                'vatRegistrationDate'=> $request->vatRegistrationDate,
+                'ircCertificateNo'=> $request->ircCertificateNo,
+                'ircCertificateDate'=> $request->ircCertificateDate,
+                'rjscIncorporationNo'=> $request->rjscIncorporationNo,
+                'rjscIncorporationDate'=> $request->rjscIncorporationDate,
+                
+                'poultryDairyFisheries'=> $request->poultryDairyFisheries,
+                'tradingBrandOthers'=> $request->tradingBrandOthers,
+    
+                'contactCompanyName'=> $request->contactCompanyName,
+                'contactCompanyAddress'=> $request->contactCompanyAddress,
+                'contactCompanyNumber'=> $request->contactCompanyNumber,
+                'contactCompanyEmail'=> $request->contactCompanyEmail,
 
-                    'status' => 1,
-                    'member_id' => $user->id,
-                ]);
-                $infoCompany->save();
-            }
+                'status' => 1,
+                'member_id' => $userId,
+            ]);
+            $infoCompany->save();
+            
             /*______________________/ InfoOther \___________________*/
             $infoOther = new InfoOther([
                 'status' => 1,
-                'member_id' => $user->id,
+                'member_id' => $userId,
             ]);
             $infoOther->save();
+
             /*______________________/ InfoDocument \___________________*/
-            $userId = $user->id;
             function uploadFile($request, $fieldName, $subfolder, $userId) {
                 if ($request->hasFile($fieldName)) {
                     $uploadedFile = $request->file($fieldName);
@@ -248,34 +221,40 @@ class MemberController extends Controller
                 return null;
             }
             $infoDocument = new InfoDocument([
-                'fileTrade'=> uploadFile($request, 'trade_licence', 'trade', $userId),
-                'fileTaxCertificate'=> uploadFile($request, 'trade_licence', 'trade', $userId),
-                'fileImportCertificate'=> uploadFile($request, 'trade_licence', 'trade', $userId),
-                'fileVatRegistration'=> uploadFile($request, 'trade_licence', 'trade', $userId),
-                'fileMemberNID'=> uploadFile($request, 'trade_licence', 'trade', $userId),
-                'fileApplicantPhoto'=> uploadFile($request, 'trade_licence', 'trade', $userId),
-                'fileNomineeNID'=> uploadFile($request, 'trade_licence', 'trade', $userId),
-                'fileNomineePhoto'=> uploadFile($request, 'trade_licence', 'trade', $userId),
-                'fileVisitingCard'=> uploadFile($request, 'trade_licence', 'trade', $userId),
-                'fileIncorporationCertificate'=> uploadFile($request, 'trade_licence', 'trade', $userId),
-                'filePartnershipDeed'=> uploadFile($request, 'trade_licence', 'trade', $userId),
-                'fileIndentingLicense'=> uploadFile($request, 'trade_licence', 'trade', $userId),
+                'fileNomineePhoto'=> uploadFile($request, 'fileNomineePhoto', 'NomineePhoto', $userId),
+                'fileNomineeSignature'=> uploadFile($request, 'fileNomineeSignature', 'NomineeSignature', $userId),
+                'fileApplicantSignature'=> uploadFile($request, 'fileApplicantSignature', 'ApplicantSignature', $userId),
+
+                'fileEducationCertificate'=> uploadFile($request, 'fileEducationCertificate', 'EducationCertificate', $userId),
+                'fileTradeLicense'=> uploadFile($request, 'fileTradeLicense', 'TradeLicense', $userId),
+                'fileTaxCertificate'=> uploadFile($request, 'fileTaxCertificate', 'TaxCertificate', $userId),
+                'fileImportCertificate'=> uploadFile($request, 'fileImportCertificate', 'ImportCertificate', $userId),
+                'fileVatRegistration'=> uploadFile($request, 'fileVatRegistration', 'VatRegistration', $userId),
+                'fileMemberNID'=> uploadFile($request, 'fileMemberNID', 'MemberNID', $userId),
+                'fileApplicantPhoto'=> uploadFile($request, 'fileApplicantPhoto', 'ApplicantPhoto', $userId),
+                'fileNomineeNID'=> uploadFile($request, 'fileNomineeNID', 'NomineeNID', $userId),
+                'fileVisitingCard'=> uploadFile($request, 'fileVisitingCard', 'VisitingCard', $userId),
+                'fileIncorporationCertificate'=> uploadFile($request, 'fileIncorporationCertificate', 'IncorporationCertificate', $userId),
+                'filePartnershipDeed'=> uploadFile($request, 'filePartnershipDeed', 'PartnershipDeed', $userId),
+                'fileIndentingLicense'=> uploadFile($request, 'fileIndentingLicense', 'IndentingLicense', $userId),
 
                 'status' => 1,
                 'member_id' => $userId,
             ]);
             $infoDocument->save();
 
+
             // Log in the created user
             // Auth::login($user);
             // Send email verification
             // $user->sendEmailVerificationNotification();
-            
+
             // Commit the transaction if everything is successful
             DB::commit();
 
             // Return message
-            return response()->json(['user' => $user], 200);
+            // return response()->json(['user' => $user], 200);
+            return response()->json('success', 200);
         } catch (PostTooLargeException $e) {
             DB::rollback();
             \Log::error('Cash transaction error: ' . $e->getMessage());
@@ -284,8 +263,8 @@ class MemberController extends Controller
                 'message' => 'The uploaded file size exceeds the allowed limit.',
             ], 422);
         }
-        
     }
+
 
     /**
      * Show the form for editing the specified resource.

@@ -136,7 +136,7 @@
                     <p>Business Operation Address (Current/Mailing Address)</p><br>
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="" class="form-label">Name of the company : (As in Trade License)</label>
+                            <label for="" class="form-label">Name of the company (As in Trade License)</label>
                             <input type="text" name="contactCompanyName" class="form-control" value="">
                         </div>
                         <div class="col-md-6">
@@ -158,7 +158,7 @@
                     <div class="bar" data-label="E" data-title="Personal Information"></div>
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="" class="form-label">Name of the Member <br> [As in NID & Trade License (In Block Letter) ]</label>
+                            <label for="" class="form-label">Name of the Member (As in NID & Trade License)</label>
                             <input type="text" name="memebrName" class="form-control" value="">
                         </div>
                         <div class="col-md-6">
@@ -178,7 +178,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="" class="form-label">Date of Birth</label>
-                            <input type="text" name="memebrDOB" class="form-control" value="">
+                            <input type="date" name="memebrDOB" class="form-control" value="">
                         </div>
                         <div class="col-md-6">
                             <label for="" class="form-label">Mothers Name (As in NID) </label>
@@ -223,8 +223,12 @@
                     <div class="bar" data-label="F" data-title="Educations Qualification"></div>
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="" class="form-label">According to the last Academic Certificate </label>
-                            <input type="text" name="qualificationCertificate" class="form-control" value="">
+                            <label for="" class="form-label">According to the last Academic Certificate Name</label>
+                            <input type="text" name="qualificationName" class="form-control" value="">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="" class="form-label">According to the last Academic Certificate File</label>
+                            <input type="file" name="fileEducationCertificate" class="form-control" value="">
                         </div>
                     </div>
 
@@ -287,7 +291,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="" class="form-label">Total Amount In BDT </label>
-                            <input type="text" name="totalAmount" class="form-control" value="">
+                            <input type="number" name="totalAmount" class="form-control" value="">
                         </div>
                         <div class="col-md-6">
                             <label for="" class="form-label">Payment Date </label>
@@ -356,7 +360,7 @@
                     <div class="row mb-2">
                         <label for="" class="form-label col-md-4">হালনাগাদ ট্রেড লাইসেন্স এর ফটোকপি</label>
                         <div class="col-md-8">
-                            <input type="file" name="fileTrade" class="form-control" value="">
+                            <input type="file" name="fileTradeLicense" class="form-control" value="">
                         </div>
                     </div>
                     <div class="row mb-2">
@@ -384,7 +388,7 @@
                         </div>
                     </div>
                     <div class="row mb-2">
-                        <label for="" class="form-label col-md-4">আবেদনকারীর পাসপোর্ট সাইজের ০৩ (তিন) কপি ছবি</label>
+                        <label for="" class="form-label col-md-4">আবেদনকারীর পাসপোর্ট সাইজের ছবি</label>
                         <div class="col-md-8">
                             <input type="file" name="fileApplicantPhoto" class="form-control" value="">
                         </div>
@@ -396,7 +400,7 @@
                         </div>
                     </div>
                     <div class="row mb-2">
-                        <label for="" class="form-label col-md-4">মনোনিত নমিনি এর পাসপোর্ট সাইজের ০২ (দুই) কপি ছবি</label>
+                        <label for="" class="form-label col-md-4">মনোনিত নমিনি এর পাসপোর্ট সাইজের ছবি</label>
                         <div class="col-md-8">
                             <input type="file" name="fileNomineePhoto" class="form-control" value="">
                         </div>
@@ -579,9 +583,10 @@
                                 text: 'Data saved successfully.',
                             }).then((result) => {
                                 // Redirect to the registration payment page
-                                if (result.isConfirmed) {
-                                    window.location.href = '{{ route("registation-payment.create") }}';
-                                }
+                                // if (result.isConfirmed) {
+                                //     // window.location.href = '{{ route("registation-payment.create") }}';
+                                //     window.location.href = '{{ route("/") }}';
+                                // }
                             });
                         },
                         error: function(xhr) {

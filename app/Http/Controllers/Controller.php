@@ -16,7 +16,6 @@ class Controller extends BaseController
 
     protected $message;
     protected $memberType;
-    protected $committeeType;
     
     public function __construct()
     {
@@ -29,9 +28,6 @@ class Controller extends BaseController
             // Retrieve Member types
             $this->memberType = MemberType::get();
             view()->share('memberType', $this->memberType);
-            // Retrieve Committee types
-            $this->committeeType = CommitteeType::get(); // Fixed assignment
-            view()->share('committeeType', $this->committeeType);
             
             return $next($request);
         });

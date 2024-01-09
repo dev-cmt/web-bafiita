@@ -44,75 +44,41 @@ class ImportSeeder extends Seeder
             'user_id'=>'1',
         ]);
         /**___________________________________________________
-         * Committee Type
-         * ___________________________________________________
-         */
-        CommitteeType::create([
-            'name'=>'Present Committee ',
-            'description'=>'TEST DR - 1',
-            'status'=>'1',
-            'user_id'=>'1',
-        ]);
-        CommitteeType::create([
-            'name'=>'Past Committee',
-            'description'=>'TEST DR - 2',
-            'status'=>'1',
-            'user_id'=>'1',
-        ]);
-        /**___________________________________________________
          * Qualification
          * ___________________________________________________
          */
         MastQualification::create([
-            'name'=>'BSc in Architecture',
+            'name'=>'Secondary School Certificate (SSC)',
             'description' => 'Admin Input',
             'status' => 1,
             'user_id' => 1,
         ]);
         MastQualification::create([
-            'name'=>'Masters in any Discipline',
+            'name'=>'Higher Secondary Certificate (HSC)',
             'description' => 'Admin Input',
             'status' => 1,
             'user_id' => 1,
         ]);
         MastQualification::create([
-            'name'=>'BSc in Civil Engineering',
+            'name'=>'Diploma in Engineering',
             'description' => 'Admin Input',
             'status' => 1,
             'user_id' => 1,
         ]);
         MastQualification::create([
-            'name'=>'BSc in Interior Architecture',
+            'name'=>'Bachelor Degree Certificate',
             'description' => 'Admin Input',
             'status' => 1,
             'user_id' => 1,
         ]);
         MastQualification::create([
-            'name'=>'Graduation in Any Discipline',
+            'name'=>'Master Degree Certificate',
             'description' => 'Admin Input',
             'status' => 1,
             'user_id' => 1,
         ]);
         MastQualification::create([
-            'name'=>'Diploma in Civil Engineering',
-            'description' => 'Admin Input',
-            'status' => 1,
-            'user_id' => 1,
-        ]);
-        MastQualification::create([
-            'name'=>'Diploma in Architecture',
-            'description' => 'Admin Input',
-            'status' => 1,
-            'user_id' => 1,
-        ]);
-        MastQualification::create([
-            'name'=>'Diploma in Interior Design',
-            'description' => 'Admin Input',
-            'status' => 1,
-            'user_id' => 1,
-        ]);
-        MastQualification::create([
-            'name'=>'Bachelor in fine arts',
+            'name'=>'Doctor of Philosophy (Ph.D.) Certificate',
             'description' => 'Admin Input',
             'status' => 1,
             'user_id' => 1,

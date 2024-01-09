@@ -15,14 +15,22 @@ return new class extends Migration
     {
         Schema::create('info_documents', function (Blueprint $table) {
             $table->id();
-            $table->string('trade_licence')->nullable();
-            $table->string('tin_certificate')->nullable();
-            $table->string('nid_photo_copy')->nullable();
-            $table->string('passport_photo')->nullable();
-            $table->string('edu_certificate')->nullable();
-            $table->string('experience_certificate')->nullable();
-            $table->string('stu_id_copy')->nullable();
-            $table->string('recoment_letter')->nullable();
+            $table->string('fileNomineePhoto')->nullable();
+            $table->string('fileNomineeSignature')->nullable();
+            $table->string('fileApplicantSignature')->nullable();
+            
+            $table->string('fileEducationCertificate')->nullable();
+            $table->string('fileTradeLicense')->nullable();
+            $table->string('fileTaxCertificate')->nullable();
+            $table->string('fileImportCertificate')->nullable();
+            $table->string('fileVatRegistration')->nullable();
+            $table->string('fileMemberNID')->nullable();
+            $table->string('fileApplicantPhoto')->nullable();
+            $table->string('fileNomineeNID')->nullable();
+            $table->string('fileVisitingCard')->nullable();
+            $table->string('fileIncorporationCertificate')->nullable();
+            $table->string('filePartnershipDeed')->nullable();
+            $table->string('fileIndentingLicense')->nullable();
             
             $table->tinyInteger('status')->default(false);
             $table->unsignedBigInteger('member_id');

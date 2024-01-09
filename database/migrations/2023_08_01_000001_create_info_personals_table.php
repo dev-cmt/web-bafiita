@@ -15,23 +15,40 @@ return new class extends Migration
     {
         Schema::create('info_personals', function (Blueprint $table) {
             $table->id();
-            $table->string('contact_number')->nullable();
-            $table->string('nid_no')->nullable();
-            $table->date('dob')->nullable();
-            $table->string('father_name')->nullable();
-            $table->string('mother_name')->nullable();
-            $table->text('present_address')->nullable();
-            $table->text('parmanent_address')->nullable();
-            $table->integer('gender')->default(false);
-            $table->integer('blood_group')->nullable();
-            $table->integer('marrital_status')->nullable();
-            $table->string('spouse')->nullable();
-            $table->date('spouse_dob')->nullable();
-            $table->integer('number_child')->nullable();
-
-            $table->integer('em_name')->nullable();
-            $table->integer('em_phone')->nullable();
-            $table->integer('em_rleation')->nullable();
+            $table->string('memebrName')->nullable();
+            $table->integer('memebrDesignation')->nullable();
+            $table->string('memebrNID')->nullable();
+            $table->date('memebrDOB')->nullable();
+            $table->string('memebrMotherName')->nullable();
+            $table->string('memebrLifePartner')->nullable();
+            $table->integer('memebrGender')->nullable();
+            $table->integer('memebrBloodGroup')->nullable();
+            $table->string('memberPhoneNo')->nullable();
+            $table->string('memberEmail')->nullable();
+            
+            $table->string('qualificationName')->nullable();
+            
+            $table->string('nomineeName')->nullable();
+            $table->string('nomineeNID')->nullable();
+            $table->string('nomineeFather')->nullable();
+            $table->string('nomineeMother')->nullable();
+            $table->string('nomineeRelation')->nullable();
+            $table->string('nomineeDesignation')->nullable();
+            
+            $table->string('bankBranceName')->nullable();
+            $table->string('modePayment')->nullable();
+            $table->decimal('totalAmount', 10, 2)->nullable();
+            $table->date('paymentDate')->nullable();
+            $table->string('moneyReceiptNo')->nullable();
+            
+            $table->string('kOneCompanyName')->nullable();
+            $table->string('kOneMemberName')->nullable();
+            $table->tinyInteger('kOneMembershipNo')->nullable();
+            
+            $table->string('kTwoCompanyName')->nullable();
+            $table->string('kTwoMemberName')->nullable();
+            $table->tinyInteger('kTwoMembershipNo')->nullable();
+            $table->text('description')->nullable();
 
             $table->tinyInteger('status')->default(false);
             $table->unsignedBigInteger('member_id');

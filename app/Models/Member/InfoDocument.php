@@ -9,14 +9,23 @@ class InfoDocument extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'trade_licence',
-        'tin_certificate',
-        'nid_photo_copy',
-        'passport_photo',
-        'edu_certificate',
-        'experience_certificate',
-        'stu_id_copy',
-        'recoment_letter',
+        'fileNomineePhoto',
+        'fileNomineeSignature',
+        'fileApplicantSignature',
+        
+        'fileEducationCertificate',
+        'fileTradeLicense',
+        'fileTaxCertificate',
+        'fileImportCertificate',
+        'fileVatRegistration',
+        'fileMemberNID',
+        'fileApplicantPhoto',
+        'fileNomineeNID',
+        'fileVisitingCard',
+        'fileIncorporationCertificate',
+        'filePartnershipDeed',
+        'fileIndentingLicense',
+
         'status',
         'member_id',
     ];

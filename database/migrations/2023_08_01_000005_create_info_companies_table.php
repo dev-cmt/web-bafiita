@@ -15,15 +15,30 @@ return new class extends Migration
     {
         Schema::create('info_companies', function (Blueprint $table) {
             $table->id();
-            $table->string('company_name')->nullable();
-            $table->string('company_email')->nullable();
-            $table->string('company_phone')->nullable();
-            $table->string('designation')->nullable();
-            $table->string('address')->nullable();
-            $table->string('web_url')->nullable();
+            $table->string('companyName')->nullable();
+            $table->string('addressOrganization')->nullable();
+            $table->integer('typeOwnership')->nullable();
+            $table->integer('typeBusiness')->nullable();
+            
+            $table->string('tradeLicenseNo')->nullable();
+            $table->date('tradeLicenseDate')->nullable();
+            $table->string('eTinNo')->nullable();
+            $table->date('eTinDate')->nullable();
+            $table->string('vatRegistrationNo')->nullable();
+            $table->date('vatRegistrationDate')->nullable();
+            $table->string('ircCertificateNo')->nullable();
+            $table->date('ircCertificateDate')->nullable();
+            $table->string('rjscIncorporationNo')->nullable();
+            $table->date('rjscIncorporationDate')->nullable();
+            
+            $table->integer('poultryDairyFisheries')->nullable();
+            $table->string('tradingBrandOthers')->nullable();
+            
+            $table->string('contactCompanyName')->nullable();
+            $table->string('contactCompanyAddress')->nullable();
+            $table->string('contactCompanyNumber')->nullable();
+            $table->string('contactCompanyEmail')->nullable();
 
-            $table->tinyInteger('is_job')->default(false);
-            $table->tinyInteger('is_business')->default(false);
             $table->tinyInteger('status')->default(false);
             $table->unsignedBigInteger('member_id');
             $table->foreign('member_id')->references('id')->on('users')->onDelete('cascade');

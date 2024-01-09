@@ -10,22 +10,41 @@ class InfoPersonal extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'contact_number',
-        'nid_no',
-        'dob',
-        'father_name',
-        'mother_name',
-        'present_address',
-        'parmanent_address',
-        'gender',
-        'blood_group',
-        'marrital_status',
-        'spouse',
-        'spouse_dob',
-        'number_child',
-        'em_name',
-        'em_phone',
-        'em_rleation',
+        'memebrName',
+        'memebrDesignation',
+        'memebrNID',
+        'memebrDOB',
+        'memebrMotherName',
+        'memebrLifePartner',
+        'memebrGender',
+        'memebrBloodGroup',
+        'memberPhoneNo',
+        'memberEmail',
+
+        'qualificationName',
+        
+        'nomineeName',
+        'nomineeNID',
+        'nomineeFather',
+        'nomineeMother',
+        'nomineeRelation',
+        'nomineeDesignation',
+        
+        'bankBranceName',
+        'modePayment',
+        'totalAmount',
+        'paymentDate',
+        'moneyReceiptNo',
+        
+        'kOneCompanyName',
+        'kOneMemberName',
+        'kOneMembershipNo',
+
+        'kTwoCompanyName',
+        'kTwoMemberName',
+        'kTwoMembershipNo',
+        
+        'description',
         'status',
         'member_id',
     ];

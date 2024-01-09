@@ -12,15 +12,9 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
 use App\Models\Member\InfoPersonal;
-use App\Models\Member\InfoChildDetails;
-use App\Models\Member\InfoAcademic;
 use App\Models\Member\InfoCompany;
-use App\Models\Member\InfoStudent;
 use App\Models\Member\InfoOther;
 use App\Models\Member\InfoDocument;
-use App\Models\Master\MemberType;
-use App\Models\Master\CommitteeType;
-use App\Models\Payment\PaymentDetails;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -43,7 +37,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'profile_photo_path',
         'member_type_id',
-        'committee_type_id',
         'status',
         'is_admin',
         'approve_by',
@@ -54,10 +47,6 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo(MemberType::class, 'member_type_id');
     }
-    public function committeeType()
-    {
-        return $this->belongsTo(CommitteeType::class, 'committee_type_id');
-    }
     public function parentUser()
     {
         return $this->belongsTo(User::class, 'approve_by');
@@ -66,21 +55,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(InfoPersonal::class, 'member_id');
     }
-    public function infoChildDetails()
-    {
-        return $this->hasOne(InfoChildDetails::class, 'member_id');
-    }
-    public function infoAcademic()
-    {
-        return $this->hasOne(InfoAcademic::class, 'member_id');
-    }
     public function infoCompany()
     {
         return $this->hasOne(InfoCompany::class, 'member_id');
-    }
-    public function infoStudent()
-    {
-        return $this->hasOne(InfoStudent::class, 'member_id');
     }
     public function infoDocument()
     {
