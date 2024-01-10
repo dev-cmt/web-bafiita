@@ -83,6 +83,32 @@
                             <a href="#" id="applyMembershipBtn" class="btn">Apply Membership </a>
                         </div>
                     </div>
+                    {{-- @guest
+                        <a class="getstarted" href="{{Route('member_register.create')}}">Become A Member</a>
+                        <a class="getstarted-login" href="{{Route('login')}}">Login</a>
+                    @endguest
+                    @auth
+                    <li class="dropdown"><a href="#" class="getstarted scrollto"><span>{{Auth::user()->name}}</span><i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            @if (Auth::user()->is_admin == "1" && Auth::user()->status == "1")
+                                <li><a href="{{ Route('profile_show', auth()->user()->id )}}">Profile</a></li>
+                            @endif
+                            @if (Auth::user()->is_admin == "0" && Auth::user()->status == "0")
+                                <li><a href="{{ Route('registation-payment.create') }}">Payment Fee</a></li>
+                            @endif
+                            @if (Auth::user()->is_admin == "1" && Auth::user()->status == "0")
+                                <li><a href="{{ Route('member-approve.padding') }}">Waiting Approval</a></li>
+                            @endif
+                            
+                            <form method="POST" action="{{ Route('logout') }}">
+                                @csrf
+                                <li><a href="{{ Route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">Logout</a></li>
+                            </form>
+                        </ul>
+                    </li>
+                    @endauth --}}
+
+
                 </div>
             </div>
         </div>

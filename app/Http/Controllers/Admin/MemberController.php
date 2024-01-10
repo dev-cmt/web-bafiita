@@ -121,6 +121,19 @@ class MemberController extends Controller
             //         'is_admin' => 0,
             //     ]);
             // }
+            /*_____________________ MEMBER ID GENERATE ___________________*/
+            $memberCode = "generate_member_code_here";
+            $user = User::create([
+                'name' => $request->memebrName,
+                'email' => $request->memberEmail,
+                'password' => bcrypt('12345678'),
+                'member_code' => $memberCode,
+                'profile_photo_path' => 'blank.jpg',
+                'email_verified_at' => '2024-01-01',
+                'member_type_id' => 1,
+                'status' => 0,
+                'is_admin' => 1,
+            ]);
 
             $userId = 1;
             /*__________________/ InfoPersonal \_________________*/

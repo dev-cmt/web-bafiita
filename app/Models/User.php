@@ -73,6 +73,16 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Set email_verified_at field when creating a new user
+        static::creating(function ($user) {
+            $user->email_verified_at = now();
+        });
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
