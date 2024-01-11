@@ -13,6 +13,7 @@ class InfoDocument extends Model
         'fileNomineeSignature',
         'fileApplicantSignature',
         
+        'fileCompanyLogo',
         'fileEducationCertificate',
         'fileTradeLicense',
         'fileTaxCertificate',

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('fileNomineeSignature')->nullable();
             $table->string('fileApplicantSignature')->nullable();
             
+            $table->string('fileCompanyLogo')->nullable();
             $table->string('fileEducationCertificate')->nullable();
             $table->string('fileTradeLicense')->nullable();
             $table->string('fileTaxCertificate')->nullable();

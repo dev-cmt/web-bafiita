@@ -18,7 +18,6 @@
                                     <th>User Name</th>
                                     <th>Role</th>
                                     <th>Member Type</th>
-                                    <th>Committee Type</th>
                                     <th>Created</th>
                                     <th>Status</th>
                                     <th class="text-right pr-4">Action</th>
@@ -36,7 +35,6 @@
                                         @endforeach
                                     </td>
                                     <td>{{ $user->memberType->name ?? 'Null'}}</td>
-                                    <td>{{ $user->CommitteeType->name ?? 'Null'}}</td>
                                     <td>
                                         {{ $user->created_at->diffForHumans() }}
                                     </td>

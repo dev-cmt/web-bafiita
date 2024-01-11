@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Admin\Contact;
 use App\Models\Master\MemberType;
-use App\Models\Master\CommitteeType;
 
 class UserController extends Controller
 {
@@ -32,9 +31,6 @@ class UserController extends Controller
             // Retrieve Member types
             $this->memberType = MemberType::get();
             view()->share('memberType', $this->memberType);
-            // Retrieve Committee types
-            $this->committeeType = CommitteeType::get(); // Fixed assignment
-            view()->share('committeeType', $this->committeeType);
             
             return $next($request);
         });

@@ -15,6 +15,8 @@ use App\Models\Member\InfoPersonal;
 use App\Models\Member\InfoCompany;
 use App\Models\Member\InfoOther;
 use App\Models\Member\InfoDocument;
+use App\Models\Master\MemberType;
+use App\Models\Payment\PaymentDetails;
 
 class User extends Authenticatable implements MustVerifyEmail
 {

@@ -35,12 +35,6 @@ return new class extends Migration
             $table->string('nomineeRelation')->nullable();
             $table->string('nomineeDesignation')->nullable();
             
-            $table->string('bankBranceName')->nullable();
-            $table->string('modePayment')->nullable();
-            $table->decimal('totalAmount', 10, 2)->nullable();
-            $table->date('paymentDate')->nullable();
-            $table->string('moneyReceiptNo')->nullable();
-            
             $table->string('kOneCompanyName')->nullable();
             $table->string('kOneMemberName')->nullable();
             $table->tinyInteger('kOneMembershipNo')->nullable();

@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
 use App\Models\Member\InfoPersonal;
-use App\Models\Member\InfoAcademic;
 use App\Models\Member\InfoCompany;
-use App\Models\Member\InfoStudent;
 use App\Models\Member\InfoDocument;
+use App\Models\Member\InfoBank;
 use App\Models\Member\InfoOther;
 use App\Models\Master\MastQualification;
 use App\Models\Master\MemberType;
+use App\Models\Payment\Transaction;
 use App\Models\Payment\PaymentDetails;
 use App\Models\User;
 use App\Helpers\Helper;
@@ -122,15 +122,14 @@ class MemberController extends Controller
             //     ]);
             // }
             /*_____________________ MEMBER ID GENERATE ___________________*/
-            $memberCode = "generate_member_code_here";
             $user = User::create([
                 'name' => $request->memebrName,
                 'email' => $request->memberEmail,
                 'password' => bcrypt('12345678'),
-                'member_code' => $memberCode,
+                'member_code' => $request->member_code,
                 'profile_photo_path' => 'blank.jpg',
                 'email_verified_at' => '2024-01-01',
-                'member_type_id' => 1,
+                'member_type_id' => $request->member_type_id,
                 'status' => 0,
                 'is_admin' => 1,
             ]);
@@ -157,12 +156,6 @@ class MemberController extends Controller
                 'nomineeMother'=> $request->nomineeMother,
                 'nomineeRelation'=> $request->nomineeRelation,
                 'nomineeDesignation'=> $request->nomineeDesignation,
-                
-                'bankBranceName'=> $request->bankBranceName,
-                'modePayment'=> $request->modePayment,
-                'totalAmount'=> $request->totalAmount,
-                'paymentDate'=> $request->paymentDate,
-                'moneyReceiptNo'=> $request->moneyReceiptNo,
                 
                 'kOneCompanyName'=> $request->kOneCompanyName,
                 'kOneMemberName'=> $request->kOneMemberName,
@@ -238,6 +231,7 @@ class MemberController extends Controller
                 'fileNomineeSignature'=> uploadFile($request, 'fileNomineeSignature', 'NomineeSignature', $userId),
                 'fileApplicantSignature'=> uploadFile($request, 'fileApplicantSignature', 'ApplicantSignature', $userId),
 
+                'fileCompanyLogo'=> uploadFile($request, 'fileCompanyLogo', 'CompanyLogo', $userId),
                 'fileEducationCertificate'=> uploadFile($request, 'fileEducationCertificate', 'EducationCertificate', $userId),
                 'fileTradeLicense'=> uploadFile($request, 'fileTradeLicense', 'TradeLicense', $userId),
                 'fileTaxCertificate'=> uploadFile($request, 'fileTaxCertificate', 'TaxCertificate', $userId),
@@ -255,6 +249,45 @@ class MemberController extends Controller
                 'member_id' => $userId,
             ]);
             $infoDocument->save();
+
+            /*______________________/ Transaction Bank \___________________*/
+            $infoBank = new InfoBank([
+                'bankBranceName'=> $request->bankBranceName,
+                'modePayment'=> $request->modePayment,
+                'totalAmount'=> $request->totalAmount,
+                'paymentDate'=> $request->paymentDate,
+                'moneyReceiptNo'=> $request->moneyReceiptNo,
+                'slip'=> uploadFile($request, 'fileSlip', 'bank-info', Auth::user()->id),
+
+                'status' => 0,
+                'member_id' => $userId,
+            ]);
+            $infoOther->save();
+
+            $transaction = new Transaction();
+            $transaction->amount = $request->totalAmount;
+            $transaction->transaction_type = 1; // 'Deposit => 1', 'Withdraw => 2', 'Purchase => 3'
+            $transaction->transaction_id = null; // Payment gateway's transaction ID
+            $transaction->payment_method_id = 1; //1 => Bank
+            $transaction->status = 1;
+            $transaction->user_id = $userId;
+            $transaction->save();
+
+            $paymentDetails = new PaymentDetails();
+            $paymentDetails->payment_date = now()->format('Y-m-d');
+            $paymentDetails->paid_amount = $request->totalAmount;
+            $paymentDetails->payment_number = null; // (bKash number, Rocket number, Card last 4 digits)
+            $paymentDetails->transaction_number = null; // (payment gateway's transaction number) Like: 5sesCfe
+            $paymentDetails->transaction_id = $transaction->id;
+            $paymentDetails->payment_reason_id = 1; // Register => 1, Event => 2, Annual Fees =>3
+            $paymentDetails->ref_reason_id = null; // Register->null, Event->id
+            $paymentDetails->transfer_number = $request->moneyReceiptNo;
+            $paymentDetails->slip = $infoBank->slip;
+            $paymentDetails->message = null;
+            $paymentDetails->payment_method_id = 1; //1 => Bank
+            $paymentDetails->status = 1;
+            $paymentDetails->member_id = $userId;
+            $paymentDetails->save();
 
 
             // Log in the created user

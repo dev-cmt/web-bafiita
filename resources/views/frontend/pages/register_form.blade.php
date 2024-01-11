@@ -33,6 +33,18 @@
                     <div class="bar" data-label="A" data-title="Business Information"></div>
                     <div class="row">
                         <div class="col-md-6">
+                            <label for="" class="form-label">Member Code</label>
+                            <input type="text" name="member_code" class="form-control" value="">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="" class="form-label">Member Type</label>
+                            <select name="member_type_id" id="" class="form-select">
+                                <option value="" selected>Select</option>
+                                <option value="1">Donor</option>
+                                <option value="2">General</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
                             <label for="" class="form-label">Name of the company</label>
                             <input type="text" name="companyName" class="form-control" value="">
                         </div>
@@ -286,11 +298,7 @@
                             <input type="text" name="bankBranceName" class="form-control" value="">
                         </div>
                         <div class="col-md-6">
-                            <label for="" class="form-label">Mode of Payment </label>
-                            <input type="text" name="modePayment" class="form-control" value="">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="" class="form-label">Total Amount In BDT </label>
+                            <label for="" class="form-label">Total Amount (BDT) </label>
                             <input type="number" name="totalAmount" class="form-control" value="">
                         </div>
                         <div class="col-md-6">
@@ -298,8 +306,16 @@
                             <input type="date" name="paymentDate" class="form-control" value="">
                         </div>
                         <div class="col-md-6">
+                            <label for="" class="form-label">Mode of Payment </label>
+                            <input type="text" name="modePayment" class="form-control" value="Bank" disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="" class="form-label">Add Payment Slip</label>
+                            <input type="file" name="fileSlip" class="form-control" value="">
+                        </div>
+                        <div class="col-md-6">
                             <label for="" class="form-label">Money Receipt No </label>
-                            <input type="text" name="moneyReceiptNo" class="form-control" value="">
+                            <input type="text" name="moneyReceiptNo" class="form-control" value="Print Using Provite" disabled>
                         </div>
                     </div>
 
@@ -357,6 +373,12 @@
 
                     <!-- Document Candidate Section -->
                     <div class="bar_document"></div>
+                    <div class="row mb-2">
+                        <label for="" class="form-label col-md-4">কোম্পানী প্রতীক</label>
+                        <div class="col-md-8">
+                            <input type="file" name="fileCompanyLogo" class="form-control" value="">
+                        </div>
+                    </div>
                     <div class="row mb-2">
                         <label for="" class="form-label col-md-4">হালনাগাদ ট্রেড লাইসেন্স এর ফটোকপি</label>
                         <div class="col-md-8">
