@@ -2,14 +2,22 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-					<a href="{{url('/')}}" class="brand-logo">
-					<span class="logo-abbr" width="80" height="25">
-							<img src="{{asset('public/backend')}}/images/favicon.png" width="50" height="25" alt="">
-					</span>
-          			<span class="brand-title ml-4" width="120" height="35">
-						{{-- <h2>con</h2> --}}
-						<img src="{{asset('public/backend')}}/images/logo_name.png" width="120" height="35" alt="">
-					</span>
+			{{-- <a href="{{url('/')}}" class="brand-logo">
+				<span class="logo-abbr" width="80" height="25">
+						<img src="{{asset('public/backend')}}/images/favicon.png" width="50" height="25" alt="">
+				</span>
+				<span class="brand-title ml-4" width="120" height="35">
+					<!-- <h2>con</h2> -->
+					<img src="{{asset('public/backend')}}/images/logo_name.png" width="120" height="35" alt="">
+				</span>
+            </a> --}}
+			<a href="{{url('/')}}" class="brand-logo">
+                <span class="logo-abbr" width="50" height="50">
+					<h2 style="font-size: 32px">B</h2>
+				</span>
+                <span class="brand-title" width="74" height="22">
+					<h2 style="font-size: 32px">AFIITA</h2>
+				</span>
             </a>
 
             {{-- <a href="index.html" class="brand-logo">
@@ -694,22 +702,22 @@
                         </ul>
                     </div>
                 </nav>
-				<div class="sub-header">
+				{{-- <div class="sub-header">
 					<div class="d-flex align-items-center flex-wrap mr-auto">
 						<h5 class="dashboard_bar">Dashboard</h5>
 					</div>
-					{{-- <div class="d-flex align-items-center">
+					<div class="d-flex align-items-center">
 						<a href="javascript:void(0);" class="btn btn-xs btn-primary light mr-1">Today</a>
 						<a href="javascript:void(0);" class="btn btn-xs btn-primary light mr-1">Month</a>
 						<a href="javascript:void(0);" class="btn btn-xs btn-primary light">Year</a>
-					</div> --}}
+					</div>
 				</div>
                 <!--Border Style-->
                 <div style="display:flex;margin-top: 0px;">
                     <div style="width:33%;border-bottom:4px solid #000000;"></div>
                     <div style="width:34%;border-bottom:4px solid #f04e23;"></div>
                     <div style="width:33%;border-bottom:4px solid #0072bc;"></div>
-                </div><!--End-->
+                </div><!--End--> --}}
 			</div>
         </div>
 

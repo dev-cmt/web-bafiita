@@ -144,7 +144,7 @@
                                     <td><strong>Number: </strong>{{$row->payment_number}} <br> <strong>Method: </strong>{{$row->paymentMethod->name}}</td>
                                     <td><strong>Date: </strong>{{date("j F, Y", strtotime($row->payment_date))}}<br> <strong>Amount: </strong>{{$row->paid_amount}}</td>
                                     <td>
-                                        <a href="{{route('profile_show', $row->approveBy->id)}}" class="btn btn-sm btn-secondary p-1 px-2">{{$row->approveBy->name ?? 'null'}}</i></a>
+                                        <a href="{{route('profile_show', $row->approveBy->id ?? '1')}}" class="btn btn-sm btn-secondary p-1 px-2">{{$row->approveBy->name ?? 'null'}}</i></a>
                                     </td>
                                     <td>@if($row->status == 1)
                                         <span class="badge light badge-success">

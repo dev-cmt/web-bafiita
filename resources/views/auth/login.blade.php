@@ -1,13 +1,13 @@
 <x-guest-layout>
 
-    <div class="content-wrapper py-4" style="background-image: url('{{asset('public/images')}}/pages/registation-bg.avif'); background-attachment: fixed;">
-        <!-- STAR ANIMATION -->
+    <div class="content-wrapper py-4" style="background-image: url('{{asset('public/images')}}/pages/registation-bg.jpg'); background-attachment: fixed;">
+        {{-- <!-- STAR ANIMATION -->
         <div class="bg-animation">
             <div id='stars'></div>
             <div id='stars2'></div>
             <div id='stars3'></div>
             <div id='stars4'></div>
-        </div><!-- / STAR ANIMATION -->
+        </div><!-- / STAR ANIMATION --> --}}
         <div class="login-form">
             <div class="logo">
                 <a href="{{route('/')}}"><img src="{{asset('public/images')}}/logo.png" alt=""></a>
@@ -15,7 +15,7 @@
             
             <div class="header">
                 <h1>Member Login</h1>
-                <div class="bar"></div>
+                <div class="bar" data-label="Welcome Login Page" data-title=""></div>
             </div>
         
             <!-- Validation Errors -->

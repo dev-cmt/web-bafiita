@@ -33,16 +33,16 @@
                     <div class="bar" data-label="A" data-title="Business Information"></div>
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="" class="form-label">Member Code</label>
-                            <input type="text" name="member_code" class="form-control" value="">
-                        </div>
-                        <div class="col-md-6">
                             <label for="" class="form-label">Member Type</label>
                             <select name="member_type_id" id="" class="form-select">
                                 <option value="" selected>Select</option>
                                 <option value="1">Donor</option>
                                 <option value="2">General</option>
                             </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="" class="form-label">Member Code</label>
+                            <input type="text" name="member_code" class="form-control" value="" disabled>
                         </div>
                         <div class="col-md-6">
                             <label for="" class="form-label">Name of the company</label>
@@ -176,12 +176,13 @@
                         <div class="col-md-6">
                             <label for="" class="form-label">Designation</label>
                             <select name="memebrDesignation" id="" class="form-select">
+                                <option value="" selected>Select</option>
                                 <option value="1">Proprietor</option>
-                                <option value="1">Managing Director</option>
-                                <option value="1">Chairman</option>
-                                <option value="1">CEO</option>
-                                <option value="1">Partner</option>
-                                <option value="1">Director</option>
+                                <option value="2">Managing Director</option>
+                                <option value="3">Chairman</option>
+                                <option value="4">CEO</option>
+                                <option value="5">Partner</option>
+                                <option value="6">Director</option>
                             </select>
                         </div>
                         <div class="col-md-6">
@@ -204,7 +205,7 @@
                             <label for="" class="form-label">Gender </label>
                             <select name="memebrGender" id="" class="form-select">
                                 <option value="1">Male</option>
-                                <option value="1">Female</option>
+                                <option value="2">Female</option>
                             </select>
                         </div>
                         <div class="col-md-6">

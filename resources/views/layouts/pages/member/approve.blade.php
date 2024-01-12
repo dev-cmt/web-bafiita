@@ -16,7 +16,9 @@
                                 <th>Information</th>
                                 <th>Contact Info.</th>
                                 <th>Documents</th>
-                                <th>Status</th>
+                                <th>View Info.</th>
+                                <th>Transaction</th>
+                                <th>Member Code</th>
                                 <th class="text-right">Action</th>
                             </tr>
                             </thead>
@@ -30,8 +32,7 @@
                                         <strong>Type: </strong>{{ $row->memberType->name ?? 'null' }}
                                     </td>
                                     <td>
-                                        <strong>Email: </strong><a href="mailto:{{ $row->email }}">{{ $row->email }}</a> <br>
-                                        <strong>Number: </strong>{{ $row->infoPersonal->contact_number ?? 'null' }}<br>
+                                        <strong>Email: </strong><a href="mailto:{{ $row->email }}">{{ $row->email }}</a>
                                     </td>
                                     <td>
                                         <a href="{{ route('member-document.downloadZipFile', $row->id) }}" target="_blank" class="btn btn-sm btn-secondary p-1 px-2 m-1">
@@ -106,9 +107,12 @@
                                         @endif
                                     </td>
                                     <td>
+                                        <a href="{{ route('profile_show', $row->id) }}" class="btn btn-info shadow btn-xs sharp mr-1"><i class="flaticon-381-view"></i></a>
+                                    </td>
+                                    <td>
                                         <a href="{{ route('transaction-registation-approve.index') }}">
-                                            @if ($row->paymentDetails->status == 1)
-                                                <span class="badge light badge-success">
+                                            @if ($row->paymentDetails && $row->paymentDetails->status == 1)
+                                            <span class="badge light badge-success">
                                                     <i class="fa fa-circle text-success mr-1"></i> Payment
                                                 </span>
                                             @else
@@ -117,9 +121,10 @@
                                         </a>
                                     </td>
                                     @can('Member approved')
+                                    <form action="{{ route('member-approve.update', $row->id) }}" method="post">
+                                    <td><input type="text" name="member_code" placeholder="Type Membership No."></td>
                                     <td>
                                         <div class="d-flex justify-content-end align-items-center">
-                                            <form action="{{ route('member-approve.update', $row->id) }}" method="post">
                                                 <button class="btn btn-sm btn-info p-1 m-1">Approve</button>
                                                 @csrf
                                                 @method('PATCH')
@@ -134,7 +139,7 @@
                                     @endcan
                                 </tr>
                             @endforeach
-
+ 
                             </tbody>
                         </table>
                     </div>
@@ -159,7 +164,7 @@
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Phone Number</th>
+                                <th>Membership No.</th>
                                 <th>Member Type</th>
                                 <th>Approve By</th>
                                 <th class="text-right">Status</th>
@@ -171,7 +176,7 @@
                                     <td>{{ ++$key }}</td>
                                     <td>{{ $row->name }}</td>
                                     <td>{{ $row->email }}</td>
-                                    <td>{{ $row->infoPersonal->contact_number ?? 'null' }}</td>
+                                    <td>{{ $row->member_code ?? 'null' }}</td>
                                     <td>{{ $row->memberType->name ?? 'null' }}</td>
                                     <td>
                                         <button class="btn btn-sm btn-secondary p-1 px-2">{{ $row->parentUser->name ?? 'null' }}</button>

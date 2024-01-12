@@ -64,26 +64,27 @@ class MemberController extends Controller
     {
         DB::beginTransaction();
         try {
-            // //----Validation Check 
-            // $validator = Validator::make($request->all(), [
-            //     'name' => 'required',
-            //     'email' => 'required|unique:users,email|max:255',
-            //     'password' => 'required|confirmed|min:8',
-            //     'profile_photo_path' => 'required|mimes:jpg,png,jpeg,gif,svg|image',
+            //----Validation Check 
+            $validator = Validator::make($request->all(), [
+                'member_type_id' => 'required',
+                'memebrName' => 'required',
+                'memberEmail' => 'required|unique:users,email|max:255',
 
-            //     'edu_certificate' => 'required|max:10240',
-            // ], [
-            //     'profile_photo_path.required' => 'The Profile photo field is required.',
-            //     'profile_photo_path.mimes' => 'The :attribute must be a valid image file.',
-                
-            //     'trade_licence.max' => 'Trade licence must not be greater than 10MB.',
-            //     'edu_certificate.required' => 'The EDU. Certificate field is required.',
+                'fileCompanyLogo' => 'required|mimes:jpg,png,jpeg,gif,svg|image',
+                'fileEducationCertificate' => 'required|max:10240',
+            ], [
+                'member_type_id.required' => 'The Member Type is required.',
+                'fileCompanyLogo.required' => 'The Company Logo field is required.',
+                'fileEducationCertificate.required' => 'The Education Certificate field is required.',
+                'fileTradeLicense.required' => 'The Trade License field is required.',
+                // 'fileEducationCertificate.mimes' => 'The :attribute must be a valid image file.',
+                // 'fileTradeLicense.max' => 'Trade licence must not be greater than 10MB.',
 
-            // ]);
+            ]);
             
-            // if ($validator->fails()) {
-            //     return response()->json(['errors' => $validator->errors()], 422);
-            // }
+            if ($validator->fails()) {
+                return response()->json(['errors' => $validator->errors()], 422);
+            }
 
             // /*__________________/ USER CREATE \_________________*/
             // $user = null; 
@@ -134,7 +135,7 @@ class MemberController extends Controller
                 'is_admin' => 1,
             ]);
 
-            $userId = 1;
+            $userId = $user->id;
             /*__________________/ InfoPersonal \_________________*/
             $infoPersonal =new InfoPersonal([
                 'memebrName'=> $request->memebrName,
@@ -262,7 +263,7 @@ class MemberController extends Controller
                 'status' => 0,
                 'member_id' => $userId,
             ]);
-            $infoOther->save();
+            $infoBank->save();
 
             $transaction = new Transaction();
             $transaction->amount = $request->totalAmount;
@@ -346,15 +347,16 @@ class MemberController extends Controller
         $record = User::where('is_admin', 1)->whereIn('status', [1,2])->get();
         return view('layouts.pages.member.approve', compact('data','record'));
     }
-    public function approveUpdate($id){
+    public function approveUpdate(Request $request, $id){
         $user = User::findorfail($id);
         $user->status = 1;
+        $user->member_code = $request->member_code;
         $user->approve_by = Auth::user()->id;
         $user->save();
         $user->assignRole('Member');
         
         $mailData =[
-            'title' => 'Now Your Are Member Of IDAB',
+            'title' => 'Now Your Are Member Of BAFIITA',
             'body' => 'This Is body',
         ];
         Mail::to($user->email)->send(new MemberApproved($mailData));

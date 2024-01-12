@@ -84,63 +84,363 @@
 
                             <div class="tab-content">
                                 <div id="my-posts" class="tab-pane fade {{Session::has('messege') || Session::has('info_update') || $errors->any() ? '' : 'active show'}}">
-                                    <!--=====// Personal Information//=====-->
+                                    <!--=====//A Business Information//=====-->
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <h6 class="text-primary my-3">Personal Information</h6>
+                                            <h6 class="text-primary my-3">A Business Information</h6>
                                         </div>
-                                        <!--Item-->
-                                        {{-- <div class="col-xl-6 col-sm-12">
-                                            <div class="row mb-2">
-                                                <div class="col-sm-6 col-5">
-                                                    <h6 class="f-w-500">Name <span class="pull-right">:</span></h6>
-                                                </div>
-                                                <div class="col-sm-6 col-7"><span>{{$user->name }}</span></div>
-                                            </div>
-                                        </div> --}}
                                         <!--Item-->
                                         <div class="col-xl-6 col-sm-12">
                                             <div class="row mb-2">
                                                 <div class="col-sm-6 col-5">
-                                                    <h6 class="f-w-500">Email <span class="pull-right">:</span></h6>
+                                                    <h6 class="f-w-500">Member Type <span class="pull-right">:</span></h6>
                                                 </div>
-                                                <div class="col-sm-6 col-7"><span>{{ $user->email }}</span></div>
+                                                <div class="col-sm-6 col-7"><span>{{ $user->memberType->name ?? 'Null' }}</span></div>
                                             </div>
                                         </div>
                                         <!--Item-->
                                         <div class="col-xl-6 col-sm-12">
                                             <div class="row mb-2">
                                                 <div class="col-sm-6 col-5">
-                                                    <h6 class="f-w-500">Contact Number <span class="pull-right">:</span></h6>
+                                                    <h6 class="f-w-500">Member Code <span class="pull-right">:</span></h6>
                                                 </div>
-                                                <div class="col-sm-6 col-7"><span>{{ $infoPersonal->contact_number ?? "Null"}}</span></div>
+                                                <div class="col-sm-6 col-7"><span>{{ $user->member_code ?? 'Null' }}</span></div>
                                             </div>
                                         </div>
                                         <!--Item-->
-                                        {{-- <div class="col-xl-6 col-sm-12">
+                                        <div class="col-xl-6 col-sm-12">
                                             <div class="row mb-2">
                                                 <div class="col-sm-6 col-5">
-                                                    <h6 class="f-w-500">NID No.<span class="pull-right">:</span></h6>
+                                                    <h6 class="f-w-500">Name of the company <span class="pull-right">:</span></h6>
                                                 </div>
-                                                <div class="col-sm-6 col-7"><span>{{ $infoPersonal->nid_no ?? "Null"}}</span></div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoCompany->companyName ?? 'Null' }}</span></div>
                                             </div>
-                                        </div> --}}
+                                        </div>
                                         <!--Item-->
-                                        {{-- <div class="col-xl-6 col-sm-12">
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Address of Business Organization /Register <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoCompany->addressOrganization ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Type Of Ownership <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7">
+                                                    @if($infoCompany && isset($infoCompany->typeOwnership))
+                                                        @if($infoCompany->typeOwnership == 1)
+                                                            <span>Partnership</span>
+                                                        @elseif($infoCompany->typeOwnership == 2)
+                                                            <span>Partnership</span>
+                                                        @elseif($infoCompany->typeOwnership == 3)
+                                                            <span>Privet/Pudee Ltd.</span>
+                                                        @elseif($infoCompany->typeOwnership == 4)
+                                                            <span>Multinational</span>
+                                                        @elseif($infoCompany->typeOwnership == 5)
+                                                            <span>Others</span>
+                                                        @endif
+                                                    @else
+                                                        <span>Unknown Type Of Ownership</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Type Of Business <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7">
+                                                    @if($infoCompany && isset($infoCompany->typeBusiness))
+                                                        @if($infoCompany->typeBusiness == 1)
+                                                            <span>Import, Trading & Supply</span>
+                                                        @elseif($infoCompany->typeBusiness == 2)
+                                                            <span>Local Manufacturing</span>
+                                                        @elseif($infoCompany->typeBusiness == 3)
+                                                            <span>Trading</span>
+                                                        @elseif($infoCompany->typeBusiness == 4)
+                                                            <span>Others</span>
+                                                        @endif
+                                                    @else
+                                                        <span>Unknown Type Of Business</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <!--=====// B General Information//=====-->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h6 class="text-primary my-3"> B General Information</h6>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-6">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Trade License Number (if applicable) <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoCompany->tradeLicenseNo ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Issue Date <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoCompany->tradeLicenseDate ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-6">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">E- TIN (if applicable) Number <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoCompany->eTinNo ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Issue Date <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoCompany->eTinDate ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-6">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">VAT Registration Number <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoCompany->vatRegistrationNo ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Issue Date <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoCompany->vatRegistrationDate ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-6">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">IRC Import Registration Certificate Number <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoCompany->ircCertificateNo ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Issue Date <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoCompany->ircCertificateDate ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-6">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">RJSC Incorporation Number <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoCompany->rjscIncorporationNo ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Issue Date <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoCompany->rjscIncorporationDate ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <!--=====// C Trading Brand/Products & Service//=====-->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h6 class="text-primary my-3">C Trading Brand/Products & Service</h6>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Poultry, Dairy & Fisheries <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7">
+                                                    @if($infoCompany && isset($infoCompany->poultryDairyFisheries))
+                                                        @if($infoCompany->poultryDairyFisheries == 1)
+                                                            <span>Agro Feed Ingredients</span>
+                                                        @elseif($infoCompany->poultryDairyFisheries == 2)
+                                                            <span>Feed Supplement & Feed Additives</span>
+                                                        @endif
+                                                    @else
+                                                        <span>Unknown Poultry, Dairy & Fisheries</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Others ( if ) <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoCompany->tradingBrandOthers ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <!--=====//D Contact Information//=====-->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h6 class="text-primary my-3">D Contact Information</h6>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Name of the company (As in Trade License) <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoCompany->contactCompanyName ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Address <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoCompany->contactCompanyAddress ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Cell Number <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoCompany->contactCompanyNumber ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">E-Mail ID <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoCompany->contactCompanyEmail ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <!--=====//E Personal Information//=====-->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h6 class="text-primary my-3">E Personal Information</h6>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Name of the Member (As in NID & Trade License) <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoPersonal->memebrName ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Designation <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7">
+                                                    @if($infoPersonal && isset($infoPersonal->memebrDesignation))
+                                                        @if($infoPersonal->memebrDesignation == 1)
+                                                            <span>Proprietor</span>
+                                                        @elseif($infoPersonal->memebrDesignation == 2)
+                                                            <span>Managing Director</span>
+                                                        @elseif($infoPersonal->memebrDesignation == 3)
+                                                            <span>Chairman</span>
+                                                        @elseif($infoPersonal->memebrDesignation == 4)
+                                                            <span>CEO</span>
+                                                        @elseif($infoPersonal->memebrDesignation == 5)
+                                                            <span>Partner</span>
+                                                        @elseif($infoPersonal->memebrDesignation == 6)
+                                                            <span>Director</span>
+                                                        @endif
+                                                    @else
+                                                        <span>Unknown Member Designation</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">NID/Smart Card Number <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoPersonal->memebrNID ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Date of Birth <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoPersonal->memebrDOB ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Mothers Name (As in NID) <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoPersonal->memebrMotherName ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Husband/Spouse Name <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoPersonal->memebrLifePartner ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
                                             <div class="row mb-2">
                                                 <div class="col-sm-6 col-5">
                                                     <h6 class="f-w-500">Gender <span class="pull-right">:</span></h6>
                                                 </div>
-                                                <div class="col-sm-6 col-7"><span>{{$infoPersonal->gender ?? "Null" == '0' ? 'Male': 'Female' }}</span></div>
-                                            </div>
-                                        </div> --}}
-                                        <!--Item-->
-                                        <div class="col-xl-6 col-sm-12">
-                                            <div class="row mb-2">
-                                                <div class="col-sm-6 col-5">
-                                                    <h6 class="f-w-500">Date Of Birth <span class="pull-right">:</span></h6>
+                                                <div class="col-sm-6 col-7">
+                                                    @if($infoPersonal && isset($infoPersonal->memebrGender))
+                                                        @if($infoPersonal->memebrGender == 1)
+                                                            <span>Male</span>
+                                                        @elseif($infoPersonal->memebrGender == 2)
+                                                            <span>Female</span>
+                                                        @endif
+                                                    @else
+                                                        <span>Unknown Gender</span>
+                                                    @endif
                                                 </div>
-                                                <div class="col-sm-6 col-7"><span>{{date('d-m-Y', strtotime($infoPersonal->dob ?? "Null"))}}</span></div>
+
                                             </div>
                                         </div>
                                         <!--Item-->
@@ -150,251 +450,275 @@
                                                     <h6 class="f-w-500">Blood Group <span class="pull-right">:</span></h6>
                                                 </div>
                                                 <div class="col-sm-6 col-7">
-                                                    @if ($infoPersonal->blood_group == 1)
-                                                        <span>A Positive (A+)</span>
-                                                    @elseif ($infoPersonal->blood_group == 2)
-                                                        <span>A Negative (A-)</span>
-                                                    @elseif ($infoPersonal->blood_group == 3)
-                                                        <span>B Positive (B+)</span>
-                                                    @elseif ($infoPersonal->blood_group == 4)
-                                                        <span>B Negative (B-)</span>
-                                                    @elseif ($infoPersonal->blood_group == 5)
-                                                        <span>AB Positive (AB+)</span>
-                                                    @elseif ($infoPersonal->blood_group == 6)
-                                                        <span>AB Negative (AB-)</span>
-                                                    @elseif ($infoPersonal->blood_group == 7)
-                                                        <span>O Positive (O+)</span>
-                                                    @elseif ($infoPersonal->blood_group == 8)
-                                                        <span>O Negative (O-)</span>
+                                                    @if($infoPersonal && isset($infoPersonal->memebrBloodGroup))
+                                                        @if($infoPersonal->memebrBloodGroup == 1)
+                                                            <span>O Positive (0+)</span>
+                                                        @elseif($infoPersonal->memebrBloodGroup == 2)
+                                                            <span>O Negative (0-)</span>
+                                                        @elseif($infoPersonal->memebrBloodGroup == 3)
+                                                            <span>A Positive (A+)</span>
+                                                        @elseif($infoPersonal->memebrBloodGroup == 4)
+                                                            <span>A Negative (A-)</span>
+                                                        @elseif($infoPersonal->memebrBloodGroup == 5)
+                                                            <span>B Positive (B+)</span>
+                                                        @elseif($infoPersonal->memebrBloodGroup == 6)
+                                                            <span>B Negative (B-)</span>
+                                                        @elseif($infoPersonal->memebrBloodGroup == 7)
+                                                            <span>AB Positive (AB+)</span>
+                                                        @elseif($infoPersonal->memebrBloodGroup == 8)
+                                                            <span>AB Negative (AB-)</span>
+                                                        @endif
                                                     @else
                                                         <span>Unknown Blood Group</span>
                                                     @endif
                                                 </div>
-                                                
                                             </div>
                                         </div>
                                         <!--Item-->
-                                        {{-- <div class="col-xl-6 col-sm-12">
+                                        <div class="col-xl-6 col-sm-12">
                                             <div class="row mb-2">
                                                 <div class="col-sm-6 col-5">
-                                                    <h6 class="f-w-500">Marrital Status <span class="pull-right">:</span></h6>
+                                                    <h6 class="f-w-500">Mobile Number <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoPersonal->memberPhoneNo ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Email ID <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoPersonal->memberEmail ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">According to the last Academic Certificate Name <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoPersonal->qualificationName ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <!--=====//G Authorized Person/Nominee Information//=====-->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h6 class="text-primary my-3">G Authorized Person/Nominee Information</h6>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Name of Authorized Person/Nominee <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoPersonal->nomineeName ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">NID/Smart Card Number <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoPersonal->nomineeNID ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Fathers /Husband Name <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoPersonal->nomineeFather ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Mothers Name <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoPersonal->nomineeMother ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Relation with Member <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoPersonal->nomineeRelation ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Designation of Representative <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoPersonal->nomineeDesignation ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!--=====// H Membership Fee Payment Information//=====-->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h6 class="text-primary my-3">H Membership Fee Payment Information</h6>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Bank & Branch Name <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoBank->bankBranceName ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Total Amount (BDT) <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoBank->totalAmount ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Payment Date <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoBank->paymentDate ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Mode of Payment <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoBank->modePayment ?? 'BANK' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Money Receipt No <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoBank->moneyReceiptNo ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <!--=====// I Recommendation Information//=====-->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h6 class="text-primary my-3">I Recommendation Information</h6>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <p class="text-info my-3">K1 Proposed by BAFIITA Members</p>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Name of Company <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoPersonal->kOneCompanyName ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">Name of Member/Representative <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoPersonal->kOneMemberName ?? 'Null' }}</span></div>
+                                            </div>
+                                        </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">BAFIITA Membership Number <span class="pull-right">:</span></h6>
                                                 </div>
                                                 <div class="col-sm-6 col-7">
-                                                    @if ($infoPersonal->marrital_status ?? "Null" == 0)
-                                                    <span>Unmarried</span>
-                                                    @elseif ($infoPersonal->marrital_status ?? "Null" == 1)
-                                                    <span>Married</span>
-                                                    @elseif ($infoPersonal->marrital_status ?? "Null" == 2)
-                                                    <span>Divorce</span>
-                                                    @elseif ($infoPersonal->marrital_status ?? "Null" == 3)
-                                                    <span>Widowed</span>
+                                                    @if($infoPersonal && isset($infoPersonal->kOneMembershipNo))
+                                                        @if($infoPersonal->kOneMembershipNo == 1)
+                                                            <span>Donor</span>
+                                                        @elseif($infoPersonal->kOneMembershipNo == 2)
+                                                            <span>General</span>
+                                                        @endif
+                                                    @else
+                                                        <span>Unknown K1 Membership Number</span>
                                                     @endif
                                                 </div>
                                             </div>
-                                        </div> --}}
+                                        </div>
+                                        
+                                        <div class="col-md-12">
+                                            <p class="text-info my-3">K2 Seconded by BAFIITA Members</p>
+                                        </div>
                                         <!--Item-->
                                         <div class="col-xl-6 col-sm-12">
                                             <div class="row mb-2">
                                                 <div class="col-sm-6 col-5">
-                                                    <h6 class="f-w-500">Present Address <span class="pull-right">:</span></h6>
+                                                    <h6 class="f-w-500">Name of Company <span class="pull-right">:</span></h6>
                                                 </div>
-                                                <div class="col-sm-6 col-7"><span>{{$infoPersonal->present_address ?? "Null"}}</span></div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoPersonal->kTwoCompanyName ?? 'Null' }}</span></div>
                                             </div>
                                         </div>
                                         <!--Item-->
                                         <div class="col-xl-6 col-sm-12">
                                             <div class="row mb-2">
                                                 <div class="col-sm-6 col-5">
-                                                    <h6 class="f-w-500">Parmanent Address <span class="pull-right">:</span></h6>
+                                                    <h6 class="f-w-500">Name of Member/Representative <span class="pull-right">:</span></h6>
                                                 </div>
-                                                <div class="col-sm-6 col-7"><span>{{$infoPersonal->parmanent_address ?? "Null"}}</span></div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoPersonal->kTwoMemberName ?? 'Null' }}</span></div>
                                             </div>
                                         </div>
+                                        <!--Item-->
+                                        <div class="col-xl-6 col-sm-12">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6 col-5">
+                                                    <h6 class="f-w-500">BAFIITA Membership Number <span class="pull-right">:</span></h6>
+                                                </div>
+                                                <div class="col-sm-6 col-7">
+                                                    @if($infoPersonal && isset($infoPersonal->kTwoMembershipNo))
+                                                        @if($infoPersonal->kTwoMembershipNo == 1)
+                                                            <span>Donor</span>
+                                                        @elseif($infoPersonal->kTwoMembershipNo == 2)
+                                                            <span>General</span>
+                                                        @endif
+                                                    @else
+                                                        <span>Unknown K2 Membership Number</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <!--=====// Academic Information//=====-->
+                                    <!--=====// Verified by BAFIITA Secretariat (For office use only)//=====-->
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <h6 class="text-primary my-3">Academic Information</h6>
+                                            <h6 class="text-primary my-3">Verified by BAFIITA Secretariat (For office use only)</h6>
                                         </div>
                                         <!--Item-->
-                                        <div class="col-xl-6 col-sm-12">
+                                        <div class="col-xl-12 col-sm-12">
                                             <div class="row mb-2">
                                                 <div class="col-sm-6 col-5">
-                                                    <h6 class="f-w-500">Institute Name <span class="pull-right">:</span></h6>
+                                                    <h6 class="f-w-500">Comment: <span class="pull-right">:</span></h6>
                                                 </div>
-                                                <div class="col-sm-6 col-7"><span>{{$infoAcademic->institute ?? "Null"}}</span></div>
+                                                <div class="col-sm-6 col-7"><span>{{ $infoPersonal->description ?? 'Null' }}</span></div>
                                             </div>
-                                        </div>
-                                        <!--Item-->
-                                        <div class="col-xl-6 col-sm-12">
-                                            <div class="row mb-2">
-                                                <div class="col-sm-6 col-5">
-                                                    <h6 class="f-w-500">Qualification<span class="pull-right">:</span></h6>
-                                                </div>
-                                                <div class="col-sm-6 col-7"><span>{{$infoAcademic->mastQualification->name  ?? "Null"}}</span></div>
-                                            </div>
-                                        </div>
-                                        <!--Item-->
-                                        <div class="col-xl-6 col-sm-12">
-                                            <div class="row mb-2">
-                                                <div class="col-sm-6 col-5">
-                                                    <h6 class="f-w-500">Subject  <span class="pull-right">:</span></h6>
-                                                </div>
-                                                <div class="col-sm-6 col-7"><span>{{$infoAcademic->subject ?? "Null"}}</span></div>
-                                            </div>
-                                        </div>
-                                        <!--Item-->
-                                        <div class="col-xl-6 col-sm-12">
-                                            <div class="row mb-2">
-                                                <div class="col-sm-6 col-5">
-                                                    <h6 class="f-w-500">Passing Year<span class="pull-right">:</span></h6>
-                                                </div>
-                                                <div class="col-sm-6 col-7"><span>{{$infoAcademic->passing_year ?? "Null"}}</span></div>
-                                            </div>
-                                        </div>
-                                        <!--Item-->
-                                        <div class="col-xl-6 col-sm-12">
-                                            <div class="row mb-2">
-                                                <div class="col-sm-6 col-5">
-                                                    <h6 class="f-w-500">Other Qualification<span class="pull-right">:</span></h6>
-                                                </div>
-                                                <div class="col-sm-6 col-7"><span>{{$infoAcademic->other_qualification ?? "Null"}}</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @if (!is_null($infoCompany))
-                                    <!--=====// Company Information//=====-->
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h6 class="text-primary my-3">Company Information</h6>
-                                        </div>
-                                        <!--Item-->
-                                        <div class="col-xl-6 col-sm-12">
-                                            <div class="row mb-2">
-                                                <div class="col-sm-6 col-5">
-                                                    <h6 class="f-w-500">Company Name <span class="pull-right">:</span></h6>
-                                                </div>
-                                                <div class="col-sm-6 col-7"><span>{{$infoCompany->company_name ?? "Null"}}</span></div>
-                                            </div>
-                                        </div>
-                                        <!--Item-->
-                                        <div class="col-xl-6 col-sm-12">
-                                            <div class="row mb-2">
-                                                <div class="col-sm-6 col-5">
-                                                    <h6 class="f-w-500">Designation <span class="pull-right">:</span></h6>
-                                                </div>
-                                                <div class="col-sm-6 col-7"><span>{{$infoCompany->designation ?? "Null"}}</span></div>
-                                            </div>
-                                        </div>
-                                        <!--Item-->
-                                        <div class="col-xl-6 col-sm-12">
-                                            <div class="row mb-2">
-                                                <div class="col-sm-6 col-5">
-                                                    <h6 class="f-w-500">Company Email <span class="pull-right">:</span></h6>
-                                                </div>
-                                                <div class="col-sm-6 col-7"><span>{{$infoCompany->company_email ?? "Null"}}</span></div>
-                                            </div>
-                                        </div>
-                                        <!--Item-->
-                                        <div class="col-xl-6 col-sm-12">
-                                            <div class="row mb-2">
-                                                <div class="col-sm-6 col-5">
-                                                    <h6 class="f-w-500">Company Phone <span class="pull-right">:</span></h6>
-                                                </div>
-                                                <div class="col-sm-6 col-7"><span>{{$infoCompany->company_phone ?? "Null"}}</span></div>
-                                            </div>
-                                        </div>
-                                        <!--Item-->
-                                        <div class="col-xl-6 col-sm-12">
-                                            <div class="row mb-2">
-                                                <div class="col-sm-6 col-5">
-                                                    <h6 class="f-w-500">Address <span class="pull-right">:</span></h6>
-                                                </div>
-                                                <div class="col-sm-6 col-7"><span>{{$infoCompany->address ?? "Null"}}</span></div>
-                                            </div>
-                                        </div>
-                                        <!--Item-->
-                                        <div class="col-xl-6 col-sm-12">
-                                            <div class="row mb-2">
-                                                <div class="col-sm-6 col-5">
-                                                    <h6 class="f-w-500">Web Site Url<span class="pull-right">:</span></h6>
-                                                </div>
-                                                <div class="col-sm-6 col-7"><span><a href="{{$infoCompany->web_url ?? "Null"}}">{{$infoCompany->web_url }}</a></span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endif
-                                    @if (!is_null($infoStudent))
-                                    <!--=====// Student Information//=====-->
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h6 class="text-primary my-3">Student Information</h6>
-                                        </div>
-                                        <!--Item-->
-                                        <div class="col-xl-6 col-sm-12">
-                                            <div class="row mb-2">
-                                                <div class="col-sm-6 col-5">
-                                                    <h6 class="f-w-500">Institute Name<span class="pull-right">:</span></h6>
-                                                </div>
-                                                <div class="col-sm-6 col-7"><span>{{$infoStudent->student_institute ?? "Null"}}</span></div>
-                                            </div>
-                                        </div>
-                                        <!--Item-->
-                                        <div class="col-xl-6 col-sm-12">
-                                            <div class="row mb-2">
-                                                <div class="col-sm-6 col-5">
-                                                    <h6 class="f-w-500">Semester <span class="pull-right">:</span></h6>
-                                                </div>
-                                                <div class="col-sm-6 col-7"><span>{{$infoStudent->semester ?? "Null"}}</span></div>
-                                            </div>
-                                        </div>
-                                        <!--Item-->
-                                        <div class="col-xl-6 col-sm-12">
-                                            <div class="row mb-2">
-                                                <div class="col-sm-6 col-5">
-                                                    <h6 class="f-w-500">Head Faculty Name <span class="pull-right">:</span></h6>
-                                                </div>
-                                                <div class="col-sm-6 col-7"><span>{{$infoStudent->head_faculty_name ?? "Null"}}</span></div>
-                                            </div>
-                                        </div>
-                                        <!--Item-->
-                                        <div class="col-xl-6 col-sm-12">
-                                            <div class="row mb-2">
-                                                <div class="col-sm-6 col-5">
-                                                    <h6 class="f-w-500">Head Faculty Number <span class="pull-right">:</span></h6>
-                                                </div>
-                                                <div class="col-sm-6 col-7"><span>{{$infoStudent->head_faculty_number ?? "Null"}}</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endif
-                                    <!--Child Details-->
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            @if (!is_null($infoChildDetails) && is_countable($infoChildDetails) && count($infoChildDetails) > 0)
-                                            <div class="table-responsive mt-2">
-                                                <table class="table header-border table-hover verticle-middle">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">#</th>
-                                                            <th scope="col">Child Name</th>
-                                                            <th scope="col">Gender</th>
-                                                            <th scope="col">Birth Day</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach ($infoChildDetails as $key=> $row)
-                                                        <tr>
-                                                            <th>{{++$key}}</th>
-                                                            <td>{{$row->child_name}}</td>
-                                                            <td>{{$row->child_gender == '0' ? 'Male' : 'Female'}}</td>
-                                                            <td>{{date('d M, y', strtotime($row->child_dob))}}</td>
-                                                        </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            @endif
                                         </div>
                                     </div>
 

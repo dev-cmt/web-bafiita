@@ -13,6 +13,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 use App\Models\Member\InfoPersonal;
 use App\Models\Member\InfoCompany;
+use App\Models\Member\InfoBank;
 use App\Models\Member\InfoOther;
 use App\Models\Member\InfoDocument;
 use App\Models\Master\MemberType;
@@ -60,6 +61,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function infoCompany()
     {
         return $this->hasOne(InfoCompany::class, 'member_id');
+    }
+    public function infoBank()
+    {
+        return $this->hasOne(InfoBank::class, 'member_id');
     }
     public function infoDocument()
     {

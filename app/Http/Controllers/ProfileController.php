@@ -32,14 +32,12 @@ class ProfileController extends Controller
     function profile_show($id){
         $user = User::findOrFail($id);
         $infoPersonal = $user->infoPersonal;
-        $infoChildDetails = $user->infoChildDetails;
-        $infoAcademic = $user->infoAcademic;
         $infoCompany = $user->infoCompany;
-        $infoStudent = $user->infoStudent;
+        $infoBank = $user->infoBank;
         $infoOther = $user->infoOther;
         $infoDocument = $user->infoDocument;
 
-        return view('profile.show', compact('user','infoPersonal','infoChildDetails','infoAcademic','infoCompany','infoStudent','infoOther','infoDocument'));
+        return view('profile.show', compact('user','infoPersonal','infoCompany','infoBank','infoOther','infoDocument'));
     }
     public function infoOtherUpdate(Request $request, InfoOther $id)
     {
