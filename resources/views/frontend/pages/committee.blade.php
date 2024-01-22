@@ -24,7 +24,7 @@
             
                         <div class="row">
                 @if ($committeesType == 1)
-                    <div class="col-lg-4 mb-3">
+                    <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
                                 <img src="{{asset('public/images')}}/ec/A.M Amirul Islam Bhuiyam.jpg" class="img-fluid" alt=""
@@ -36,7 +36,7 @@
                         </div>
                     </div>
 					
-					   <div class="col-lg-4 mb-3">
+					   <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
                                 <img src="{{asset('public/images')}}/ec/Joyanta Kumer Deb.jpg" class="img-fluid" alt=""
@@ -48,7 +48,7 @@
                         </div>
                     </div>
 				
-                    <div class="col-lg-4 mb-3">
+                    <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
                                 <img src="{{asset('public/images')}}/ec/Md. Farook.jpg" class="img-fluid" alt=""
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                  
-                    <div class="col-lg-4 mb-3">
+                    <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
                                 <img src="{{asset('public/images')}}/ec/Md. Gias Uddin Khan.jpg" class="img-fluid" alt=""
@@ -71,7 +71,7 @@
 							<h6 class="text-danger">Rep : H & K Feed Products.</h6>
                         </div>
                     </div>
-                    <div class="col-lg-4 mb-3">
+                    <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
                                 <img src="{{asset('public/images')}}/ec/Md. Anwarul Haque.jpg" class="img-fluid" alt="" style="height: 100%">
@@ -81,7 +81,7 @@
 							<h6 class="text-danger">Rep : M/S. Anwarul Haque</h6>
                         </div>
                     </div>
-                    <div class="col-lg-4 mb-3">
+                    <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
                                 <img src="{{asset('public/images')}}/ec/Md. Mahbubul Alam.jpg" class="img-fluid" alt=""
@@ -92,7 +92,7 @@
 							<h6 class="text-danger">Rep: M/S. Rahman Traders</h6>
                         </div>
                     </div>
-                    <div class="col-lg-4 mb-3">
+                    <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
                                 <img src="{{asset('public/images')}}/ec/Altaf Hossain Biswas.jpg" class="img-fluid" alt=""
@@ -103,7 +103,7 @@
 							<h6 class="text-danger">Rep : BTC Group</h6>
                         </div>
                     </div>
-                    <div class="col-lg-4 mb-3">
+                    <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
                                 <img src="{{asset('public/images')}}/ec/Md. Khurshed Alam.jpg" class="img-fluid" alt=""
@@ -114,7 +114,7 @@
 							<h6 class="text-danger">Rep :Taj Ready Feed</h6>
                         </div>
                     </div>
-                    <div class="col-lg-4 mb-3">
+                    <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
                                 <img src="{{asset('public/images')}}/ec/Mohammad Shah Akram.jpg" class="img-fluid" alt=""
@@ -125,7 +125,7 @@
 							<h6 class="text-danger">Rep. M/S. Akram & Brothers</h6>
                         </div>
                     </div>
-					  <div class="col-lg-4 mb-3">
+					  <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
                                 <img src="{{asset('public/images')}}/ec/Abdur Rahman.jpg" class="img-fluid" alt=""
@@ -136,7 +136,7 @@
 							<h6 class="text-danger">Rep : M/S. Ruba Enterprise</h6>
                         </div>
                     </div>
-					  <div class="col-lg-4 mb-3">
+					  <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
                                 <img src="{{asset('public/images')}}/ec/Mohammad Mansur Meah.jpg" class="img-fluid" alt=""
@@ -147,7 +147,7 @@
 							<h6 class="text-danger">Rep : Bogdad Pellet Feed</h6>
                         </div>
                     </div>
-					  <div class="col-lg-4 mb-3">
+					  <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
                                 <img src="{{asset('public/images')}}/ec/ATM. Shahin Pervez.jpg" class="img-fluid" alt=""
@@ -158,7 +158,7 @@
 							<h6 class="text-danger">Rep : M/S. Saraf Enterprise</h6>
                         </div>
                     </div>
-					  <div class="col-lg-4 mb-3">
+					  <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
                                 <img src="{{asset('public/images')}}/ec/Dr. Rashedul Jakir.jpg" class="img-fluid" alt=""
@@ -169,7 +169,7 @@
 							<h6 class="text-danger">Rep. R.R Agro Traders</h6>
                         </div>
                     </div>
-					  <div class="col-lg-4 mb-3">
+					  <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
                                 <img src="{{asset('public/images')}}/ec/Md. Selim Reza Hiron.jpg" class="img-fluid" alt=""
@@ -180,7 +180,7 @@
 							<h6 class="text-danger">Rep. Progress Agrovet</h6>
                         </div>
                     </div>
-					  <div class="col-lg-4 mb-3">
+					  <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
                                 <img src="{{asset('public/images')}}/ec/Md. Anamul Haque Molah.jpg" class="img-fluid" alt=""
@@ -191,7 +191,7 @@
 							<h6 class="text-danger">Rep : M/S. Enam Traders</h6>
                         </div>
                     </div>
-					  <div class="col-lg-4 mb-3">
+					  <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
                                 <img src="{{asset('public/images')}}/ec/Sudhir Chowdhury.jpg" class="img-fluid" alt=""
@@ -202,7 +202,7 @@
 							<h6 class="text-danger">Rep: M/S. Chowdhury Enterprise</h6>
                         </div>
                     </div>
-					  <div class="col-lg-4 mb-3">
+					  <div class="col-lg-3 mb-3">
                         <div class="bg-white border text-center p-4">
                             <div>
                                 <img src="{{asset('public/images')}}/ec/Md. Helal Uddin.jpg" class="img-fluid" alt=""

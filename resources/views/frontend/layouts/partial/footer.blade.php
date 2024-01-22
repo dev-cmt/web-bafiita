@@ -42,14 +42,9 @@
                <div class="col-lg-3 col-md-6 col-12">
                     <div class="single-footer">
                         <h2>Contact Us</h2>
-                        <p>Adddress: 4/2, Iqbal Road(3rd floor) Block-A, Mohammadpur, Dhaka-1207</p><br>
+                        <p>Adddress: 63/C, Asad Avenue, Mohammadpur, Dhaka-1207</p><br>
 						<p>Tele: +880 1727 212747</p>
 						<p>E-mail: bafiita.association@gmail.com</p>
-                        <form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
-                            <input name="email" placeholder="Email Address" class="common-input" onfocus="this.placeholder = ''"
-                                onblur="this.placeholder = 'Your email address'" required="" type="email">
-                            <button class="button"><i class="icofont icofont-paper-plane"></i></button>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -62,7 +57,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-12">
                     <div class="copyright-content">
-                        <p>© Copyright 2023 Bangladesh Agro Feed Ingredients Importers and Traders Association (BAFIITA) |  All Rights Reserved by <a href="#" target="_blank">WebKutir</a> </p>
+                        <p>© Copyright 2024 Bangladesh Agro Feed Ingredients Importers and Traders Association (BAFIITA) |  All Rights Reserved by <a href="#" target="_blank">WebKutir</a> </p>
                     </div>
                 </div>
             </div>

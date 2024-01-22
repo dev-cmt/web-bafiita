@@ -63,5 +63,5 @@
             </div>
         </div>
     </div>
-    <!-- Service End <span>{{$row->user->name}}</span>-->
+    <!-- Service End-->
 @endsection

@@ -10,7 +10,7 @@
                     <div class="col-lg-6">
                         <div class="contact-us-left">
                             <div class="position-relative rounded overflow-hidden h-100">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.59684716309!2d90.36803097385341!3d23.761751788343275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755bf55e5d9fde3%3A0xe1142a84f5475215!2s3rd%20floor)%20Block-A%2C%204%2F2%20Iqbal%20Road%2C%20Dhaka%201205!5e0!3m2!1sen!2sbd!4v1701408724822!5m2!1sen!2sbd" width="600" height="550" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.685007169082!2d90.36076787373086!3d23.758609588464083!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755bf59a178a21f%3A0xd2b98ce1536a8bca!2s63c%20Asad%20Ave%2C%20Dhaka%201207!5e0!3m2!1sen!2sbd!4v1705921241135!5m2!1sen!2sbd" width="600" height="550" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                              </div>
                         </div>
                     </div>
@@ -90,8 +90,8 @@
                         <div class="single-info">
                             <i class="icofont-google-map"></i>
                             <div class="content">
-                                <h3>4/2, Iqbal Road(3rd floor) Block-A,</h3>
-                                <p>Mohammadpur, Dhaka-1207</p>
+                                <h3>63/C, Asad Avenue</h3>
+                                <p>Mohammadpur, Dhaka-1207.</p>
                             </div>
                         </div>
                     </div>

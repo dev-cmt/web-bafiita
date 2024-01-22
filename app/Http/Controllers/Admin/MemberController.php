@@ -258,7 +258,7 @@ class MemberController extends Controller
                 'totalAmount'=> $request->totalAmount,
                 'paymentDate'=> $request->paymentDate,
                 'moneyReceiptNo'=> $request->moneyReceiptNo,
-                'slip'=> uploadFile($request, 'fileSlip', 'bank-info', Auth::user()->id),
+                'slip'=> uploadFile($request, 'fileSlip', 'bank-info', $userId),
 
                 'status' => 0,
                 'member_id' => $userId,

@@ -25,7 +25,7 @@
                                     national economy.</p>
                             </div>
                             <div class="col-md-4">
-                                <img src="{{asset('public/images')}}/blog/notice-1.jpeg" class="img-fluid w-100" alt="Responsive image">
+                                <img src="{{asset('public/images')}}/home/about.jpg" class="img-fluid w-100" alt="Responsive image">
                             </div>
                             
                         </div>

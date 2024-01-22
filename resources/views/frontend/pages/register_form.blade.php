@@ -105,16 +105,16 @@
                             <input type="date" name="vatRegistrationDate" class="form-control" value="">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-7 col-md-6">
-                            <label for="" class="form-label">IRC Import Registration Certificate Number</label>
-                            <input type="text" name="ircCertificateNo" class="form-control" value="">
-                        </div>
-                        <div class="col-5 col-md-6">
-                            <label for="" class="form-label">Issue Date</label>
-                            <input type="date" name="ircCertificateDate" class="form-control" value="">
-                        </div>
-                    </div>
+                    <!--<div class="row">-->
+                    <!--    <div class="col-7 col-md-6">-->
+                    <!--        <label for="" class="form-label">IRC Import Registration Certificate Number</label>-->
+                    <!--        <input type="text" name="ircCertificateNo" class="form-control" value="">-->
+                    <!--    </div>-->
+                    <!--    <div class="col-5 col-md-6">-->
+                    <!--        <label for="" class="form-label">Issue Date</label>-->
+                    <!--        <input type="date" name="ircCertificateDate" class="form-control" value="">-->
+                    <!--    </div>-->
+                    <!--</div>-->
                     <div class="row">
                         <div class="col-7 col-md-6">
                             <label for="" class="form-label">RJSC Incorporation Number</label>
@@ -132,12 +132,13 @@
                         <div class="col-md-6">
                             <label for="" class="form-label">Poultry, Dairy & Fisheries</label>
                             <select name="poultryDairyFisheries" id="" class="form-select">
+                                <option value="" selected>Select</option>
                                 <option value="1">Agro Feed Ingredients</option>
                                 <option value="2">Feed Supplement & Feed Additives</option>
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <label for="" class="form-label">Others ( if )</label>
+                            <label for="" class="form-label">Others (if)</label>
                             <input type="text" name="tradingBrandOthers" class="form-control" value="">
                         </div>
                     </div>
@@ -606,10 +607,10 @@
                                 text: 'Data saved successfully.',
                             }).then((result) => {
                                 // Redirect to the registration payment page
-                                // if (result.isConfirmed) {
+                                if (result.isConfirmed) {
                                 //     // window.location.href = '{{ route("registation-payment.create") }}';
-                                //     window.location.href = '{{ route("/") }}';
-                                // }
+                                     window.location.href = '{{ route("/") }}';
+                                }
                             });
                         },
                         error: function(xhr) {

@@ -45,11 +45,11 @@ class FrontViewController extends Controller
      */
     public function committee($id)
     {
-        $data = User::where('committee_type_id', $id)->where('status', 1)->get();
+        // $data = User::where('committee_type_id', $id)->where('status', 1)->get();
         // $committeesType = CommitteeType::where('id', $id)->first();
         $committeesType = $id;
 
-        return view('frontend.pages.committee',compact('data', 'committeesType'));
+        return view('frontend.pages.committee',compact('committeesType'));
     }
     /**________________________________________________________________________________________
      * Members Menu Pages

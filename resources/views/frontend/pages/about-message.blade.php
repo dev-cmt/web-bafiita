@@ -5,7 +5,11 @@
     <section id="contact" class="section">
         <div class="container">
             <div class="section-title">
+                @if($menu == 1)
                 <h2>Present President &amp; Secretary General Message</h2>
+                @elseif($menu == 2)
+                <h2>Founder President &amp; Secretary General Message</h2>
+                @endif
                 <img src="{{asset('public/images')}}/section-img.png" alt="#">
                 <!--<p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sitin iste officiis commodi quidem hic quas.</p>-->
             </div>
@@ -112,7 +116,7 @@
                     <thead>
                         <tr>
                             <th width="35%"></th>
-                           <th width="65%">Message from Present President</th>
+                           <th width="65%">Message from Founder President</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -161,7 +165,7 @@
                                 <h4 class="text-center mt-4">Md. Helal Uddin</h4>
                                 <h5 class="text-center my-2 text-success">Secretary General</h5>
                             </td>
-                            <td><h6>Message from Present Secretary General</h6>
+                            <td><h6>Message from  Secretary General</h6>
                                 <p>It is a great pleasure to prepare of BAFIITA Website www.bafiita.org.bd
                                     We are grateful to Almighty Allah for making it easy for us in
                                     established of BAFIITA Website www.bafiita.org.bd.
