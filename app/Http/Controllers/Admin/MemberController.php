@@ -131,7 +131,7 @@ class MemberController extends Controller
                 'profile_photo_path' => 'blank.jpg',
                 'email_verified_at' => '2024-01-01',
                 'member_type_id' => $request->member_type_id,
-                'status' => 0, // Defualt => 0 || Approve => 1 || Cancel => 2 || Approve 1=> 3 || Approve 2=> 4
+                'status' => 0, // Defualt => 0 || Approve => 1 || Cancel => 2 || Approve Two => 3 || Approve One => 4
                 'is_admin' => 1,
             ]);
 
@@ -350,7 +350,7 @@ class MemberController extends Controller
     }
     public function approveUpdate(Request $request, $id){
         $user = User::findorfail($id);
-        $user->status = $request->status; // Defualt => 0 || Approve => 1 || Cancel => 2 || Approve 1 => 3 || Approve 2 => 4
+        $user->status = $request->status; // Defualt => 0 || Approve => 1 || Cancel => 2 || Approve Two => 3 || Approve One => 4
         $user->member_code = $request->member_code;
         $user->approve_by = Auth::user()->id;
         $user->save();
@@ -369,11 +369,11 @@ class MemberController extends Controller
     }
     public function approveCancel(Request $request, $id){
         $user = User::findorfail($id);
-        $user->status = 2; // Defualt => 0 || Approve => 1 || Cancel => 2 || Approve One => 3 || Approve Two => 4
+        $user->status = 2; // Defualt => 0 || Approve => 1 || Cancel => 2 || Approve Two => 3 || Approve One => 4
         $user->description = $request->description;
         $user->approve_by = Auth::user()->id;
         $user->save();
-        
+
         $notification=array('messege'=>'Cancel approve successfully!','alert-type'=>'success');
         return redirect()->back()->with($notification);
     }
