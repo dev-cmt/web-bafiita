@@ -121,7 +121,7 @@ Route::group(['middleware' => ['auth']], function(){
     // Route::get('member/{id}/show', [MemberController::class,'show'])->name('member.show');
     // Route::PATCH('member/{id}/update', [MemberController::class,'update'])->name('member.update');
     //-- MEMBER APPROVE
-    Route::get('member-approve/index', [MemberController::class,'approveIndex'])->name('members-approve.index');
+    Route::get('member-approve/{id}/index', [MemberController::class,'approveIndex'])->name('members-approve.index');
     Route::get('member-approve/padding', [MemberController::class, 'approvePadding'])->name('member-approve.padding');
     Route::PATCH('member-approve/{id}/update', [MemberController::class, 'approveUpdate'])->name('member-approve.update');
     Route::PATCH('member-approve/{id}/cancel', [MemberController::class, 'approveCancel'])->name('member-approve.cancel');

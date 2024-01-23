@@ -38,73 +38,6 @@
                                         <a href="{{ route('member-document.downloadZipFile', $row->id) }}" target="_blank" class="btn btn-sm btn-secondary p-1 px-2 m-1">
                                             <i class="flaticon-381-download"></i><span class="btn-icon-add"></span> Zip
                                         </a>
-
-                                        @if ($row->infoDocument)
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-sm btn-info p-1 mr-1" data-toggle="modal" data-target="#exampleModalCenter{{$key}}">Choose</button>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="exampleModalCenter{{$key}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle{{$key}}" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Member Documents Download</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            @if (!empty($row->infoDocument->trade_licence))
-                                                                <a href="{{ route('document-trade-licence.download', $row->infoDocument->id) }}" target="_blank" class="btn btn-sm btn-secondary p-1 px-2 m-1">
-                                                                    <i class="flaticon-381-download"></i> Trade Licence
-                                                                </a>
-                                                            @endif
-
-                                                            @if (!empty($row->infoDocument->tin_certificate))
-                                                                <a href="{{ route('document-tin-certificate.download', $row->infoDocument->id) }}" target="_blank" class="btn btn-sm btn-secondary p-1 px-2 m-1">
-                                                                    <i class="flaticon-381-download"></i> TIN Certificate
-                                                                </a>
-                                                            @endif
-
-                                                            @if (!empty($row->infoDocument->nid_photo_copy))
-                                                                <a href="{{ route('document-nid-photo-copy.download', $row->infoDocument->id) }}" target="_blank" class="btn btn-sm btn-secondary p-1 px-2 m-1">
-                                                                    <i class="flaticon-381-download"></i> NID Photo Copy
-                                                                </a>
-                                                            @endif
-
-                                                            @if (!empty($row->infoDocument->passport_photo))
-                                                                <a href="{{ route('document-passport-photo.download', $row->infoDocument->id) }}" target="_blank" class="btn btn-sm btn-secondary p-1 px-2 m-1">
-                                                                    <i class="flaticon-381-download"></i> Passport Photo
-                                                                </a>
-                                                            @endif
-
-                                                            @if (!empty($row->infoDocument->edu_certificate))
-                                                                <a href="{{ route('document-edu-certificate.download', $row->infoDocument->id) }}" target="_blank" class="btn btn-sm btn-secondary p-1 px-2 m-1">
-                                                                    <i class="flaticon-381-download"></i> Education Certificate
-                                                                </a>
-                                                            @endif
-
-                                                            @if (!empty($row->infoDocument->experience_certificate))
-                                                                <a href="{{ route('document-experience-certificate.download', $row->infoDocument->id) }}" target="_blank" class="btn btn-sm btn-secondary p-1 px-2 m-1">
-                                                                    <i class="flaticon-381-download"></i> Experience Certificate
-                                                                </a>
-                                                            @endif
-
-                                                            @if (!empty($row->infoDocument->stu_id_copy))
-                                                                <a href="{{ route('document-stu-id-copy.download', $row->infoDocument->id) }}" target="_blank" class="btn btn-sm btn-secondary p-1 px-2 m-1">
-                                                                    <i class="flaticon-381-download"></i> Student Id Copy
-                                                                </a>
-                                                            @endif
-
-                                                            @if (!empty($row->infoDocument->recoment_letter))
-                                                                <a href="{{ route('document-recoment-letter.download', $row->infoDocument->id) }}" target="_blank" class="btn btn-sm btn-secondary p-1 px-2 m-1">
-                                                                    <i class="flaticon-381-download"></i> Recomend Letter
-                                                                </a>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endif
                                     </td>
                                     <td>
                                         <a href="{{ route('profile_show', $row->id) }}" class="btn btn-info shadow btn-xs sharp mr-1"><i class="flaticon-381-view"></i></a>
@@ -122,20 +55,47 @@
                                     </td>
                                     @can('Member approved')
                                     <form action="{{ route('member-approve.update', $row->id) }}" method="post">
-                                    <td><input type="text" name="member_code" placeholder="Type Membership No."></td>
                                     <td>
-                                        <div class="d-flex justify-content-end align-items-center">
-                                                <button class="btn btn-sm btn-info p-1 m-1">Approve</button>
-                                                @csrf
-                                                @method('PATCH')
-                                            </form>
-                                            <form action="{{ route('member-approve.cancel', $row->id) }}" method="post">
-                                                <button class="btn btn-sm btn-danger p-1 m-1">Canceled</button>
-                                                @csrf
-                                                @method('PATCH')
-                                            </form>
-                                        </div>
+                                        <input type="hidden" name="status" value="{{$status}}">
+                                        <input type="text" name="member_code" placeholder="Type Membership No." value="{{$row->member_code}}">
                                     </td>
+                                    @if ($status < $row->status)
+                                        <td>
+                                            <div class="d-flex justify-content-end align-items-center">
+                                                    <button class="btn btn-sm btn-info p-1 m-1">Approve</button>
+                                                    @csrf
+                                                    @method('PATCH')
+                                                </form>
+
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn btn-sm btn-danger p-1 mr-1" data-toggle="modal" data-target="#exampleModalCenter{{$key}}">Canceled</button>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModalCenter{{$key}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle{{$key}}" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">Cancelled Reason </h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form action="{{ route('member-approve.cancel', $row->id) }}" method="post">
+                                                                    <textarea name="description" class="form-control" rows="2" placeholder="Type cancelled reason !"></textarea>
+                                                                    <button class="btn btn-sm btn-success float-right mt-2">Submit</button>
+                                                                    @csrf
+                                                                    @method('PATCH')
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--End-->
+                                            </div>
+                                        </td>
+                                    @else
+                                    <td>You Approve!</td>
+                                    @endif
                                     @endcan
                                 </tr>
                             @endforeach

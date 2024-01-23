@@ -36,7 +36,9 @@
                         <li><a href="{{Route('member.index', $item->id )}}">{{$item->name}} </a></li>
                     @endforeach
                     @canany('Member approve access','Member approved', 'Member approve record')
-                    <li><a href="{{Route('members-approve.index')}}">Member Approve</a></li>
+                    <li><a href="{{Route('members-approve.index', 4)}}">Approve One</a></li>
+                    <li><a href="{{Route('members-approve.index', 3)}}">Approve Two</a></li>
+                    <li><a href="{{Route('members-approve.index', 1)}}">Approve Final</a></li>
                     @endcanany
                     
                     @canany('Data Setting')

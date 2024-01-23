@@ -131,7 +131,7 @@ class MemberController extends Controller
                 'profile_photo_path' => 'blank.jpg',
                 'email_verified_at' => '2024-01-01',
                 'member_type_id' => $request->member_type_id,
-                'status' => 0,
+                'status' => 0, // Defualt => 0 || Approve => 1 || Cancel => 2 || Approve 1=> 3 || Approve 2=> 4
                 'is_admin' => 1,
             ]);
 
@@ -341,34 +341,39 @@ class MemberController extends Controller
     }
     /*__________________________________________________________________________________ */
     /*__________________________________________________________________________________ */
-    public function approveIndex(){
-        $data = User::where('is_admin', 1)->where('status', 0)->get();
+    public function approveIndex($id){
+        $status = $id;
+        $data = User::where('is_admin', 1)->whereIn('status', [0, 3, 4])->get();
 
-        $record = User::where('is_admin', 1)->whereIn('status', [1,2])->get();
-        return view('layouts.pages.member.approve', compact('data','record'));
+        $record = User::where('is_admin', 1)->whereIn('status', [1, 2])->get();
+        return view('layouts.pages.member.approve', compact('data','record', 'status'));
     }
     public function approveUpdate(Request $request, $id){
         $user = User::findorfail($id);
-        $user->status = 1;
+        $user->status = $request->status; // Defualt => 0 || Approve => 1 || Cancel => 2 || Approve 1 => 3 || Approve 2 => 4
         $user->member_code = $request->member_code;
         $user->approve_by = Auth::user()->id;
         $user->save();
         $user->assignRole('Member');
         
-        $mailData =[
-            'title' => 'Now Your Are Member Of BAFIITA',
-            'body' => 'This Is body',
-        ];
-        Mail::to($user->email)->send(new MemberApproved($mailData));
+        if($user->status == 1){
+            $mailData =[
+                'title' => 'Now Your Are Member Of BAFIITA',
+                'body' => 'Thanks For Join Us',
+            ];
+            Mail::to($user->email)->send(new MemberApproved($mailData));
+        }
 
         $notification=array('messege'=>'Approve successfully!','alert-type'=>'success');
         return redirect()->back()->with($notification);
     }
-    public function approveCancel($id){
-        $approve = User::findorfail($id);
-        $approve->status = 2;
-        $approve->approve_by = Auth::user()->id;
-        $approve->save();
+    public function approveCancel(Request $request, $id){
+        $user = User::findorfail($id);
+        $user->status = 2; // Defualt => 0 || Approve => 1 || Cancel => 2 || Approve One => 3 || Approve Two => 4
+        $user->description = $request->description;
+        $user->approve_by = Auth::user()->id;
+        $user->save();
+        
         $notification=array('messege'=>'Cancel approve successfully!','alert-type'=>'success');
         return redirect()->back()->with($notification);
     }

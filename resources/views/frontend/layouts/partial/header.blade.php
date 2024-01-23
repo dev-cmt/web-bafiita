@@ -8,10 +8,10 @@
                 <div class="col-lg-6 col-md-5 col-12">
                     <!-- Contact -->
                     <ul class="top-link">
-                        <li><a href="#">About BAFIITA</a></li>
                         <li><a href="#">Requirement</a></li>
                         <li><a href="{{route('member_renew.create')}}">Renew Membership</a></li>
                         <li><a href="{{route('member_register.create')}}">New Membership</a></li>
+                        <li><a href="{{route('login')}}">Login</a></li>
                     </ul>
                     <!-- End Contact -->
                 </div>
