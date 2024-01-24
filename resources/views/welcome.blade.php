@@ -43,17 +43,63 @@
 
 
     <!-- Traders Association -->
-    {{--<section class="why-choose section" >
+    <section class="why-choose">
         <div class="container">
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
                         <h2>An Agro Based Ingredients Importers And Traders Association</h2>
                         <img src="{{asset('public/images')}}/section-img.png" alt="#">
                     </div>
                 </div>
+            </div> --}}
+            <div class="row mb-4">
+                <div class="col-md-3 m-auto">
+                    <div class="bg-white p-4 rounded">
+                        <img src="{{asset('public/images')}}/logo.png" alt="Logo">
+                    </div>
+                </div>
+                <div class="col-md-12 text-center pt-4">
+                    <h3>Welcome To <br> Bangladesh Agro Feed Ingredients Importers & Traders Association</h3>
+                    <h6><em>An agro-based ingredients importers and traders association</em></h6>
+                </div>
             </div>
-           <div class="row">
+        </div>
+        <div class="py-4" style="background: #e4e4e4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-12">
+                        <div class="card">
+                            <!-- News Head -->
+                            <div class="news-head" style="height: auto">
+                                <img src="{{asset('public/images')}}/home/Sudhir Chowdhury.jpg" alt="#">
+                            </div>
+                            <h5 class="text-center mt-4"><strong> Sudhir Chowdhury</strong></h5>
+                            <h5 class="text-center my-2 text-success">Founder President</h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-12">
+                        <div class="card">
+                            <!-- News Head -->
+                            <div class="news-head" style="height: auto">
+                                <img src="{{asset('public/images')}}/home/Md. Helal Uddin.jpg" alt="#">
+                            </div>
+                            <h5 class="text-center mt-4"><strong> Md. Helal Uddin</strong></h5>
+                            <h5 class="text-center my-2 text-success">Secretary General</h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <p class="pt-4">
+                            Dear Patrons, <br>
+                            Asslamualikum!! <br>
+                            Welcome to website introduction of Bangladesh Agro Feed Ingredients Importers and Traders Association (BAFIITA), BAFIITA as the apex Importers and Traders body registered with the Ministry of Commerce of People&#039;s Republic of Bangladesh Registration No: TO- 944/2017, since 2017 to conduct in the country continues its pivotal role in consultative and advisory capacity in the formulation of Poultry, Fisheries And Dairy Feed ingredients, Feed additives &amp; Supplements of the Government. BAFIITA actively represents and contributes in all forums related to Socio-Economic Development and Government for mutual sharing of views on all vital issues concerning and affecting the national economy.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+           <div class="row py-4">
                 <div class="col-lg-3 col-12">
                     <div class="card">
                         <!-- News Head -->
@@ -74,13 +120,27 @@
                         <h5 class="text-center my-2 text-success">Secretary General</h5>
                     </div>
                 </div>
+                <div class="col-lg-6 col-12">
+                    <div class="card p-4">
+                        <h4 class="text-center mb-4">-: BAFIITA Secretariat : -</h4>
+                        <p style="line-height: 30px">
+                            <strong>Registered Address:</strong> 63/C, Asad Avenue, Mohammadpur, Dhaka- 1207<br>
+                            <strong>Mailing Address:</strong> 21/1, Zigatola, Dhanmondi, Dhaka-1209<br>
+                            <strong>Cell:</strong> 01727-212747 <br>
+                            <strong>WhatsApp:</strong> 01727212747 <br>
+                            <strong>Facebook:</strong> BAFIITA Secretariat <br>
+                            <strong>E-mail:</strong> bafiita.association@gmail.com <br>
+                            <strong> www.bafiita.org.bd </strong>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>--}}
+    </section>
     <!--End Traders Association-->
 
     <!-- Start Why choose -->
-    <section class="why-choose section-bg" >
+    {{-- <section class="why-choose section-bg" >
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -108,7 +168,7 @@
                             and Government for mutual sharing of views on all vital issues
                             concerning and affecting the national economy.</p>
 
-                        {{-- <div class="row">
+                        <div class="row">
                             <div class="col-lg-6">
                                 <ul class="list">
                                     <li><i class="fa fa-caret-right"></i>Maecenas vitae luctus nibh. </li>
@@ -123,14 +183,14 @@
                                     <li><i class="fa fa-caret-right"></i>Aliquam feugiat interdum.</li>
                                 </ul>
                             </div>
-                        </div> --}}
+                        </div>
 
                     </div>
                     <!-- End Choose Left -->
                 </div>
                 <div class="col-lg-6 col-12">
                     <!-- Start Choose Rights -->
-                   {{--<div class="row mt-4">
+                   <div class="row mt-4">
                         <div class="col-lg-6 col-6">
                             <!-- News Head -->
                             <div class="news-head" style="height: auto">
@@ -150,14 +210,14 @@
                             <h6 class="text-center my-2 text-success">Secretary General</h6>
                         </div>
                         
-                    </div>--}}
+                    </div>
                      <div class="choose-right" style="background: url({{asset('public/images')}}/home/about_logo.png); background-position: center; background-size: cover;border:1px solid #109033"></div> 
                     <!-- End Choose Rights -->
                 </div>
                 
             </div>
         </div>
-    </section>
+    </section> --}}
     <!--/ End Why choose -->
 
 
