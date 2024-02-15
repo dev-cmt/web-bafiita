@@ -143,8 +143,8 @@
 
         </ul>
         <div class="copyright py-4 my-4">
-            {{-- <p><strong>Pune Club</strong><!-- © 2023 All Rights Reserved--></p>
-            <p class="fs-12">Made with <span class="heart"></span> by <a href="http://www.iconisl.com/"><img src="{{asset('public/frontend')}}/images/icon.png" alt="Icon Information Systems Ltd." style="width:30px;"></a></p> --}}
+            {{-- <p><strong></strong><!-- © 2023 All Rights Reserved--></p>
+            <p class="fs-12">Made with <span class="heart"></span> by <a href="#"><img src="{{asset('public/frontend')}}/images/" alt="" style="width:30px;"></a></p> --}}
         </div>
     </div>
 

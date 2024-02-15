@@ -57,7 +57,7 @@ class FrontViewController extends Controller
      */
     public function member($id)
     {
-        $data = User::orderBy('index', 'asc')->where('member_type_id', $id)->where('status', 1)->get();
+        $data = User::orderBy('index', 'asc')->where('is_admin', 0)->where('status', 1)->get();
         // $membersType = MemberType::where('id', $id)->first()->name;
         $membersType = $id;
 

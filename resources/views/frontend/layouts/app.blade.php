@@ -26,6 +26,10 @@
     <link rel="stylesheet" href="{{asset('public/frontend')}}/css/slicknav.min.css">
     <!-- Owl Carousel CSS -->
     <link rel="stylesheet" href="{{asset('public/frontend')}}/css/owl-carousel.css">
+    <!-- Owl Carousel Assets -->
+    <!--<link href="{{asset('public/frontend')}}/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">-->
+    <!--<link href="{{asset('public/frontend')}}/vendor/owl-carousel/owl.theme.css" rel="stylesheet">-->
+
     <!-- Datepicker CSS -->
     <link rel="stylesheet" href="{{asset('public/frontend')}}/css/datepicker.css">
     <!-- Animate CSS -->
@@ -61,16 +65,15 @@
     <!-- Get Pro Button -->
     <ul class="pro-features">
         <a class="get-pro" href="#">Membership</a>
-        <li class="big-title">Pro Version Available on Themeforest</li>
-        <li class="title">Pro Version Features</li>
-        <li>2+ premade home pages</li>
-        <li>20+ html pages</li>
-        <li>Color Plate With 12+ Colors</li>
-        <li>Sticky Header / Sticky Filters</li>
-        <li>Working Contact Form With Google Map</li>
+        <li class="big-title">Bank Account Information</li>
+        <li class="title">Account Name: BAFIITA</li>
+        <li>Account No.: SND: 2706102000862</li>
+        <li>Bank Name: PUBALI BANK LTD.</li>
+        <li>Branch Name: Asad Avenue Branch, Mohammadpur,<br>Dhaka-1207.</li>
         <div class="button">
             <a href="{{route('member_register.create')}}" target="_blank" class="btn">New Membership</a>
             <a href="{{route('member_renew.create')}}" target="_blank" class="btn">Renew Membership</a>
+            <a href="{{route('login')}}" target="_blank" class="btn">Login</a>
         </div>
     </ul>
 
@@ -112,6 +115,7 @@
     <script src="{{asset('public/frontend')}}/js/tilt.jquery.min.js"></script>
     <!-- Owl Carousel JS -->
     <script src="{{asset('public/frontend')}}/js/owl-carousel.js"></script>
+    <!--<script src="{{asset('public/frontend')}}/vendor/owl-carousel/owl.carousel.js"></script>-->
     <!-- counterup JS -->
     <script src="{{asset('public/frontend')}}/js/jquery.counterup.min.js"></script>
     <!-- Steller JS -->
@@ -133,6 +137,30 @@
                 $(".pro-features").toggleClass("active");
             });
         });
+        
+        //-----Clients
+        $(document).ready(function() {
+            $("#owl-clients").owlCarousel({
+                items: 5,
+                navigation: false,
+                pagination: false,
+                dots:false,
+                autoPlay : 3000,
+            });
+        
+            $('.link').on('click', function (event) {
+                var $this = $(this);
+                if ($this.hasClass('clicked')) {
+                    $this.removeAttr('style').removeClass('clicked');
+                } else {
+                    $this.css('background', '#7fc242').addClass('clicked');
+                }
+            });
+        
+        });
+
+
+
     </script>
     @yield('script')
 </body>

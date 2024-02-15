@@ -41,9 +41,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'profile_photo_path',
         'member_type_id',
         'description',
-        'status',
-        'is_admin',
+        'join_date',
+        'departure_date',
         'approve_by',
+        'is_admin',
+        'status',
         'index',
     ];
 

@@ -23,7 +23,7 @@
                     <thead>
                         <tr>
                             <th width="35%"></th>
-                           <th width="65%">Message from Present President</th>
+                           <th width="65%"><h6>Message from Present President</h6></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -116,7 +116,7 @@
                     <thead>
                         <tr>
                             <th width="35%"></th>
-                           <th width="65%">Message from Founder President</th>
+                           <th width="65%"><h6>Message from Founder President</h6></th>
                         </tr>
                     </thead>
                     <tbody>

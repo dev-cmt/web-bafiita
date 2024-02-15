@@ -24,6 +24,7 @@ class InfoDocument extends Model
         'fileNomineeNID',
         'fileVisitingCard',
         'fileIncorporationCertificate',
+        'fileArticlesCopy',
         'filePartnershipDeed',
         'fileIndentingLicense',
 

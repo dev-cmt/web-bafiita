@@ -115,7 +115,7 @@
                                  <div class="row">
                                      <label class="form-label col-md-5"><storng>Account No</storng></label>
                                      <label class="form-label col-md-1">:</label>
-                                     <label class="form-label col-md-6">SND1, 2706102000862</label>
+                                     <label class="form-label col-md-6">SND:2706102000862</label>
                                  </div>
                                  <div class="row">
                                      <label class="form-label col-md-5"><storng>Bank Name</storng></label>

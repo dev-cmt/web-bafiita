@@ -2,31 +2,20 @@
 <!-- ======= Header ======= -->
 <header class="header" >
     <!-- Topbar -->
-    <div class="topbar">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-5 col-12">
-                    <!-- Contact -->
-                    <ul class="top-link">
-                        <li><a href="#">Requirement</a></li>
-                        <li><a href="{{route('member_renew.create')}}">Renew Membership</a></li>
-                        <li><a href="{{route('member_register.create')}}">New Membership</a></li>
-                        <li><a href="{{route('login')}}">Login</a></li>
-                    </ul>
-                    <!-- End Contact -->
-                </div>
-                <div class="col-lg-6 col-md-7 col-12">
-                    <!-- Top Contact -->
-                    <ul class="top-contact">
-                        <li><i class="fa fa-phone"></i>+880 1727 212747</li>
-                        <li><i class="fa fa-envelope"></i><a href="mailto:bafiita.association@gmail.com">bafiita.association@gmail.com</a></li>
-                    </ul>
-                    <!-- End Top Contact -->
-                </div>
-            </div>
-        </div>
-    </div>
+    <section class="news-line d-flex">
+        <div style="width: 150px;background: #109033; padding: 10px 8px;font-size: 16px;color: white;">Notice & News</div>
+        <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();" style="font-size: 16px;padding: 10px 0px;color: black;">
+            <span><a href="#" class="mx-5">Welcome To Bangladesh Agro Feed Ingredients Importers & Traders Association</a>|</span>
+            <span><a href="#" class="mx-5">Welcome To Bangladesh Agro Feed Ingredients Importers & Traders Association</a></span>
+        </marquee>
+        <style>
+            .news-line marquee a:hover{
+                color:green;
+            }
+        </style>
+    </section>
     <!-- End Topbar -->
+    
     <!-- Header Inner -->
     <div class="header-inner">
         <div class="container">

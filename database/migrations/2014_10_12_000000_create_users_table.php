@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('profile_photo_path')->nullable();
             $table->unsignedBigInteger('member_type_id')->nullable();
             $table->text('description')->nullable();
+            $table->date('join_date')->nullable();
+            $table->date('departure_date')->nullable();
             $table->tinyInteger('status')->default(false);
             $table->tinyInteger('is_admin')->default(false);
             $table->unsignedBigInteger('approve_by')->nullable();

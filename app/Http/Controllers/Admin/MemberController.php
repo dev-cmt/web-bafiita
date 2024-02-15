@@ -70,13 +70,13 @@ class MemberController extends Controller
                 'memebrName' => 'required',
                 'memberEmail' => 'required|unique:users,email|max:255',
 
-                'fileCompanyLogo' => 'required|mimes:jpg,png,jpeg,gif,svg|image',
-                'fileEducationCertificate' => 'required|max:10240',
+                'fileCompanyLogo' => 'required|mimes:jpg,png,jpeg,gif,svg|image|max:10240',
+                'fileApplicantPhoto' => 'required|mimes:jpg,png,jpeg,gif,svg|image|max:10240',
             ], [
                 'member_type_id.required' => 'The Member Type is required.',
-                'fileCompanyLogo.required' => 'The Company Logo field is required.',
-                'fileEducationCertificate.required' => 'The Education Certificate field is required.',
-                'fileTradeLicense.required' => 'The Trade License field is required.',
+                'fileCompanyLogo.required' => 'কোম্পানী প্রতীক আবশ্যক',
+                'fileApplicantPhoto.required' => 'আবেদনকারীর পাসপোর্ট সাইজের ছবি আবশ্যক!',
+                //'fileEducationCertificate.required' => 'The Education Certificate field is required.',
                 // 'fileEducationCertificate.mimes' => 'The :attribute must be a valid image file.',
                 // 'fileTradeLicense.max' => 'Trade licence must not be greater than 10MB.',
 
@@ -132,7 +132,7 @@ class MemberController extends Controller
                 'email_verified_at' => '2024-01-01',
                 'member_type_id' => $request->member_type_id,
                 'status' => 0, // Defualt => 0 || Approve => 1 || Cancel => 2 || Approve Two => 3 || Approve One => 4
-                'is_admin' => 1,
+                'is_admin' => 0,
             ]);
 
             $userId = $user->id;
@@ -242,6 +242,7 @@ class MemberController extends Controller
                 'fileApplicantPhoto'=> uploadFile($request, 'fileApplicantPhoto', 'ApplicantPhoto', $userId),
                 'fileNomineeNID'=> uploadFile($request, 'fileNomineeNID', 'NomineeNID', $userId),
                 'fileVisitingCard'=> uploadFile($request, 'fileVisitingCard', 'VisitingCard', $userId),
+                'fileArticlesCopy'=> uploadFile($request, 'fileArticlesCopy', 'fileArticlesCopy', $userId),
                 'fileIncorporationCertificate'=> uploadFile($request, 'fileIncorporationCertificate', 'IncorporationCertificate', $userId),
                 'filePartnershipDeed'=> uploadFile($request, 'filePartnershipDeed', 'PartnershipDeed', $userId),
                 'fileIndentingLicense'=> uploadFile($request, 'fileIndentingLicense', 'IndentingLicense', $userId),
@@ -250,6 +251,34 @@ class MemberController extends Controller
                 'member_id' => $userId,
             ]);
             $infoDocument->save();
+
+            // Copy the file and update user photo path
+            $userPhoto = User::find($userId);
+            if ($infoDocument->fileApplicantPhoto) {
+                $sourcePath = public_path($infoDocument->fileApplicantPhoto); // Get the source file path
+
+                // Check if the source file exists
+                if (file_exists($sourcePath)) {
+                    $fileExtension = pathinfo($sourcePath, PATHINFO_EXTENSION); // Get file extension
+                    $profilePhotoPath = $userPhoto->id . '_' . $userPhoto->name . '.' . $fileExtension; // Construct the destination path
+
+                    // Copy the file to the destination directory
+                    if (copy($sourcePath, public_path('images/profile/' . $profilePhotoPath))) {
+                        // Update the user's profile photo path
+                        $userPhoto->profile_photo_path = $profilePhotoPath;
+                        $userPhoto->save();
+                    } else {
+                        Log::error("Failed to copy file from $sourcePath to images/profile/$profilePhotoPath");
+                    }
+                } else {
+                    Log::error("Source file does not exist: $sourcePath");
+                }
+            }
+
+
+
+
+
 
             /*______________________/ Transaction Bank \___________________*/
             $infoBank = new InfoBank([
@@ -296,11 +325,11 @@ class MemberController extends Controller
             // Send email verification
             // $user->sendEmailVerificationNotification();
 
+
             // Commit the transaction if everything is successful
             DB::commit();
 
             // Return message
-            // return response()->json(['user' => $user], 200);
             return response()->json('success', 200);
         } catch (PostTooLargeException $e) {
             DB::rollback();
@@ -343,15 +372,17 @@ class MemberController extends Controller
     /*__________________________________________________________________________________ */
     public function approveIndex($id){
         $status = $id;
-        $data = User::where('is_admin', 1)->whereIn('status', [0, 3, 4])->get();
+        $data = User::where('is_admin', 0)->whereIn('status', [0, 3, 4])->get();
 
-        $record = User::where('is_admin', 1)->whereIn('status', [1, 2])->get();
+        $record = User::where('is_admin', 0)->whereIn('status', [1, 2])->get();
         return view('layouts.pages.member.approve', compact('data','record', 'status'));
     }
+
     public function approveUpdate(Request $request, $id){
         $user = User::findorfail($id);
         $user->status = $request->status; // Defualt => 0 || Approve => 1 || Cancel => 2 || Approve Two => 3 || Approve One => 4
         $user->member_code = $request->member_code;
+        $user->join_date = $request->status == 1 ? now() : $user->join_date;
         $user->approve_by = Auth::user()->id;
         $user->save();
         $user->assignRole('Member');

@@ -8,19 +8,19 @@
 
                 <div class="card-body" id="reload">
                     <div class="table-responsive">
-                        <table id="example3" class="display " style="min-width: 845px">
+                        <table id="example3" class="display" style="min-width: 845px">
                             <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Image</th>
-                                <th>Information</th>
-                                <th>Contact Info.</th>
-                                <th>Documents</th>
-                                <th>View Info.</th>
-                                <th>Transaction</th>
-                                <th>Member Code</th>
-                                <th class="text-right">Action</th>
-                            </tr>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Image</th>
+                                    <th>Information</th>
+                                    <th>Contact Info.</th>
+                                    <th>Documents</th>
+                                    <th>View Info.</th>
+                                    <th>Transaction</th>
+                                    <th>Member Code</th>
+                                    <th class="text-right">Action</th>
+                                </tr>
                             </thead>
                             <tbody>
                                 @foreach ($data as $key => $row)
@@ -46,27 +46,27 @@
                                         <a href="{{ route('transaction-registation-approve.index') }}">
                                             @if ($row->paymentDetails && $row->paymentDetails->status == 1)
                                             <span class="badge light badge-success">
-                                                    <i class="fa fa-circle text-success mr-1"></i> Payment
-                                                </span>
+                                                <i class="fa fa-circle text-success mr-1"></i> Payment
+                                            </span>
                                             @else
-                                                <span class="badge light badge-danger"><i class="fa fa-circle text-danger mr-1"></i> No-Payment</span>
+                                            <span class="badge light badge-danger"><i class="fa fa-circle text-danger mr-1"></i> No-Payment</span>
                                             @endif
                                         </a>
                                     </td>
                                     @can('Member approved')
                                     <form action="{{ route('member-approve.update', $row->id) }}" method="post">
-                                    <td>
-                                        <input type="hidden" name="status" value="{{$status}}">
-                                        <input type="text" name="member_code" placeholder="Type Membership No." value="{{$row->member_code}}">
-                                    </td>
-                                    @if ($status < $row->status)
                                         <td>
+                                            <input type="hidden" name="status" value="{{$status}}">
+                                            <input type="text" name="member_code" placeholder="Type Membership No." value="{{$row->member_code}}">
+                                        </td>
+                                        <td>
+                                            @if ($row->status == 0 && $status == 4 || $row->status == 4 && $status == 3 || $row->status == 3 && $status == 1)
                                             <div class="d-flex justify-content-end align-items-center">
-                                                    <button class="btn btn-sm btn-info p-1 m-1">Approve</button>
-                                                    @csrf
-                                                    @method('PATCH')
+                                                <button class="btn btn-sm btn-info p-1 m-1">Approve</button>
+                                                @csrf
+                                                @method('PATCH')
                                                 </form>
-
+                
                                                 <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-sm btn-danger p-1 mr-1" data-toggle="modal" data-target="#exampleModalCenter{{$key}}">Canceled</button>
                                                 <!-- Modal -->
@@ -92,18 +92,30 @@
                                                 </div>
                                                 <!--End-->
                                             </div>
+                                            @elseif ($row->status == 1)
+                                            <span class="badge light badge-success">
+                                                <i class="fa fa-circle text-success mr-1"></i> Approved Successfully
+                                            </span>
+                                            @elseif ($row->status == 2)
+                                            <span class="badge light badge-danger">
+                                                <i class="fa fa-circle text-danger mr-1"></i> Cancelled Successfully
+                                            </span>
+                                            @else
+                                            <span class="badge light badge-warning">
+                                                <i class="fa fa-circle text-warning mr-1"></i> Processing
+                                            </span>
+                                            @endif
                                         </td>
-                                    @else
-                                    <td>You Approve!</td>
-                                    @endif
+                                        </form>
+                                    </tr>
                                     @endcan
-                                </tr>
-                            @endforeach
- 
-                            </tbody>
-                        </table>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
+                
+
             </div>
         </div>
     </div>

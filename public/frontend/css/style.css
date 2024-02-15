@@ -338,7 +338,7 @@ body{
 
 
 .header .logo img{
-	width: 120px;
+	width: 100px;
 }
 .header .navbar {
 	background: none;
@@ -622,7 +622,7 @@ body{
 	Start Hero Area CSS
 =============================*/
 .slider .single-slider {
-	height: 650px;
+	height: 550px;
 	background-size: cover;
 	background-position: center;
 	background-repeat:no-repeat;
@@ -2052,7 +2052,7 @@ body{
 .news-head {
 	position: relative;
 	overflow: hidden;
-	height: 200px;
+	height: 260px;
 }
 
 .news-head img {
@@ -4013,7 +4013,7 @@ body{
 	position:relative;
 }
 .footer .footer-top{
-	padding:100px 0px;
+	padding:40px 0px;
 	position:relative;
 	background:var(--default);
 }

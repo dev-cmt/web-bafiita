@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('fileApplicantPhoto')->nullable();
             $table->string('fileNomineeNID')->nullable();
             $table->string('fileVisitingCard')->nullable();
+            $table->string('fileArticlesCopy')->nullable();
             $table->string('fileIncorporationCertificate')->nullable();
             $table->string('filePartnershipDeed')->nullable();
             $table->string('fileIndentingLicense')->nullable();

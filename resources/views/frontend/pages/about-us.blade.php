@@ -132,7 +132,7 @@
                         </ul>
 
                         <!--Row-->
-                        <h1 class="news-title">Executive Committee of BAFIITA</h1>
+                        <h1 class="news-title">Executive Committee of BAFIITA:</h1>
                         <p>The management of the affairs of the Association shall be vested in the
                             Executive Committee, consisting of Members not exceeding 15 in number. The
                             Executive Committee shall consist of one president, One Senior Vice

@@ -33,7 +33,7 @@
                     <div class="bar" data-label="A" data-title="Business Information"></div>
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="" class="form-label">Member Type</label>
+                            <label for="" class="form-label">Member Type <span class="text-danger">*</span></label>
                             <select name="member_type_id" id="" class="form-select">
                                 <option value="" selected>Select</option>
                                 <option value="1">Donor</option>
@@ -57,7 +57,7 @@
                             <select name="typeOwnership" id="" class="form-select">
                                 <option value="1">Proprietorship</option>
                                 <option value="2">Partnership</option>
-                                <option value="3">Privet/Pudee Ltd.</option>
+                                <option value="3">Privet/Public Ltd.</option>
                                 <option value="4">Multinational</option>
                                 <option value="5">Others</option>
                             </select>
@@ -87,7 +87,7 @@
                     </div>
                     <div class="row">
                         <div class="col-7 col-md-6">
-                            <label for="" class="form-label">E- TIN (if applicable) Number</label>
+                            <label for="" class="form-label">E- TIN Number</label>
                             <input type="text" name="eTinNo" class="form-control" value="">
                         </div>
                         <div class="col-5 col-md-6">
@@ -128,13 +128,11 @@
                     
                     <!-- Document Candidate Section -->
                     <div class="bar" data-label="C" data-title="Trading Brand/Products & Service"></div>
-                    <div class="row">
+                    <div class="row pt-4">
                         <div class="col-md-6">
                             <label for="" class="form-label">Poultry, Dairy & Fisheries</label>
                             <select name="poultryDairyFisheries" id="" class="form-select">
-                                <option value="" selected>Select</option>
-                                <option value="1">Agro Feed Ingredients</option>
-                                <option value="2">Feed Supplement & Feed Additives</option>
+                                <option value="1">Agro Feed Ingredients, Feed Supplement & Feed Additives</option>
                             </select>
                         </div>
                         <div class="col-md-6">
@@ -171,7 +169,7 @@
                     <div class="bar" data-label="E" data-title="Personal Information"></div>
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="" class="form-label">Name of the Member (As in NID & Trade License)</label>
+                            <label for="" class="form-label">Name of the Member (As in NID & Trade License) <span class="text-danger">*</span></label>
                             <input type="text" name="memebrName" class="form-control" value="">
                         </div>
                         <div class="col-md-6">
@@ -228,7 +226,7 @@
                             <input type="text" name="memberPhoneNo" class="form-control" value="">
                         </div>
                         <div class="col-md-6">
-                            <label for="" class="form-label">Email ID</label>
+                            <label for="" class="form-label">Email ID <span class="text-danger">*</span></label>
                             <input type="text" name="memberEmail" class="form-control" value="">
                         </div>
                     </div>
@@ -236,31 +234,31 @@
                     <!-- Document Candidate Section -->
                     <div class="bar" data-label="F" data-title="Educations Qualification"></div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <label for="" class="form-label">According to the last Academic Certificate Name</label>
                             <input type="text" name="qualificationName" class="form-control" value="">
                         </div>
-                        <div class="col-md-6">
+                        {{--<div class="col-md-6">
                             <label for="" class="form-label">According to the last Academic Certificate File</label>
                             <input type="file" name="fileEducationCertificate" class="form-control" value="">
-                        </div>
+                        </div>--}}
                     </div>
 
                     <!-- Document Candidate Section -->
                     <div class="bar" data-label="G" data-title="Authorized Person/Nominee Information"></div>
-                    <div class="row mb-2">
+                    <div class="row mb-2 pt-4">
                         <p>Following The named person is hereby authorized Person/ Nominee
                             to represent the company to get registered/enlisted Membership with your Association. I/we are providing the detailed information below:</p>
 
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <label for="" class="form-label">Nominee Photo</label>
                             <input type="file" name="fileNomineePhoto" class="form-control" value="">
                         </div>
-                        <div class="col-md-4">
+                        {{--<div class="col-md-4">
                             <label for="" class="form-label">Signature of the Nominee</label>
                             <input type="file" name="fileNomineeSignature" class="form-control" value="">
-                        </div>
-                        <div class="col-md-4">
+                        </div>--}}
+                        <div class="col-md-6">
                             <label for="" class="form-label">Signature of the Applicant</label>
                             <input type="file" name="fileApplicantSignature" class="form-control" value="">
                         </div>
@@ -294,7 +292,7 @@
 
                     <!-- Document Candidate Section -->
                     <div class="bar" data-label="H" data-title="Membership Fee Payment Information"></div>
-                    <div class="row">
+                    <div class="row pt-4">
                         <div class="col-md-6">
                             <label for="" class="form-label">Bank & Branch Name </label>
                             <input type="text" name="bankBranceName" class="form-control" value="">
@@ -324,7 +322,7 @@
                     
                     <!-- Document Candidate Section -->
                     <div class="bar" data-label="I" data-title="Recommendation Information"></div>
-                    <h6 class="text-primary">K1 Proposed by BAFIITA Members</h6>
+                    <h6 class="text-primary pt-4">K1 Proposed by BAFIITA Members</h6>
                     <div class="row">
                         <div class="col-md-4">
                             <label for="" class="form-label">Name of Company </label>
@@ -336,16 +334,12 @@
                         </div>
                         <div class="col-md-4">
                             <label for="" class="form-label">BAFIITA Membership Number </label>
-                            <select name="kOneMembershipNo" id="" class="form-select">
-                                <option value="" selected>Select</option>
-                                <option value="1">Donor</option>
-                                <option value="2">General</option>
-                            </select>
+                            <input type="text" name="kOneMembershipNo" class="form-control" value="">
                         </div>
                     </div>
 
                     <h6 class="text-primary mt-4">K2 Seconded by BAFIITA Members</h6>
-                    <div class="row">
+                    <div class="row pb-4">
                         <div class="col-md-4">
                             <label for="" class="form-label">Name of Company </label>
                             <input type="text" name="kTwoCompanyName" class="form-control" value="">
@@ -356,27 +350,23 @@
                         </div>
                         <div class="col-md-4">
                             <label for="" class="form-label">BAFIITA Membership Number </label>
-                            <select name="kTwoMembershipNo" id="" class="form-select">
-                                <option value="" selected>Select</option>
-                                <option value="1">Donor</option>
-                                <option value="2">General</option>
-                            </select>
+                            <input type="text" name="kTwoMembershipNo" class="form-control" value="">
                         </div>
                     </div>
 
                     <!-- Document Candidate Section -->
                     <div class="bar" data-label="J" data-title="Verified by BAFIITA Secretariat (For office use only)"></div>
-                    <div class="row">
+                    <div class="row pt-4">
                         <div class="col-md-12">
-                            <label for="" class="form-label">Comment:</label>
-                            <textarea name="description" id="" rows="3" class="form-control"></textarea>
+                            <label for="" class="form-label">Office:</label>
+                            <textarea name="description" id="" rows="5" class="form-control"></textarea>
                         </div>
                     </div>
 
                     <!-- Document Candidate Section -->
                     <div class="bar_document"></div>
-                    <div class="row mb-2">
-                        <label for="" class="form-label col-md-4">কোম্পানী প্রতীক</label>
+                    <div class="row mb-2 ">
+                        <label for="" class="form-label col-md-4"> কোম্পানী প্রতীক <span class="text-danger">*</span> </label>
                         <div class="col-md-8">
                             <input type="file" name="fileCompanyLogo" class="form-control" value="">
                         </div>
@@ -412,7 +402,7 @@
                         </div>
                     </div>
                     <div class="row mb-2">
-                        <label for="" class="form-label col-md-4">আবেদনকারীর পাসপোর্ট সাইজের ছবি</label>
+                        <label for="" class="form-label col-md-4">আবেদনকারীর পাসপোর্ট সাইজের ছবি <span class="text-danger">*</span></label>
                         <div class="col-md-8">
                             <input type="file" name="fileApplicantPhoto" class="form-control" value="">
                         </div>
@@ -435,8 +425,14 @@
                             <input type="file" name="fileVisitingCard" class="form-control" value="">
                         </div>
                     </div>
-                    <h6 class="text-primary text-center my-4">কোম্পানীর ক্ষেত্রে নিন্মোক্ত সার্টিফিকেট সমূহ সংযুক্ত করতে হবে। কোম্পানীর সংঘস্মারক/সংঘবিধি এর ফটোকপি।</h6>
-                        
+                    <h6 class="text-primary text-center my-4">কোম্পানীর ক্ষেত্রে নিন্মোক্ত সার্টিফিকেট সমূহ সংযুক্ত করতে হবে।</h6>
+                    
+                    <div class="row mb-2">
+                        <label for="" class="form-label col-md-4">কোম্পানীর সংঘস্মারক/সংঘবিধ এর ফটোকপি </label>
+                        <div class="col-md-8">
+                            <input type="file" name="fileArticlesCopy" class="form-control" value="">
+                        </div>
+                    </div>
                     <div class="row mb-2">
                         <label for="" class="form-label col-md-4">সার্টিফিকেট অফ ইনকর্পোরেশন</label>
                         <div class="col-md-8">
@@ -472,7 +468,7 @@
                             <thead>
                                 <tr>
                                     <th colspan="3" class="text-center">দাতা সদস্য</th>
-                                    <th colspan="3" class="text-center">সাধার্থ্য সদস্য</th>
+                                    <th colspan="3" class="text-center">সাধারন সদস্য</th>
                                 </tr>
                                 <tr>
                                     <th class="text-center">ক্রমিক নং</th>

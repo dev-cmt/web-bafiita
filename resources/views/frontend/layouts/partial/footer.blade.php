@@ -10,7 +10,7 @@
                         <p>Welcome to website introduction of Bangladesh Agro Feed Ingredients Importers and Traders Association (BAFIITA)</p>
                         <!-- Social -->
                         <ul class="social">
-                            <li><a href="#"><i class="icofont-facebook"></i></a></li>
+                            <li><a href="https://www.facebook.com/profile.php?id=100064473021569"><i class="icofont-facebook"></i></a></li>
                             <li><a href="#"><i class="icofont-twitter"></i></a></li>
                                   </ul>
                         <!-- End Social -->
@@ -57,7 +57,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-12">
                     <div class="copyright-content">
-                        <p>© Copyright 2024 Bangladesh Agro Feed Ingredients Importers and Traders Association (BAFIITA) |  All Rights Reserved by <a href="#" target="_blank">WebKutir</a> </p>
+                        <p>© 2024 All Rights Reserved by Bangladesh Agro Feed Ingredients Importers & Traders Association (BAFIITA) | <a href="webkutir.org" target="_blank">Design by: WebKutir</a> </p>
                     </div>
                 </div>
             </div>

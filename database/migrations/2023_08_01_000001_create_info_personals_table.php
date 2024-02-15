@@ -37,11 +37,11 @@ return new class extends Migration
             
             $table->string('kOneCompanyName')->nullable();
             $table->string('kOneMemberName')->nullable();
-            $table->tinyInteger('kOneMembershipNo')->nullable();
+            $table->string('kOneMembershipNo')->nullable();
             
             $table->string('kTwoCompanyName')->nullable();
             $table->string('kTwoMemberName')->nullable();
-            $table->tinyInteger('kTwoMembershipNo')->nullable();
+            $table->string('kTwoMembershipNo')->nullable();
             $table->text('description')->nullable();
 
             $table->tinyInteger('status')->default(false);
