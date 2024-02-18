@@ -126,6 +126,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::PATCH('member-approve/{id}/update', [MemberController::class, 'approveUpdate'])->name('member-approve.update');
     Route::PATCH('member-approve/{id}/cancel', [MemberController::class, 'approveCancel'])->name('member-approve.cancel');
 
+    Route::get('download/{id}/member-information',[MemberController::class,'downloadMemberInfo'])->name('member-information.download');
+
     Route::get('download/member-documents/{id}/download-ZipFile', [MemberController::class, 'downloadZipFile'])->name('member-document.downloadZipFile');
 
     Route::get('download/member-documents/{id}/trade_licence', [MemberController::class, 'downloadTradeLicence'])->name('document-trade-licence.download');

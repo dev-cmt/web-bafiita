@@ -24,7 +24,12 @@ use App\Models\Payment\PaymentDetails;
 use App\Models\User;
 use App\Helpers\Helper;
 use App\Mail\MemberApproved;
+
 use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\BarcodeExport;
+use App\Exports\ItemExport;
+use PDF;
 use ZipArchive;
 
 class MemberController extends Controller
@@ -416,7 +421,17 @@ class MemberController extends Controller
      * DOWNLOAD DOCUMENT
      * ___________________________________________________________________________________
      */
+    public function downloadMemberInfo($id)
+    {
+        $storeTransfer = null;
+        $data = null;
 
+        $pdf = PDF::loadView('layouts.pages.export.parsial-store-delivery', compact('storeTransfer','data'))->setPaper('a4', 'portrait');
+        return $pdf->download($date . '.pdf');
+        // return view('layouts.pages.export.parsial-store-delivery', compact('storeTransfer','data'));
+    }
+
+    //=============================================
     function downloadZipFile($userId) {
         // Define the path where the user's documents are stored
         $documentPath = public_path("document/member/{$userId}");
