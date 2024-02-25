@@ -426,9 +426,9 @@ class MemberController extends Controller
         $storeTransfer = null;
         $data = null;
 
-        $pdf = PDF::loadView('layouts.pages.export.parsial-store-delivery', compact('storeTransfer','data'))->setPaper('a4', 'portrait');
-        return $pdf->download($date . '.pdf');
-        // return view('layouts.pages.export.parsial-store-delivery', compact('storeTransfer','data'));
+        $pdf = PDF::loadView('layouts.pages.export.salary-pay-slip', compact('storeTransfer','data'))->setPaper('a4', 'portrait');
+        return $pdf->download('Hello' . '.pdf');
+        // return view('layouts.pages.export.salary-pay-slip', compact('storeTransfer','data'));
     }
 
     //=============================================
