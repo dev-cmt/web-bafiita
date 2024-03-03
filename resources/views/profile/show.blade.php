@@ -232,7 +232,7 @@
                                             </div>
                                         </div>
                                         <!--Item-->
-                                        <div class="col-6">
+                                        {{-- <div class="col-6">
                                             <div class="row mb-2">
                                                 <div class="col-sm-6 col-5">
                                                     <h6 class="f-w-500">IRC Import Registration Certificate Number <span class="pull-right">:</span></h6>
@@ -247,7 +247,7 @@
                                                 </div>
                                                 <div class="col-sm-6 col-7"><span>{{ $infoCompany->ircCertificateDate ?? 'Null' }}</span></div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <!--Item-->
                                         <div class="col-6">
                                             <div class="row mb-2">
@@ -714,10 +714,10 @@
                                         <!--Item-->
                                         <div class="col-xl-12 col-sm-12">
                                             <div class="row mb-2">
-                                                <div class="col-sm-6 col-5">
+                                                <div class="col-sm-3 col-4">
                                                     <h6 class="f-w-500">Comment: <span class="pull-right">:</span></h6>
                                                 </div>
-                                                <div class="col-sm-6 col-7"><span>{{ $infoPersonal->description ?? 'Null' }}</span></div>
+                                                <div class="col-sm-9 col-8"><span>{{ $infoPersonal->description ?? 'Null' }}</span></div>
                                             </div>
                                         </div>
                                     </div>

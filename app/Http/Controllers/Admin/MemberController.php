@@ -423,12 +423,12 @@ class MemberController extends Controller
      */
     public function downloadMemberInfo($id)
     {
-        $storeTransfer = null;
-        $data = null;
+        $data = User::find($id);
+        $fileName = $data->name ?? 'document';
 
-        $pdf = PDF::loadView('layouts.pages.export.salary-pay-slip', compact('storeTransfer','data'))->setPaper('a4', 'portrait');
-        return $pdf->download('Hello' . '.pdf');
-        // return view('layouts.pages.export.salary-pay-slip', compact('storeTransfer','data'));
+        $pdf = PDF::loadView('layouts.pages.export.member-information', compact('data'))->setPaper('a4', 'portrait');
+        return $pdf->download($fileName . '.pdf');
+        // return view('layouts.pages.export.member-information', compact('data'));
     }
 
     //=============================================

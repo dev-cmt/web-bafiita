@@ -75,6 +75,7 @@ return array(
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\View\\Components\\AppLayout' => $baseDir . '/app/View/Components/AppLayout.php',
     'App\\View\\Components\\GuestLayout' => $baseDir . '/app/View/Components/GuestLayout.php',
+    'App\\View\\Components\\ReportsLayout' => $baseDir . '/app/View/Components/ReportsLayout.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'BaconQrCode\\Common\\BitArray' => $vendorDir . '/bacon/bacon-qr-code/src/Common/BitArray.php',
     'BaconQrCode\\Common\\BitMatrix' => $vendorDir . '/bacon/bacon-qr-code/src/Common/BitMatrix.php',
