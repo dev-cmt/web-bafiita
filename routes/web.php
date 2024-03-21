@@ -14,12 +14,13 @@ use App\Http\Controllers\Master\CommitteeTypeController;
 use App\Http\Controllers\Master\MemberTypeController;
 use App\Http\Controllers\Master\QualificationController;
 
-
 use App\Http\Controllers\Admin\CommitteeController;
 use App\Http\Controllers\Admin\SubscriptionController;
 use App\Http\Controllers\Admin\LoseMemberController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\EventPaymentController;
+use App\Http\Controllers\Admin\PastCommitteeController;
+use App\Http\Controllers\Admin\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -211,6 +212,18 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('dashboard-gallery/{id}/show',[GalleryController::class,'bvGalleryImage'])->name('dashboard-gallery.images');
     //-- EVENTS
     Route::resource('event', EventController::class);
+    //-- PAST COMMITTEE
+    Route::get('past-committee/index', [PastCommitteeController::class,'index'])->name('past-committee.index');
+    Route::POST('past-committee/store', [PastCommitteeController::class,'store'])->name('past-committee.store');
+    Route::get('past-committee/edit', [PastCommitteeController::class,'edit'])->name('past-committee.edit');
+    Route::get('past-committee-memebr/{id}/index', [PastCommitteeController::class,'memberIndex'])->name('past-committee-member.index');
+    Route::get('past-committee-memebr/store', [PastCommitteeController::class,'memberStore'])->name('past-committee-member.store');
+    //-- BLOG
+    Route::get('blog-news/index', [BlogController::class,'index'])->name('blog.index');
+    Route::get('blog-news/create', [BlogController::class,'create'])->name('blog.create');
+    Route::post('blog-news/store', [BlogController::class,'store'])->name('blog.store');
+    Route::patch('blog-news/edit', [BlogController::class,'edit'])->name('blog.edit');
+    Route::delete('blog-news/delete', [BlogController::class,'delete'])->name('blog.delete');
     //-- CONTACT
     Route::get('contact-us/index', [ContactController::class,'contactIndex'])->name('contact-us.index');
     Route::get('contact-us/{id}/reply', [ContactController::class,'contactReply'])->name('contact-us.reply');

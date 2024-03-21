@@ -248,3 +248,8 @@ table.dataTable tbody td {
 .form-control:disabled{
   background: #eeecec !important;
 }
+
+/*----Just Change This Web site------*/
+[data-header-position="fixed"] .content-body {
+  padding-top: 4.5rem !important;
+}

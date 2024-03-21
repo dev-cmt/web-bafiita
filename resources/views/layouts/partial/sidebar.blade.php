@@ -110,6 +110,12 @@
                 </a>
                 <ul aria-expanded="false">
                     @canany('Gallery access','Gallery create','Gallery edit','Gallery delete')
+                        <li><a href="{{ Route('past-committee.index')}}">Past Committee</a></li>
+                    @endcanany
+                    @canany('Gallery access','Gallery create','Gallery edit','Gallery delete')
+                        <li><a href="{{ Route('blog.index')}}">Notice & News</a></li>
+                    @endcanany
+                    @canany('Gallery access','Gallery create','Gallery edit','Gallery delete')
                         <li><a href="{{ Route('gallery.index')}}">Photo Gallery</a></li>
                     @endcanany
                     @canany('Event access','Event create','Event edit','Event delete')

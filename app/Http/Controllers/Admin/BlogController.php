@@ -6,17 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use App\Models\Admin\Event;
-use App\Models\Admin\EventRegister;
-use App\Models\Admin\EventPayment;
+use App\Models\Admin\Blog;
 use App\Models\User;
 use Image;
 
-class EventController extends Controller
+class BlogController extends Controller
 {
     public function index()
     {
-        $data = Event::where('status', 1)->get();
+        $data = Blog::where('status', 1)->get();
         return view('layouts.pages.event.index',compact('data'));
     }
 
@@ -34,7 +32,7 @@ class EventController extends Controller
             'image'=> 'required|image|mimes:jpg,png,jpeg,gif,svg'
         ]);
 
-        $data= new Event();
+        $data = new Event();
         if($request->hasFile('image')) {
             //get filename with extension
             $filenamewithextension = $request->file('image')->getClientOriginalName();
@@ -95,7 +93,7 @@ class EventController extends Controller
 
     public function update(Request $request, $id)
     {
-        $data=Event::findOrFail($id);
+        $data = Event::findOrFail($id);
 
         if($request->hasFile('image')) {
             if (File::exists("public/images/events/".$data->image)) {
