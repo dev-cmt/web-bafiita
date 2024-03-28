@@ -2,7 +2,7 @@
 
     <div class="row">
         <div class="col-12 d-flex justify-content-between">
-            <h4 class="card-title">Committee Member List</h4>
+            <h4 class="card-title">{{$item->title}} {{$item->duration}}</h4>
             <button type="button" id="open_modal" class="btn btn-sm btn-secondary float-right"><i class="fa fa-plus"></i><span class="btn-icon-add"></span>Create New</button>
         </div>
     </div>
@@ -30,12 +30,13 @@
                 </div>
                 <div class="card-body user-profile">
                     <div class="image-bx">
-                        <img src="{{asset('public/images')}}/{{$row->image}}" data-src="{{asset('public/images')}}/logo.png" alt="" class="rounded-circle">
+                        <img src="{{asset('public/images/past-committee')}}/{{$row->image}}" data-src="{{asset('public/images')}}/logo.png" alt="" class="rounded-circle">
                         <span class="active"></span>
                     </div>
                     <div class="media-body user-meta-info">
-                        <h6 class="fs-20 font-w500 my-1">Engeline O’conner</h6>
-                        <p class="fs-14 mb-3">Beep Beep Inc.</p>
+                        <h6 class="fs-20 font-w500 my-1">{{$row->name}}</h6>
+                        <p class="fs-16 mb-1">DESIG: <span class="text-danger">{{$row->designation}}</span></p>
+                        <a href="{{$row->rep_url}}" target="_blank" class="fs-16 mb-2">REP: <span class="text-info">{{$row->represent}}</span></a>
                     </div>
                 </div>
             </div>
@@ -52,9 +53,10 @@
                     <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                     </button>
                 </div>
-                <form class="form-valide" data-action="{{ route('past-committee.store') }}" method="POST" enctype="multipart/form-data" id="add-user-form">
+                <form class="form-valide" data-action="{{ route('past-committee-member.store') }}" method="POST" enctype="multipart/form-data" id="add-user-form">
                     @csrf
                     <input type="hidden" name="id" id="set_id">
+                    <input type="hidden" name="past_committee_id" id="{{$item->id}}">
                     <div class="modal-body py-2">
                         <div class="row" id="main-row-data">
                             <div class="col-md-12">
@@ -86,9 +88,17 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group row">
-                                    <label class="col-md-4 col-form-label">Represent</label>
+                                    <label class="col-md-4 col-form-label">Represent Company</label>
                                     <div class="col-md-8">
                                         <input type="text" name="represent" id="represent" class="form-control" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label">Rp. Company URL</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="rep_url" id="rep_url" class="form-control" value="">
                                     </div>
                                 </div>
                             </div>
@@ -133,7 +143,12 @@
         /*=======//Show Modal//=========*/
         $(document).on('click','#open_modal', function(){
             $("#set_id").val('');
-            $("#title").val('');
+            $("#name").val('');
+            $("#designation").val('');
+            $("#represent").val('');
+            $("#rep_url").val('');
+            $("#description").val('');
+            $("#index").val('');
 
             $(".modal-title").html('Add New');
             $("#exampleModalCenter").modal('show');

@@ -13,6 +13,7 @@ class PastCommitteeDetails extends Model
         'name',
         'designation',
         'represent',
+        'rep_url',
         'image',
         'description',
         'index',

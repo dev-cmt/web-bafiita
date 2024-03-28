@@ -216,8 +216,10 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('past-committee/index', [PastCommitteeController::class,'index'])->name('past-committee.index');
     Route::POST('past-committee/store', [PastCommitteeController::class,'store'])->name('past-committee.store');
     Route::get('past-committee/edit', [PastCommitteeController::class,'edit'])->name('past-committee.edit');
+    Route::get('past-committee/delete', [PastCommitteeController::class,'delete'])->name('past-committee.delete');
+    
     Route::get('past-committee-memebr/{id}/index', [PastCommitteeController::class,'memberIndex'])->name('past-committee-member.index');
-    Route::get('past-committee-memebr/store', [PastCommitteeController::class,'memberStore'])->name('past-committee-member.store');
+    Route::POST('past-committee-memebr/store', [PastCommitteeController::class,'memberStore'])->name('past-committee-member.store');
     //-- BLOG
     Route::get('blog-news/index', [BlogController::class,'index'])->name('blog.index');
     Route::get('blog-news/create', [BlogController::class,'create'])->name('blog.create');

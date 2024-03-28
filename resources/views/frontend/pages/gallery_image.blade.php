@@ -17,8 +17,8 @@
 
             <!-- Gallery Slider -->
             <div id="lightgallery" class="row">
-                @if (count($posts->images)>0)
-                    @foreach ($posts->images as $img)
+                @if (count($data)>0)
+                    @foreach ($data as $img)
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 my-2" data-responsive="{{asset('public/images/gallery')}}/img/{{ $img->image}}" data-src="{{asset('public/images/gallery')}}/img/{{ $img->image}}" data-sub-html="<h4>Bangladesh Agro Feed Ingredients</h4><p></p>">
                         <div class="thumbnail-classic">
                             <a href="" class="thumbnail-classic-figure"> <img class="img-responsive" src="{{asset('public/images/gallery')}}/img/{{ $img->image}}"></a>

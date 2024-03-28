@@ -12,6 +12,7 @@ class PastCommittee extends Model
     use HasFactory;
     protected $fillable = [
         'title',
+        'duration',
         'description',
         'user_id',
         'index',

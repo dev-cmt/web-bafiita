@@ -15,7 +15,7 @@
                 <div class="single-clients">
                     <img src="{{asset('public/frontend')}}/img/client1.png" alt="#">
                 </div>
-                <div class="single-clients">
+                {{-- <div class="single-clients">
                     <img src="{{asset('public/frontend')}}/img/client2.png" alt="#">
                 </div>
                 <div class="single-clients">
@@ -29,7 +29,7 @@
                 </div>
                 <div class="single-clients">
                     <img src="{{asset('public/frontend')}}/img/client1.png" alt="#">
-                </div>
+                </div> --}}
             </div>
 
         </div>
@@ -68,7 +68,7 @@
                     <div class="col-lg-8 col-12">
                         <p class="pt-4">
                             <h3>Welcome To <br> Bangladesh Agro Feed Ingredients Importers & Traders Association</h3>
-                    <h6><em>An agro-based ingredients importers and traders association</em></h6><br>
+                            <h6><em>An agro-based ingredients importers and traders association</em></h6><br>
                             <strong>Dear Patrons,</strong> <br>
                             <strong>Asslamualikum!!</strong> <br>
                             Welcome to website introduction of Bangladesh Agro Feed Ingredients Importers and Traders Association (BAFIITA), BAFIITA as the apex Importers and Traders body registered with the Ministry of Commerce of People&#039;s Republic of Bangladesh Registration No: TO- 944/2017, since 2017 to conduct in the country continues its pivotal role in consultative and advisory capacity in the formulation of Poultry, Fisheries And Dairy Feed ingredients, Feed additives &amp; Supplements of the Government. BAFIITA actively represents and contributes in all forums related to Socio-Economic Development and Government for mutual sharing of views on all vital issues concerning and affecting the national economy.
@@ -79,7 +79,7 @@
         </div>
         <div class="container">
            <div class="row py-4">
-                <div class="col-lg-3 col-12">
+                {{-- <div class="col-lg-3 col-12">
                     <div class="card">
                         <!-- News Head -->
                         <div class="news-head" style="height: auto">
@@ -98,8 +98,8 @@
                         <h6 class="text-center mt-4"><strong> Md. Helal Uddin</strong></h6>
                         <h6 class="text-center my-2 text-success">Secretary General</h6>
                     </div>
-                </div>
-                <div class="col-lg-6 col-12">
+                </div> --}}
+                <div class="col-lg-12 col-12">
                     <div class="card p-4">
                         <h4 class="text-center mb-4">-: BAFIITA Secretariat : -</h4>
                         <p style="line-height: 30px">
@@ -204,7 +204,7 @@
     <div id="fun-facts" class="fun-facts section overlay" style="background-image:url('{{asset('public/images')}}/pages/bg-count.jpg');">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-12">
+                <div class="col-lg-6 col-md-6 col-12">
                     <!-- Start Single Fun -->
                     <div class="single-fun">
                         <i class="icofont icofont-home"></i>
@@ -215,7 +215,7 @@
                     </div>
                     <!-- End Single Fun -->
                 </div>
-                <div class="col-lg-3 col-md-6 col-12">
+                {{-- <div class="col-lg-3 col-md-6 col-12">
                     <!-- Start Single Fun -->
                     <div class="single-fun">
                         <i class="icofont icofont-user-alt-3"></i>
@@ -236,13 +236,13 @@
                         </div>
                     </div>
                     <!-- End Single Fun -->
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
+                </div> --}}
+                <div class="col-lg-6 col-md-6 col-12">
                     <!-- Start Single Fun -->
                     <div class="single-fun">
                         <i class="icofont icofont-table"></i>
                         <div class="content">
-                            <span class="counter">32</span>
+                            <span class="counter">24</span>
                             <p>Years of Experience</p>
                         </div>
                     </div>

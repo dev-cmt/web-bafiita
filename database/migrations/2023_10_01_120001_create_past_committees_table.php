@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('past_committees', function (Blueprint $table) {
             $table->id();
             $table->string("title")->nullable();
+            $table->string("duration")->nullable();
             $table->text("description")->nullable();
             $table->integer("index")->nullable();
 

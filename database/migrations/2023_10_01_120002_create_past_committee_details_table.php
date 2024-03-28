@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("name")->nullable();
             $table->string("designation")->nullable();
             $table->string("represent")->nullable();
+            $table->string("rep_url")->nullable();
             $table->string("image")->nullable();
             $table->text("description")->nullable();
             $table->integer("index")->nullable();

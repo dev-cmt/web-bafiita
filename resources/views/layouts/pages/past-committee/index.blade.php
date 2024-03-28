@@ -12,10 +12,13 @@
                 <div class="card">
                     <div class="card-header">
                         <a href="{{ route('past-committee-member.index', $row->id) }}" class="btn btn-sm btn-primary py-1"><i class="fa fa-plus"></i><span class="btn-icon-add"></span>Member</a>
-                        <a href="#" class="btn btn-success shadow btn-xs sharp mr-1" id="data-show" data-id="{{ $row->id }}"><i class="fa fa-pencil"></i></a>
+                        <div>
+                            <a href="#" class="btn btn-success shadow btn-xs sharp mr-1" id="data-show" data-id="{{ $row->id }}"><i class="fa fa-pencil"></i></a>
+                            <a href="#" class="btn btn-danger shadow btn-xs sharp mr-1" id="data-delete" data-id="{{ $row->id }}"><i class="fa fa-trash"></i></a>
+                        </div>
                     </div>
                     <div class="card-body">
-                        <h6>{{$row->title}}</h6>
+                        <h6>{{$row->title}} {{$row->duration}}</h6>
                     </div>
                     <div class="card-footer">
                         @if($row->status == 0)
@@ -59,9 +62,17 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group row">
+                                    <label for="name" class="col-md-4 col-form-label">Duration</label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="duration" id="duration" class="form-control" placeholder="2000-2002" maxlength="9">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group row">
                                     <label for="name" class="col-md-4 col-form-label">index</label>
                                     <div class="col-md-8">
-                                        <input type="text" name="index" id="index" class="form-control" value="">
+                                        <input type="number" name="index" id="index" class="form-control" placeholder="0">
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +112,8 @@
         /*=======//Show Modal//=========*/
         $(document).on('click','#open_modal', function(){
             $("#set_id").val('');
-            $("#title").val('');
+            $("#title").val('BAFIITA Executive Committee MEMBER’S');
+            $("#duration").val('2000-2002');
 
             $(".modal-title").html('Add New');
             $("#exampleModalCenter").modal('show');
@@ -126,18 +138,21 @@
                     var statusHtml = (response.status == 0) ? '<span class="badge light badge-danger"><i class="fa fa-circle text-danger mr-1"></i> Inactive</span>' : '<span class="badge light badge-success"><i class="fa fa-circle text-success mr-1"></i> Active</span>';
                     
                     var newRowHtml = `
-                    <div class="col-lg-4" id="col_${response.id}">
-                        <div class="card">
-                            <div class="card-header">
-                                <a href="{{ route('event.create') }}" class="btn btn-sm btn-primary py-1"><i class="fa fa-plus"></i><span class="btn-icon-add"></span>Member</a>
-                                <a href="#" class="btn btn-success shadow btn-xs sharp mr-1" id="data-show" data-id="${response.id}"><i class="fa fa-pencil"></i></a>
+                        <div class="col-lg-4" id="col_${response.id}">
+                            <div class="card">
+                                <div class="card-header">
+                                    <a href="{{ route('event.create') }}" class="btn btn-sm btn-primary py-1"><i class="fa fa-plus"></i><span class="btn-icon-add"></span>Member</a>
+                                    <div>
+                                        <a href="#" class="btn btn-success shadow btn-xs sharp mr-1" id="data-show" data-id="${response.id}"><i class="fa fa-pencil"></i></a>
+                                        <a href="#" class="btn btn-danger shadow btn-xs sharp mr-1" id="data-delete" data-id="${response.id}"><i class="fa fa-trash"></i></a>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h6>${response.title}</h6>
+                                </div>
+                                <div class="card-footer">${statusHtml}</div>
                             </div>
-                            <div class="card-body">
-                                <h6>${response.title}</h6>
-                            </div>
-                            <div class="card-footer">${statusHtml}</div>
-                        </div>
-                    </div>`;
+                        </div>`;
 
                     if ($("#set_id").val()) { $("#col_" + response.id).replaceWith(newRowHtml); }
                     else { $("#content-section").prepend(newRowHtml); }
@@ -172,6 +187,7 @@
 
                     $("#set_id").val(response.id);
                     $("#title").val(response.title);
+                    $("#duration").val(response.duration);
                     $("#index").val(response.index);
                     $("#description").val(response.description);
 
@@ -203,13 +219,13 @@
                     // Place your delete code here
                     var id = $(this).data('id');
                     $.ajax({
-                        url:'{{ route('member-qualification.delete')}}',
+                        url:'{{ route('past-committee.delete')}}',
                         method:'GET',
                         dataType:"JSON",
                         data:{'id':id},
                         success:function(data){
                             swal("Success Message Title", "Well done, you pressed a button", "success");
-                            $('[data-id="' + id + '"]').closest('tr').hide();
+                            $("#col_" + data.id).hide();
                         },
                         error:function(){
                             swal("Error!", "There are no details available for this item.", "error");

@@ -2,7 +2,7 @@
 <!-- ======= Header ======= -->
 <header class="header" >
     <!-- Topbar -->
-    <section class="news-line d-flex">
+    <section class="news-line d-flex" style="border-bottom: 3px solid #109033">
         <div style="width: 150px;background: #109033; padding: 10px 8px;font-size: 16px;color: white;">Notice & News</div>
         <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();" style="font-size: 16px;padding: 10px 0px;color: black;">
             <span><a href="#" class="mx-5">Welcome To Bangladesh Agro Feed Ingredients Importers & Traders Association</a>|</span>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Admin\Contact;
 use App\Models\Admin\Gallery;
+use App\Models\Admin\GalleryImages;
 use App\Models\Admin\Event;
 use App\Models\Master\MemberType;
 use App\Models\Master\CommitteeType;
@@ -93,13 +94,15 @@ class FrontViewController extends Controller
      */
     public function galleryImage()
     {
-        $posts=Gallery::where('public','=','1')->with('user')->get();
-        return view('frontend.pages.gallery_album',compact('posts'));
+        $posts=Gallery::where('public','=','1')->orderBy('created_at', 'desc')->with('user')->get();
+        return view('frontend.pages.gallery_album', compact('posts'));
     }
     public function galleryShow($id)
     {
-        $posts=Gallery::findOrFail($id);
-        return view('frontend.pages.gallery_image')->with('posts',$posts);
+        $posts= Gallery::findOrFail($id);
+        $data= GalleryImages::where('gallery_id', $id)->orderBy('created_at', 'desc')->get();
+        
+        return view('frontend.pages.gallery_image', compact('posts', 'data'));
     }
     /**________________________________________________________________________________________
      * Events Menu Pages
