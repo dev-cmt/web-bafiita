@@ -14,6 +14,7 @@ class InfoPersonal extends Model
         'memebrDesignation',
         'memebrNID',
         'memebrDOB',
+        'memebrFatherName',
         'memebrMotherName',
         'memebrLifePartner',
         'memebrGender',

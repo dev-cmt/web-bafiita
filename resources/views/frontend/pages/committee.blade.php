@@ -113,7 +113,7 @@
                     </div>
                     <h5 class="mt-4">Altaf Hossain Biswas</h5>
                     <h6 class="text-danger">Organizing Secretary</h6>
-                    <h6 class="text-danger">Rep : BTC Group</h6>
+                    <h6 class="text-danger">Rep : M/S BTC Trading</h6>
                 </div>
             </div>
             <div class="col-lg-3 mb-3">
@@ -842,11 +842,11 @@
             <div class="col-lg-3 mb-3">
                 <div class="bg-white border text-center p-4">
                     <div>
-                        <img src="{{asset('public/images')}}/past/20192021/mr. binod kumar sikaria.jpg"
+                        <img src="{{asset('public/images')}}/past/20192021/md. jahirul islam.jpg"
                             class="img-fluid" alt="" style="height: 100%">
                     </div>
-                    <h5 class="mt-4">Md. Jahirul Islam Joint </h5>
-                        <h6 class="text-danger">Organizing Secretary</h6>
+                    <h5 class="mt-4">Md. Jahirul Islam</h5>
+                        <h6 class="text-danger">Joint Organizing Secretary</h6>
                         <h6 class="text-danger">Rep : M/S. Modina Trading Corporation</h6>
                 </div>
             </div>

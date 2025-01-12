@@ -75,11 +75,11 @@ class MemberController extends Controller
                 'memebrName' => 'required',
                 'memberEmail' => 'required|unique:users,email|max:255',
 
-                'fileCompanyLogo' => 'required|mimes:jpg,png,jpeg,gif,svg|image|max:10240',
+                //'fileCompanyLogo' => 'required|mimes:jpg,png,jpeg,gif,svg|image|max:10240',
                 'fileApplicantPhoto' => 'required|mimes:jpg,png,jpeg,gif,svg|image|max:10240',
             ], [
                 'member_type_id.required' => 'The Member Type is required.',
-                'fileCompanyLogo.required' => 'কোম্পানী প্রতীক আবশ্যক',
+                //'fileCompanyLogo.required' => 'কোম্পানী প্রতীক আবশ্যক',
                 'fileApplicantPhoto.required' => 'আবেদনকারীর পাসপোর্ট সাইজের ছবি আবশ্যক!',
                 //'fileEducationCertificate.required' => 'The Education Certificate field is required.',
                 // 'fileEducationCertificate.mimes' => 'The :attribute must be a valid image file.',
@@ -127,7 +127,7 @@ class MemberController extends Controller
             //         'is_admin' => 0,
             //     ]);
             // }
-            /*_____________________ MEMBER ID GENERATE ___________________*/
+            /* ____________________ MEMBER ID GENERATE ___________________*/
             $user = User::create([
                 'name' => $request->memebrName,
                 'email' => $request->memberEmail,
@@ -147,6 +147,7 @@ class MemberController extends Controller
                 'memebrDesignation'=> $request->memebrDesignation,
                 'memebrNID'=> $request->memebrNID,
                 'memebrDOB'=> $request->memebrDOB,
+                'memebrFatherName'=> $request->memebrFatherName,
                 'memebrMotherName'=> $request->memebrMotherName,
                 'memebrLifePartner'=> $request->memebrLifePartner,
                 'memebrGender'=> $request->memebrGender,

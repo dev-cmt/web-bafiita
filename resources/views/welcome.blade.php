@@ -242,7 +242,7 @@
                     <div class="single-fun">
                         <i class="icofont icofont-table"></i>
                         <div class="content">
-                            <span class="counter">24</span>
+                            <span class="counter">32</span>
                             <p>Years of Experience</p>
                         </div>
                     </div>

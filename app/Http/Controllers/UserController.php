@@ -48,7 +48,7 @@ class UserController extends Controller
         $customers = $data->where('is_admin', false)->count();
 
         $userData = ['customers' => $customers, 'admin' => $admin, 'inactive' => $inactiveUsers];
-        $users = User::with('roles')->latest()->paginate(20);
+        $users = User::with('roles')->get();
 
         return view('user.index', compact(['users', 'userData']));
     }

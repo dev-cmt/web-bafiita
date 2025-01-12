@@ -5,7 +5,7 @@
                 <div class="card-header">
                     <h4 class="card-title">Registation Fee (Online Payment)</h4>
                     @can('Member approve access')
-                    <a href="{{route('members-approve.index')}}" class="btn btn-sm btn-primary"><i class="fa fa-reply"></i><span class="btn-icon-add"></span>Member Approve</a>
+                    <a href="{{route('members-approve.index', 1)}}" class="btn btn-sm btn-primary"><i class="fa fa-reply"></i><span class="btn-icon-add"></span>Member Approve</a>
                     @endcanany
                 </div>
 

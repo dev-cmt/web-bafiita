@@ -282,7 +282,7 @@
                                                 <div class="col-sm-6 col-7">
                                                     @if($infoCompany && isset($infoCompany->poultryDairyFisheries))
                                                         @if($infoCompany->poultryDairyFisheries == 1)
-                                                            <span>Agro Feed Ingredients</span>
+                                                            <span>Agro Feed Ingredients, Feed Supplement & Feed Additives</span>
                                                         @elseif($infoCompany->poultryDairyFisheries == 2)
                                                             <span>Feed Supplement & Feed Additives</span>
                                                         @endif

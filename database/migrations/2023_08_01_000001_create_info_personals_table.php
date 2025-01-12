@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('memebrDesignation')->nullable();
             $table->string('memebrNID')->nullable();
             $table->date('memebrDOB')->nullable();
+            $table->string('memebrFatherName')->nullable();
             $table->string('memebrMotherName')->nullable();
             $table->string('memebrLifePartner')->nullable();
             $table->integer('memebrGender')->nullable();

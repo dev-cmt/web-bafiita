@@ -105,16 +105,16 @@
                             <input type="date" name="vatRegistrationDate" class="form-control" value="">
                         </div>
                     </div>
-                    <!--<div class="row">-->
-                    <!--    <div class="col-7 col-md-6">-->
-                    <!--        <label for="" class="form-label">IRC Import Registration Certificate Number</label>-->
-                    <!--        <input type="text" name="ircCertificateNo" class="form-control" value="">-->
-                    <!--    </div>-->
-                    <!--    <div class="col-5 col-md-6">-->
-                    <!--        <label for="" class="form-label">Issue Date</label>-->
-                    <!--        <input type="date" name="ircCertificateDate" class="form-control" value="">-->
-                    <!--    </div>-->
-                    <!--</div>-->
+                    <div class="row">
+                        <div class="col-7 col-md-6">
+                            <label for="" class="form-label">IRC Import Registration Certificate Number</label>
+                            <input type="text" name="ircCertificateNo" class="form-control" value="">
+                        </div>
+                        <div class="col-5 col-md-6">
+                            <label for="" class="form-label">Issue Date</label>
+                            <input type="date" name="ircCertificateDate" class="form-control" value="">
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-7 col-md-6">
                             <label for="" class="form-label">RJSC Incorporation Number</label>
@@ -159,8 +159,8 @@
                             <input type="text" name="contactCompanyNumber" class="form-control" value="">
                         </div>
                         <div class="col-md-6">
-                            <label for="" class="form-label">E-Mail ID</label>
-                            <input type="text" name="contactCompanyEmail" class="form-control" value="">
+                            <label for="" class="form-label">Email ID <span class="text-danger">*</span></label>
+                            <input type="text" name="memberEmail" class="form-control" value="">
                         </div>
                     </div>
 
@@ -193,7 +193,11 @@
                             <input type="date" name="memebrDOB" class="form-control" value="">
                         </div>
                         <div class="col-md-6">
-                            <label for="" class="form-label">Mothers Name (As in NID) </label>
+                            <label for="" class="form-label">Father Name (As in NID) </label>
+                            <input type="text" name="memebrFatherName" class="form-control" value="">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="" class="form-label">Mother Name (As in NID) </label>
                             <input type="text" name="memebrMotherName" class="form-control" value="">
                         </div>
                         <div class="col-md-6">
@@ -225,10 +229,6 @@
                             <label for="" class="form-label">Mobile Number</label>
                             <input type="text" name="memberPhoneNo" class="form-control" value="">
                         </div>
-                        <div class="col-md-6">
-                            <label for="" class="form-label">Email ID <span class="text-danger">*</span></label>
-                            <input type="text" name="memberEmail" class="form-control" value="">
-                        </div>
                     </div>
 
                     <!-- Document Candidate Section -->
@@ -257,13 +257,11 @@
                         {{--<div class="col-md-4">
                             <label for="" class="form-label">Signature of the Nominee</label>
                             <input type="file" name="fileNomineeSignature" class="form-control" value="">
-                        </div>--}}
+                        </div>
                         <div class="col-md-6">
                             <label for="" class="form-label">Signature of the Applicant</label>
                             <input type="file" name="fileApplicantSignature" class="form-control" value="">
-                        </div>
-                    </div>
-                    <div class="row">
+                        </div>--}}
                         <div class="col-md-6">
                             <label for="" class="form-label">Name of Authorized Person/Nominee </label>
                             <input type="text" name="nomineeName" class="form-control" value="">
@@ -273,21 +271,21 @@
                             <input type="text" name="nomineeNID" class="form-control" value="">
                         </div>
                         <div class="col-md-6">
+                            <label for="" class="form-label">Relation with Member </label>
+                            <input type="text" name="nomineeRelation" class="form-control" value="">
+                        </div>
+                        {{--<div class="col-md-6">
+                            <label for="" class="form-label">Designation of Representative </label>
+                            <input type="text" name="nomineeDesignation" class="form-control" value="">
+                        </div>
+                        <div class="col-md-6">
                             <label for="" class="form-label">Fathers /Husband Name </label>
                             <input type="text" name="nomineeFather" class="form-control" value="">
                         </div>
                         <div class="col-md-6">
                             <label for="" class="form-label">Mothers Name </label>
                             <input type="text" name="nomineeMother" class="form-control" value="">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="" class="form-label">Relation with Member </label>
-                            <input type="text" name="nomineeRelation" class="form-control" value="">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="" class="form-label">Designation of Representative </label>
-                            <input type="text" name="nomineeDesignation" class="form-control" value="">
-                        </div>
+                        </div>--}}
                     </div>
 
                     <!-- Document Candidate Section -->
@@ -365,12 +363,12 @@
 
                     <!-- Document Candidate Section -->
                     <div class="bar_document"></div>
-                    <div class="row mb-2 ">
+                    {{--<div class="row mb-2 ">
                         <label for="" class="form-label col-md-4"> কোম্পানী প্রতীক <span class="text-danger">*</span> </label>
                         <div class="col-md-8">
                             <input type="file" name="fileCompanyLogo" class="form-control" value="">
                         </div>
-                    </div>
+                    </div>--}}
                     <div class="row mb-2">
                         <label for="" class="form-label col-md-4">হালনাগাদ ট্রেড লাইসেন্স এর ফটোকপি</label>
                         <div class="col-md-8">
@@ -407,7 +405,7 @@
                             <input type="file" name="fileApplicantPhoto" class="form-control" value="">
                         </div>
                     </div>
-                    <div class="row mb-2">
+                    {{--<div class="row mb-2">
                         <label for="" class="form-label col-md-4">আবেদনকারীর মনোনিত নমিনি এর জাতীয় পরিচয়পত্রের ফটোকপি</label>
                         <div class="col-md-8">
                             <input type="file" name="fileNomineeNID" class="form-control" value="">
@@ -424,7 +422,7 @@
                         <div class="col-md-8">
                             <input type="file" name="fileVisitingCard" class="form-control" value="">
                         </div>
-                    </div>
+                    </div>--}}
                     <h6 class="text-primary text-center my-4">কোম্পানীর ক্ষেত্রে নিন্মোক্ত সার্টিফিকেট সমূহ সংযুক্ত করতে হবে।</h6>
                     
                     <div class="row mb-2">
