@@ -51,6 +51,7 @@ Route::get('pages/{id}/committee', [FrontViewController::class, 'committee'])->n
 //______________ Member
 Route::get('pages/{id}/member', [FrontViewController::class, 'member'])->name('page.member');
 Route::get('pages/{id}/member-details', [FrontViewController::class, 'memberDetails'])->name('page.member-details');
+Route::get('/search-member', [FrontViewController::class, 'search'])->name('search.member');
 //______________ GALLERY
 Route::get('pages/gallery-image',[FrontViewController::class,'galleryImage'])->name('page.gallery-cover');
 Route::get('pages/gallery-image/{id}/show',[FrontViewController::class,'galleryShow'])->name('page.gallery-show');

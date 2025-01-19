@@ -71,6 +71,31 @@ class FrontViewController extends Controller
 
         return view('frontend.pages.member-details',compact('data', 'membersType'));
     }
+    public function search(Request $request)
+    {
+        $membersType = $request->input('member_type');
+        $query = $request->input('search-member');
+
+        $data = User::query()
+            ->when(!empty($query), function ($q) use ($query) {
+                $q->where(function ($q) use ($query) {
+                    $q->where('name', 'LIKE', "%{$query}%")
+                    ->orWhere('email', 'LIKE', "%{$query}%")
+                    ->orWhere('member_code', 'LIKE', "%{$query}%");
+                });
+            })
+            ->when($request->member_type_id, function ($q) use ($request) {
+                $q->where('member_type_id', $request->member_type_id);
+            })
+            ->where('is_admin', 0)
+            ->where('status', 1)
+            ->orderBy('index', 'asc')
+            ->get();
+
+        return view('frontend.pages.member', compact('data', 'query', 'membersType'));
+    }
+
+    
     /**________________________________________________________________________________________
      * Why-be-member Menu Pages
      * ________________________________________________________________________________________
