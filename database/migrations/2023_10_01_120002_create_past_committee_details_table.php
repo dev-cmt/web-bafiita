@@ -18,14 +18,13 @@ return new class extends Migration
             $table->string("name")->nullable();
             $table->string("designation")->nullable();
             $table->string("represent")->nullable();
-            $table->string("rep_url")->nullable();
-            $table->string("image")->nullable();
+            $table->string("represent_url")->nullable();
+            $table->string("image_path")->nullable();
             $table->text("description")->nullable();
             $table->integer("index")->nullable();
 
             $table->unsignedBigInteger('past_committee_id');
             $table->foreign('past_committee_id')->references('id')->on('past_committees')->onDelete('cascade');
-            $table->tinyInteger('status')->default(false);
             $table->timestamps();
         });
     }
