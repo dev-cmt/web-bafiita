@@ -55,7 +55,7 @@
                     <!--List View-->
                     <div class="row">
                         @foreach ($data as $key=> $row )
-                        <div class="col-md-6 p-3">
+                        <div class="col-md-3 p-3">
                             <div class="card ">
                                 <!-- Custom CSS -->
                                 <style>
@@ -69,8 +69,8 @@
                                     }
                                 </style>
                                 <div class="card-body">
-                                    <h3 class="text-success hover-pointer" data-toggle="modal" data-target="#exampleModalCenter_{{ $row->id }}">{{$row->name}}</h3>
-                                    <h5 class="text-info"><span>{{$row->infoCompany->companyName ??'null'}}</span></h5>
+                                    <h7 class="text-success hover-pointer" data-toggle="modal" data-target="#exampleModalCenter_{{ $row->id }}">{{$row->name}}</h7>
+                                    <h6 class="text-info hover-pointer" data-toggle="modal" data-target="#exampleModalCenter_{{ $row->id }}"><span>{{$row->infoCompany->companyName ??'null'}}</span></h6>
                                 </div>
                             </div>
                         </div>

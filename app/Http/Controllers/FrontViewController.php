@@ -57,7 +57,14 @@ class FrontViewController extends Controller
      */
     public function member($id)
     {
-        $data = User::orderBy('index', 'asc')->where('is_admin', 0)->where('status', 1)->get();
+        $data = User::leftJoin('info_companies', 'info_companies.member_id', '=', 'users.id')
+                ->where('users.is_admin', 0)
+                ->where('users.status', 1)
+                ->orderBy('info_companies.companyName', 'asc')
+                ->select('users.*') // Select only user columns
+                ->with('infoCompany') // Load relationship after sorting
+                ->get();
+
         // $membersType = MemberType::where('id', $id)->first()->name;
         $membersType = $id;
 
