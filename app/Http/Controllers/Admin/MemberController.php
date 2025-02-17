@@ -223,26 +223,39 @@ class MemberController extends Controller
 
             // Copy the file and update user photo path
             $userPhoto = User::find($userId);
-            if ($infoDocument->fileApplicantPhoto) {
-                $sourcePath = public_path($infoDocument->fileApplicantPhoto); // Get the source file path
 
-                // Check if the source file exists
-                if (file_exists($sourcePath)) {
+            if (!empty($infoDocument->fileApplicantPhoto)) {
+                $sourcePath = public_path($infoDocument->fileApplicantPhoto); // Get source file path
+
+                // Check if the source file exists and is readable
+                if (file_exists($sourcePath) && is_readable($sourcePath)) {
                     $fileExtension = pathinfo($sourcePath, PATHINFO_EXTENSION); // Get file extension
-                    $profilePhotoPath = $userPhoto->id . '_' . $userPhoto->name . '.' . $fileExtension; // Construct the destination path
+
+                    // Sanitize the file name to remove invalid characters
+                    $sanitizedUserName = preg_replace('/[^A-Za-z0-9_\-]/', '_', strtolower(trim($userPhoto->name)));
+                    $profilePhotoPath = 'images/profile/' . $userPhoto->id . '_' . $sanitizedUserName . '.' . $fileExtension;
+
+                    $destinationPath = public_path($profilePhotoPath);
+
+                    // Ensure the directory exists
+                    if (!is_dir(dirname($destinationPath))) {
+                        mkdir(dirname($destinationPath), 0755, true);
+                    }
 
                     // Copy the file to the destination directory
-                    if (copy($sourcePath, public_path('images/profile/' . $profilePhotoPath))) {
-                        // Update the user's profile photo path
+                    if (@copy($sourcePath, $destinationPath)) {
+                        // Update the user's profile photo path in the database
                         $userPhoto->profile_photo_path = $profilePhotoPath;
                         $userPhoto->save();
                     } else {
-                        Log::error("Failed to copy file from $sourcePath to images/profile/$profilePhotoPath");
+                        Log::error("Failed to copy file from $sourcePath to $destinationPath");
                     }
                 } else {
-                    Log::error("Source file does not exist: $sourcePath");
+                    Log::error("Source file does not exist or is not readable: $sourcePath");
                 }
             }
+
+
 
 
 
