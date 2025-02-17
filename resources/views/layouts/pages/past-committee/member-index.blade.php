@@ -23,18 +23,18 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item edit" href="javascript:void(0);" id="data-show" data-id="{{ $row->id }}">Edit</a>
-                                <a class="dropdown-item delete" href="javascript:void(0);">Delete</a>
+                                <a class="dropdown-item delete" href="javascript:void(0);" id="data-delete" data-id="{{ $row->id }}">Delete</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="card-body user-profile">
                     <div class="image-bx">
-                        <img src="{{asset('public/images/past-committee')}}/{{$row->image}}" data-src="{{asset('public/images')}}/logo.png" alt="" class="rounded-circle">
-                        <span class="active"></span>
+                        <img src="{{asset('public')}}/{{$row->image_path}}" class="rounded-circle" alt="">
+                        <span class="active text-white">{{$row->index}}</span>
                     </div>
                     <div class="media-body user-meta-info">
-                        <h6 class="fs-20 font-w500 my-1">{{$row->name}}</h6>
+                        <h6 class="fs-20 font-w500 my-1">{{$row->name}} </h6>
                         <p class="fs-16 mb-1">DESIG: <span class="text-danger">{{$row->designation}}</span></p>
                         <a href="{{$row->rep_url}}" target="_blank" class="fs-16 mb-2">REP: <span class="text-info">{{$row->represent}}</span></a>
                     </div>
@@ -56,7 +56,7 @@
                 <form class="form-valide" data-action="{{ route('past-committee-member.store') }}" method="POST" enctype="multipart/form-data" id="add-user-form">
                     @csrf
                     <input type="hidden" name="id" id="set_id">
-                    <input type="hidden" name="past_committee_id" id="{{$item->id}}">
+                    <input type="hidden" name="past_committee_id" value="{{$item->id}}">
                     <div class="modal-body py-2">
                         <div class="row" id="main-row-data">
                             <div class="col-md-12">
@@ -165,29 +165,54 @@
                 contentType: false,
                 cache: false,
                 processData: false,
-                success:function(response)
-                {
+                success: function(response) {
                     swal("Success Message Title", "Well done, you pressed a button", "success");
                     $("#exampleModalCenter").modal('hide');
-                    
-                    var statusHtml = (response.status == 0) ? '<span class="badge light badge-danger"><i class="fa fa-circle text-danger mr-1"></i> Inactive</span>' : '<span class="badge light badge-success"><i class="fa fa-circle text-success mr-1"></i> Active</span>';
-                    
-                    var newRowHtml = `
-                    <div class="col-lg-4" id="col_${response.id}">
-                        <div class="card">
-                            <div class="card-header">
-                                <a href="{{ route('event.create') }}" class="btn btn-sm btn-primary py-1"><i class="fa fa-plus"></i><span class="btn-icon-add"></span>Member</a>
-                                <a href="#" class="btn btn-success shadow btn-xs sharp mr-1" id="data-show" data-id="${response.id}"><i class="fa fa-pencil"></i></a>
-                            </div>
-                            <div class="card-body">
-                                <h6>${response.title}</h6>
-                            </div>
-                            <div class="card-footer">${statusHtml}</div>
-                        </div>
-                    </div>`;
 
-                    if ($("#set_id").val()) { $("#col_" + response.id).replaceWith(newRowHtml); }
-                    else { $("#content-section").prepend(newRowHtml); }
+                    var imagePath = "{{ asset('public') }}/" + response.image_path;
+                    var itemId = `#col_${response.id}`;
+
+                    var item = `<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 items" id="col_${response.id}">
+                                    <div class="card contact-bx item-content">
+                                        <div class="card-header border-0">
+                                            <div class="action-dropdown">
+                                                <div class="dropdown">
+                                                    <a href="javascript:void(0);" data-toggle="dropdown" aria-expanded="false">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z" stroke="#575757" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            <path d="M12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6Z" stroke="#575757" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            <path d="M12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20Z" stroke="#575757" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                        </svg>
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                        <a class="dropdown-item edit" href="javascript:void(0);" id="data-show" data-id="${response.id}">Edit</a>
+                                                        <a class="dropdown-item delete" id="data-delete" data-id="${response.id}" href="javascript:void(0);">Delete</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body user-profile">
+                                            <div class="image-bx">
+                                                <img src="${imagePath}" class="rounded-circle" alt="">
+                                                <span class="active text-white">${response.index}</span>
+                                            </div>
+                                            <div class="media-body user-meta-info">
+                                                <h6 class="fs-20 font-w500 my-1">${response.name}</h6>
+                                                <p class="fs-16 mb-1">DESIG: <span class="text-danger">${response.designation}</span></p>
+                                                <a href="${response.rep_url}" target="_blank" class="fs-16 mb-2">REP: <span class="text-info">${response.represent}</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>`;
+
+                    // Check if the item already exists
+                    if ($("#set_id").val() !== null && $("#set_id").val() !== "") {
+                        // Replace the item if #set_id has a value
+                        $(itemId).replaceWith(item);
+                    } else {
+                        // Append the item if #set_id does not have a value
+                        $("#content-section").append(item);
+                    }
                 },
                 error: function (xhr) {
                     var errors = xhr.responseJSON.errors;
@@ -200,34 +225,29 @@
             });
         });
 
-        // Function to format the date
-        function formatDate(dateString) {
-            var date = new Date(dateString);
-            var options = { year: 'numeric', month: 'long', day: 'numeric' };
-            return date.toLocaleDateString(undefined, options);
-        }
         /*========//Edit Or View Data//=========*/
         $(document).on('click', '#data-show', function(){
             var id = $(this).data('id');
             $.ajax({
-                url:'{{ route('past-committee.edit')}}',
+                url:'{{ route('past-committee-member.edit')}}',
                 method:'GET',
                 dataType:"JSON",
                 data:{id:id},
                 success:function(response){
-                    $(".modal-title").html('Edit Data');
-
                     $("#set_id").val(response.id);
-                    $("#title").val(response.title);
+                    $("#name").val(response.name);
+                    $("#designation").val(response.designation);
+                    $("#represent").val(response.represent);
+                    $("#rep_url").val(response.represent_url);
+                    $("#description").val(response.id);
                     $("#index").val(response.index);
-                    $("#description").val(response.description);
 
-                    $("#status").empty();
-                    var status = $("#status");
-                    var row = '<option value="1" ' + (response.status == 1 ? 'selected' : '') + '>Active</option>';
-                    row += '<option value="0" ' + (response.status == 0 ? 'selected' : '') + '>Inactive</option>';
-                    status.append(row);
+                    var imagePath = "{{ asset('public') }}/" + response.image_path;
+                    $('#imagePreview').css('background-image', 'url(' + imagePath + ')');
+                    
+                    // $("#imageUpload").attr("src", imagePath);
 
+                    $(".modal-title").html('Edit Past Member');
                     $("#exampleModalCenter").modal('show');
                 },
                 error: function(xhr, status, error) {
@@ -237,7 +257,7 @@
         });
 
         /*========//Delete Data//========*/
-        $(document).on('click', '#data-delete', function(){
+        $(document).on('click', '#data-delete', function() {
             swal({
                 title: "Are you sure?",
                 text: "Once deleted, you will not be able to recover this data!",
@@ -247,29 +267,32 @@
             })
             .then((willDelete) => {
                 if (willDelete) {
-                    // Place your delete code here
                     var id = $(this).data('id');
                     $.ajax({
-                        url:'{{ route('member-qualification.delete')}}',
-                        method:'GET',
-                        dataType:"JSON",
-                        data:{'id':id},
-                        success:function(data){
-                            swal("Success Message Title", "Well done, you pressed a button", "success");
-                            $('[data-id="' + id + '"]').closest('tr').hide();
+                        url: '{{ route('past-committee-member.delete') }}',
+                        method: 'DELETE', // Change to DELETE
+                        dataType: "JSON",
+                        data: {
+                            '_token': '{{ csrf_token() }}', // Add CSRF token for security
+                            'id': id
                         },
-                        error:function(){
-                            swal("Error!", "There are no details available for this item.", "error");
+                        success: function(response) {
+                            swal("Success", "Past Member Delete successfully", "success");
+                            var itemId = `#col_${id}`;
+                            $(itemId).fadeOut();
+                        },
+                        error: function() {
+                            swal("Error!", "There was a problem deleting the member.", "error");
                         }
                     });
                 } else {
-                    // User clicked "No" button, do nothing
                     swal("Your data is safe!", {
                         icon: "success",
                     });
                 }
             });
         });
+
 
     </script>
 

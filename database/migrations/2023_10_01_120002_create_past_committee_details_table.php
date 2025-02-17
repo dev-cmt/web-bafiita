@@ -21,11 +21,12 @@ return new class extends Migration
             $table->string("represent_url")->nullable();
             $table->string("image_path")->nullable();
             $table->text("description")->nullable();
-            $table->integer("index")->nullable();
-
             $table->unsignedBigInteger('past_committee_id');
-            $table->foreign('past_committee_id')->references('id')->on('past_committees')->onDelete('cascade');
+            $table->unsignedBigInteger('member_id')->nullable();
+            $table->integer("index")->nullable();
             $table->timestamps();
+            $table->foreign('past_committee_id')->references('id')->on('past_committees')->onDelete('cascade');
+            $table->foreign('member_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

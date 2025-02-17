@@ -90,43 +90,6 @@ class MemberController extends Controller
             if ($validator->fails()) {
                 return response()->json(['errors' => $validator->errors()], 422);
             }
-
-            // /*__________________/ USER CREATE \_________________*/
-            // $user = null; 
-            // if ($request->hasFile('profile_photo_path')) {
-            //     // get filename with extension
-            //     $filenamewithextension = $request->file('profile_photo_path')->getClientOriginalName();
-            //     // get filename without extension
-            //     $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
-
-            //     // get file extension
-            //     $extension = $request->file('profile_photo_path')->getClientOriginalExtension();
-            //     // filename to store
-            //     $filenametostore = $filename . '_' . time() . '.' . $extension;
-
-            //     // Upload File
-            //     $request->file('profile_photo_path')->move('public/images/profile/', $filenametostore); //--Upload Location
-
-            //     // Resize image here
-            //     $thumbnailpath = public_path('images/profile/' . $filenametostore); //--Get File Location
-            //     $data = Image::make($thumbnailpath)->resize(1200, 850, function ($constraint) {
-            //         $constraint->aspectRatio();
-            //     });
-            //     $data->save($thumbnailpath);
-
-            //     /*_____________________ MEMBER ID GENERATE ___________________*/
-            //     $memberCode = "generate_member_code_here";
-            //     $user = User::create([
-            //         'name' => $request->memebrName,
-            //         'email' => $request->email,
-            //         'password' => bcrypt($request->password),
-            //         'member_code' => $memberCode,
-            //         'profile_photo_path' => $filenametostore,
-            //         'member_type_id' => 1,
-            //         'status' => 0,
-            //         'is_admin' => 0,
-            //     ]);
-            // }
             /* ____________________ MEMBER ID GENERATE ___________________*/
             $user = User::create([
                 'name' => $request->memebrName,
@@ -280,9 +243,6 @@ class MemberController extends Controller
                     Log::error("Source file does not exist: $sourcePath");
                 }
             }
-
-
-
 
 
 

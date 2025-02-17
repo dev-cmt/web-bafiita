@@ -213,14 +213,6 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('dashboard-gallery/{id}/show',[GalleryController::class,'bvGalleryImage'])->name('dashboard-gallery.images');
     //-- EVENTS
     Route::resource('event', EventController::class);
-    //-- PAST COMMITTEE
-    Route::get('past-committee/index', [PastCommitteeController::class,'index'])->name('past-committee.index');
-    Route::POST('past-committee/store', [PastCommitteeController::class,'store'])->name('past-committee.store');
-    Route::get('past-committee/edit', [PastCommitteeController::class,'edit'])->name('past-committee.edit');
-    Route::get('past-committee/delete', [PastCommitteeController::class,'delete'])->name('past-committee.delete');
-    
-    Route::get('past-committee-memebr/{id}/index', [PastCommitteeController::class,'memberIndex'])->name('past-committee-member.index');
-    Route::POST('past-committee-memebr/store', [PastCommitteeController::class,'memberStore'])->name('past-committee-member.store');
     //-- BLOG
     Route::get('blog-news/index', [BlogController::class,'index'])->name('blog.index');
     Route::get('blog-news/create', [BlogController::class,'create'])->name('blog.create');
@@ -231,6 +223,23 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('contact-us/index', [ContactController::class,'contactIndex'])->name('contact-us.index');
     Route::get('contact-us/{id}/reply', [ContactController::class,'contactReply'])->name('contact-us.reply');
     Route::get('contact-us/{id}/delete', [ContactController::class,'contactDelete'])->name('contact-us.delete');
+    //-- PAST COMMITTEE
+    Route::get('past-committee/index', [PastCommitteeController::class,'index'])->name('past-committee.index');
+    Route::POST('past-committee/store', [PastCommitteeController::class,'store'])->name('past-committee.store');
+    Route::get('past-committee/edit', [PastCommitteeController::class,'edit'])->name('past-committee.edit');
+    Route::get('past-committee/delete', [PastCommitteeController::class,'delete'])->name('past-committee.delete');
+    
+    Route::get('past-committee-memebr/{id}/index', [PastCommitteeController::class,'pastMemberIndex'])->name('past-committee-member.index');
+    Route::POST('past-committee-memebr/store', [PastCommitteeController::class,'pastMemberStore'])->name('past-committee-member.store');
+    Route::get('past-committee-memebr/edit', [PastCommitteeController::class,'pastMemberEdit'])->name('past-committee-member.edit');
+    // Route::get('past-committee-memebr/delete', [PastCommitteeController::class,'pastMemberDelete'])->name('past-committee-member.delete');
+    Route::delete('past-committee-member/delete', [PastCommitteeController::class, 'pastMemberDelete'])->name('past-committee-member.delete');
+
+    //-- RENEW SETTING
+    Route::get('renew-setting/index', [PastCommitteeController::class,'renewSettingIndex'])->name('renew-setting.index');
+    Route::POST('renew-setting/store', [PastCommitteeController::class,'renewSettingStore'])->name('renew-setting.store');
+
+    
 });
 
 

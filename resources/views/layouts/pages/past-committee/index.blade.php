@@ -20,7 +20,7 @@
                     <div class="card-body">
                         <h6>{{$row->title}} {{$row->duration}}</h6>
                     </div>
-                    <div class="card-footer">
+                    <div class="card-footer d-flex justify-content-between">
                         @if($row->status == 0)
                         <span class="badge light badge-danger">
                             <i class="fa fa-circle text-danger mr-1"></i> Inactive
@@ -30,6 +30,8 @@
                             <i class="fa fa-circle text-success mr-1"></i> Active
                         </span>
                         @endif
+
+                        <span class="badge light badge-success">SL: {{$row->index}}</span>
                     </div>
                 </div>
             </div>
@@ -148,9 +150,9 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <h6>${response.title}</h6>
+                                    <h6>${response.title} ${response.duration} </h6>
                                 </div>
-                                <div class="card-footer">${statusHtml}</div>
+                                <div class="card-footer d-flex justify-content-between">${statusHtml} <span class="badge light badge-success">SL: ${response.index}</span></div>
                             </div>
                         </div>`;
 

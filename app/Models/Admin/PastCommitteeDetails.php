@@ -13,11 +13,11 @@ class PastCommitteeDetails extends Model
         'name',
         'designation',
         'represent',
-        'rep_url',
-        'image',
+        'represent_url',
+        'image_path',
         'description',
-        'index',
         'past_committee_id',
-        'status',
+        'member_id',
+        'index',
     ];
 }

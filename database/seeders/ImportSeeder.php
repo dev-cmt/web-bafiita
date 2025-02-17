@@ -44,6 +44,22 @@ class ImportSeeder extends Seeder
             'user_id'=>'1',
         ]);
         /**___________________________________________________
+         * Committee Type
+         * ___________________________________________________
+         */
+        CommitteeType::create([
+            'name'=>'Present Executive Committee',
+            'description'=>'DR - 1',
+            'status'=>'1',
+            'user_id'=>'1',
+        ]);
+        CommitteeType::create([
+            'name'=>'Past Executive Committee',
+            'description'=>'DR - 1',
+            'status'=>'1',
+            'user_id'=>'1',
+        ]);
+        /**___________________________________________________
          * Qualification
          * ___________________________________________________
          */

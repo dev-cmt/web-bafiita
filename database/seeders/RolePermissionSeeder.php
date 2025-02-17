@@ -89,11 +89,25 @@ class RolePermissionSeeder extends Seeder
             ['name' => 'Pyment annual fees'],
             ['name' => 'Pyment membership fees'],
 
+            //---POST => Past Committee Setting
+            ['name' => 'Past access'],
+            ['name' => 'Past create'],
+            ['name' => 'Past edit'],
+            ['name' => 'Past delete'],
+            ['name' => 'Past member access'],
+            ['name' => 'Renew member access'],
+
             //---POST => Gallery
             ['name' => 'Gallery access'],
             ['name' => 'Gallery create'],
             ['name' => 'Gallery edit'],
             ['name' => 'Gallery delete'],
+
+            //---POST => Blog
+            ['name' => 'Blog access'],
+            ['name' => 'Blog create'],
+            ['name' => 'Blog edit'],
+            ['name' => 'Blog delete'],
 
             //---POST => Event
             ['name' => 'Event access'],

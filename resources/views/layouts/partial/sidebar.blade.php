@@ -109,10 +109,13 @@
                     <span class="nav-text">Web Post</span>
                 </a>
                 <ul aria-expanded="false">
-                    @canany('Gallery access','Gallery create','Gallery edit','Gallery delete')
+                    @canany('Past access','Past create','Past edit','Past delete', 'Past member access')
                         <li><a href="{{ Route('past-committee.index')}}">Past Committee</a></li>
                     @endcanany
-                    @canany('Gallery access','Gallery create','Gallery edit','Gallery delete')
+                    @canany('Renew member access')
+                        <li><a href="{{ Route('renew-setting.index')}}">Renew Setting</a></li>
+                    @endcanany
+                    @canany('Blog access','Blog create','Blog edit','Blog delete')
                         <li><a href="{{ Route('blog.index')}}">Notice & News</a></li>
                     @endcanany
                     @canany('Gallery access','Gallery create','Gallery edit','Gallery delete')
