@@ -18,10 +18,11 @@ class MemberMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()) {
-            if (Auth::user()->is_admin == '0' && Auth::user()->status == '0') {
-                return redirect()->route('registation-payment.create');
+            if (Auth::user()->status == '5') {
+                // return redirect()->route('registation-payment.create');
+                return redirect()->route('member_renew.create');
             }else{
-                if (Auth::user()->is_admin == '1' && Auth::user()->status == '0') {
+                if (Auth::user()->status == '0') {
                     return redirect()->route('member-approve.padding');
                 }else{
                     return $next($request);

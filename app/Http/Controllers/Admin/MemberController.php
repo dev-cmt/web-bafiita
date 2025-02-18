@@ -99,7 +99,7 @@ class MemberController extends Controller
                 'profile_photo_path' => 'blank.jpg',
                 'email_verified_at' => '2024-01-01',
                 'member_type_id' => $request->member_type_id,
-                'status' => 0, // Defualt => 0 || Approve => 1 || Cancel => 2 || Approve Two => 3 || Approve One => 4
+                'status' => 0, // Defualt => 0 || Approve Final=> 1 || Cancel => 2 || Approve Two => 3 || Approve One => 4 || Renew => 5 
                 'is_admin' => 0,
             ]);
 
@@ -346,6 +346,31 @@ class MemberController extends Controller
     public function renew()
     {
         return view('frontend.pages.renew_form');
+    }
+    public function findMember(Request $request)
+    {
+        $request->validate([
+            'member_code' => 'required|string'
+        ]);
+
+        $member = User::where('member_code', $request->member_code)->first();
+
+        if ($member) {
+            return response()->json([
+                'success' => true,
+                'member_code' => $member->member_code,
+                'name' => $member->name,
+                'email' => $member->email,
+                'member_type' => $member->memberType->name,
+                'join_date' => $member->join_date,
+                'profile_photo_path' => $member->profile_photo_path,
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => "Member not found!"
+            ]);
+        }
     }
     /*__________________________________________________________________________________ */
     /*__________________________________________________________________________________ */

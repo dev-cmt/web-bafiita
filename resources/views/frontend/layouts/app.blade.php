@@ -63,6 +63,7 @@
     End Preloader -->
 
     <!-- Get Pro Button -->
+    @guest
     <ul class="pro-features">
         <a class="get-pro" href="#">Membership</a>
         <li class="big-title">Bank Account Information</li>
@@ -76,6 +77,7 @@
             <a href="{{route('login')}}" target="_blank" class="btn">Login</a>
         </div>
     </ul>
+    @endguest
 
     @include('frontend.layouts.partial.header')
     

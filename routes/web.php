@@ -88,6 +88,9 @@ Route::middleware([ 'auth:sanctum','verified','member', config('jetstream.auth_s
 Route::get('/member-register/create', [MemberController::class,'create'])->name('member_register.create');
 Route::post('/member-register/store', [MemberController::class,'store'])->name('member_register.store');
 Route::get('/member-renew/create', [MemberController::class,'renew'])->name('member_renew.create');
+Route::get('/member-renew/store', [MemberController::class,'renew'])->name('member_renew.store');
+Route::post('/member/find', [MemberController::class, 'findMember'])->name('member.find');
+
 
 /* Payment check */
 Route::group(['middleware' => ['verified']], function () {

@@ -26,10 +26,8 @@
     </style>
 @endsection
 @section('content')
-@include('frontend.layouts.partial.banner')
     <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-        <div class="container">
+    <section class="container my-4">
             <div class="row g-5">
                 <div class="col-lg-6">
                     <div class="card" style="border-radius: 0">
@@ -40,7 +38,7 @@
                             <div class="bootstrap-media">
                                 <div class="row d-flex justify-content-center">
                                     <div class="col-lg-12 text-center">
-                                        <img class="img-fluid rounded" width="120" src="{{asset('public')}}/images/profile/{{ Auth::user()->profile_photo_path }}" alt="DexignZone">
+                                        <img class="img-fluid rounded" width="120" src="{{asset('public')}}/{{ Auth::user()->profile_photo_path }}" alt="DexignZone">
                                     </div>
                                 </div>
                                 <div class="row mt-4">
@@ -186,7 +184,6 @@
                 </div>
             </div>
 
-        </div>
     </section><!-- End Contact Section -->
 
 @endsection
