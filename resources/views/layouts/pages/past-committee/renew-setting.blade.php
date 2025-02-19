@@ -37,7 +37,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Renew member list<span class="bg-blue-500 text-white rounded px-1 text-xs py-0.5">{{ count($members) }}</span></h4>
+                    <h4 class="card-title">Renew member list<span class="bg-blue-500 text-danger rounded px-1 text-xs py-0.5">{{ count($members) }}</span></h4>
                 </div>
 
                 <div class="card-body">

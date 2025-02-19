@@ -18,16 +18,15 @@ class MemberMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()) {
-            if (Auth::user()->status == '5') {
-                // return redirect()->route('registation-payment.create');
-                return redirect()->route('member_renew.create');
-            }else{
-                if (Auth::user()->status == '0') {
-                    return redirect()->route('member-approve.padding');
-                }else{
-                    return $next($request);
-                }
+            $status = Auth::user()->status;
+        
+            if ($status == 5) {
+                return redirect()->route('member_renew.create'); // Go to renewal page
+            } elseif ($status == 0 || $status == 6) {
+                return redirect()->route('member-approve.pending'); // Go to approval page
             }
         }
+        // If none of the above, continue as normal
+        return $next($request);
     }
 }

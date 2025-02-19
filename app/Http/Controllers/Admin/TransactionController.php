@@ -176,7 +176,7 @@ class TransactionController extends Controller
     public function approveIndexRegistation() 
     {
         $data = PaymentDetails::where('status', 0)->where('payment_reason_id', 1)->where('payment_method_id','!=', 2)->get(); // payment_reason_id => 1 => Membership
-        $bank = PaymentDetails::where('status', 0)->where('payment_reason_id', 1)->where('payment_method_id', 2)->get(); //payment_method_id => 2 => City Bank
+        $bank = PaymentDetails::where('status', 0)->where('payment_reason_id', 1)->where('payment_method_id', 2)->get(); //payment_method_id: 1 => bKash || 2 => Bank
         $record = PaymentDetails::whereIn('status', [1,2])->where('payment_reason_id', 1)->get();
         return view('layouts.pages.transaction.registation-approve', compact('data', 'record', 'bank'));
     }
@@ -229,7 +229,7 @@ class TransactionController extends Controller
     public function approveIndexEvent() 
     {
         $data = PaymentDetails::where('status', 0)->where('payment_reason_id', 2)->where('payment_method_id','!=', 2)->get(); // payment_reason_id => 2 => Event
-        $bank = PaymentDetails::where('status', 0)->where('payment_reason_id', 2)->where('payment_method_id', 2)->get(); //payment_method_id => 5 => City Bank
+        $bank = PaymentDetails::where('status', 0)->where('payment_reason_id', 2)->where('payment_method_id', 2)->get(); //payment_method_id: 1 => bKash || 2 => Bank
         $record = PaymentDetails::whereIn('status', [1,2])->where('payment_reason_id', 2)->get();
         return view('layouts.pages.transaction.event-approve', compact('data', 'record', 'bank'));
     }
@@ -285,32 +285,29 @@ class TransactionController extends Controller
     public function approveIndexAnnualFees() 
     {
         $data = PaymentDetails::where('status', 0)->where('payment_reason_id', 3)->where('payment_method_id','!=', 2)->get(); // payment_reason_id => 2 => Event
-        $bank = PaymentDetails::where('status', 0)->where('payment_reason_id', 3)->where('payment_method_id', 2)->get(); //payment_method_id => 5 => City Bank
+        $bank = PaymentDetails::where('status', 0)->where('payment_reason_id', 3)->where('payment_method_id', 2)->get(); //payment_method_id: 1 => bKash || 2 => Bank
         $record = PaymentDetails::whereIn('status', [1,2])->where('payment_reason_id', 3)->get();
         return view('layouts.pages.transaction.annual-approve', compact('data', 'record', 'bank'));
     }
-    public function approveAnnualApproved($id) {
-        
-        $eventUpdate = EventRegister::findOrFail($id);
-        $eventUpdate->status = 1;
-        $eventUpdate->save();
+    public function approveAnnualFeesApproved($id) {
 
-        $data = PaymentDetails::findOrFail($eventUpdate->payment_details_id);
+        $data = PaymentDetails::findOrFail($id);
         $data->status = 1;
         $data->user_id = Auth::user()->id;
         $data->save();
 
         $mailData =[
-            'title' => 'You Event Registation Successfully',
+            'title' => 'You Annual Payment Successfully',
             'body' => 'This Is body.',
         ];
+        User::where('id', $data->member_id)->update(['status' => 1]);
         $user = User::find($data->member_id);
         Mail::to($user->email)->send(new MemberApproved($mailData));
 
         $notification=array('messege'=>'Approve successfully!','alert-type'=>'success');
         return redirect()->back()->with($notification);
     }
-    public function approveAnnualCancel($id) {
+    public function approveAnnualFeesCancel($id) {
         $data = PaymentDetails::findOrFail($id);
         $data->status = 2;
         $data->user_id = Auth::user()->id;

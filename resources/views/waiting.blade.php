@@ -74,7 +74,7 @@
 							<a href="{{ url()->previous() }}"><img src="{{asset('public/images')}}/logo.png" class="brand-logo text-intro opacity-0" alt=""></a>
 						
 							<h1 class="text-intro opacity-0"> 
-								@if (Route::currentRouteName() == 'member-approve.padding')
+								@if (Route::currentRouteName() == 'member-approve.pending')
 									<span style="font-size: 32px;">Your request is pending for approval</span>
 								@else
 									Coming Soon

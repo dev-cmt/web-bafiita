@@ -88,7 +88,7 @@ Route::middleware([ 'auth:sanctum','verified','member', config('jetstream.auth_s
 Route::get('/member-register/create', [MemberController::class,'create'])->name('member_register.create');
 Route::post('/member-register/store', [MemberController::class,'store'])->name('member_register.store');
 Route::get('/member-renew/create', [MemberController::class,'renew'])->name('member_renew.create');
-Route::get('/member-renew/store', [MemberController::class,'renew'])->name('member_renew.store');
+Route::post('/member-renew/store', [MemberController::class,'renewStore'])->name('member_renew.store');
 Route::post('/member/find', [MemberController::class, 'findMember'])->name('member.find');
 
 
@@ -127,7 +127,7 @@ Route::group(['middleware' => ['auth']], function(){
     // Route::PATCH('member/{id}/update', [MemberController::class,'update'])->name('member.update');
     //-- MEMBER APPROVE
     Route::get('member-approve/{id}/index', [MemberController::class,'approveIndex'])->name('members-approve.index');
-    Route::get('member-approve/padding', [MemberController::class, 'approvePadding'])->name('member-approve.padding');
+    Route::get('member-approve/pending', [MemberController::class, 'approvePending'])->name('member-approve.pending');
     Route::PATCH('member-approve/{id}/update', [MemberController::class, 'approveUpdate'])->name('member-approve.update');
     Route::PATCH('member-approve/{id}/cancel', [MemberController::class, 'approveCancel'])->name('member-approve.cancel');
 

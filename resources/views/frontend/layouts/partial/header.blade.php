@@ -77,25 +77,30 @@
                     <a class="getstarted-login" href="{{Route('login')}}">Login</a> --}}
                     @endguest
                     @auth
-                    <div class="dropdown mt-2">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                            {{Auth::user()->name}}
-                        </button>
-                        <div class="dropdown-menu">
-                            @if (Auth::user()->status == "1")
-                                <a class="dropdown-item" href="{{ Route('profile_show', auth()->user()->id )}}">Profile</a>
-                            @endif
-                            {{-- @if (Auth::user()->status == "0")
-                                <a class="dropdown-item" href="{{ Route('registation-payment.create') }}">Payment Fee</a>
-                            @endif --}}
-                            @if (Auth::user()->status == "0")
-                                <a class="dropdown-item" href="{{ Route('member-approve.padding') }}">Waiting Approval</a>
-                            @endif
-                            
-                            <form method="POST" action="{{ Route('logout') }}">
-                                @csrf
-                                <a class="dropdown-item" href="{{ Route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">Logout</a>
-                            </form>
+                    <div class="col-lg-2 col-md-3 col-12">
+                        <div class="dropdown mt-2">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                {{Auth::user()->name}}
+                            </button>
+                            <div class="dropdown-menu">
+                                @if (Auth::user()->status == "1")
+                                    <a class="dropdown-item" href="{{ Route('profile_show', auth()->user()->id )}}">Profile</a>
+                                @endif
+                                {{-- @if (Auth::user()->status == "0")
+                                    <a class="dropdown-item" href="{{ Route('registation-payment.create') }}">Payment Fee</a>
+                                @endif --}}
+                                @if (Auth::user()->status == "5")
+                                    <a class="dropdown-item" href="{{ Route('member_renew.create') }}">Renew</a>
+                                @endif
+                                @if (Auth::user()->status == "0" || Auth::user()->status == "6")
+                                    <a class="dropdown-item" href="{{ Route('member-approve.pending') }}">Waiting Approval</a>
+                                @endif
+                                
+                                <form method="POST" action="{{ Route('logout') }}">
+                                    @csrf
+                                    <a class="dropdown-item" href="{{ Route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">Logout</a>
+                                </form>
+                            </div>
                         </div>
                     </div>
                     @endauth

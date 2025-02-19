@@ -99,7 +99,7 @@ class MemberController extends Controller
                 'profile_photo_path' => 'blank.jpg',
                 'email_verified_at' => '2024-01-01',
                 'member_type_id' => $request->member_type_id,
-                'status' => 0, // Defualt => 0 || Approve Final=> 1 || Cancel => 2 || Approve Two => 3 || Approve One => 4 || Renew => 5 
+                'status' => 0, // Defualt => 0 || Approve Final=> 1 || Cancel => 2 || Approve Two => 3 || Approve One => 4 || Renew => 5 || Renew Approve => 6
                 'is_admin' => 0,
             ]);
 
@@ -255,10 +255,6 @@ class MemberController extends Controller
                 }
             }
 
-
-
-
-
             /*______________________/ Transaction Bank \___________________*/
             $infoBank = new InfoBank([
                 'bankBranceName'=> $request->bankBranceName,
@@ -293,7 +289,7 @@ class MemberController extends Controller
             $paymentDetails->transfer_number = $request->moneyReceiptNo;
             $paymentDetails->slip = $infoBank->slip;
             $paymentDetails->message = null;
-            $paymentDetails->payment_method_id = 1; //1 => Bank
+            $paymentDetails->payment_method_id = 2; //1 => bKash || 2 => Bank
             $paymentDetails->status = 1;
             $paymentDetails->member_id = $userId;
             $paymentDetails->save();
@@ -319,30 +315,10 @@ class MemberController extends Controller
             ], 422);
         }
     }
-
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
+    /**--------------------------------------------------------------------
+     * RENEW MEMBER
+     * --------------------------------------------------------------------
      */
-    public function edit($id)
-    {
-        
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-
-    }
     public function renew()
     {
         return view('frontend.pages.renew_form');
@@ -358,6 +334,7 @@ class MemberController extends Controller
         if ($member) {
             return response()->json([
                 'success' => true,
+                'id' => $member->id,
                 'member_code' => $member->member_code,
                 'name' => $member->name,
                 'email' => $member->email,
@@ -372,6 +349,110 @@ class MemberController extends Controller
             ]);
         }
     }
+    public function renewStore(Request $request)
+    {
+        $userId = $request->member_id;
+        
+        // Validate the request
+        $request->validate([
+            'bankBranceName' => 'required|string|max:255',
+            'totalAmount' => 'required|numeric|min:1',
+            'paymentDate' => 'required|date',
+            'fileSlip' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
+            'fileTradeLicense' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
+            'fileTaxCertificate' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
+        ]);
+
+        // Function to remove old file before uploading new one
+        function uploadFile($request, $fieldName, $subfolder, $userId, $oldFilePath = null) {
+            if ($request->hasFile($fieldName)) {
+                // Remove old file if it exists
+                if ($oldFilePath && File::exists(public_path($oldFilePath))) {
+                    File::delete(public_path($oldFilePath));
+                }
+
+                // Upload new file
+                $uploadedFile = $request->file($fieldName);
+                $extension = $uploadedFile->getClientOriginalExtension();
+                $filenameToStore = strtoupper($fieldName) . '_' . time() . '.' . $extension;
+
+                $folderPath = public_path("document/member/{$userId}/{$subfolder}");
+                if (!File::exists($folderPath)) {
+                    File::makeDirectory($folderPath, 0777, true);
+                }
+                $uploadedFile->move($folderPath, $filenameToStore);
+
+                return "document/member/{$userId}/{$subfolder}/{$filenameToStore}";
+            }
+            return $oldFilePath;
+        }
+
+        // Get existing file paths
+        $existingInfoDocument = InfoDocument::where('member_id', $userId)->first();
+        $existingSlip = $existingInfoDocument->fileSlip ?? null;
+        $existingTradeLicense = $existingInfoDocument->fileTradeLicense ?? null;
+        $existingTaxCertificate = $existingInfoDocument->fileTaxCertificate ?? null;
+
+        // Upload new files & delete old ones
+        $slipPath = uploadFile($request, 'fileSlip', 'bank-info', $userId, $existingSlip);
+        $tradeLicensePath = uploadFile($request, 'fileTradeLicense', 'TradeLicense', $userId, $existingTradeLicense);
+        $taxCertificatePath = uploadFile($request, 'fileTaxCertificate', 'TaxCertificate', $userId, $existingTaxCertificate);
+
+        // Save bank transaction info
+        $infoBank = new InfoBank([
+            'bankBranceName' => $request->bankBranceName,
+            'modePayment' => 'Bank',
+            'totalAmount' => $request->totalAmount,
+            'paymentDate' => $request->paymentDate,
+            'moneyReceiptNo' => $request->moneyReceiptNo,
+            'slip' => $slipPath,
+            'status' => 0,
+            'member_id' => $userId,
+        ]);
+        $infoBank->save();
+        
+        // Save transaction
+        $transaction = new Transaction();
+        $transaction->amount = $request->totalAmount;
+        $transaction->transaction_type = 1; // Deposit
+        $transaction->transaction_id = null;
+        $transaction->payment_method_id = 1; // Bank
+        $transaction->status = 1;
+        $transaction->user_id = $userId;
+        $transaction->save();
+        
+        // Save payment details
+        $paymentDetails = new PaymentDetails();
+        $paymentDetails->payment_date = now()->format('Y-m-d');
+        $paymentDetails->paid_amount = $request->totalAmount;
+        $paymentDetails->payment_number = null;
+        $paymentDetails->transaction_number = null;
+        $paymentDetails->transaction_id = $transaction->id;
+        $paymentDetails->payment_reason_id = 3; // Annual Fees
+        $paymentDetails->ref_reason_id = null;
+        $paymentDetails->transfer_number = $request->moneyReceiptNo;
+        $paymentDetails->slip = $infoBank->slip;
+        $paymentDetails->message = null;
+        $paymentDetails->payment_method_id = 2; //1 => bKash || 2 => Bank
+        $paymentDetails->status = 0;
+        $paymentDetails->member_id = $userId;
+        $paymentDetails->save();
+
+        // Update InfoDocument
+        InfoDocument::updateOrCreate(
+            ['member_id' => $userId],
+            [
+                'fileSlip' => $slipPath,
+                'fileTradeLicense' => $tradeLicensePath,
+                'fileTaxCertificate' => $taxCertificatePath,
+            ]
+        );
+        User::where('id', $userId)->update(['status' => 6]);
+
+        return redirect()->route('member-approve.pending')->with('success', 'Member renewal information saved successfully.');
+    }
+
+
     /*__________________________________________________________________________________ */
     /*__________________________________________________________________________________ */
     public function approveIndex($id){
@@ -412,7 +493,7 @@ class MemberController extends Controller
         $notification=array('messege'=>'Cancel approve successfully!','alert-type'=>'success');
         return redirect()->back()->with($notification);
     }
-    public function approvePadding()
+    public function approvePending()
     {
         return view('waiting');
     }

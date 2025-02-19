@@ -157,7 +157,7 @@ class PastCommitteeController extends Controller
     public function renewSettingIndex()
     {
         $data = PastCommittee::orderBy('index', 'desc')->where('status', 1)->get();
-        $members = User::where('status', 3)->where('is_admin', 0)->get();
+        $members = User::where('status', 5)->where('is_admin', 0)->get();
         return view('layouts.pages.past-committee.renew-setting', compact('data', 'members'));
     }
 
@@ -175,7 +175,7 @@ class PastCommitteeController extends Controller
 
         foreach ($getUser as $key => $user) {
             // Update user status
-            $user->status = 3;
+            $user->status = 5; // Renew
 
             // Set the departure date to the first day of June in the current year
             $user->departure_date = Carbon::now()->startOfYear()->addMonths(5); // June 1st of the current year

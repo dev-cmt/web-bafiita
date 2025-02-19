@@ -60,7 +60,7 @@
                                     <div class="col-sm-6 col-5">
                                         <h5 class="f-w-500">Member ID <span class="pull-right">:</span></h5>
                                     </div>
-                                    <div class="col-sm-6 col-7"><span id="memberId">{{Auth::user()->member_code ?? ''}}</span></div>
+                                    <div class="col-sm-6 col-7"><span id="memberCode">{{Auth::user()->member_code ?? ''}}</span></div>
                                 </div>
                                 <div class="row mt-4">
                                     <div class="col-sm-6 col-5">
@@ -98,73 +98,98 @@
                     </div>
                 </div>
                 <div class="col-lg-6 form member_info">
-                    <form>
+                    <form action="{{route('member_renew.store')}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="member_id" id="memberId" value="{{ Auth::user()->id ?? '' }}">
+                        
                         <div class="row mb-2">
                             <div class="col-md-12">
                                 <div class="text-center mb-4 pb-4" style="border-bottom: 1px solid #222; border-bottom-style: dotted;">
                                     <h5>Bank Account of Bangladesh Agro Feed Ingredients</h5>
                                     <h5>Importers and Traders Association</h5>
                                 </div>
-                                 <div class="row">
-                                     <label class="form-label col-md-5"><storng>Account Name</storng></label>
-                                     <label class="form-label col-md-1">:</label>
-                                     <label class="form-label col-md-6">BAFIITA</label>
-                                 </div>
-                                 <div class="row">
-                                     <label class="form-label col-md-5"><storng>Account No</storng></label>
-                                     <label class="form-label col-md-1">:</label>
-                                     <label class="form-label col-md-6">SND:2706102000862</label>
-                                 </div>
-                                 <div class="row">
-                                     <label class="form-label col-md-5"><storng>Bank Name</storng></label>
-                                     <label class="form-label col-md-1">:</label>
-                                     <label class="form-label col-md-6">PUBALI BANK LTD.</label>
-                                 </div>
-                                 <div class="row">
-                                     <label class="form-label col-md-5"><storng>Branch Name</storng></label>
-                                     <label class="form-label col-md-1">:</label>
-                                     <label class="form-label col-md-6">Asad Avenue Branch, Mohammadpur, Dhaka-1207</label>
-                                 </div>
+                                <div class="row">
+                                    <label class="form-label col-md-5"><strong>Account Name</strong></label>
+                                    <label class="form-label col-md-1">:</label>
+                                    <label class="form-label col-md-6">BAFIITA</label>
+                                </div>
+                                <div class="row">
+                                    <label class="form-label col-md-5"><strong>Account No</strong></label>
+                                    <label class="form-label col-md-1">:</label>
+                                    <label class="form-label col-md-6">SND:2706102000862</label>
+                                </div>
+                                <div class="row">
+                                    <label class="form-label col-md-5"><strong>Bank Name</strong></label>
+                                    <label class="form-label col-md-1">:</label>
+                                    <label class="form-label col-md-6">PUBALI BANK LTD.</label>
+                                </div>
+                                <div class="row">
+                                    <label class="form-label col-md-5"><strong>Branch Name</strong></label>
+                                    <label class="form-label col-md-1">:</label>
+                                    <label class="form-label col-md-6">Asad Avenue Branch, Mohammadpur, Dhaka-1207</label>
+                                </div>
                             </div>
-                        </div><hr>
+                        </div>
+                        <hr>
+                        
                         <div class="row">
                             <div class="col-md-6">
-                                <label for="" class="form-label">Bank & Branch Name </label>
-                                <input type="text" name="bankBranceName" class="form-control" value="">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="" class="form-label">Total Amount (BDT) </label>
-                                <input type="number" name="totalAmount" class="form-control" value="">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="" class="form-label">Payment Date </label>
-                                <input type="date" name="paymentDate" class="form-control" value="">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="" class="form-label">Mode of Payment </label>
-                                <input type="text" name="modePayment" class="form-control" value="Bank" disabled>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="" class="form-label">Add Payment Slip</label>
-                                <input type="file" name="fileSlip" class="form-control" value="">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="" class="form-label">Money Receipt No </label>
-                                <input type="text" name="moneyReceiptNo" class="form-control" value="Print Using Provite" disabled>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="" class="form-label">Update TIN Certificate</label>
-                                <input type="file" name="tin_certificate" id="tin_certificate" class="form-control @error('tin_certificate') is-invalid @enderror" value="{{old('tin_certificate')}}">
-                                @error('tin_certificate')
+                                <label class="form-label">Bank & Branch Name</label>
+                                <input type="text" name="bankBranceName" class="form-control @error('bankBranceName') is-invalid @enderror" value="{{ old('bankBranceName') }}">
+                                @error('bankBranceName')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                             <div class="col-md-6">
-                                <label for="" class="form-label">Update Trade License</label>
-                                <input type="file" name="trade_license" id="trade_license" class="form-control @error('trade_license') is-invalid @enderror" value="{{old('trade_license')}}">
-                                @error('trade_license')
+                                <label class="form-label">Total Amount (BDT)</label>
+                                <input type="number" name="totalAmount" class="form-control @error('totalAmount') is-invalid @enderror" value="{{ old('totalAmount') }}">
+                                @error('totalAmount')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Payment Date</label>
+                                <input type="date" name="paymentDate" class="form-control @error('paymentDate') is-invalid @enderror" value="{{ old('paymentDate') }}">
+                                @error('paymentDate')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Mode of Payment</label>
+                                <input type="text" name="modePayment" class="form-control" value="Bank" readonly>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Add Payment Slip</label>
+                                <input type="file" name="fileSlip" class="form-control @error('fileSlip') is-invalid @enderror">
+                                @error('fileSlip')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Money Receipt No</label>
+                                <input type="text" name="moneyReceiptNo" class="form-control" value="Print Using Provite" readonly>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Update Tax Certificate</label>
+                                <input type="file" name="fileTaxCertificate" class="form-control @error('fileTaxCertificate') is-invalid @enderror">
+                                @error('fileTaxCertificate')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Update Trade License</label>
+                                <input type="file" name="fileTradeLicense" class="form-control @error('fileTradeLicense') is-invalid @enderror">
+                                @error('fileTradeLicense')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -177,6 +202,7 @@
                             </div>
                         </div>
                     </form>
+                    
                 </div>
             </div>
 
@@ -190,8 +216,15 @@
             $('.member_info').hide();
             $('.error_message').hide();
 
+            var memberCode = $('#member-code').val();
+            getMember(memberCode);
+
             $('#find-member').click(function() {
                 var memberCode = $('#member-code').val();
+                getMember(memberCode);
+            });
+
+            function getMember(memberCode){
                 if (!memberCode) {
                     alert("Please enter a Member ID!");
                     return;
@@ -211,7 +244,8 @@
                             let member = response; // Extract member details from response
 
                             // Update UI with member information
-                            $('#memberId').text(member.member_code);
+                            $('#memberId').val(member.id);
+                            $('#memberCode').text(member.member_code);
                             $('#memberName').text(member.name);
                             $('#memberEmail').text(member.email);
                             $('#memberType').text(member.member_type);
@@ -231,7 +265,7 @@
                         $('.member_info').hide();
                     }
                 });
-            });
+            }
         });
     </script>
 @endsection

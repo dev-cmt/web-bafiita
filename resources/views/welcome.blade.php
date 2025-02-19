@@ -377,6 +377,51 @@
     </section>
     <!-- End Blog Area -->
 
+    <!-- Start Blog Area -->
+    @if (count($event))
+    <section class="blog section" id="blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Events</h2>
+                        <img src="{{asset('public/images')}}/section-img.png" alt="#">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach ($event as $row)
+                <div class="col-md-6">
+                    <div class="blog-item bg-light overflow-hidden">
+                        <div class="position-relative overflow-hidden" style="height: 200px">
+                            <a href="{{route('page.events-details', $row->id)}}">
+                                <img class="img-fluid" src="{{asset('public')}}/images/events/{{ $row->image}}" alt="" width="100%">
+                                <span class="position-absolute top-0 start-0 bg-default text-white mt-5 py-2 px-4">{{$row->caption}}</span>
+                            </a>
+                        </div>
+                        <div class="p-4">
+                            <div class="d-flex mb-3">
+                                {{-- <small class="me-3"><i class="far fa-user text-primary me-2"></i>John Doe</small> --}}
+                                <small><i class="bi bi-calendar-week-fill text-default me-2"></i>{{date("j F, Y", strtotime($row->event_date))}}</small>
+                            </div>
+                            <h4 class="mb-3">{{$row->title}}</h4>
+                            <p class="description_1">{{$row->description}}</p>
+                            <a class="text-uppercase text-default" href="{{route('page.events-details', $row->id)}}">Read More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            <div class="d-flex justify-content-center mt-4">
+                <div class="button">
+                    <a href="{{route('page.events')}}" class="btn text-white">More Events</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Blog Area -->
+    @endif
+
     
 
     @if (session()->has('success'))
