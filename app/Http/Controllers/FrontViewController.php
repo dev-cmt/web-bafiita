@@ -83,15 +83,43 @@ class FrontViewController extends Controller
         $membersType = $request->input('member_type');
         $query = $request->input('search-member');
 
+        // Mapping of member designation names to integer values for database query
+        $memberDesignation = [
+            'Proprietor' => 1,
+            'Managing Director' => 2,
+            'Chairman' => 3,
+            'CEO' => 4,
+            'Partner' => 5,
+            'Director' => 6,
+        ];
+        $query = $memberDesignation[$query] ?? null;
+
         $data = User::query()
             ->when(!empty($query), function ($q) use ($query) {
                 $q->where(function ($q) use ($query) {
+                    // Search within User fields
                     $q->where('name', 'LIKE', "%{$query}%")
-                    ->orWhere('email', 'LIKE', "%{$query}%")
-                    ->orWhere('member_code', 'LIKE', "%{$query}%");
+                        ->orWhere('email', 'LIKE', "%{$query}%")
+                        ->orWhere('member_code', 'LIKE', "%{$query}%")
+                        // Search within the companyName and addressOrganization in the infoCompany relationship
+                        ->orWhereHas('infoCompany', function ($q) use ($query) {
+                            $q->where('companyName', 'LIKE', "%{$query}%")
+                            ->orWhere('addressOrganization', 'LIKE', "%{$query}%");
+                        })
+                        // Search within the memberDesignation, memberPhoneNo, and memberEmail in the infoPersonal relationship
+                        ->orWhereHas('infoPersonal', function ($q) use ($query) {
+                            $q->where('memebrDesignation', 'LIKE', "%{$query}%")
+                            ->orWhere('memberPhoneNo', 'LIKE', "%{$query}%")
+                            ->orWhere('memberEmail', 'LIKE', "%{$query}%");
+                        });
                 });
             })
-            ->when($request->member_type_id, function ($q) use ($request) {
+            ->with([
+                'infoCompany:companyName,addressOrganization,member_id', // Select only needed fields for infoCompany
+                'infoPersonal:memebrDesignation,memberPhoneNo,memberEmail,member_id' // Select only needed fields for infoPersonal
+            ])
+            ->when($request->has('member_type_id'), function ($q) use ($request) {
+                // Ensure that we filter by member_type_id correctly
                 $q->where('member_type_id', $request->member_type_id);
             })
             ->where('is_admin', 0)
@@ -101,6 +129,11 @@ class FrontViewController extends Controller
 
         return view('frontend.pages.member', compact('data', 'query', 'membersType'));
     }
+
+
+
+
+
 
     
     /**________________________________________________________________________________________
@@ -125,12 +158,12 @@ class FrontViewController extends Controller
      */
     public function galleryImage()
     {
-        $posts=Gallery::where('public','=','1')->with('user')->get();
+        $posts = Gallery::where('public','=','1')->with('user')->get();
         return view('frontend.pages.gallery_album',compact('posts'));
     }
     public function galleryShow($id)
     {
-        $posts=Gallery::findOrFail($id);
+        $posts = Gallery::findOrFail($id);
         return view('frontend.pages.gallery_image')->with('posts',$posts);
     }
     /**________________________________________________________________________________________
@@ -139,7 +172,7 @@ class FrontViewController extends Controller
      */
     public function events()
     {
-        $events =Event::where('status', 1)->paginate(12);
+        $events = Event::where('status', 1)->paginate(12);
         return view('frontend.pages.events',compact('events'));
     }
     public function eventSearch(Request $request)

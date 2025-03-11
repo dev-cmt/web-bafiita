@@ -220,8 +220,11 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('blog-news/index', [BlogController::class,'index'])->name('blog.index');
     Route::get('blog-news/create', [BlogController::class,'create'])->name('blog.create');
     Route::post('blog-news/store', [BlogController::class,'store'])->name('blog.store');
-    Route::patch('blog-news/edit', [BlogController::class,'edit'])->name('blog.edit');
-    Route::delete('blog-news/delete', [BlogController::class,'delete'])->name('blog.delete');
+    Route::get('blog-news/edit/{blog}', [BlogController::class,'edit'])->name('blog.edit');
+    Route::put('blog-news/update/{blog}', [BlogController::class,'update'])->name('blog.update');
+    Route::get('blog-news/show/{blog}', [BlogController::class,'show'])->name('blog.show');
+    Route::delete('blog-news/delete/{id}', [BlogController::class,'destroy'])->name('blog.delete');
+
     //-- CONTACT
     Route::get('contact-us/index', [ContactController::class,'contactIndex'])->name('contact-us.index');
     Route::get('contact-us/{id}/reply', [ContactController::class,'contactReply'])->name('contact-us.reply');
@@ -252,11 +255,6 @@ Route::group(['middleware' => ['auth']], function(){
 
 
 
-
-
-
-
-
 //---Website View
 Route::get('/advisor', [MemberController::class,'fv_adviser'])->name('fv.advisor');
 Route::get('/ecommittee', [MemberController::class,'fv_executive_committee'])->name('fv.executive_committee');
@@ -272,16 +270,16 @@ Route::group(['middleware' => ['auth']], function(){
 });
 
 /*___________ Subscription Information __________*/
-Route::group(['middleware' => ['auth']], function(){
-    Route::resource('subscription', SubscriptionController::class);
-});
-Route::get ('/subscription_approve_list', [SubscriptionController::class,'subscription_approve_list'])->name('subscription_approve_list');
-Route::patch ('/subscription_approve/{id}', [SubscriptionController::class,'subscription_approve'])->name('subscription_approve.update');
-Route::patch ('/subscription_cancel/{id}', [SubscriptionController::class,'subscription_cancel'])->name('subscription_cancel.update');
+// Route::group(['middleware' => ['auth']], function(){
+//     Route::resource('subscription', SubscriptionController::class);
+// });
+// Route::get ('/subscription_approve_list', [SubscriptionController::class,'subscription_approve_list'])->name('subscription_approve_list');
+// Route::patch ('/subscription_approve/{id}', [SubscriptionController::class,'subscription_approve'])->name('subscription_approve.update');
+// Route::patch ('/subscription_cancel/{id}', [SubscriptionController::class,'subscription_cancel'])->name('subscription_cancel.update');
 /*___________ Lose Member __________*/
-Route::group(['middleware' => ['auth']], function(){
-    Route::resource('lose_member', LoseMemberController::class);
-});
+// Route::group(['middleware' => ['auth']], function(){
+//     Route::resource('lose_member', LoseMemberController::class);
+// });
 /*___________ Event Information __________*/
 // Route::group(['middleware' => ['auth']], function(){
 //     Route::resource('event', EventController::class);

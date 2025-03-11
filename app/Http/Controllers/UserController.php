@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Admin\Contact;
 use App\Models\Master\MemberType;
+use App\Models\Master\CommitteeType;
 
 class UserController extends Controller
 {
@@ -172,31 +173,31 @@ class UserController extends Controller
             if (File::exists("public/images/profile/".$user->profile_photo_path)) {
                 File::delete("public/images/profile/".$user->profile_photo_path);
             }
-            //get filename with extension
+            // Get the original filename with extension
             $filenamewithextension = $request->file('profile_photo_path')->getClientOriginalName();
-            //get filename without extension
+            // Get the filename without the extension
             $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
-            //get file extension
+            // Get the file extension
             $extension = $request->file('profile_photo_path')->getClientOriginalExtension();
-            //filename to store
-            $filenametostore = $filename.'_'.time().'.'.$extension;
-            //Upload File
-            $request->file('profile_photo_path')->move('public/images/profile/', $filenametostore); //--Upload Location
-            // $request->file('profile_image')->storeAs('public/profile_images', $filenametostore);
-            //Resize image here
-            $thumbnailpath = public_path('images/profile/'.$filenametostore); //--Get File Location
-            // $thumbnailpath = public_path('storage/images/profile/'.$filenametostore);
+            // Create the new filename with user ID and original filename
+            $filenametostore = $user->id . '_' . $filename . '.' . $extension;
+            // Upload the file to the specified location
+            $request->file('profile_photo_path')->move('public/images/profile/', $filenametostore);
+
+            // Resize image here
+            $thumbnailpath = public_path('images/profile/'.$filenametostore); //-- Get File Location
             $img = Image::make($thumbnailpath)->resize(1200, 850, function($constraint) {
                 $constraint->aspectRatio();
-            }); 
+            });
             $img->save($thumbnailpath);
-            //---Data Save
+
+            // Update the user's profile_photo_path with the new filename
             $user->update([
-                'profile_photo_path' => $filename,
+                'profile_photo_path' => $filenametostore,  // Save the new filename (user_id_filename.extension)
             ]);
         }
-        
-        //---Data Save
+
+        // Update other user data
         $user->update([
             'name' => $request->name,
             'status' => $request->status,
@@ -205,9 +206,10 @@ class UserController extends Controller
         ]);
         $user->syncRoles($request->roles);
 
-        $notification=array('messege'=>'User data updated!','alert-type'=>'success');
+        $notification = array('messege' => 'User data updated!', 'alert-type' => 'success');
         return back()->with($notification);
     }
+        
 
     /**
      * Remove the specified resource from storage.

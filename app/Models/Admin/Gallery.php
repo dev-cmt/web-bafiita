@@ -3,7 +3,6 @@ namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Admin\Gallery;
 use App\Models\Admin\GalleryImages;
 use App\Models\User;
 
