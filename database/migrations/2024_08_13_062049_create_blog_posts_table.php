@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title')->index(); // Unique title
             $table->string('url_slug')->unique();
             $table->string('image_path')->nullable();
-            $table->text('content')->nullable(); // Optional content, if necessary
+            $table->longText('content')->nullable(); // Optional content, if necessary
             $table->foreignId('author_id')->constrained('users')->onDelete('cascade'); // Foreign key for author with cascade delete
             $table->enum('status', ['published', 'draft'])->default('draft'); // Default status set to draft
             $table->timestamps();

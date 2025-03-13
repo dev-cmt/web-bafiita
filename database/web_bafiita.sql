@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2025 at 08:59 AM
+-- Generation Time: Mar 13, 2025 at 09:33 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -44,18 +44,76 @@ CREATE TABLE `annual_fees` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `blogs`
+-- Table structure for table `blog_comments`
 --
 
-CREATE TABLE `blogs` (
+CREATE TABLE `blog_comments` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `title` varchar(255) DEFAULT NULL,
-  `cover_photo` varchar(255) DEFAULT NULL,
-  `publish` date DEFAULT NULL,
-  `description` text DEFAULT NULL,
-  `source_url` varchar(255) DEFAULT NULL,
+  `blog_post_id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT 0,
+  `comment` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blog_posts`
+--
+
+CREATE TABLE `blog_posts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `url_slug` varchar(255) NOT NULL,
+  `image_path` varchar(255) DEFAULT NULL,
+  `content` longtext DEFAULT NULL,
+  `author_id` bigint(20) UNSIGNED NOT NULL,
+  `status` enum('published','draft') NOT NULL DEFAULT 'draft',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `blog_posts`
+--
+
+INSERT INTO `blog_posts` (`id`, `title`, `url_slug`, `image_path`, `content`, `author_id`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'মৎস্য ও প্রাণিসম্পদ মন্ত্রীর সাথে বাফিটা প্রতিনিধিদলের মতবিনিময়', 'mttsz-oo-pranismpd-mntreer-sathe-bafita-prtinidhidler-mtbinimy', 'images/news-blog/bgn2_67d292014e87e.jpg', '<p>এগ্রিলাইফ২৪ ডটকম:গণপ্রজাতন্ত্রী বাংলাদেশ সরকার, মৎস্য ও প্রাণিসম্পদ মন্ত্রণালয়ের মাননীয় মন্ত্রী জনাব শ ম রেজাউল করিম (এম,পি) মহোদয়ের সাথে বাংলাদেশ এগ্রো ফিড ইনগ্রিডিয়েন্টস ইম্পোটার্স এন্ড ট্রেডার্স এসোসিয়েশন (বাফিটা) এর প্রতিনিধিদের মতবিনিময় সভা অনুষ্ঠিত।</p>', 1, 'published', '2025-03-12 20:06:25', '2025-03-12 20:06:25', NULL),
+(2, 'বাফিটা পরিবারের সকল সদস্য একই সূত্রে গাঁথা-সুধীর চৌধুরী', 'bafita-pribarer-skl-sdsz-eki-suutre-ganntha-sudheer-coudhuree', 'images/news-blog/categoryjpg_67d2921f834be.png', '<p>এগ্রিলাইফ প্রতিনিধি: বাংলাদেশ এগ্রো ফিড ইনগ্রিডিয়েন্টস ইমপোটার্স এন্ড ট্রেডার্স অ্যাসোসিয়েশন (বাফিটা) পরিবারের সকল সদস্য একই সূত্রে গাঁথা। সুখে দুখে তারা সব সময় এক সাথে চলতে চান, এক হয়ে থাকতে চান।</p>', 1, 'published', '2025-03-12 20:06:55', '2025-03-12 20:06:55', NULL),
+(3, 'এফবিসিসিআই-এর নব নির্বাচিত কমিটিকে শুভেচ্ছা জানালো বাফিটা', 'efbisisiai-er-nb-nirwacit-kmitike-suveccha-janalo-bafita', 'images/news-blog/brochure-iconsc-1-mesa-de-trabajo-1_67d2924505449.png', '<p>রাজধানী প্রতিনিধি: বাফিটা&rsquo;র প্রতিষ্ঠাতা সভাপতি বাবু সুধীর চৌধুরীর নেতৃত্বে ব্যবসায়ীদের শীর্ষ সংগঠন দি ফেডারেশন অব বাংলাদেশ চেম্বার্স অব কমার্স অ্যান্ড ইন্ডাস্ট্রি (এফবিসিসিআই)-এর নব নির্বাচিত কমিটিকে শুভেচ্ছা জানালো বাংলাদেশ এগ্রো ফিড ইনগ্রিডিয়েন্টস ইম্পোর্টার্স এন্ড ট্রেডার্স</p>', 1, 'published', '2025-03-12 20:07:33', '2025-03-12 20:07:33', NULL),
+(4, 'প্রাণিসম্পদ খাতকে শক্তিশালী করতে সবাইকে এগিয়ে আসার আহবানটা', 'pranismpd-khatke-sktisalee-krte-sbaike-egiye-asar-ahbanta', 'images/news-blog/dublar-chor-sundarban-bangladesh_67d2925bc454a.jpg', '<p>এগ্রিলাইফ২৪ ডটকম:আমিষের একটি বড় অংশ যোগানে গুরুত্বপূর্ণ ভূমিকা রাখছে প্রাণি সম্পদের সাথে জড়িত ব্যক্তিবর্গরা। দেশের প্রাণিসম্পদ খাতের সকল পর্যায়ের ব্যাক্তিবগের্র মধ্যে সেতুবন্ধন তৈরীর এবং উন্নয়নের লক্ষ্যে বাংলাদেশ লাইভস্টক সোসাইটির কার্যক্রম</p>', 1, 'published', '2025-03-12 20:07:55', '2025-03-12 20:07:55', NULL),
+(5, 'সয়াবিন মিল আমদানিতে কর দিতে হবে না', 'syabin-mil-amdanite-kr-dite-hbe-na', 'images/news-blog/brochure-iconsc-1-mesa-de-trabajo-1_67d2927581bb8.png', '<p>পোলট্রি, মৎস্য ও ডেইরি ফিড (খাদ্য) তৈরির অত্যাবশকীয় পণ্য সয়াবিন মিলের ওপর আরোপিত কর প্রত্যাহার করেছে সরকার। এ ব্যাপারে সম্প্রতি একটি প্রজ্ঞাপন জারি করেছে অর্থ মন্ত্রণালয়। ফলে এখন থেকে আর কর</p>', 1, 'published', '2025-03-12 20:08:21', '2025-03-12 20:08:21', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blog_shares`
+--
+
+CREATE TABLE `blog_shares` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `blog_post_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `shared_to` varchar(255) NOT NULL,
+  `shared_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blog_views`
+--
+
+CREATE TABLE `blog_views` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `blog_post_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `view_count` int(11) NOT NULL,
+  `last_viewed_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -298,7 +356,9 @@ INSERT INTO `galleries` (`id`, `title`, `description`, `date`, `cover`, `drive_u
 (4, 'IFTAR And Doa Mahfil', NULL, '2024-02-10', '20220409_175447_1706670858_1707541938.jpg', NULL, 1, 1, 1, '2024-02-09 22:12:18', '2024-02-09 22:12:18'),
 (5, 'Meeting with Minister And High Official', NULL, '2024-02-10', 'IMG-20220121-WA0006_1706670660_1707542468.jpg', NULL, 1, 1, 1, '2024-02-09 22:14:29', '2024-02-09 22:21:08'),
 (6, 'Annual Picnic', NULL, '2024-02-10', 'IMG-20230203-WA0016_1706671380_1707542296.jpg', NULL, 1, 1, 1, '2024-02-09 22:16:29', '2024-02-09 22:18:16'),
-(7, 'Meeting with DG of Livestock Services', NULL, '2024-03-04', 'Livestock01-min_1709535553_1714201938.jpg', NULL, 1, 1, 1, '2024-03-04 05:59:14', '2024-04-27 05:12:23');
+(7, 'Meeting with DG of Livestock Services', NULL, '2024-03-04', 'Livestock01-min_1709535553_1714201938.jpg', NULL, 1, 1, 1, '2024-03-04 05:59:14', '2024-04-27 05:12:23'),
+(8, 'BAFIITA ANNUAL PICNIC-2025', 'Belna Eco Resort, Belna, Keranigonj, Dhaka', '2025-02-15', 'picnic-2025_1740393548.jpg', NULL, 1, 1, 1, '2025-02-24 15:39:08', '2025-02-24 15:39:08'),
+(9, 'BAFIITA ANNUAL GENERAL MEETING-2024', 'Belna Eco Resort, Belna, Keranigonj, Dhaka', '2025-02-15', 'meeting-2024_1740393685.jpg', NULL, 1, 1, 1, '2025-02-24 15:41:25', '2025-02-24 15:41:25');
 
 -- --------------------------------------------------------
 
@@ -352,7 +412,60 @@ INSERT INTO `gallery_images` (`id`, `image`, `gallery_id`, `created_at`, `update
 (44, 'Livestock06-min_1709535556_1714215605.jpg', 7, '2024-04-27 09:00:05', '2024-04-27 09:00:05'),
 (45, 'Livestock07-min_1709535556_1714215605.jpg', 7, '2024-04-27 09:00:05', '2024-04-27 09:00:05'),
 (46, 'Livestock08-min_1709535556_1714215605.jpg', 7, '2024-04-27 09:00:06', '2024-04-27 09:00:06'),
-(47, 'Livestock09-min_1709535557_1714215606.jpg', 7, '2024-04-27 09:00:06', '2024-04-27 09:00:06');
+(47, 'Livestock09-min_1709535557_1714215606.jpg', 7, '2024-04-27 09:00:06', '2024-04-27 09:00:06'),
+(48, 'IMG-20250217-WA0002-min_1740393548.jpg', 8, '2025-02-24 15:39:09', '2025-02-24 15:39:09'),
+(49, 'IMG-20250217-WA0003-min_1740393549.jpg', 8, '2025-02-24 15:39:09', '2025-02-24 15:39:09'),
+(50, 'IMG-20250217-WA0004-min_1740393549.jpg', 8, '2025-02-24 15:39:09', '2025-02-24 15:39:09'),
+(51, 'IMG-20250217-WA0005-min_1740393549.jpg', 8, '2025-02-24 15:39:09', '2025-02-24 15:39:09'),
+(52, 'IMG-20250217-WA0006-min_1740393549.jpg', 8, '2025-02-24 15:39:10', '2025-02-24 15:39:10'),
+(53, 'IMG-20250217-WA0007-min_1740393550.jpg', 8, '2025-02-24 15:39:10', '2025-02-24 15:39:10'),
+(54, 'IMG-20250217-WA0008-min_1740393550.jpg', 8, '2025-02-24 15:39:10', '2025-02-24 15:39:10'),
+(55, 'IMG-20250217-WA0009-min_1740393550.jpg', 8, '2025-02-24 15:39:10', '2025-02-24 15:39:10'),
+(56, 'IMG-20250217-WA0010-min_1740393550.jpg', 8, '2025-02-24 15:39:11', '2025-02-24 15:39:11'),
+(57, 'IMG-20250217-WA0011-min_1740393551.jpg', 8, '2025-02-24 15:39:11', '2025-02-24 15:39:11'),
+(58, 'IMG-20250217-WA0012-min_1740393551.jpg', 8, '2025-02-24 15:39:11', '2025-02-24 15:39:11'),
+(59, 'IMG-20250217-WA0013-min_1740393551.jpg', 8, '2025-02-24 15:39:12', '2025-02-24 15:39:12'),
+(60, 'IMG-20250217-WA0014-min_1740393552.jpg', 8, '2025-02-24 15:39:12', '2025-02-24 15:39:12'),
+(61, 'IMG-20250217-WA0015-min_1740393552.jpg', 8, '2025-02-24 15:39:12', '2025-02-24 15:39:12'),
+(62, 'IMG-20250217-WA0016-min_1740393552.jpg', 8, '2025-02-24 15:39:13', '2025-02-24 15:39:13'),
+(63, 'IMG-20250217-WA0017-min_1740393553.jpg', 8, '2025-02-24 15:39:13', '2025-02-24 15:39:13'),
+(64, 'IMG-20250217-WA0018-min_1740393553.jpg', 8, '2025-02-24 15:39:13', '2025-02-24 15:39:13'),
+(65, 'IMG-20250217-WA0019-min_1740393553.jpg', 8, '2025-02-24 15:39:13', '2025-02-24 15:39:13'),
+(66, 'IMG-20250217-WA0020-min_1740393553.jpg', 8, '2025-02-24 15:39:14', '2025-02-24 15:39:14'),
+(67, 'IMG-20250217-WA0027-min_1740393589.jpg', 8, '2025-02-24 15:39:49', '2025-02-24 15:39:49'),
+(68, 'IMG-20250217-WA0028-min_1740393589.jpg', 8, '2025-02-24 15:39:49', '2025-02-24 15:39:49'),
+(69, 'IMG-20250217-WA0029-min_1740393589.jpg', 8, '2025-02-24 15:39:49', '2025-02-24 15:39:49'),
+(70, 'IMG-20250217-WA0030-min_1740393589.jpg', 8, '2025-02-24 15:39:50', '2025-02-24 15:39:50'),
+(71, 'IMG-20250217-WA0031-min_1740393590.jpg', 8, '2025-02-24 15:39:50', '2025-02-24 15:39:50'),
+(72, 'IMG-20250217-WA0032-min_1740393590.jpg', 8, '2025-02-24 15:39:50', '2025-02-24 15:39:50'),
+(73, 'IMG-20250217-WA0033-min_1740393590.jpg', 8, '2025-02-24 15:39:51', '2025-02-24 15:39:51'),
+(74, 'IMG-20250217-WA0034-min_1740393591.jpg', 8, '2025-02-24 15:39:51', '2025-02-24 15:39:51'),
+(75, 'IMG-20250217-WA0035-min_1740393591.jpg', 8, '2025-02-24 15:39:51', '2025-02-24 15:39:51'),
+(76, 'IMG-20250217-WA0036-min_1740393591.jpg', 8, '2025-02-24 15:39:51', '2025-02-24 15:39:51'),
+(77, 'IMG-20250217-WA0037-min_1740393591.jpg', 8, '2025-02-24 15:39:52', '2025-02-24 15:39:52'),
+(78, 'IMG-20250217-WA0038-min_1740393592.jpg', 8, '2025-02-24 15:39:52', '2025-02-24 15:39:52'),
+(79, 'IMG-20250217-WA0039-min_1740393592.jpg', 8, '2025-02-24 15:39:52', '2025-02-24 15:39:52'),
+(80, 'IMG-20250217-WA0040-min_1740393592.jpg', 8, '2025-02-24 15:39:52', '2025-02-24 15:39:52'),
+(81, 'IMG-20250217-WA0042-min_1740393685.jpg', 9, '2025-02-24 15:41:25', '2025-02-24 15:41:25'),
+(82, 'IMG-20250217-WA0043-min_1740393685.jpg', 9, '2025-02-24 15:41:25', '2025-02-24 15:41:25'),
+(83, 'IMG-20250217-WA0045-min_1740393685.jpg', 9, '2025-02-24 15:41:26', '2025-02-24 15:41:26'),
+(84, 'IMG-20250217-WA0046-min_1740393686.jpg', 9, '2025-02-24 15:41:26', '2025-02-24 15:41:26'),
+(85, 'IMG-20250217-WA0047-min_1740393686.jpg', 9, '2025-02-24 15:41:26', '2025-02-24 15:41:26'),
+(86, 'IMG-20250217-WA0048-min_1740393686.jpg', 9, '2025-02-24 15:41:26', '2025-02-24 15:41:26'),
+(87, 'IMG-20250217-WA0049-min_1740393686.jpg', 9, '2025-02-24 15:41:27', '2025-02-24 15:41:27'),
+(88, 'IMG-20250217-WA0050-min_1740393687.jpg', 9, '2025-02-24 15:41:27', '2025-02-24 15:41:27'),
+(89, 'IMG-20250217-WA0051-min_1740393687.jpg', 9, '2025-02-24 15:41:27', '2025-02-24 15:41:27'),
+(90, 'IMG-20250217-WA0052-min_1740393687.jpg', 9, '2025-02-24 15:41:28', '2025-02-24 15:41:28'),
+(91, 'IMG-20250217-WA0053-min_1740393688.jpg', 9, '2025-02-24 15:41:28', '2025-02-24 15:41:28'),
+(92, 'IMG-20250217-WA0054-min_1740393688.jpg', 9, '2025-02-24 15:41:28', '2025-02-24 15:41:28'),
+(93, 'IMG-20250217-WA0055-min_1740393688.jpg', 9, '2025-02-24 15:41:28', '2025-02-24 15:41:28'),
+(94, 'IMG-20250217-WA0056-min_1740393688.jpg', 9, '2025-02-24 15:41:29', '2025-02-24 15:41:29'),
+(95, 'IMG-20250217-WA0057-min_1740393689.jpg', 9, '2025-02-24 15:41:29', '2025-02-24 15:41:29'),
+(96, 'IMG-20250217-WA0058-min_1740393689.jpg', 9, '2025-02-24 15:41:29', '2025-02-24 15:41:29'),
+(97, 'IMG-20250217-WA0059-min_1740393689.jpg', 9, '2025-02-24 15:41:29', '2025-02-24 15:41:29'),
+(98, 'IMG-20250217-WA0060-min_1740393689.jpg', 9, '2025-02-24 15:41:30', '2025-02-24 15:41:30'),
+(99, 'IMG-20250217-WA0061-min_1740393690.jpg', 9, '2025-02-24 15:41:30', '2025-02-24 15:41:30'),
+(100, 'IMG-20250217-WA0044-min_1740393726.jpg', 9, '2025-02-24 15:42:07', '2025-02-24 15:42:07');
 
 -- --------------------------------------------------------
 
@@ -538,7 +651,8 @@ INSERT INTO `info_banks` (`id`, `bankBranceName`, `modePayment`, `totalAmount`, 
 (162, 'Exim Bank  Ltd, Dhanmondi Branch, Dhaka.', NULL, '120000.00', '2014-08-20', NULL, NULL, 0, 173, '2025-02-03 12:41:16', '2025-02-03 12:41:16'),
 (163, 'EXIM Bank Ltd, Saver Branch, Rampura, Dhaka.', NULL, '20000.00', '2014-07-13', NULL, NULL, 0, 174, '2025-02-03 13:52:31', '2025-02-03 13:52:31'),
 (164, 'PUBALI BANK LTD , ASAD AVENUE', NULL, '68000.00', '2025-05-01', NULL, 'document/member/175/bank-info/FILESLIP_1738677560.jpeg', 0, 175, '2025-02-04 12:59:20', '2025-02-04 12:59:20'),
-(165, NULL, NULL, NULL, NULL, NULL, NULL, 0, 176, '2025-02-12 12:40:55', '2025-02-12 12:40:55');
+(165, NULL, NULL, NULL, NULL, NULL, NULL, 0, 176, '2025-02-12 12:40:55', '2025-02-12 12:40:55'),
+(166, 'Pubali Bank Ltd, Agrabad Branch, CTG', NULL, '68000.00', '2024-12-30', NULL, 'document/member/177/bank-info/FILESLIP_1740393134.pdf', 0, 177, '2025-02-24 15:32:14', '2025-02-24 15:32:14');
 
 -- --------------------------------------------------------
 
@@ -739,7 +853,8 @@ INSERT INTO `info_companies` (`id`, `companyName`, `addressOrganization`, `typeO
 (162, 'M/S. Tareq Enterprise', 'Gandharbpur, Rupasi-1464, Rupsi, Siddergonj, Narayongong.', 1, 1, '0005486/2022 (NCC)', '2024-09-24', '190011362430/C-6', '2024-11-03', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, 'M/S. Tareq Enterprise', 'Gandharbpur, Rupasi-1464, Rupsi, Siddergonj, Narayongong.', '01328972425', NULL, 1, 173, '2025-02-03 12:41:16', '2025-02-03 12:41:16'),
 (163, 'M/S. Jahangir Enterprise', 'D-25, Bank Coloni, Nurjahan Villa, Saver, Dhaka.', 1, 1, '001183 (Saver Municipality)', '2024-07-31', '3427567349907', '2013-09-11', '003736652-0403', '2021-05-04', NULL, NULL, NULL, NULL, 1, NULL, 'M/S. Jahangir Enterprise', 'D-25, Bank Coloni, Nurjahan Villa, Saver, Dhaka.', '01715332640', NULL, 1, 174, '2025-02-03 13:52:31', '2025-02-03 13:52:31'),
 (164, 'PGL CORPORATION', 'J.B.A Bhaban(2nd Floor) , 695,D.T Road , Baitul Jannat Mosjid Lane, Kadamtali, Chittagong.', 1, 1, '46030', '2017-03-01', '553822252320/Circle-72', '0023-02-07', '005667253-0503', '2023-08-08', '260315110204424', '2024-12-09', NULL, NULL, 1, NULL, 'PGL CORPORATION', 'J.B.A Bhaban(2nd Floor) , 695,D.T Road , Baitul Jannat Mosjid Lane, Kadamtali, Chittagong', '01825002263', NULL, 1, 175, '2025-02-04 12:59:19', '2025-02-04 12:59:19'),
-(165, 'Rafee Trading Company', '4/614, Faruque Towar, Thana Road, Dewanganj -2030, Jamalpur.', 1, 1, '01932', '2023-09-17', '150365779059', '2019-02-17', '001772807-0407', '2020-12-30', '260361110194923', '2023-10-05', NULL, NULL, 1, NULL, 'M/S Rafee Trading Company', '4/614, Faruque Towar, Thana Road, Dewanganj -2030, Jamalpur', '01767758616', NULL, 1, 176, '2025-02-12 12:40:55', '2025-02-12 12:40:55');
+(165, 'Rafee Trading Company', '4/614, Faruque Towar, Thana Road, Dewanganj -2030, Jamalpur.', 1, 1, '01932', '2023-09-17', '150365779059', '2019-02-17', '001772807-0407', '2020-12-30', '260361110194923', '2023-10-05', NULL, NULL, 1, NULL, 'M/S Rafee Trading Company', '4/614, Faruque Towar, Thana Road, Dewanganj -2030, Jamalpur', '01767758616', NULL, 1, 176, '2025-02-12 12:40:55', '2025-02-12 12:40:55'),
+(166, 'M/S. Arafatun Enterprise', 'Progressive Tower (1st floor), 1837, Sk. Mujib Road,  Agrabad, Chittagong.', 1, 1, '134162 (CHITTAGONG)', '2016-03-06', '387294995268', '2024-09-18', '000522305-0503', '2019-12-17', '260315110230119', '2016-05-12', NULL, NULL, 1, NULL, 'M/S. Arafatun Enterprise', 'Progressive Tower (1st floor), 1837, Sk. Mujib Road,  Agrabad, Chittagong.', '01714166280', NULL, 1, 177, '2025-02-24 15:32:14', '2025-02-24 15:32:14');
 
 -- --------------------------------------------------------
 
@@ -936,7 +1051,8 @@ INSERT INTO `info_documents` (`id`, `fileNomineePhoto`, `fileNomineeSignature`, 
 (162, NULL, NULL, NULL, NULL, NULL, 'document/member/173/TradeLicense/FILETRADELICENSE_1738590076.pdf', 'document/member/173/TaxCertificate/FILETAXCERTIFICATE_1738590076.jpg', NULL, NULL, NULL, 'document/member/173/ApplicantPhoto/FILEAPPLICANTPHOTO_1738590076.jpg', NULL, NULL, NULL, NULL, NULL, NULL, 1, 173, '2025-02-03 12:41:16', '2025-02-03 12:41:16'),
 (163, NULL, NULL, NULL, NULL, NULL, 'document/member/174/TradeLicense/FILETRADELICENSE_1738594351.jpg', 'document/member/174/TaxCertificate/FILETAXCERTIFICATE_1738594351.jpg', NULL, 'document/member/174/VatRegistration/FILEVATREGISTRATION_1738594351.jpg', 'document/member/174/MemberNID/FILEMEMBERNID_1738594351.jpg', 'document/member/174/ApplicantPhoto/FILEAPPLICANTPHOTO_1738594351.jpg', NULL, NULL, NULL, NULL, NULL, NULL, 1, 174, '2025-02-03 13:52:31', '2025-02-03 13:52:31'),
 (164, 'document/member/175/NomineePhoto/FILENOMINEEPHOTO_1738677559.jpeg', NULL, NULL, NULL, NULL, 'document/member/175/TradeLicense/FILETRADELICENSE_1738677559.pdf', 'document/member/175/TaxCertificate/FILETAXCERTIFICATE_1738677560.pdf', NULL, 'document/member/175/VatRegistration/FILEVATREGISTRATION_1738677560.jpeg', 'document/member/175/MemberNID/FILEMEMBERNID_1738677560.jpeg', 'document/member/175/ApplicantPhoto/FILEAPPLICANTPHOTO_1738677560.jpeg', NULL, NULL, NULL, NULL, NULL, NULL, 1, 175, '2025-02-04 12:59:20', '2025-02-04 12:59:20'),
-(165, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'document/member/176/ApplicantPhoto/FILEAPPLICANTPHOTO_1739367655.jpg', NULL, NULL, NULL, NULL, NULL, NULL, 1, 176, '2025-02-12 12:40:55', '2025-02-12 12:40:55');
+(165, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'document/member/176/ApplicantPhoto/FILEAPPLICANTPHOTO_1739367655.jpg', NULL, NULL, NULL, NULL, NULL, NULL, 1, 176, '2025-02-12 12:40:55', '2025-02-12 12:40:55'),
+(166, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'document/member/177/ApplicantPhoto/FILEAPPLICANTPHOTO_1740393134.jpg', NULL, NULL, NULL, NULL, NULL, NULL, 1, 177, '2025-02-24 15:32:14', '2025-02-24 15:32:14');
 
 -- --------------------------------------------------------
 
@@ -1132,7 +1248,8 @@ INSERT INTO `info_others` (`id`, `about_me`, `nick_name`, `phone_number`, `cover
 (162, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 173, '2025-02-03 12:41:16', '2025-02-03 12:41:16'),
 (163, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 174, '2025-02-03 13:52:31', '2025-02-03 13:52:31'),
 (164, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 175, '2025-02-04 12:59:19', '2025-02-04 12:59:19'),
-(165, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 176, '2025-02-12 12:40:55', '2025-02-12 12:40:55');
+(165, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 176, '2025-02-12 12:40:55', '2025-02-12 12:40:55'),
+(166, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 177, '2025-02-24 15:32:14', '2025-02-24 15:32:14');
 
 -- --------------------------------------------------------
 
@@ -1336,8 +1453,9 @@ INSERT INTO `info_personals` (`id`, `memebrName`, `memebrDesignation`, `memebrNI
 (169, 'Mukta Islam', 1, '7301460411', '1974-04-14', 'Muktar Hossain', 'Monowara Begum', 'Md. Shofiqul Islam', 2, 5, '01713202551', 'tanziliak@gmail.com', 'BA', 'Sazid Shahrukh Islam', '4205542386', NULL, NULL, 'Mother', NULL, 'Sarker Agro Biotech', 'Dr. Md. Mozammel Hossain Sarker', '0181', 'MHK Agro', 'Dr. Mujammel Huq Khan', '0096', NULL, 1, 172, '2025-02-01 07:11:29', '2025-02-01 07:11:29'),
 (170, 'Shah Mohammad Sagir', 1, '6726812556608', '1976-07-05', 'Abdul Latif Pradhan', 'Khodeja Begum', NULL, 1, 5, '01328972425', 'shah.sagir1976@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'M/S. Helal Enterprise', 'Md. Helal Uddin', 'DMB#003', NULL, NULL, NULL, NULL, 1, 173, '2025-02-03 12:41:16', '2025-02-03 12:41:16'),
 (171, 'Md. Jahangir  Alam', 1, '3288303288', '1971-12-16', 'Hazi Md. Azhar Uddin', 'Mst. Nurjahan Begum', 'Mst. Parvin Akter', 1, NULL, '01715332640', 'info@smsfeedsltd.com', NULL, 'Mst. Pervin Akter', NULL, NULL, NULL, 'Spouse', NULL, 'M/S. Hossain Enterprise', 'Md. Idris Ali', 'GMB#008', NULL, NULL, NULL, NULL, 1, 174, '2025-02-03 13:52:31', '2025-02-03 13:52:31'),
-(172, 'MD. JASHIM UDDIN HAIDER', 1, '1510856463293', '1985-12-01', 'HAJEE NURUL ISLAM', 'JAHANARA BEGUM', 'N/A', 1, 1, NULL, 'pglcorporation85@gmail.com', 'MASTER DEGREE', 'n/a', '1510856463293', NULL, NULL, NULL, NULL, 'MS TRADING', 'MD SABIR HOSSAIN', '0002', 'MARS OMEGA LTD', 'MD SABIR HOSSAIN', '0194', NULL, 1, 175, '2025-02-04 12:59:19', '2025-02-04 12:59:19'),
-(173, 'A K M Sadid Haq Rafee', 1, '5553800649', '1993-11-25', 'A K M Anis Ul Haque', 'Shahana Arju', 'Shamjida Jannat Sadia', 1, 3, '01767758616', 'rafeesadid@gmail.com', 'MBA', 'Shamjida Jannat Sadia', '1514838224', NULL, NULL, 'Wife', NULL, 'M/S FR Trading', 'Md. Fazle Rabby', 'GMB#0160', 'Janani Trading', 'Md. Humayan Kabir', 'DMB#0076', NULL, 1, 176, '2025-02-12 12:40:55', '2025-02-12 12:40:55');
+(172, 'MD. JASHIM UDDIN HAIDER', 1, '1510856463293', '1985-12-01', 'HAJEE NURUL ISLAM', 'JAHANARA BEGUM', 'N/A', 1, 1, '01825002263', 'pglcorporation85@gmail.com', 'MASTER DEGREE', 'n/a', '1510856463293', NULL, NULL, NULL, NULL, 'MS TRADING', 'MD SABIR HOSSAIN', '0002', 'MARS OMEGA LTD', 'MD SABIR HOSSAIN', '0194', NULL, 1, 175, '2025-02-04 12:59:19', '2025-02-04 12:59:19'),
+(173, 'A K M Sadid Haq Rafee', 1, '5553800649', '1993-11-25', 'A K M Anis Ul Haque', 'Shahana Arju', 'Shamjida Jannat Sadia', 1, 3, '01767758616', 'rafeesadid@gmail.com', 'MBA', 'Shamjida Jannat Sadia', '1514838224', NULL, NULL, 'Wife', NULL, 'M/S FR Trading', 'Md. Fazle Rabby', 'GMB#0160', 'Janani Trading', 'Md. Humayan Kabir', 'DMB#0076', NULL, 1, 176, '2025-02-12 12:40:55', '2025-02-12 12:40:55'),
+(174, 'Ashraf Uddin Mahmud', 1, '780 833 0638', '1994-12-18', 'Late: Fakrul Islam', 'Parul Akter', 'Tanjina Islam Tanuja', 1, 5, '01714166280', 'ashrafmahmudrumel@gmail.com', 'BBA', 'Tanjina Islam Tanuja', '19911594121000034', NULL, NULL, 'Spouse', NULL, 'Progress Agrovet', 'Selim Reza Hiron', 'GMB#0113', NULL, NULL, NULL, NULL, 1, 177, '2025-02-24 15:32:14', '2025-02-24 15:32:14');
 
 -- --------------------------------------------------------
 
@@ -1444,7 +1562,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (28, '2023_10_01_000001_create_annual_fees_table', 1),
 (29, '2023_10_01_120001_create_past_committees_table', 1),
 (30, '2023_10_01_120002_create_past_committee_details_table', 1),
-(31, '2024_03_19_100001_create_blogs_table', 1);
+(32, '2024_08_13_062049_create_blog_posts_table', 2),
+(33, '2024_08_13_062126_create_blog_comments_table', 2),
+(34, '2024_08_13_062211_create_blog_views_table', 2),
+(35, '2024_08_13_062245_create_blog_shares_table', 2);
 
 -- --------------------------------------------------------
 
@@ -1476,7 +1597,12 @@ CREATE TABLE `model_has_roles` (
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'App\\Models\\User', 1),
-(2, 'App\\Models\\User', 2);
+(2, 'App\\Models\\User', 2),
+(3, 'App\\Models\\User', 171),
+(3, 'App\\Models\\User', 172),
+(3, 'App\\Models\\User', 175),
+(3, 'App\\Models\\User', 176),
+(3, 'App\\Models\\User', 177);
 
 -- --------------------------------------------------------
 
@@ -1729,7 +1855,8 @@ INSERT INTO `payment_details` (`id`, `payment_date`, `paid_amount`, `payment_num
 (162, '2025-02-03', '120000.00', NULL, NULL, 1, NULL, NULL, NULL, NULL, 162, 1, 173, NULL, 1, '2025-02-03 12:41:16', '2025-02-03 12:41:16'),
 (163, '2025-02-03', '20000.00', NULL, NULL, 1, NULL, NULL, NULL, NULL, 163, 1, 174, NULL, 1, '2025-02-03 13:52:31', '2025-02-03 13:52:31'),
 (164, '2025-02-04', '68000.00', NULL, NULL, 1, NULL, NULL, NULL, 'document/member/175/bank-info/FILESLIP_1738677560.jpeg', 164, 1, 175, NULL, 1, '2025-02-04 12:59:20', '2025-02-04 12:59:20'),
-(165, '2025-02-12', NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, 165, 1, 176, NULL, 1, '2025-02-12 12:40:55', '2025-02-12 12:40:55');
+(165, '2025-02-12', NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, 165, 1, 176, NULL, 1, '2025-02-12 12:40:55', '2025-02-12 12:40:55'),
+(166, '2025-02-24', '68000.00', NULL, NULL, 1, NULL, NULL, NULL, 'document/member/177/bank-info/FILESLIP_1740393134.pdf', 166, 2, 177, NULL, 1, '2025-02-24 15:32:14', '2025-02-24 15:32:14');
 
 -- --------------------------------------------------------
 
@@ -2063,7 +2190,72 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('7vJq9iq8GwGVuee5hOHPliL0JHrs3pRm9JMtGBF3', 1, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiazFBNkQzTExOcWpyY0FFTTVoV09rVkFtQlNZTXc4a0xrc0d1Q2lvZyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjU0OiJodHRwOi8vbG9jYWxob3N0OjgwODAvd2ViLWJhZmlpdGEvcGFzdC1jb21taXR0ZWUvaW5kZXgiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1739779138);
+('0aYobAoMl9CXZNgJY2YKk37Lun9HSajsBf0NdYWl', NULL, '103.225.84.108', 'python-requests/2.32.3', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiNVpTQzlnUmlPbVpCRTBhbG1ZOUpBbld3VkRoSVU5RUQybDlMMlJ6VCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTk4OiJodHRwczovL2JhZmlpdGEub3JnLmJkLz9mdW5jdGlvbj1jYWxsX3VzZXJfZnVuY19hcnJheSZzPSUyRmFkbWluJTJGJTVDdGhpbmslNUNhcHAlMkZpbnZva2VmdW5jdGlvbiZ2YXJzJTVCMCU1RD1jb3B5JnZhcnMlNUIxJTVEJTVCMCU1RD1odHRwJTNBJTJGJTJGMTIwLjQ2LjE5My4yMDMlMkYyLnR4dCZ2YXJzJTVCMSU1RCU1QjElNUQ9dGVtcC5waHAiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1741737438),
+('2GByRJ3xmc35SAjHgrO1yrDBqGmEzTt1zpy9LMER', NULL, '103.196.62.69', 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiQ201VGZ1dkZ2bjJGSGV4a1o0UXhQaDhKS2d6UXFTOFF3dHJGR2NYcSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTIxOiJodHRwczovL2JhZmlpdGEub3JnLmJkLz9jb250ZW50PSUyMiUzQyUzRiUzRSUzQyUzRnBocCUyMHBocGluZm8lMjglMjklM0IlM0YlM0UmZGF0YT0xJnM9YWRtaW4lMkYlNUN0aGluayU1Q1ZpZXclMkZkaXNwbGF5Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741688711),
+('2ZptzxL7iCx4g8s4cXxDjlkVCBK5IwvDWmQOpN9M', NULL, '103.195.194.232', 'python-requests/2.32.3', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoidjB6emd1MnNNZlk1MUcxVW9ScWVqMXh2eEZOc2ZmV0lFQ09hbUNNOCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTk3OiJodHRwOi8vYmFmaWl0YS5vcmcuYmQvP2Z1bmN0aW9uPWNhbGxfdXNlcl9mdW5jX2FycmF5JnM9JTJGYWRtaW4lMkYlNUN0aGluayU1Q2FwcCUyRmludm9rZWZ1bmN0aW9uJnZhcnMlNUIwJTVEPWNvcHkmdmFycyU1QjElNUQlNUIwJTVEPWh0dHAlM0ElMkYlMkYxMjAuNDYuMTkzLjIwMyUyRjIudHh0JnZhcnMlNUIxJTVEJTVCMSU1RD10ZW1wLnBocCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1741840445),
+('78m8IVAxChUMLNIe18GA0bdd2LqzCF31zvgkfiLt', NULL, '156.225.11.73', 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoidGFVZjlPMWdtUjN1M3FtMGhXb1dHZzZtNjlxc0Z3WG9DOGZLZ20xRyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTIxOiJodHRwczovL2JhZmlpdGEub3JnLmJkLz9jb250ZW50PSUyMiUzQyUzRiUzRSUzQyUzRnBocCUyMHBocGluZm8lMjglMjklM0IlM0YlM0UmZGF0YT0xJnM9aW5kZXglMkYlNUN0aGluayU1Q1ZpZXclMkZkaXNwbGF5Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741704290),
+('7goYmuzQeKbJT8hOJYNQ6QwKFwEVwVbIy6pY3Z3i', NULL, '166.108.234.198', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiRTRDQlQzQ2pnb1NXcG9ldUM4NU9KdWtBUG4zclQwUjFHNDI4WXF1TCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTA6Imh0dHBzOi8vd3d3LmJhZmlpdGEub3JnLmJkL3BhZ2VzL3Byb2ZpbGUtcHJlcy1zZWNyIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741698344),
+('7ZzoN0b1WUsQ3sbtLlEUF1Yn7vaVRIiNbdiHOoYN', NULL, '193.186.4.159', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiOUN4SVFNWngwWk04R291TFpqTVNVTXN6YzVpMU54SVV2STdvaXRKZiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741773014),
+('8qx1Mzz1quPelCZPTZWnlHqrpr8Nk96CF7uCdQbD', NULL, '103.103.88.212', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoic29wM3pyQlhEYTBCdWJQbzl1VW1sc1FEdGY0OW5Bb0czMXh6MEd2MSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHBzOi8vd3d3LmJhZmlpdGEub3JnLmJkL3BhZ2VzLzAvbWVtYmVyIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741766514),
+('8YEiN7U35M343jpU6gmhQ2yLqNvBZSdwG3GZkb4J', NULL, '119.13.109.27', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiYVlSalZob1Q3bkdBRzluR0RXUmc4Y1UzU1ZQYmJFVnVzeW5qMkdwUiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTI6Imh0dHBzOi8vd3d3LmJhZmlpdGEub3JnLmJkL3BhZ2UvbmV3cy1jb250ZW50LWRldGFpbHMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1741692514),
+('90oAvbje7sB9sCp75xCvNi6yjbhPyFJ1rbK94aEd', NULL, '72.14.201.159', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Mobile Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoidEdSUDJaU3B1UjFRalUzTkdlYTRzeVN5TDZzcVRDYThsZzl5eUozdyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741683147),
+('AIOMIXaX5KAbaCUK1E28OXONNxLnjhn0sHx1Ajzi', NULL, '156.226.164.245', 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiUkd1VGNURmFYMTc0VXFZUnRzSEpmaUp4bzY2SHhIWFl4MjNJUDZjayI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTIwOiJodHRwczovL2JhZmlpdGEub3JnLmJkLz9jb250ZW50PSUyMiUzQyUzRiUzRSUzQyUzRnBocCUyMHBocGluZm8lMjglMjklM0IlM0YlM0UmZGF0YT0xJnM9aG9tZSUyRiU1Q3RoaW5rJTVDVmlldyUyRmRpc3BsYXkiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1741827629),
+('b3EXPPVZ7fXqP7gIIXTitF83nwDgwikjq7DPUYsW', NULL, '103.135.136.6', '', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiVlNIRklSYU93NHIwR0tTN3J6dEpHUFdERkd6Vjdya2drS0VieFI5RCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHBzOi8vd3d3LmJhZmlpdGEub3JnLmJkL3BhZ2VzLzAvbWVtYmVyIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741840059),
+('BFJfcZ0mb9okvI2FIqKmig6tsTRYGDdKgnD7u7WT', NULL, '154.92.74.142', 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiQUJQTTROWFZsemFQR0hEQmRnVXFncW1YVms0ck1tRjd0YjZLU0RZNiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTIwOiJodHRwOi8vYmFmaWl0YS5vcmcuYmQvP2NvbnRlbnQ9JTIyJTNDJTNGJTNFJTNDJTNGcGhwJTIwcGhwaW5mbyUyOCUyOSUzQiUzRiUzRSZkYXRhPTEmcz1pbmRleCUyRiU1Q3RoaW5rJTVDVmlldyUyRmRpc3BsYXkiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1741700653),
+('bslfzOEwB6pX6NMOqesVqLBAoQhMSrZo3JZR78O3', NULL, '103.195.194.232', 'python-requests/2.32.3', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiY3g5TWloNkNQelJvU1ZwbzJ0SHlEdk1lN0Z4eGRCV01VR1RXdEdSYSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTk3OiJodHRwOi8vYmFmaWl0YS5vcmcuYmQvP2Z1bmN0aW9uPWNhbGxfdXNlcl9mdW5jX2FycmF5JnM9JTJGaW5kZXglMkYlNUN0aGluayU1Q2FwcCUyRmludm9rZWZ1bmN0aW9uJnZhcnMlNUIwJTVEPWNvcHkmdmFycyU1QjElNUQlNUIwJTVEPWh0dHAlM0ElMkYlMkYxMjAuNDYuMTkzLjIwMyUyRjIudHh0JnZhcnMlNUIxJTVEJTVCMSU1RD10ZW1wLnBocCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1741840450),
+('BsTq9UXgRU0r0t9D3ggwbOmzICmyRZcKcmXnymEn', NULL, '202.134.14.232', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Mobile Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZDFNdHJhZ1dSVHpQQzVZSFJwa2RUeEZLWks0ZUxuODJYNnJlNGxVcCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjY6Imh0dHBzOi8vd3d3LmJhZmlpdGEub3JnLmJkIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741850032),
+('BvZipALwXNoy3Zpu7g3mIdNbXEvtmVUldPks9lQX', NULL, '72.14.201.159', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiU2syZDN0YXBkOU51MzM0NFBRWnJNamd4R1pxY3U2aTZCWndLeXlRMSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741753435),
+('DEipoo2FFISjRlggilrLnmhOqoZwMp4ulOY0XZ5q', NULL, '119.148.42.10', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiTUFuMGo0dzRGM0c3UnBoS3hKNncxMlVVZFRBZDZ3NjZDdGVuTlQzTyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDM6Imh0dHBzOi8vd3d3LmJhZmlpdGEub3JnLmJkL3BhZ2VzL2NvbnRhY3QtdXMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1741757669),
+('dnB9wMMHGok7QLT1XyzFsLfLvUUgd9758klO5nhS', NULL, '103.6.250.24', 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_4_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/134.0.6998.33 Mobile/15E148 Safari/604.1', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoibXUwMW1tcVlaa3dkaEpMUUxmSDNUbDc2dXdDNkNlcVlzSWw0cXhIYSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHBzOi8vd3d3LmJhZmlpdGEub3JnLmJkL3BhZ2VzL2Fib3V0LXVzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741779179),
+('E7xe15jLBVZ6a9x4pSpaWhvMuTTXaouw4E9FiiUn', NULL, '103.120.202.39', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiUG9ja0ZmaGpBbkNtMHVoQlE1YlBHNnB3ZmYzaUd2UExVY1RndW96QyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzk6Imh0dHA6Ly9iYWZpaXRhLm9yZy5iZC9wYWdlL25ld3MtY29udGVudCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1741761498),
+('ELiJFdPIw7F4O9M1rvq4hE4ZFglfYzLJNlM6M1p8', NULL, '52.167.144.19', 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/116.0.1938.76 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoidWhRV1lVTEY5RzkzVkYyNkpaSUxrc0J0a0VXdU5pYUtxOEV5T3NVaCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9iYWZpaXRhLm9yZy5iZCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1741817275),
+('evWdfVgvIswrFqJDlAsVanLoxaLxwNM5dPDsAiSr', NULL, '102.23.49.218', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiNWNPanV0V0V3WWQ0ODV5N04yeWVaS3k5N253ekVyVG9sejFEUkhDayI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHBzOi8vd3d3LmJhZmlpdGEub3JnLmJkL3BhZ2VzLzAvbWVtYmVyIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741768858),
+('f0QGT0ZYNP0YckqQarwvKLhPTeAlNsm8ScQc6pPl', NULL, '14.177.165.43', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiSUJaRzdJZTlkZVRuV2IweG1BZE5McVVhaUM1WVNHZjR5eTdDc3NvWSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHBzOi8vd3d3LmJhZmlpdGEub3JnLmJkL3BhZ2VzLzAvbWVtYmVyIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741765098),
+('F2AoQRLs56fJgbOlJqiBiCIQ2azQAXAcIdF9LayZ', NULL, '156.225.11.81', 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZXRMQnVBUFQyZDFlT3FXcWlDOGJ2NjhUbUl5eDZqbjVFQVJrV2F0MSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTE3OiJodHRwczovL2JhZmlpdGEub3JnLmJkLz9jb250ZW50PSUzQyUzRnBocCUyMHBocGluZm8lMjglMjklM0IlM0YlM0Umcz1hZG1pbiUyRiU1Q3RoaW5rJTVDdmlldyU1Q2RyaXZlciU1Q1BocCUyRmRpc3BsYXkiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1741715647),
+('F94kXi7m6CVgRSTF1kl93FFNt7VEEkRxXFpw1H69', NULL, '52.167.144.229', 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/116.0.1938.76 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiWHUzTFVkaXpQWGEyckxnZFNzU2wxaFpLaVIzMnVWQ0RXZWdjTllzTiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDQ6Imh0dHA6Ly9iYWZpaXRhLm9yZy5iZC9tZW1iZXItcmVnaXN0ZXIvY3JlYXRlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741837367),
+('FEHjzstSgQ2gqqwyZ3D05YyT6rbtIdTEwoYVf2OF', NULL, '66.249.69.139', 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.6943.141 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiMkZwWHV3SjFvZ05BRkZzdEt5STZUTkxBZjdUU2tzaHF0QW82MG1xdSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjU6Imh0dHA6Ly93d3cuYmFmaWl0YS5vcmcuYmQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1741786042),
+('G2mHW02mkspcgeVNKlsrAuP3WrDGvFBmUMTbrPjv', NULL, '37.111.194.123', 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_4_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/134.0.6998.33 Mobile/15E148 Safari/604.1', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiTzBITWtrbGhZQ0dETzJ1bDNDREZUUnVzUmFwM3Zkc1QybzAxOHJCayI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHBzOi8vd3d3LmJhZmlpdGEub3JnLmJkL3BhZ2VzL2Fib3V0LXVzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741762777),
+('g3W01EeNYQaewHbq4udy4XOx6ye6P5GH1GrVF2cU', NULL, '72.14.201.159', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiNTJnenZ3cEJyUTkzZ1JnbzF2Z3M0NEdLUVp1eTcwZVVaQ1dLOHpGZCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741845984),
+('hfQAHEezbHrq4YvUX7iahvJWaBXUSwnOBy7ex4LP', NULL, '14.177.165.43', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiaWxmeHRIS1dmUlVIQUlsVVhyU0lmeTVUQ3BmbjU4dHY1SG5BOGxkOSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHBzOi8vd3d3LmJhZmlpdGEub3JnLmJkL3BhZ2VzLzAvbWVtYmVyIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741745513),
+('hrFlMnDAmASgpBElCaiwpz2RmQ2mKsifpT2KcdZR', NULL, '150.40.166.206', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiQzZ6b1IyNmJhZ2w4S3N4WnVLaE9qdVpFaUx6ZGFSTm9qdVBBdVJBSCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHBzOi8vd3d3LmJhZmlpdGEub3JnLmJkL3BhZ2VzL2Fib3V0LXVzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741686805),
+('HzXTzglFlUYQApt0j0QeLOiPwpmuKIn2WgCDbqUC', NULL, '188.239.41.7', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiUm1TZDhJelBGcTdrMDVzZmpyRWFiTHFJSlNPM2I5Tk1jSlh0SGtEaCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHBzOi8vd3d3LmJhZmlpdGEub3JnLmJkL3BhZ2VzL2dhbGxlcnktaW1hZ2UiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1741704068),
+('i4dEjpVwAT0qYXM4sw1bJqjGCyIfx0GFP3FcslWJ', NULL, '199.244.88.227', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoicnZLbzZqUHlxZ1RWQjZ3OG9GMHpQT3l0eDA2NVBOVExsWTNqUkxXUCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9iYWZpaXRhLm9yZy5iZCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1741846937),
+('i7jQkbS5e8Y4kTOH3HjUhzAAzlQUNXGMv5qfZCQ4', NULL, '103.120.202.39', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiSWZLNFBkWkdLYklmN1YxUXZpSXloclR3djdXTkk1VVlmNnhSZ01TTCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjI6Imh0dHBzOi8vYmFmaWl0YS5vcmcuYmQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1741773181),
+('iALAuW8OQH5YjuqrBMBU7F0s2DGKRcxjjwqazYEK', NULL, '37.111.204.215', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Mobile Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiYXpsajZRVUk2dmp5c211QkVYdUROQkJCT0J6TlZmcDdBR1hhWWtDSyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NzQ6Imh0dHBzOi8vd3d3LmJhZmlpdGEub3JnLmJkL3NlYXJjaC1tZW1iZXI/bWVtYmVyX3R5cGU9MCZzZWFyY2gtbWVtYmVyPVJhaXNhIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741773813),
+('iBTRfsHqOGcF2YUtEz3DdIIFh8RnBDmYq7XPIWRm', NULL, '103.120.202.39', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiUDU3TjNBRjNJakJ3ZDZIczRUN0JTM25STVFoQVdrUThhd1RXMlFEYiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9iYWZpaXRhLm9yZy5iZCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1741681143),
+('IIsr8x8zJEMxKLYLNv1Q2qtdqmEjguVod2gBkylr', NULL, '72.14.201.130', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiMmFoRDQxV3ZlNkdQMnhPRk94YzVYY1RCWTlTTmpuVmlYOVZack1LSCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741773011),
+('JVP0O1GIZ7nwrvNzxchNnAIae6v9mpyt0UtuIK1j', NULL, '72.14.201.159', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiTVZuRXpIODhJRzlWcXlURG5SM0REcVVxNlFhWkFzdDBYUE85eWxXdyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741845837),
+('jXBlYo9JCyXHApKOMNha1Og92rEOHCm4sFilnS1b', NULL, '190.92.208.128', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiQnFLVE9DUkFqUFZHQUQzT242NkdYb3dsVmhrdVJDdjNGNDBwQldBSCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDg6Imh0dHBzOi8vd3d3LmJhZmlpdGEub3JnLmJkL3BhZ2VzLzEvYWJvdXQtbWVzc2FnZSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1741680996),
+('ktwE92aK8DdF911JxESj6i3buwEpMNAtOie3OC8f', NULL, '154.220.77.242', 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoidXhoV08xeHhCaTR0U0tCdVBzeGpsVjB1WUhPYjlxRHBWcEtJMEVZaiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTE3OiJodHRwczovL2JhZmlpdGEub3JnLmJkLz9jb250ZW50PSUzQyUzRnBocCUyMHBocGluZm8lMjglMjklM0IlM0YlM0Umcz1pbmRleCUyRiU1Q3RoaW5rJTVDdmlldyU1Q2RyaXZlciU1Q1BocCUyRmRpc3BsYXkiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1741799492),
+('kwZ4ZWdXnHBX86Aoqu023N7mDtxy644QQNPdXzaJ', NULL, '154.92.74.135', 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiRWlnN1dRV2toemI2Z1loVnN5bDgwMGphWXIxbE54ODExczlrVjU1VyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTE2OiJodHRwczovL2JhZmlpdGEub3JnLmJkLz9jb250ZW50PSUzQyUzRnBocCUyMHBocGluZm8lMjglMjklM0IlM0YlM0Umcz1ob21lJTJGJTVDdGhpbmslNUN2aWV3JTVDZHJpdmVyJTVDUGhwJTJGZGlzcGxheSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1741813832),
+('LcMQwl9ji9wuwWCRWGk214FlMdtg3IWXxawTn5j5', NULL, '103.120.202.39', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiMXg2YjJzY1daQnBBYllHRFBEc2tlQ3owYVpmZVBNRlFzRHdnM05xZiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741854303),
+('LwLuuiDbOxhBa7w2SKDngeKucImtIbMiTEaOlPLu', NULL, '65.109.125.176', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiY05WOUg5TzdtMW5QUVlLTTljUXlGUFpscVJlT25xMEpRUXBCMHBBRCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDA6Imh0dHBzOi8vYmFmaWl0YS5vcmcuYmQvcGFnZS9uZXdzLWNvbnRlbnQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1741762224),
+('lyJ4fvJagCcgq1WGdKF0wQIaVXOAaqmkUUr7U17b', NULL, '103.120.202.39', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiTlVwUkwxUnJGeWpZYXRvRk9KeE0wQWVmNVJVVktTaU80VXVFZVdDTiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDg6Imh0dHBzOi8vYmFmaWl0YS5vcmcuYmQvcGFnZS9uZXdzLWNvbnRlbnQtZGV0YWlscyI7fX0=', 1741762130),
+('nFlXOvVrWtspnMPeCxEYzQVoySaAawT2NQVuhJBr', NULL, '119.148.42.10', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiak5DcXB3SHlxUVJqWWhVdXJNbE13TkhOWkMzcTFaS254ZnkydzF5YyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjY6Imh0dHBzOi8vd3d3LmJhZmlpdGEub3JnLmJkIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741754468),
+('NnFxXxMFQhRgN9e9TslaOvJN6RQEALNHTgeMvNj0', NULL, '72.14.201.159', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Mobile Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiSnhsYlc2VUNSc0hKbWxpUWpiTXhBVThJbFlyWU5JanNVZG9RVEVTdiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741850032),
+('OprPrzqbmi3jeX88KnGPDmK4FmVOPjecaTeE1DUI', NULL, '103.17.38.28', 'WhatsApp/2.2509.4 W', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiTlFLRWxMNUpadGRsOGt6dUlhNU5CbERSMzFHbjdJY2VOZlVCRXJObCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDk6Imh0dHBzOi8vd3d3LmJhZmlpdGEub3JnLmJkL21lbWJlci1yZWdpc3Rlci9jcmVhdGUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1741773297),
+('P2yh6vJDTf6DDNGiRPaxu10BK4EGh7VOK8SRofqh', NULL, '103.107.231.21', 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/134.0.6998.33 Mobile/15E148 Safari/604.1', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiajI0bjJmZkZUTnRxTXhOY1BxYXRmOVhYZUpOWDI4SkxUS1V4cDJsdyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NzI6Imh0dHBzOi8vd3d3LmJhZmlpdGEub3JnLmJkL3NlYXJjaC1tZW1iZXI/bWVtYmVyX3R5cGU9MCZzZWFyY2gtbWVtYmVyPVNldCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1741715691),
+('PrZ5vOOjBKjVZii73ja6w30UhV2qdOvx03jz1w5o', NULL, '119.148.42.10', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiOVJWUUFLMGE0Z1EwaFI0OWEza3NvMnBNaEJHQm12elBSR1lsdWxZeCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDM6Imh0dHBzOi8vd3d3LmJhZmlpdGEub3JnLmJkL3BhZ2VzL2NvbnRhY3QtdXMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1741847795),
+('Q2gqtXCfh80Z2IDiIE5G8ky3huS1tUSKxB9BZVfj', NULL, '156.226.164.41', 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiNHRKM2Q2aFZVUllJZnZ1MTl6ZU9MMWoyRTZtOU5NT016bXVnTjc2RyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTE1OiJodHRwOi8vYmFmaWl0YS5vcmcuYmQvP2NvbnRlbnQ9JTNDJTNGcGhwJTIwcGhwaW5mbyUyOCUyOSUzQiUzRiUzRSZzPWhvbWUlMkYlNUN0aGluayU1Q3ZpZXclNUNkcml2ZXIlNUNQaHAlMkZkaXNwbGF5Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741760918),
+('q2TBgHcB3HQqO0FQbe1qaeYbqNdhkOGpzHuqKiAs', NULL, '156.226.164.159', 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoic3hZeVR5dzNGTzVqZDRZYlppR25ST3FHUlF0Sk8ybW5vQ2xyd1p1QiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTQzOiJodHRwOi8vYmFmaWl0YS5vcmcuYmQvP2Z1bmN0aW9uPWNhbGxfdXNlcl9mdW5jX2FycmF5JnM9YWRtaW4lMkYlNUN0aGluayU1Q2FwcCUyRmludm9rZWZ1bmN0aW9uJnZhcnMlNUIwJTVEPW1kNSZ2YXJzJTVCMSU1RCU1QjAlNUQ9SGVsbG9UaGlua1BIUCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1741716190),
+('Q8A3XcLHOCCDRz6DtQU9fBetw3TJaHdkq0FJ0mva', NULL, '66.249.65.165', 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.6943.53 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiSlAwZnNZeHJmUElQOGxoR3BMckVBM2lOM25sMFJOaldWN0l1Y291YiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjY6Imh0dHBzOi8vd3d3LmJhZmlpdGEub3JnLmJkIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741686518),
+('QJ60REhBpUlBEVklSvvSWy5a9APrCuoRpsdrLZj6', NULL, '103.196.62.87', 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiUnh3RENYNDFwQW1ua1lPQ2JKSEh2Rlg1ZGk1ZjA5NXNEZzJMWVY0TCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTE5OiJodHRwOi8vYmFmaWl0YS5vcmcuYmQvP2NvbnRlbnQ9JTIyJTNDJTNGJTNFJTNDJTNGcGhwJTIwcGhwaW5mbyUyOCUyOSUzQiUzRiUzRSZkYXRhPTEmcz1ob21lJTJGJTVDdGhpbmslNUNWaWV3JTJGZGlzcGxheSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1741761189),
+('qQvqUS7IlUBcrKz43kOXGWG2k9HWcpOGw3s3SqEu', NULL, '103.17.38.28', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 Edg/134.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiTEc4SlNmMUhFb1B0RG1QZnE2b3lWZHVSRVVtc0FSSDJXQ3R2SWl0USI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDk6Imh0dHBzOi8vd3d3LmJhZmlpdGEub3JnLmJkL21lbWJlci1yZWdpc3Rlci9jcmVhdGUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1741773321),
+('RMNCaz7d8wvwYPkD1NnkDkwfz9RnSCdaP1CsL8UJ', NULL, '103.135.136.6', '', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiYW9RYjU4Z1k0UEozOE1tREZHSkhLZVN1NElKQUZRZ09vQ1RzN3VIUCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHBzOi8vd3d3LmJhZmlpdGEub3JnLmJkL3BhZ2VzLzAvbWVtYmVyIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741753380),
+('Rn5K5ePCpzIbn336iqeVDPx0igV4pZ1XLXJ7OFdc', NULL, '193.186.4.159', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiYkJnSkpGVlAyUnFvQUxmSkJlbFlRbDJPOUpEUGlKY0c5RWxkdWhpayI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741752682),
+('RpJKxIRtI9cyS603g1BuRzoo2oMiFM5wRbvVHaDI', NULL, '72.14.201.159', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoia0NBdkpEM0h4SUhHVVNKWG96d1JEclR2bW1yN3h3d2o2Z1NxME5pbCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741772996),
+('SDPzqdnjSUdLRD3IKPZIq7U1f2ChE9Nnuhmv1I4G', NULL, '103.195.194.232', 'python-requests/2.32.3', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiMXlQdTc4YmJVNXRhdTVETVhxaHdDU1IyNGo2YU9kUDhCMnhKRFpJaiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTk2OiJodHRwOi8vYmFmaWl0YS5vcmcuYmQvP2Z1bmN0aW9uPWNhbGxfdXNlcl9mdW5jX2FycmF5JnM9JTJGSG9tZSUyRiU1Q3RoaW5rJTVDYXBwJTJGaW52b2tlZnVuY3Rpb24mdmFycyU1QjAlNUQ9Y29weSZ2YXJzJTVCMSU1RCU1QjAlNUQ9aHR0cCUzQSUyRiUyRjEyMC40Ni4xOTMuMjAzJTJGMi50eHQmdmFycyU1QjElNUQlNUIxJTVEPXRlbXAucGhwIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741840468),
+('sn1papKrG3nu5loRMneOOqGMHcJtImTVtQoxTjCt', NULL, '156.226.164.36', 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoicGVkTEt5dTAxd21ncE1KcEp6N0I4bjhPcGZzbExLRndINjhuOU1pSyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTE2OiJodHRwOi8vYmFmaWl0YS5vcmcuYmQvP2NvbnRlbnQ9JTNDJTNGcGhwJTIwcGhwaW5mbyUyOCUyOSUzQiUzRiUzRSZzPWFkbWluJTJGJTVDdGhpbmslNUN2aWV3JTVDZHJpdmVyJTVDUGhwJTJGZGlzcGxheSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1741687397),
+('sX6fI9u1D4DiCUq6YBvasE6urYeCgexvDCox18MC', NULL, '72.14.201.159', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoidXhtcGpEaGgyeXptdDdIZXJTQWhKZEJFcURDSEpieXkxQmpIVHpTVyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741753433),
+('Tk5IpxVO8pmiu0c9LvDlr7aBLXhOMcNZkuz1xXHo', NULL, '103.225.84.108', 'python-requests/2.32.3', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZ3A0UlNnQnU1WDU0cHMzMzAxelNWWHVUTzZQVXVsUWNUSmh0OE5PNSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTk3OiJodHRwczovL2JhZmlpdGEub3JnLmJkLz9mdW5jdGlvbj1jYWxsX3VzZXJfZnVuY19hcnJheSZzPSUyRkhvbWUlMkYlNUN0aGluayU1Q2FwcCUyRmludm9rZWZ1bmN0aW9uJnZhcnMlNUIwJTVEPWNvcHkmdmFycyU1QjElNUQlNUIwJTVEPWh0dHAlM0ElMkYlMkYxMjAuNDYuMTkzLjIwMyUyRjIudHh0JnZhcnMlNUIxJTVEJTVCMSU1RD10ZW1wLnBocCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1741737436),
+('voleV0rGLfhBhZiCqKwu7IDjBBAkzVvGy5U47abH', NULL, '156.225.11.198', 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiVzk3RUVDNGpyMmtNWldPbmtkZ1RMTWVUUUpQMDdoUEdLb1FqTVUyUSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTQzOiJodHRwOi8vYmFmaWl0YS5vcmcuYmQvP2Z1bmN0aW9uPWNhbGxfdXNlcl9mdW5jX2FycmF5JnM9aW5kZXglMkYlNUN0aGluayU1Q2FwcCUyRmludm9rZWZ1bmN0aW9uJnZhcnMlNUIwJTVEPW1kNSZ2YXJzJTVCMSU1RCU1QjAlNUQ9SGVsbG9UaGlua1BIUCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1741711570),
+('W9qnWEo6IrffZPyAAxCx6HwoEwi9RylEI086SIL7', NULL, '154.213.35.79', 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZERwT1hCN2pPYzJNVWRVaEJWRG5aMXlNMldieElUOUFPcjI5V0dVQyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTQ0OiJodHRwczovL2JhZmlpdGEub3JnLmJkLz9mdW5jdGlvbj1jYWxsX3VzZXJfZnVuY19hcnJheSZzPWFkbWluJTJGJTVDdGhpbmslNUNhcHAlMkZpbnZva2VmdW5jdGlvbiZ2YXJzJTVCMCU1RD1tZDUmdmFycyU1QjElNUQlNUIwJTVEPUhlbGxvVGhpbmtQSFAiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1741708691),
+('wDqGl507cw1IRzaS0AJb2cAtbmLRMrmbjZYPXFMw', NULL, '119.148.42.10', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiS0JId2tTMXZRcGZVeXRsRW45aVN5bkJjUm5RMjhWNExKRjMyQ0dOdiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDQ6Imh0dHBzOi8vd3d3LmJhZmlpdGEub3JnLmJkL3BhZ2VzLzEvY29tbWl0dGVlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741848064),
+('WWdmi8zeYiGQSMquPVhPObLq6OgnNHyZSmsOFO6u', NULL, '156.226.164.244', 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:48.0) Gecko/20100101 Firefox/48.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiTVBDVk1ERFNZVU0yMGdObkY4N1hzWURaOVEydXh4aDlSOEMyYzVqaSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTE2OiJodHRwOi8vYmFmaWl0YS5vcmcuYmQvP2NvbnRlbnQ9JTNDJTNGcGhwJTIwcGhwaW5mbyUyOCUyOSUzQiUzRiUzRSZzPWluZGV4JTJGJTVDdGhpbmslNUN2aWV3JTVDZHJpdmVyJTVDUGhwJTJGZGlzcGxheSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1741805635),
+('yH53NG9rLCFs1zKhULHPrZkRpDdchBB2K9naPQql', NULL, '103.225.84.108', 'python-requests/2.32.3', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiNFJuWGhHSmxqSDIzR0VVQmtybnpvY2pqVUlsclZBeGtmSms0T2JUNCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTk4OiJodHRwczovL2JhZmlpdGEub3JnLmJkLz9mdW5jdGlvbj1jYWxsX3VzZXJfZnVuY19hcnJheSZzPSUyRmluZGV4JTJGJTVDdGhpbmslNUNhcHAlMkZpbnZva2VmdW5jdGlvbiZ2YXJzJTVCMCU1RD1jb3B5JnZhcnMlNUIxJTVEJTVCMCU1RD1odHRwJTNBJTJGJTJGMTIwLjQ2LjE5My4yMDMlMkYyLnR4dCZ2YXJzJTVCMSU1RCU1QjElNUQ9dGVtcC5waHAiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1741737436),
+('Zk4qkloVEC45Qh4Mn65WoQWOPxw1vJgi3i6ah0Wr', NULL, '14.177.165.43', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiWUdqa0F3Y1Fnak55WlJYcUJVVjBBdDYxaGVFcGU0a2Ria3J2TWtQYyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHBzOi8vd3d3LmJhZmlpdGEub3JnLmJkL3BhZ2VzLzAvbWVtYmVyIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741753774),
+('zoFwWHeVLmLBsVDPpgIXOzg0nFy9PYy6KI42Q5JP', NULL, '193.186.4.159', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiam5PMHRkdDU3ZW9pQWVER0VURldEWmozVTFUUjZkTnZQY01FQ2hOQyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741845986),
+('ztf7DozFZ2cK8FJUHPPsE3iO9Sr4vM8nkOswRWhN', NULL, '72.14.201.130', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiR3pFYTlLTEE2TlRQcmc3NWdjdG82OWZOSXppSDIxTjJ5cHJwbEpNaiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741772997);
 
 -- --------------------------------------------------------
 
@@ -2247,7 +2439,8 @@ INSERT INTO `transactions` (`id`, `amount`, `transaction_type`, `transaction_id`
 (162, '120000.00', 1, NULL, 1, 1, 173, '2025-02-03 12:41:16', '2025-02-03 12:41:16'),
 (163, '20000.00', 1, NULL, 1, 1, 174, '2025-02-03 13:52:31', '2025-02-03 13:52:31'),
 (164, '68000.00', 1, NULL, 1, 1, 175, '2025-02-04 12:59:20', '2025-02-04 12:59:20'),
-(165, NULL, 1, NULL, 1, 1, 176, '2025-02-12 12:40:55', '2025-02-12 12:40:55');
+(165, NULL, 1, NULL, 1, 1, 176, '2025-02-12 12:40:55', '2025-02-12 12:40:55'),
+(166, '68000.00', 1, NULL, 1, 1, 177, '2025-02-24 15:32:14', '2025-02-24 15:32:14');
 
 -- --------------------------------------------------------
 
@@ -2442,12 +2635,13 @@ INSERT INTO `users` (`id`, `name`, `email`, `member_code`, `email_verified_at`, 
 (168, 'Md. Mahbub Ullah Rocky', 'raisa.tradeint786@gmail.com', 'GMB#0230', '2025-01-13 13:58:20', '$2y$10$dqIEmgcx//21WZld8iE5Seb/mTqiXS./VadYxHIV8YTLHFbRcuXVe', NULL, NULL, NULL, NULL, NULL, '168_Md. Mahbub Ullah Rocky.jpg', 2, NULL, '2025-01-13', NULL, 1, 0, 1, NULL, '2025-01-13 13:58:20', '2025-01-13 14:06:25'),
 (169, 'jordan Singh', 'xinahe9908@chainds.com', NULL, '2025-01-16 15:16:27', '$2y$10$34IAUK2OsOcHsWHUP8.Te.MecmsMNj7GmskcUwpCxLD2RGWVd9L16', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'test', NULL, NULL, 2, 0, 1, NULL, '2025-01-16 15:16:27', '2025-01-26 03:52:55'),
 (170, 'Mukta Islam', 'greenmartassociates@gmail.com', NULL, '2025-01-26 10:57:12', '$2y$10$p2bJOTELdTQDi8crBwTjJelH5ycXYkEgDmYHanWAP6ORxHj5ZrdpW', NULL, NULL, NULL, NULL, NULL, '170_Mukta Islam.jpeg', 2, 'Incomplete Application form', NULL, NULL, 2, 0, 1, NULL, '2025-01-26 10:57:12', '2025-02-03 14:00:09'),
-(171, 'Md. Rafiul Karim', 'rafiagrovet@gmail.com', NULL, '2025-01-29 09:31:06', '$2y$10$7Mq8uUwq5vJEYEUdgyh63e6a0wBiK.wxNmkjcus7XAUhc.0MwjwiW', NULL, NULL, NULL, NULL, NULL, '171_Md. Rafiul Karim.jpeg', 2, NULL, NULL, NULL, 0, 0, NULL, NULL, '2025-01-29 09:31:06', '2025-01-29 09:31:15'),
-(172, 'Mukta Islam', 'tanziliak@gmail.com', NULL, '2025-02-01 07:11:29', '$2y$10$pqYxIWZpk4xtz9F4KYVL/eDwAOQekPzjO5oUo1QEOrC/XSafSPxiW', NULL, NULL, NULL, NULL, NULL, '172_Mukta Islam.jpeg', 2, NULL, NULL, NULL, 0, 0, NULL, NULL, '2025-02-01 07:11:29', '2025-02-01 07:11:30'),
+(171, 'Md. Rafiul Karim', 'rafiagrovet@gmail.com', 'GMB#0232', '2025-01-29 09:31:06', '$2y$10$7Mq8uUwq5vJEYEUdgyh63e6a0wBiK.wxNmkjcus7XAUhc.0MwjwiW', NULL, NULL, NULL, NULL, NULL, '171_Md. Rafiul Karim.jpeg', 2, NULL, '2025-02-24', NULL, 1, 0, 1, NULL, '2025-01-29 09:31:06', '2025-02-24 08:25:53'),
+(172, 'Mukta Islam', 'tanziliak@gmail.com', 'GMB#0233', '2025-02-01 07:11:29', '$2y$10$pqYxIWZpk4xtz9F4KYVL/eDwAOQekPzjO5oUo1QEOrC/XSafSPxiW', NULL, NULL, NULL, NULL, NULL, '172_Mukta Islam.jpeg', 2, NULL, '2025-02-24', NULL, 1, 0, 1, NULL, '2025-02-01 07:11:29', '2025-02-24 08:26:24'),
 (173, 'Shah Mohammad Sagir', 'shah.sagir1976@gmail.com', 'DMB#0030', '2025-02-03 12:41:16', '$2y$10$oM5RqX/uhMn4u6L8GVFw/.vo6xZWmGK/DitEMPA5F7lVPKWLTkcfO', NULL, NULL, NULL, NULL, NULL, '173_Shah Mohammad Sagir.jpg', 1, NULL, '2025-02-03', NULL, 1, 0, 1, NULL, '2025-02-03 12:41:16', '2025-02-03 13:55:54'),
 (174, 'Md. Jahangir  Alam', 'info@smsfeedsltd.com', 'GMB#0018', '2025-02-03 13:52:31', '$2y$10$SYf0ZX6Cu4Qk3MxR7SfO4OPmjffOIOu0HbDLIlK0.NskXGRzZGwnu', NULL, NULL, NULL, NULL, NULL, '174_Md. Jahangir  Alam.jpg', 2, NULL, '2025-02-03', NULL, 1, 0, 1, NULL, '2025-02-03 13:52:31', '2025-02-03 13:55:29'),
-(175, 'MD. JASHIM UDDIN HAIDER', 'pglcorporation85@gmail.com', NULL, '2025-02-04 12:59:19', '$2y$10$GBJjAikk9jpJ3qBeYkv/uuQG7hMULzBuofpLLAN.B8PhTfxntQNqW', NULL, NULL, NULL, NULL, NULL, '175_MD. JASHIM UDDIN HAIDER.jpeg', 2, NULL, NULL, NULL, 0, 0, NULL, NULL, '2025-02-04 12:59:19', '2025-02-04 12:59:20'),
-(176, 'A K M Sadid Haq Rafee', 'rafeesadid@gmail.com', NULL, '2025-02-12 12:40:55', '$2y$10$birhXN4MJLp1NCiuRUklJe3pkJ7IcGJ5cw21eEDztpYd8dulpHrk6', NULL, NULL, NULL, NULL, NULL, '176_A K M Sadid Haq Rafee.jpg', 2, NULL, NULL, NULL, 0, 0, NULL, NULL, '2025-02-12 12:40:55', '2025-02-12 12:40:55');
+(175, 'MD. JASHIM UDDIN HAIDER', 'pglcorporation85@gmail.com', 'GMB#0229', '2025-02-04 12:59:19', '$2y$10$GBJjAikk9jpJ3qBeYkv/uuQG7hMULzBuofpLLAN.B8PhTfxntQNqW', NULL, NULL, NULL, NULL, NULL, '175_MD. JASHIM UDDIN HAIDER.jpeg', 2, NULL, '2025-02-24', NULL, 1, 0, 1, NULL, '2025-02-04 12:59:19', '2025-02-24 08:24:44'),
+(176, 'A K M Sadid Haq Rafee', 'rafeesadid@gmail.com', 'GMB#0234', '2025-02-12 12:40:55', '$2y$10$birhXN4MJLp1NCiuRUklJe3pkJ7IcGJ5cw21eEDztpYd8dulpHrk6', NULL, NULL, NULL, NULL, NULL, '176_A K M Sadid Haq Rafee.jpg', 2, NULL, '2025-02-24', NULL, 1, 0, 1, NULL, '2025-02-12 12:40:55', '2025-02-24 08:26:49'),
+(177, 'Ashraf Uddin Mahmud', 'ashrafmahmudrumel@gmail.com', 'GMB#0228', '2025-02-24 15:32:14', '$2y$10$kdnpL9deMJgUVWPxL7L0V.cZq0QGVKw1DwdMGZbN/ul1//m5C8JNu', NULL, NULL, NULL, NULL, NULL, '177_ashraf_uddin_mahmud.jpg', 2, NULL, '2025-02-24', NULL, 1, 0, 1, NULL, '2025-02-24 15:32:14', '2025-03-11 10:16:24');
 
 --
 -- Indexes for dumped tables
@@ -2462,11 +2656,37 @@ ALTER TABLE `annual_fees`
   ADD KEY `annual_fees_member_id_foreign` (`member_id`);
 
 --
--- Indexes for table `blogs`
+-- Indexes for table `blog_comments`
 --
-ALTER TABLE `blogs`
+ALTER TABLE `blog_comments`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `blogs_user_id_foreign` (`user_id`);
+  ADD KEY `blog_comments_blog_post_id_foreign` (`blog_post_id`),
+  ADD KEY `blog_comments_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `blog_posts`
+--
+ALTER TABLE `blog_posts`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `blog_posts_url_slug_unique` (`url_slug`),
+  ADD KEY `blog_posts_author_id_index` (`author_id`),
+  ADD KEY `blog_posts_title_index` (`title`);
+
+--
+-- Indexes for table `blog_shares`
+--
+ALTER TABLE `blog_shares`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `blog_shares_blog_post_id_foreign` (`blog_post_id`),
+  ADD KEY `blog_shares_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `blog_views`
+--
+ALTER TABLE `blog_views`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `blog_views_blog_post_id_foreign` (`blog_post_id`),
+  ADD KEY `blog_views_user_id_foreign` (`user_id`);
 
 --
 -- Indexes for table `cards`
@@ -2715,9 +2935,27 @@ ALTER TABLE `annual_fees`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `blogs`
+-- AUTO_INCREMENT for table `blog_comments`
 --
-ALTER TABLE `blogs`
+ALTER TABLE `blog_comments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `blog_posts`
+--
+ALTER TABLE `blog_posts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `blog_shares`
+--
+ALTER TABLE `blog_shares`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `blog_views`
+--
+ALTER TABLE `blog_views`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
@@ -2766,43 +3004,43 @@ ALTER TABLE `fee_plans`
 -- AUTO_INCREMENT for table `galleries`
 --
 ALTER TABLE `galleries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `gallery_images`
 --
 ALTER TABLE `gallery_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `info_banks`
 --
 ALTER TABLE `info_banks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 
 --
 -- AUTO_INCREMENT for table `info_companies`
 --
 ALTER TABLE `info_companies`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 
 --
 -- AUTO_INCREMENT for table `info_documents`
 --
 ALTER TABLE `info_documents`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 
 --
 -- AUTO_INCREMENT for table `info_others`
 --
 ALTER TABLE `info_others`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 
 --
 -- AUTO_INCREMENT for table `info_personals`
 --
 ALTER TABLE `info_personals`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=175;
 
 --
 -- AUTO_INCREMENT for table `mast_qualifications`
@@ -2820,7 +3058,7 @@ ALTER TABLE `member_types`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `past_committees`
@@ -2838,7 +3076,7 @@ ALTER TABLE `past_committee_details`
 -- AUTO_INCREMENT for table `payment_details`
 --
 ALTER TABLE `payment_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 
 --
 -- AUTO_INCREMENT for table `payment_methods`
@@ -2880,13 +3118,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
 
 --
 -- Constraints for dumped tables
@@ -2900,10 +3138,31 @@ ALTER TABLE `annual_fees`
   ADD CONSTRAINT `annual_fees_payment_details_id_foreign` FOREIGN KEY (`payment_details_id`) REFERENCES `payment_details` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `blogs`
+-- Constraints for table `blog_comments`
 --
-ALTER TABLE `blogs`
-  ADD CONSTRAINT `blogs_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+ALTER TABLE `blog_comments`
+  ADD CONSTRAINT `blog_comments_blog_post_id_foreign` FOREIGN KEY (`blog_post_id`) REFERENCES `blog_posts` (`id`),
+  ADD CONSTRAINT `blog_comments_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `blog_posts`
+--
+ALTER TABLE `blog_posts`
+  ADD CONSTRAINT `blog_posts_author_id_foreign` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `blog_shares`
+--
+ALTER TABLE `blog_shares`
+  ADD CONSTRAINT `blog_shares_blog_post_id_foreign` FOREIGN KEY (`blog_post_id`) REFERENCES `blog_posts` (`id`),
+  ADD CONSTRAINT `blog_shares_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `blog_views`
+--
+ALTER TABLE `blog_views`
+  ADD CONSTRAINT `blog_views_blog_post_id_foreign` FOREIGN KEY (`blog_post_id`) REFERENCES `blog_posts` (`id`),
+  ADD CONSTRAINT `blog_views_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `cards`

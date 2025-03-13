@@ -61,7 +61,7 @@ Route::get('pages/events-search', [FrontViewController::class,'eventSearch'])->n
 Route::get('pages/events/{id}/details', [FrontViewController::class,'eventShow'])->name('page.events-details');
 //______________ BLOG
 Route::get('page/news-content', [FrontViewController::class, 'blog'])->name('page.blog');
-Route::get('page/news-content-details', [FrontViewController::class, 'blogDetails'])->name('page.blog-details');
+Route::get('page/news-content-details/{id}', [FrontViewController::class, 'blogDetails'])->name('page.blog-details');
 //______________ CONTACT US
 Route::get('pages/contact-us', [FrontViewController::class, 'contact'])->name('page.contact-us');
 Route::post('contact-us/store', [ContactController::class,'contactStore'])->name('contact-us.store');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Admin\Contact;
 use App\Models\Admin\Gallery;
 use App\Models\Admin\Event;
+use App\Models\Admin\BlogPost;
 use App\Models\Master\MemberType;
 use App\Models\Master\CommitteeType;
 use App\Models\User;
@@ -202,11 +203,13 @@ class FrontViewController extends Controller
      */
     public function blog()
     {
-        return view('frontend.pages.blog');
+        $data = BlogPost::latest()->orderByDesc('id')->take(10)->orderBy('id')->get();
+        return view('frontend.pages.blog', compact('data'));
     }
-    public function blogDetails()
+    public function blogDetails($id)
     {
-        return view('frontend.pages.blog-details');
+        $data = BlogPost::findOrFail($id);
+        return view('frontend.pages.blog-details', compact('data'));
     }
     /**________________________________________________________________________________________
      * Contact Menu Pages
