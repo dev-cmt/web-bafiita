@@ -85,7 +85,7 @@ class FrontViewController extends Controller
         $query = $request->input('search-member');
 
         // Mapping of member designation names to integer values for database query
-        $memberDesignation = [
+        $memebrDesignation = [
             'Proprietor' => 1,
             'Managing Director' => 2,
             'Chairman' => 3,
@@ -93,11 +93,13 @@ class FrontViewController extends Controller
             'Partner' => 5,
             'Director' => 6,
         ];
-        $query = $memberDesignation[$query] ?? null;
+
+        // Store designation ID separately
+        $designationId = $memebrDesignation[$query] ?? null;
 
         $data = User::query()
-            ->when(!empty($query), function ($q) use ($query) {
-                $q->where(function ($q) use ($query) {
+            ->when(!empty($query), function ($q) use ($query, $designationId) {
+                $q->where(function ($q) use ($query, $designationId) {
                     // Search within User fields
                     $q->where('name', 'LIKE', "%{$query}%")
                         ->orWhere('email', 'LIKE', "%{$query}%")
@@ -105,13 +107,18 @@ class FrontViewController extends Controller
                         // Search within the companyName and addressOrganization in the infoCompany relationship
                         ->orWhereHas('infoCompany', function ($q) use ($query) {
                             $q->where('companyName', 'LIKE', "%{$query}%")
-                            ->orWhere('addressOrganization', 'LIKE', "%{$query}%");
+                                ->orWhere('addressOrganization', 'LIKE', "%{$query}%");
                         })
-                        // Search within the memberDesignation, memberPhoneNo, and memberEmail in the infoPersonal relationship
-                        ->orWhereHas('infoPersonal', function ($q) use ($query) {
+                        // Search within the memebrDesignation, memberPhoneNo, and memberEmail in the infoPersonal relationship
+                        ->orWhereHas('infoPersonal', function ($q) use ($query, $designationId) {
                             $q->where('memebrDesignation', 'LIKE', "%{$query}%")
-                            ->orWhere('memberPhoneNo', 'LIKE', "%{$query}%")
-                            ->orWhere('memberEmail', 'LIKE', "%{$query}%");
+                                ->orWhere('memberPhoneNo', 'LIKE', "%{$query}%")
+                                ->orWhere('memberEmail', 'LIKE', "%{$query}%");
+
+                            // If the search term matches a designation, filter by ID
+                            if ($designationId) {
+                                $q->orWhere('memebrDesignation', $designationId);
+                            }
                         });
                 });
             })
@@ -119,19 +126,17 @@ class FrontViewController extends Controller
                 'infoCompany:companyName,addressOrganization,member_id', // Select only needed fields for infoCompany
                 'infoPersonal:memebrDesignation,memberPhoneNo,memberEmail,member_id' // Select only needed fields for infoPersonal
             ])
-            ->when($request->has('member_type_id'), function ($q) use ($request) {
+            ->when(!empty($membersType), function ($q) use ($membersType) {
                 // Ensure that we filter by member_type_id correctly
-                $q->where('member_type_id', $request->member_type_id);
+                $q->where('member_type_id', $membersType);
             })
             ->where('is_admin', 0)
             ->where('status', 1)
             ->orderBy('index', 'asc')
             ->get();
 
-        return view('frontend.pages.member', compact('data', 'query', 'membersType'));
+        return view('frontend.pages.member', compact('data', 'membersType'));
     }
-
-
 
 
 
